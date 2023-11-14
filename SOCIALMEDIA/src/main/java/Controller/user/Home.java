@@ -13,9 +13,14 @@ public class Home extends HttpServlet  {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
+		
 	}
 	// tuan
 	public void test() {
+		System.out.println("hello");
+	}
+	//someone
+	public void test3() {
 		System.out.println("hello");
 	}
 }	
