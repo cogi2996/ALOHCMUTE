@@ -44,4 +44,7 @@ public class test {
 			entityManager.close();
 		}
 	}
+	public void test2 () {
+		System.out.println("hello 2");
+	}
 }

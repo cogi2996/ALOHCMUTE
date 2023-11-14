@@ -14,4 +14,8 @@ public class Home extends HttpServlet  {
 		// TODO Auto-generated method stub
 		req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 	}
-}
+	// tuan
+	public void test() {
+		System.out.println("hello");
+	}
+}	
