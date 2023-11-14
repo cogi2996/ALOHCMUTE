@@ -15,12 +15,5 @@ public class Home extends HttpServlet  {
 		req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 		
 	}
-	// tuan
-	public void test() {
-		System.out.println("hello");
-	}
-	//someone
-	public void test3() {
-		System.out.println("hello");
-	}
+
 }	
