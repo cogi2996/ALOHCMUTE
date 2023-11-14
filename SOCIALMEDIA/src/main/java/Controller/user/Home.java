@@ -1,4 +1,4 @@
-package Controller;
+package Controller.user;
 
 import java.io.IOException;
 
