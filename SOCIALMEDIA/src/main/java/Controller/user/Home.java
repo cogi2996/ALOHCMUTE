@@ -16,5 +16,10 @@ public class Home extends HttpServlet  {
 		
 	}
 	public void quythuongfunc() {
+		System.out.println("hello");
 	}
+	public void tuan() {
+		
+	}
+	
 }	
