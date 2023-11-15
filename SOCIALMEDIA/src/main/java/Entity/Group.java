@@ -23,6 +23,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "`Group`") // GROUP TRÙNG TÊN TỪ KHOÁ MYSQL NÊN PHẢI DÙNG `` ĐỂ BIỂU THỊ NÓ KHÔNG PHẢI KHOÁ
+//
 @NamedQuery(name = "Group.findAll", query = "SELECT g FROM Group g")
 public class Group implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -103,7 +104,6 @@ public class Group implements Serializable {
 	public List<User> getMember() {
 		return member;
 	}
-
 	public void setMember(List<User> member) {
 		this.member = member;
 	}
@@ -113,7 +113,7 @@ public class Group implements Serializable {
 	}
 
 	public void setListPost(List<GroupPost> listPost) {
-		this.listPost = listPost;
+		this.listPost = listPost;//sdfajsdlfjasldjf
 	}
 
 }
