@@ -15,5 +15,6 @@ public class Home extends HttpServlet  {
 		req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 		
 	}
-
+	public void quythuongfunc() {
+	}
 }	
