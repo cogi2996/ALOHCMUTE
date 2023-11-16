@@ -335,15 +335,9 @@
 	<script
 		src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></c:url>'></script>
 	<script>
-		$(window).scroll(
-				function() {
-					if ($(window).scrollTop() + $(window).height() >= $(
-							document).height()) {
-						loadAjax();
-					}
-				});
+		
 
-		 function loadAjax() {
+		/*  function loadAjax() {
 		        var amount = document.getElementsByClassName("post").length;
 		        console.log(amount);
 		        $.ajax({
@@ -358,7 +352,8 @@
 		          },
 		          error: function (xhr) {},
 		        });
-		      }
+		      } */
+		
 	</script>
 	<script src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
