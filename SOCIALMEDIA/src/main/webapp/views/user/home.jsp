@@ -50,8 +50,7 @@
 											class="form-control" id="image" />
 									</div>
 									<button type="submit" class="btn btn-primary"
-										style="margin-top: 20px">
-										Đăng</button>
+										style="margin-top: 20px">Đăng</button>
 								</form>
 							</div>
 						</div>
@@ -80,7 +79,18 @@
 						hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy cảm ơn và
 						nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau mà họ đang
 						mang… See more</div>
-					<div class="content-media"></div>
+					<div class="content-media"
+						style="position: relative; display: flex; justify-content: center; align-items: center;">
+						<div class="background"
+							style="background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg); opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+						<div class="content-media__img"
+							style="position: relative; z-index: 1">
+							<img
+								src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+								alt="" width="500" height="500"
+								style="display: block; margin: 0 auto" />
+						</div>
+					</div>
 				</div>
 				<div class="post__feedback">
 					<button type="button" class="feedback__btn active"
@@ -150,7 +160,18 @@
 						hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy cảm ơn và
 						nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau mà họ đang
 						mang… See more</div>
-					<div class="content-media"></div>
+					<div class="content-media"
+						style="position: relative; display: flex; justify-content: center; align-items: center;">
+						<div class="background"
+							style="background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg); opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+						<div class="content-media__img"
+							style="position: relative; z-index: 1">
+							<img
+								src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+								alt="" width="500" height="500"
+								style="display: block; margin: 0 auto" />
+						</div>
+					</div>
 				</div>
 				<div class="post__feedback">
 					<button type="button" class="feedback__btn active"
