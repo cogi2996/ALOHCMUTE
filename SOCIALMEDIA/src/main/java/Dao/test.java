@@ -12,16 +12,8 @@ import JpaConfig.JPAConfig;
 
 public class test {
 	public static void main(String[] args) {
-		try {
+		System.out.print("hello");
 
-			List<UserPost> list = new test().findAll();
-			System.out.println(list);
-			for (UserPost u : list) {
-				System.out.println(u);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	public List<UserPost> findAll() {
