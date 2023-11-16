@@ -1,11 +1,11 @@
-document
+/*document
 	.querySelector(".btn-createPost")
 	.addEventListener("click", function(e) {
 		e.preventDefault();
 		document.querySelector(".post-create-container").classList.toggle("hidden");
 	});
-
-document
+*/
+/*document
 	.querySelector(".post-create-container .btn-post")
 	.addEventListener("click", function() {
 		const titleValue = document.querySelector(".post-title #title").value;
@@ -33,7 +33,7 @@ document
 				console.error("Lỗi xảy ra: " + error);
 			});
 	});
-
+*/
 const insertPost = function(post) {
 	const html = `
       <div class="post " data-post_id = ${post.post_id}>
@@ -66,6 +66,22 @@ const insertPost = function(post) {
 	document.querySelector(".post-container").insertAdjacentHTML("beforeend", html);
 
 }
+
+const btn_inputCreatePost = document.querySelector(".create-post__input");
+const btn_closeCreatePost = document.querySelector(".card-header .btn-close");
+btn_inputCreatePost.addEventListener("click", function () {
+  const modalCreatePost = document.querySelector(".create-post__modal");
+  const body = document.querySelector(".home-content");
+  modalCreatePost.style.display = "block";
+});
+
+btn_closeCreatePost.addEventListener("click", function () {
+  const createPostModal = document.querySelector(
+    ".create-post .create-post__modal"
+  );
+  createPostModal.style.display = "none";
+});
+
 
 
 

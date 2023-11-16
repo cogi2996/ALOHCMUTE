@@ -73,6 +73,7 @@ header {
 	align-items: center;
 	border: none;
 }
+
 .search-modal__item .user-avatar {
 	width: 36px;
 	height: 36px;
@@ -112,6 +113,26 @@ header {
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+.create-post .create-post__modal {
+	position: absolute;
+	top: 100%;
+	z-index: 1;
+	margin-left: 80%;
+	width: 1000px;
+	display:none; 
+}
+
+.card-header .btn-close {
+	background-color: #dcdcdc;
+	padding: 10px;
+	border-radius: 50px;
 }
 
 .create-post__avatar img {
@@ -160,8 +181,7 @@ header {
 	padding: 0;
 }
 
-.post {
-}
+.post {}
 
 .post__header {
 	margin-bottom: 10px;
@@ -220,8 +240,7 @@ header {
 	flex-direction: row;
 }
 
-.content__text {
-}
+.content__text {}
 
 .post__feedback {
 	display: flex;
@@ -246,12 +265,12 @@ header {
 	background-color: #1a1a1b1a;
 }
 
-.feedback__btn > p {
+.feedback__btn>p {
 	margin-left: 10px;
 	margin-top: auto;
 	margin-bottom: auto;
 }
 
-.feedback__btn > * {
+.feedback__btn>* {
 	pointer-events: none;
 }
