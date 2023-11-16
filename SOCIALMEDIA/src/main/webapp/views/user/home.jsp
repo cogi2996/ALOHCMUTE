@@ -75,7 +75,10 @@
 					</div>
 				</div>
 				<div class="post__content">
-					<div class="content-text">Hoàn hôn ở pải</div>
+					<div class="content-text">GỬI CON. Có ai khen con đẹp. Con
+						hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy cảm ơn và
+						nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau mà họ đang
+						mang… See more</div>
 					<div class="content-media"
 						style="position: relative; display: flex; justify-content: center; align-items: center;">
 						<div class="background"
