@@ -30,11 +30,12 @@ public class Home extends HttpServlet  {
 		} 
 	}
 	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
-		int id = Integer.parseInt(req.getParameter("id"));	
-		List<User> list = userService.findFollowersByUserId(id);
-		req.setAttribute("listfollower", list);
+		int id = Integer.parseInt(req.getParameter("id"));
+		User user = userService.findUser(id);
+		List<User> followers = user.getFollowers();
+		req.setAttribute("listfollower", followers);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/views/user/listfollower.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/followers.jsp");
 		rd.forward(req, resp);
 	}
 }	
