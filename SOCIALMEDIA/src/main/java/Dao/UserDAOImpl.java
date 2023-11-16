@@ -1,6 +1,10 @@
 package Dao;
 
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -15,5 +19,17 @@ public class UserDAOImpl implements IUserDAO{
         query.setParameter("userID", userID);
         
         return query.getSingleResult();
+	}
+
+	@Override
+	public List<User> SortUserByName(List<User> list) {
+		Collections.sort(list, Comparator.comparing(User::getFirstName));
+		return list;
+	}
+
+	@Override
+	public List<User> SortUserByWorkplace(List<User> list) {
+		Collections.sort(list, Comparator.comparing(User::getWorkPlace));
+		return list;
 	}
 }
