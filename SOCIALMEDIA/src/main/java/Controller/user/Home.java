@@ -18,5 +18,6 @@ public class Home extends HttpServlet  {
 		if (url.contains("home")) {
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 		}
+		
 	}
 }	
