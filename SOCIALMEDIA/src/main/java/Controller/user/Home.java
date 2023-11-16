@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import Entity.User;
 import Services.IUserService;
 import Services.UserServiceImpl;
-@WebServlet(urlPatterns = {"/home", "/follower"})
+@WebServlet(urlPatterns = {"/home", "/followers"})
 public class Home extends HttpServlet  {
 	/**
 	 * 
@@ -33,9 +33,12 @@ public class Home extends HttpServlet  {
 		int id = Integer.parseInt(req.getParameter("id"));
 		User user = userService.findUser(id);
 		List<User> followers = user.getFollowers();
-		req.setAttribute("listfollower", followers);
+		for (User follower : followers) {
+		    System.out.println(follower);
+		}
+		req.setAttribute("listfollowers", followers);
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/views/user/followers.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/listfollowers.jsp");
 		rd.forward(req, resp);
 	}
 }	
