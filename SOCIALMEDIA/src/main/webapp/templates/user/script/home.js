@@ -84,7 +84,7 @@ btn_closeCreatePost.addEventListener("click", function() {
 // xử lí phần gọi api nhận bài viết khi scroll đến cuối trang
 $(window).scroll(
 	function() {
-		if ($(window).scrollTop() + $(window).height() >= $(
+		if ($(window).scrollTop() + $(window).height() +1>= $(
 			document).height()) {
 			loadAjax();
 		}
