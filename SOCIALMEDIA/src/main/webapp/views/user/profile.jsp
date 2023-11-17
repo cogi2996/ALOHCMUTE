@@ -17,8 +17,8 @@
 								<div>
 									<img class="profile-pic"
 										src="https://bootdey.com/img/Content/avatar/avatar6.png"
-										alt="profile" /> <span class="profile-name">Amiah
-										Burton</span>
+										alt="profile" /> <span class="profile-name">Đặng Công Tuấn
+										</span>
 								</div>
 								<div class="d-none d-md-block">
 									<button class="btn btn-primary btn-icon-text btn-edit-profile">
@@ -59,7 +59,9 @@
                       <path
 											d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                       <circle cx="12" cy="7" r="4"></circle>
-                    </svg> <a class="pt-1px d-none d-md-block" href="#">About</a>
+                    </svg> <a class="pt-1px d-none d-md-block" href="#">Following
+										<span class="text-muted tx-12">3,765</span>
+								</a>
 								</li>
 								<li
 									class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
@@ -73,7 +75,7 @@
                       <circle cx="9" cy="7" r="4"></circle>
                       <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg> <a class="pt-1px d-none d-md-block" href="#">Friends
+                    </svg> <a class="pt-1px d-none d-md-block" href="#">Follower
 										<span class="text-muted tx-12">3,765</span>
 								</a>
 								</li>
@@ -114,7 +116,9 @@
 						<div class="card-body">
 							<div
 								class="d-flex align-items-center justify-content-between mb-2">
-								<h6 class="card-title mb-0">About</h6>
+								<h6 class="card-title mb-0">
+									About 
+								</h6>
 								<div class="dropdown">
 									<button class="btn p-0" type="button" id="dropdownMenuButton"
 										data-toggle="dropdown" aria-haspopup="true"
@@ -229,260 +233,248 @@
 				<div class="col-md-8 col-xl-6 middle-wrapper">
 					<div class="row">
 						<div class="col-md-12 grid-margin">
-							<div class="card rounded">
-								<div class="card-header">
-									<div class="d-flex align-items-center justify-content-between">
-										<div class="d-flex align-items-center">
-											<img class="img-xs rounded-circle"
-												src="https://bootdey.com/img/Content/avatar/avatar6.png"
-												alt="" />
-											<div class="ml-2">
-												<p>Mike Popescu</p>
-												<p class="tx-11 text-muted">1 min ago</p>
+							<div class="wrapper create-post">
+								<a class="create-post__avatar"> <img alt="User avatar"
+									src="https://styles.redditmedia.com/t5_6tgdza/styles/profileIcon_snoob64c08dd-9253-4a17-9006-378fff570d44-headshot.png?width=256&amp;height=256&amp;crop=256:256,smart&amp;s=975f806419bee0b32ca65c2dcc6e1a9ef4ad2108" />
+								</a> <input class="create-post__input" placeholder="Create Post" />
+								<a class="create-post__link"> <i
+									class="fa-solid fa-image icon"></i>
+								</a> <a class="create-post__link"> <i
+									class="fa-solid fa-link icon"></i>
+								</a>
+								<!-- modal create post -->
+								<div class="container create-post__modal">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="card">
+												<div class="card-header"
+													style="display: flex; justify-content: space-between; align-items: center;">
+													<div>Tạo bài viết</div>
+													<div class="btn-close"></div>
+												</div>
+												<div class="card-body">
+													<form action="#">
+														<div class="form-group">
+															<label for="author">Đặng Công Tuấn</label>
+														</div>
+														<div class="form-group">
+															<label for="privacy">Quyền riêng tư</label> <select
+																class="form-control" id="privacy">
+																<option value="only_me">Chỉ mình tôi</option>
+																<option value="friends">Bạn bè</option>
+																<option value="public">Công khai</option>
+															</select>
+														</div>
+														<div class="form-group">
+															<label for="content">Nội dung</label>
+															<textarea class="form-control" id="content"
+																placeholder="Tuấn ơi, bạn đang nghĩ gì thế?"></textarea>
+														</div>
+														<div class="form-group">
+															<label for="image">Ảnh</label> <input type="file"
+																class="form-control" id="image" />
+														</div>
+														<button type="submit" class="btn btn-primary"
+															style="margin-top: 20px">
+															Đăng</button>
+													</form>
+												</div>
 											</div>
 										</div>
-										<div class="dropdown">
-											<button class="btn p-0" type="button"
-												id="dropdownMenuButton2" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24"
-													height="24" viewBox="0 0 24 24" fill="none"
-													stroke="currentColor" stroke-width="2"
-													stroke-linecap="round" stroke-linejoin="round"
-													class="feather feather-more-horizontal icon-lg pb-3px">
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-											</button>
-											<div class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton2">
-												<a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-meh icon-sm mr-2">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="8" y1="15" x2="16" y2="15"></line>
-                              <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                              <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                            </svg> <span class="">Unfollow</span>
-												</a> <a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-corner-right-up icon-sm mr-2">
-                              <polyline points="10 9 15 4 20 9"></polyline>
-                              <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
-                            </svg> <span class="">Go to post</span>
-												</a> <a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-share-2 icon-sm mr-2">
-                              <circle cx="18" cy="5" r="3"></circle>
-                              <circle cx="6" cy="12" r="3"></circle>
-                              <circle cx="18" cy="19" r="3"></circle>
-                              <line x1="8.59" y1="13.51" x2="15.42"
-															y2="17.49"></line>
-                              <line x1="15.41" y1="6.51" x2="8.59"
-															y2="10.49"></line>
-                            </svg> <span class="">Share</span>
-												</a> <a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-copy icon-sm mr-2">
-                              <rect x="9" y="9" width="13" height="13"
-															rx="2" ry="2"></rect>
-                              <path
-															d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg> <span class="">Copy link</span>
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card-body">
-									<p class="mb-3 tx-14">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit. Accusamus minima delectus nemo
-										unde quae recusandae assumenda.</p>
-									<img class="img-fluid"
-										src="https://bootdey.com/img/Content/avatar/avatar6.png"
-										alt="" />
-								</div>
-								<div class="card-footer">
-									<div class="d-flex post-actions">
-										<a href="javascript:;"
-											class="d-flex align-items-center text-muted mr-4"> <svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor"
-												stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-heart icon-md">
-                          <path
-													d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                        </svg>
-											<p class="d-none d-md-block ml-2">Like</p>
-										</a> <a href="javascript:;"
-											class="d-flex align-items-center text-muted mr-4"> <svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor"
-												stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-message-square icon-md">
-                          <path
-													d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-											<p class="d-none d-md-block ml-2">Comment</p>
-										</a> <a href="javascript:;"
-											class="d-flex align-items-center text-muted"> <svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor"
-												stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-share icon-md">
-                          <path
-													d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                          <polyline points="16 6 12 2 8 6"></polyline>
-                          <line x1="12" y1="2" x2="12" y2="15"></line>
-                        </svg>
-											<p class="d-none d-md-block ml-2">Share</p>
-										</a>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="card rounded">
-								<div class="card-header">
-									<div class="d-flex align-items-center justify-content-between">
-										<div class="d-flex align-items-center">
-											<img class="img-xs rounded-circle"
-												src="https://bootdey.com/img/Content/avatar/avatar6.png"
-												alt="" />
-											<div class="ml-2">
-												<p>Mike Popescu</p>
-												<p class="tx-11 text-muted">5 min ago</p>
-											</div>
+							<ul class="list-post">
+								<li class="wrapper post">
+									<div class="post__header">
+										<div class="main-author">
+											<img class="main-author__avatar" alt="Subreddit Icon"
+												role="presentation"
+												src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+											<p class="main-author__name">KTX ĐHQG TP.HCM</p>
 										</div>
-										<div class="dropdown">
-											<button class="btn p-0" type="button"
-												id="dropdownMenuButton3" data-toggle="dropdown"
-												aria-haspopup="true" aria-expanded="false">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24"
-													height="24" viewBox="0 0 24 24" fill="none"
-													stroke="currentColor" stroke-width="2"
-													stroke-linecap="round" stroke-linejoin="round"
-													class="feather feather-more-horizontal icon-lg pb-3px">
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-											</button>
-											<div class="dropdown-menu"
-												aria-labelledby="dropdownMenuButton3">
-												<a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-meh icon-sm mr-2">
-                              <circle cx="12" cy="12" r="10"></circle>
-                              <line x1="8" y1="15" x2="16" y2="15"></line>
-                              <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                              <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                            </svg> <span class="">Unfollow</span>
-												</a> <a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-corner-right-up icon-sm mr-2">
-                              <polyline points="10 9 15 4 20 9"></polyline>
-                              <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
-                            </svg> <span class="">Go to post</span>
-												</a> <a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-share-2 icon-sm mr-2">
-                              <circle cx="18" cy="5" r="3"></circle>
-                              <circle cx="6" cy="12" r="3"></circle>
-                              <circle cx="18" cy="19" r="3"></circle>
-                              <line x1="8.59" y1="13.51" x2="15.42"
-															y2="17.49"></line>
-                              <line x1="15.41" y1="6.51" x2="8.59"
-															y2="10.49"></line>
-                            </svg> <span class="">Share</span>
-												</a> <a class="dropdown-item d-flex align-items-center" href="#">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2"
-														stroke-linecap="round" stroke-linejoin="round"
-														class="feather feather-copy icon-sm mr-2">
-                              <rect x="9" y="9" width="13" height="13"
-															rx="2" ry="2"></rect>
-                              <path
-															d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg> <span class="">Copy link</span>
-												</a>
+										<div class="sub-author">
+											<img class="sub-author__avatar" alt="Subreddit Icon"
+												role="presentation"
+												src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+											<p class="sub-author__name">Mỹ Phụng</p>
+										</div>
+									</div>
+									<div class="post__content">
+										<div class="content-text">hoàn hôn ở Pải</div>
+										<div class="content-media"
+											style="position: relative; display: flex; justify-content: center; align-items: center;">
+											<div class="background"
+												style="background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg); opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+											<div class="content-media__img"
+												style="position: relative; z-index: 1">
+												<img
+													src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+													alt="" width="500" height="500"
+													style="display: block; margin: 0 auto" />
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="card-body">
-									<p class="mb-3 tx-14">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit.</p>
-									<img class="img-fluid" src="../../../assets/images/sample2.jpg"
-										alt="" />
-								</div>
-								<div class="card-footer">
-									<div class="d-flex post-actions">
-										<a href="javascript:;"
-											class="d-flex align-items-center text-muted mr-4"> <svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor"
-												stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-heart icon-md">
-                          <path
-													d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                        </svg>
-											<p class="d-none d-md-block ml-2">Like</p>
-										</a> <a href="javascript:;"
-											class="d-flex align-items-center text-muted mr-4"> <svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor"
-												stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-message-square icon-md">
-                          <path
-													d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-											<p class="d-none d-md-block ml-2">Comment</p>
-										</a> <a href="javascript:;"
-											class="d-flex align-items-center text-muted"> <svg
-												xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-												viewBox="0 0 24 24" fill="none" stroke="currentColor"
-												stroke-width="2" stroke-linecap="round"
-												stroke-linejoin="round"
-												class="feather feather-share icon-md">
-                          <path
-													d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                          <polyline points="16 6 12 2 8 6"></polyline>
-                          <line x1="12" y1="2" x2="12" y2="15"></line>
-                        </svg>
-											<p class="d-none d-md-block ml-2">Share</p>
-										</a>
+									<div class="post__feedback">
+										<button type="button" class="feedback__btn active"
+											onclick="handelToggleLike()">
+											<i class="fa-solid fa-thumbs-up icon"></i>
+											<p>100 Like</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-regular fa-comment icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-share icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-ellipsis-vertical"></i>
+										</button>
 									</div>
-								</div>
-							</div>
+								</li>
+								<li class="wrapper post">
+									<div class="post__header">
+										<div class="main-author">
+											<img class="main-author__avatar" alt="Subreddit Icon"
+												role="presentation"
+												src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+											<p class="main-author__name">Mỹ Phụng</p>
+										</div>
+									</div>
+									<div class="post__content">
+										<div class="content-text">GỬI CON. Có ai khen con đẹp.
+											Con hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy
+											cảm ơn và nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau
+											mà họ đang mang… See more</div>
+										<div class="content-media"></div>
+									</div>
+									<div class="post__feedback">
+										<button type="button" class="feedback__btn active"
+											onclick="handelToggleLike()">
+											<i class="fa-solid fa-thumbs-up icon"></i>
+											<p>100 Like</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-regular fa-comment icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-share icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-ellipsis-vertical"></i>
+										</button>
+									</div>
+								</li>
+								<li class="wrapper post">
+									<div class="post__header">
+										<div class="main-author">
+											<img class="main-author__avatar" alt="Subreddit Icon"
+												role="presentation"
+												src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+											<p class="main-author__name">Mỹ Phụng</p>
+										</div>
+									</div>
+									<div class="post__content">
+										<div class="content-text">GỬI CON. Có ai khen con đẹp.
+											Con hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy
+											cảm ơn và nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau
+											mà họ đang mang… See more</div>
+										<div class="content-media"></div>
+									</div>
+									<div class="post__feedback">
+										<button type="button" class="feedback__btn active"
+											onclick="handelToggleLike()">
+											<i class="fa-solid fa-thumbs-up icon"></i>
+											<p>100 Like</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-regular fa-comment icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-share icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-ellipsis-vertical"></i>
+										</button>
+									</div>
+								</li>
+								<li class="wrapper post">
+									<div class="post__header">
+										<div class="main-author">
+											<img class="main-author__avatar" alt="Subreddit Icon"
+												role="presentation"
+												src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+											<p class="main-author__name">Mỹ Phụng</p>
+										</div>
+									</div>
+									<div class="post__content">
+										<div class="content-text">GỬI CON. Có ai khen con đẹp.
+											Con hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy
+											cảm ơn và nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau
+											mà họ đang mang… See more</div>
+										<div class="content-media"></div>
+									</div>
+									<div class="post__feedback">
+										<button type="button" class="feedback__btn active"
+											onclick="handelToggleLike()">
+											<i class="fa-solid fa-thumbs-up icon"></i>
+											<p>100 Like</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-regular fa-comment icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-share icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-ellipsis-vertical"></i>
+										</button>
+									</div>
+								</li>
+								<li class="wrapper post">
+									<div class="post__header">
+										<div class="main-author">
+											<img class="main-author__avatar" alt="Subreddit Icon"
+												role="presentation"
+												src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+											<p class="main-author__name">Mỹ Phụng</p>
+										</div>
+									</div>
+									<div class="post__content">
+										<div class="content-text">GỬI CON. Có ai khen con đẹp.
+											Con hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy
+											cảm ơn và nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau
+											mà họ đang mang… See more</div>
+										<div class="content-media"></div>
+									</div>
+									<div class="post__feedback">
+										<button type="button" class="feedback__btn active"
+											onclick="handelToggleLike()">
+											<i class="fa-solid fa-thumbs-up icon"></i>
+											<p>100 Like</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-regular fa-comment icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-share icon"></i>
+											<p>44 Comment</p>
+										</button>
+										<button type="button" class="feedback__btn">
+											<i class="fa-solid fa-ellipsis-vertical"></i>
+										</button>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
