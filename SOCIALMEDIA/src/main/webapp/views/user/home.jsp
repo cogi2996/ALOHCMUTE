@@ -192,9 +192,169 @@
 					</button>
 				</div>
 			</li>
+			<li class="wrapper post">
+				<div class="post__header">
+					<div class="main-author">
+						<img class="main-author__avatar" alt="Subreddit Icon"
+							role="presentation"
+							src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+						<p class="main-author__name">Mỹ Phụng</p>
+					</div>
+				</div>
+				<div class="post__content">
+					<div class="content-text">GỬI CON. Có ai khen con đẹp. Con
+						hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy cảm ơn và
+						nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau mà họ đang
+						mang… See more</div>
+					<div class="content-media"
+						style="position: relative; display: flex; justify-content: center; align-items: center;">
+						<div class="background"
+							style="background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg); opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+						<div class="content-media__img"
+							style="position: relative; z-index: 1">
+							<img
+								src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+								alt="" width="500" height="500"
+								style="display: block; margin: 0 auto" />
+						</div>
+					</div>
+				</div>
+				<div class="post__feedback">
+					<button type="button" class="feedback__btn active"
+						onclick="handelToggleLike()">
+						<i class="fa-solid fa-thumbs-up icon"></i>
+						<p>100 Like</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-regular fa-comment icon"></i>
+						<p>44 Comment</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-solid fa-share icon"></i>
+						<p>44 Comment</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-solid fa-ellipsis-vertical"></i>
+					</button>
+				</div>
+			</li>
+			<li class="wrapper post">
+				<div class="post__header">
+					<div class="main-author">
+						<img class="main-author__avatar" alt="Subreddit Icon"
+							role="presentation"
+							src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+						<p class="main-author__name">Mỹ Phụng</p>
+					</div>
+				</div>
+				<div class="post__content">
+					<div class="content-text">GỬI CON. Có ai khen con đẹp. Con
+						hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy cảm ơn và
+						nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau mà họ đang
+						mang… See more</div>
+					<div class="content-media"
+						style="position: relative; display: flex; justify-content: center; align-items: center;">
+						<div class="background"
+							style="background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg); opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+						<div class="content-media__img"
+							style="position: relative; z-index: 1">
+							<img
+								src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+								alt="" width="500" height="500"
+								style="display: block; margin: 0 auto" />
+						</div>
+					</div>
+				</div>
+				<div class="post__feedback">
+					<button type="button" class="feedback__btn active"
+						onclick="handelToggleLike()">
+						<i class="fa-solid fa-thumbs-up icon"></i>
+						<p>100 Like</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-regular fa-comment icon"></i>
+						<p>44 Comment</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-solid fa-share icon"></i>
+						<p>44 Comment</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-solid fa-ellipsis-vertical"></i>
+					</button>
+				</div>
+			</li>
+			<li class="wrapper post">
+				<div class="post__header">
+					<div class="main-author">
+						<img class="main-author__avatar" alt="Subreddit Icon"
+							role="presentation"
+							src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
+						<p class="main-author__name">Mỹ Phụng</p>
+					</div>
+				</div>
+				<div class="post__content">
+					<div class="content-text">GỬI CON. Có ai khen con đẹp. Con
+						hãy cảm ơn và quên đi lời khen ấy Ai bảo con ngoan. Hãy cảm ơn và
+						nhớ ngoan hiền hơn nữa Với người òa khóc vì nỗi đau mà họ đang
+						mang… See more</div>
+					<div class="content-media"
+						style="position: relative; display: flex; justify-content: center; align-items: center;">
+						<div class="background"
+							style="background-image: url(https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg); opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+						<div class="content-media__img"
+							style="position: relative; z-index: 1">
+							<img
+								src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
+								alt="" width="500" height="500"
+								style="display: block; margin: 0 auto" />
+						</div>
+					</div>
+				</div>
+				<div class="post__feedback">
+					<button type="button" class="feedback__btn active"
+						onclick="handelToggleLike()">
+						<i class="fa-solid fa-thumbs-up icon"></i>
+						<p>100 Like</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-regular fa-comment icon"></i>
+						<p>44 Comment</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-solid fa-share icon"></i>
+						<p>44 Comment</p>
+					</button>
+					<button type="button" class="feedback__btn">
+						<i class="fa-solid fa-ellipsis-vertical"></i>
+					</button>
+				</div>
+			</li>
 		</ul>
 	</div>
+	<script
+		src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></c:url>'></script>
+	<script>
+		
 
+		/*  function loadAjax() {
+		        var amount = document.getElementsByClassName("post").length;
+		        console.log(amount);
+		        $.ajax({
+		          url: "/SOCIALMEDIA/home/loadAjaxPost",
+		          type: "get",
+		          data: {
+		            exits: amount,
+		          },
+		          success: function (data) {
+		            $(".list-post").append(data);
+		           
+		          },
+		          error: function (xhr) {},
+		        });
+		      } */
+		
+	</script>
 	<script src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
 </body>

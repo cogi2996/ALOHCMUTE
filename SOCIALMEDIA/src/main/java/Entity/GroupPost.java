@@ -36,7 +36,7 @@ public class GroupPost implements Serializable {
 	@JoinColumn(name = "userID")
 	private User user;
 
-	// 1 - n với group
+	// group hiện tại đang chứa post 
 	@ManyToOne
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "groupPostID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private Group group;
