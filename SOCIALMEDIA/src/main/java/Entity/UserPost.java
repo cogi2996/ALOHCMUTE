@@ -26,81 +26,76 @@ public class UserPost {
 	private Date UserPostCreateTime;
 	private boolean UserPostStatus;
 	private Date userPostUpdateTime;
-
+	private String userPostImage; // mới thêm
 	// User đã đăng bài viết này.
 	@ManyToOne
 	@JoinColumn(name = "userID")
 	private User user;
-
-	public UserPost() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	@Override
 	public String toString() {
 		return "UserPost [userPostID=" + userPostID + ", userPostText=" + userPostText + ", UserPostCreateTime="
 				+ UserPostCreateTime + ", UserPostStatus=" + UserPostStatus + ", userPostUpdateTime="
-				+ userPostUpdateTime + "]";
+				+ userPostUpdateTime + ", userPostImg=" + userPostImage + "]";
 	}
-
+	public UserPost() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public UserPost(int userPostID, String userPostText, Date userPostCreateTime, boolean userPostStatus,
-			Date userPostUpdateTime, User user) {
+			Date userPostUpdateTime, String userPostImage, User user) {
 		super();
 		this.userPostID = userPostID;
 		this.userPostText = userPostText;
 		UserPostCreateTime = userPostCreateTime;
 		UserPostStatus = userPostStatus;
 		this.userPostUpdateTime = userPostUpdateTime;
+		this.userPostImage = userPostImage;
 		this.user = user;
 	}
-
 	public int getUserPostID() {
 		return userPostID;
 	}
-
 	public void setUserPostID(int userPostID) {
 		this.userPostID = userPostID;
 	}
-
 	public String getUserPostText() {
 		return userPostText;
 	}
-
 	public void setUserPostText(String userPostText) {
 		this.userPostText = userPostText;
 	}
-
 	public Date getUserPostCreateTime() {
 		return UserPostCreateTime;
 	}
-
 	public void setUserPostCreateTime(Date userPostCreateTime) {
 		UserPostCreateTime = userPostCreateTime;
 	}
-
 	public boolean isUserPostStatus() {
 		return UserPostStatus;
 	}
-
 	public void setUserPostStatus(boolean userPostStatus) {
 		UserPostStatus = userPostStatus;
 	}
-
 	public Date getUserPostUpdateTime() {
 		return userPostUpdateTime;
 	}
-
 	public void setUserPostUpdateTime(Date userPostUpdateTime) {
 		this.userPostUpdateTime = userPostUpdateTime;
 	}
-
+	public String getUserPostImg() {
+		return userPostImage;
+	}
+	public void setUserPostImg(String userPostImage) {
+		this.userPostImage = userPostImage;
+	}
 	public User getUser() {
 		return user;
 	}
-
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 
 }
