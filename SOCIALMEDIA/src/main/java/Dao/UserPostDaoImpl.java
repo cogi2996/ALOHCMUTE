@@ -26,7 +26,6 @@ public class UserPostDaoImpl implements IUserPostDao {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		String jpql = "select uP from UserPost uP where uP.user.userID = " + String.valueOf(userId);
 		TypedQuery<UserPost> query = entityManager.createQuery(jpql, UserPost.class);
-		//query.setParameter("userId", "%" + String.valueOf(userId) + "%");
 		return query.getResultList();
 	}
 
