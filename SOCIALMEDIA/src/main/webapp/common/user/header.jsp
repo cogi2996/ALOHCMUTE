@@ -54,7 +54,7 @@
 						<i class="fa-solid fa-house icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="follower?id=2" onclick="handleActive()"> <i
+					href="/SOCIALMEDIA/follower?id=" onclick="handleActive()"> <i
 						class="fa-solid fa-user-group icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
@@ -62,7 +62,7 @@
 						class="fa-solid fa-users me-2 icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="#" onclick="handleActive()"> <i
+					href="/SOCIALMEDIA/hiring" onclick="handleActive()"> <i
 						class="fa-solid fa-briefcase icon"></i>
 				</a></li>
 			</ul>

@@ -23,13 +23,10 @@ import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/home", "/follower", "/home/loadAjaxPost" })
+@WebServlet(urlPatterns = { "/home", "/home/loadAjaxPost" })
 public class Home extends HttpServlet {
 
 	// test
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
@@ -41,12 +38,7 @@ public class Home extends HttpServlet {
 			postLoadAjax(req, resp);
 		} else if (url.contains("home")) {
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
-
-		} else if (url.contains("follower")) {
-			findFollowersByUserId(req, resp);
-		}
-
-		else if (url.contains("TEST")) {
+		} else if (url.contains("TEST")) {
 			System.out.println("test success");
 		}
 	}
@@ -77,18 +69,5 @@ public class Home extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.println(listPostJson);
 		out.close();
-	}
-
-	// hieu
-	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException, ServletException {
-		int id = Integer.parseInt(req.getParameter("id"));
-		User user = userService.findUser(id);
-		List<User> followers = user.getFollowers();
-		req.setAttribute("listfollower", followers);
-
-		RequestDispatcher rd = req.getRequestDispatcher("/views/user/followers.jsp");
-		rd.forward(req, resp);
-
 	}
 }

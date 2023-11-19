@@ -1,3 +1,7 @@
+.wrapper-follower {
+	width: 1030px;
+}
+
 .list-follower {
     width: 1030px;
     height: auto;
@@ -33,10 +37,23 @@
     border: #000 1px solid;
 }
 
+.follower__info {
+	margin-left: 10px;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
 .follower__name {
     color: #050505;
     font-size: 16px;
     font-weight: 600;
-    margin-left: 10px;
     white-space: pre;
+}
+
+.follower__address {
+	font-size: 12px;
+	color: #65676B;
 }
