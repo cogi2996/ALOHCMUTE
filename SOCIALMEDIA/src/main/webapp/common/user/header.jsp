@@ -54,7 +54,7 @@
 						<i class="fa-solid fa-house icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="#" onclick="handleActive()"> <i
+					href="follower?id=2" onclick="handleActive()"> <i
 						class="fa-solid fa-user-group icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"

@@ -1,9 +1,14 @@
 <decorators defaultdir="/decorators">
-    <decorator name="user" page="user.jsp">
-        <pattern>/*</pattern>
-    </decorator>
-    <excludes>
-        <pattern>/api*</pattern>
-         <pattern>/templates/views/login.jsp</pattern>
-    </excludes>
+	<decorator name="user" page="user.jsp">
+		<pattern>/home*</pattern>
+	</decorator>
+	<decorator name="userProfile" page="profile.jsp">
+		<pattern>/profile*</pattern>
+	</decorator>
+
+	<excludes>
+		<pattern>/api*</pattern>
+		<pattern>/login*</pattern>
+	</excludes>
 </decorators>
+
