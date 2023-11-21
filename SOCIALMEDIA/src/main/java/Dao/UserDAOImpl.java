@@ -1,6 +1,10 @@
 package Dao;
 
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -16,4 +20,9 @@ public class UserDAOImpl implements IUserDAO{
         
         return query.getSingleResult();
 	}
+	@Override
+	public List<User> SortUserByCreateDate(List<User> list) {
+		Collections.sort(list, Comparator.comparing(User::getCreateDate));
+		return list;	
+		}
 }
