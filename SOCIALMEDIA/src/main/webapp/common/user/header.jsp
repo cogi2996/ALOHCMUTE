@@ -50,8 +50,8 @@
 		<div class="col-6 nav-center">
 			<ul class="nav nav-underline justify-content-center">
 				<li class="nav-item col"><a class="nav-link active text-center"
-					aria-current="page" href="#" onclick="handleActive()">
-						<i class="fa-solid fa-house icon"></i>
+					aria-current="page" href="#" onclick="handleActive()"> <i
+						class="fa-solid fa-house icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
 					href="follower?id=2" onclick="handleActive()"> <i

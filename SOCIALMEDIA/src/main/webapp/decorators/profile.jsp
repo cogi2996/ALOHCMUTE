@@ -269,5 +269,29 @@ img {
 	<decorator:body></decorator:body>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script
+		src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></c:url>'></script>
+	<script>
+		
+
+		/*  function loadAjax() {
+		        var amount = document.getElementsByClassName("post").length;
+		        console.log(amount);
+		        $.ajax({
+		          url: "/SOCIALMEDIA/home/loadAjaxPost",
+		          type: "get",
+		          data: {
+		            exits: amount,
+		          },
+		          success: function (data) {
+		            $(".list-post").append(data);
+		           
+		          },
+		          error: function (xhr) {},
+		        });
+		      } */
+		
+	</script>
+	<script src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 </body>
 </html>
