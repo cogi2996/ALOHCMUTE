@@ -1,6 +1,6 @@
 package Model;
 
-public class User {
+public class UserModel {
 	private String gmail;
 	private String password;
 	private String mobile;
@@ -23,7 +23,7 @@ public class User {
 				+ ", workPlace=" + workPlace + ", code=" + code + ", status=" + status + "]";
 	}
 
-	public User(String gmail, String password, String mobile, String firstName, String midName, String lastName,
+	public UserModel(String gmail, String password, String mobile, String firstName, String midName, String lastName,
 			String address, String position, String workPlace) {
 		super();
 		this.gmail = gmail;
@@ -47,7 +47,7 @@ public class User {
 		this.status = status;
 	}
 
-	public User() {
+	public UserModel() {
 		super();
 		this.status = 0; // chưa active
 	}

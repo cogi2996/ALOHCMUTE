@@ -12,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 
-import Model.User;
+import Model.UserModel;
 
 public class Email {
 
@@ -25,7 +25,7 @@ public class Email {
 
 	// send email to the user email
 
-	public boolean sendEmail(User user) {
+	public boolean sendEmail(UserModel user) {
 		boolean test = false;
 		String toGmail = user.getGmail();
 		String fromGmail = "ta84578@gmail.com";

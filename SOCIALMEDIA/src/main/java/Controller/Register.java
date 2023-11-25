@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,17 +13,19 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 
-import Model.User;
+import Entity.User;
+import Model.UserModel;
+import Services.IUserService;
+import Services.UserServiceImpl;
 import Utils.Email;
 import firebase.FireBaseService;
 
 @WebServlet(urlPatterns = { "/dangki", "/xacthuctaikhoan" })
 public class Register extends HttpServlet {
 	public FireBaseService firebaseService = new FireBaseService();
-
+	public IUserService userService = new UserServiceImpl();
 	/*
 	 * public static void main(String[] args) throws FirebaseAuthException { //
 	 * System.out.println(fbService.createUserWithEmailAndPass(null));
@@ -47,7 +50,7 @@ public class Register extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		try {
-			User user = new User();
+			UserModel user = new UserModel();
 			BeanUtils.populate(user, req.getParameterMap());
 			System.out.println("user bean: " + user);
 			Email sm = new Email();
@@ -71,19 +74,33 @@ public class Register extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 		try {
 			HttpSession session = req.getSession();
-			User user = (User) session.getAttribute("account");
+			UserModel userModel = (UserModel) session.getAttribute("account");
 			String code = req.getParameter("code");
-			if (code.equals(user.getCode())) {
+			if (code.equals(userModel.getCode())) {
 				System.out.println("XAC THUC THANH CONG");
 				// tạo tài khoản lên firebase
 				try {
-					UserRecord userRecord = firebaseService.createUserWithEmailAndPass(user);
-					System.out.println("record user after created : " + userRecord.getUid());
+					UserRecord userRecord = firebaseService.createUserWithEmailAndPass(userModel);
+//					System.out.println("record user after created : " + userRecord.getUid());
+					String uid = userRecord.getUid();
+					// insert user vào database với uid đã cài đặt
+					User user= new User();
+					user.setUserID(uid);
+					user.setMobile(userModel.getMobile());
+					user.setCreateDate(new Date());
+					user.setFirstName(userModel.getFirstName());
+					user.setMidName(userModel.getMidName());
+					user.setLastName(userModel.getLastName());
+					user.setAddress(userModel.getAddress());
+					user.setPosition(userModel.getPosition());
+					user.setWorkPlace(userModel.getWorkPlace());
+					userService.insert(user);
+					// chuyển quan trang home khi đăng nhập thành công
+					resp.sendRedirect(req.getContextPath()+"/home");
 					System.out.println("end create account ");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				// insert user vào database với uid đã cài đặt
 				
 
 			} else {

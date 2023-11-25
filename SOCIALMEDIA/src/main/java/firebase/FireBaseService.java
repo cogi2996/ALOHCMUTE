@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.auth.UserRecord.CreateRequest;
 
-import Model.User;
+import Model.UserModel;
 
 public class FireBaseService {
 
@@ -54,7 +54,7 @@ public class FireBaseService {
 		this.firebase = FirebaseApp.initializeApp(options);
 	}
 
-	public UserRecord  createUserWithEmailAndPass(User user) throws FirebaseAuthException {
+	public UserRecord  createUserWithEmailAndPass(UserModel user) throws FirebaseAuthException {
 //		System.out.println(this.auth);
 		System.out.println("Da den buoc create account tren firebase");
 		CreateRequest request = new CreateRequest().setEmail(user.getGmail()).setEmailVerified(true)
