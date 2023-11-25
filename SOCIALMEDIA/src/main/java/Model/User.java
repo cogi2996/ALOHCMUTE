@@ -11,13 +11,16 @@ public class User {
 	private String position;
 	private String workPlace;
 	private String code;
-	
+	private int status;
 
+	
+	
+	
 	@Override
 	public String toString() {
 		return "User [gmail=" + gmail + ", password=" + password + ", mobile=" + mobile + ", firstName=" + firstName
 				+ ", midName=" + midName + ", lastName=" + lastName + ", address=" + address + ", position=" + position
-				+ ", workPlace=" + workPlace + "]";
+				+ ", workPlace=" + workPlace + ", code=" + code + ", status=" + status + "]";
 	}
 
 	public User(String gmail, String password, String mobile, String firstName, String midName, String lastName,
@@ -34,9 +37,19 @@ public class User {
 		this.workPlace = workPlace;
 	}
 
+	
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.status = 0; // chưa active
 	}
 
 	public String getCode() {
