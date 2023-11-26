@@ -2,6 +2,7 @@ package Dao;
 
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import Entity.User;
@@ -15,5 +16,21 @@ public class UserDAOImpl implements IUserDAO{
         query.setParameter("userID", userID);
         
         return query.getSingleResult();
+	}
+
+	@Override
+	public void insert(User user) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		try {
+			transaction.begin();
+			entityManager.persist(user);
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			entityManager.close();
+		}
 	}
 }

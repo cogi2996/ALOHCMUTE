@@ -62,7 +62,7 @@ public class Home extends HttpServlet {
 		for (UserPost post : listPost) {
 			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
 					+ post.getUser().getFirstName();
-			int userid = post.getUser().getUserID();
+			String userid = post.getUser().getUserID();
 			int postid = post.getUserPostID();
 			String text = post.getUserPostText();
 			Date createTime = post.getUserPostCreateTime();

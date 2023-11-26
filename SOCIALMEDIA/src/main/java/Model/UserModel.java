@@ -1,6 +1,6 @@
 package Model;
 
-public class User {
+public class UserModel {
 	private String gmail;
 	private String password;
 	private String mobile;
@@ -11,16 +11,19 @@ public class User {
 	private String position;
 	private String workPlace;
 	private String code;
-	
+	private int status;
 
+	
+	
+	
 	@Override
 	public String toString() {
 		return "User [gmail=" + gmail + ", password=" + password + ", mobile=" + mobile + ", firstName=" + firstName
 				+ ", midName=" + midName + ", lastName=" + lastName + ", address=" + address + ", position=" + position
-				+ ", workPlace=" + workPlace + "]";
+				+ ", workPlace=" + workPlace + ", code=" + code + ", status=" + status + "]";
 	}
 
-	public User(String gmail, String password, String mobile, String firstName, String midName, String lastName,
+	public UserModel(String gmail, String password, String mobile, String firstName, String midName, String lastName,
 			String address, String position, String workPlace) {
 		super();
 		this.gmail = gmail;
@@ -34,9 +37,19 @@ public class User {
 		this.workPlace = workPlace;
 	}
 
-	public User() {
+	
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public UserModel() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.status = 0; // chưa active
 	}
 
 	public String getCode() {

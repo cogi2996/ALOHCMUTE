@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserPostModel {
 	private String username;
-	private int userid;
+	private String userid;
 	private int postid;
 	private String text;
 	private Date createTime;
@@ -20,7 +20,7 @@ public class UserPostModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UserPostModel(String username, int userid, int postid, String text, Date createTime, String img) {
+	public UserPostModel(String username, String userid, int postid, String text, Date createTime, String img) {
 		super();
 		this.username = username;
 		this.userid = userid;
@@ -35,10 +35,10 @@ public class UserPostModel {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public int getPostid() {
