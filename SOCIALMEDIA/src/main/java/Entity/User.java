@@ -40,7 +40,7 @@ public class User implements Serializable {
 	private String position;
 	private String workPlace;
 	private String avatar;
-
+	private int role;
 	// Các group được tạo bởi user.
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "admin")
@@ -91,7 +91,8 @@ public class User implements Serializable {
 	}
 
 	public User(String userID, String mobile, Date createDate, Date lastLogin, String firstName, String midName,
-			String lastName, String address, String biography, String position, String workPlace, String avatar) {
+			String lastName, String address, String biography, String position, String workPlace, String avatar,
+			int role) {
 		super();
 		this.userID = userID;
 		this.mobile = mobile;
@@ -105,8 +106,9 @@ public class User implements Serializable {
 		this.position = position;
 		this.workPlace = workPlace;
 		this.avatar = avatar;
+		this.role = role;
 	}
-	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -268,6 +270,14 @@ public class User implements Serializable {
 
 	public void setBoxChat(BoxChat boxChat) {
 		this.boxChat = boxChat;
+	}
+
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 }
