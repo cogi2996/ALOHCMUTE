@@ -29,30 +29,45 @@ public class Login extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try { // idToken comes from theclient app (shown above)
+		try {
 			resp.setContentType("application/json");
 			resp.setCharacterEncoding("UTF-8");
 			Gson gson = new Gson();
-			String tokenId = gson.fromJson(req.getReader(), String.class); // gọi hàm fromJson để chuyển từ String sang
-																			// Object
 
-			// idToken comes from the client app (shown above)
-			FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(tokenId);
-			String uid = decodedToken.getUid();
-			if (uid != null) {
-				System.out.println("uid đã đăng nhập: " + uid);
-				// tạo session khi user đăng nhập thành công
-				HttpSession session = req.getSession();
-				session.setAttribute("uid", uid);
-				// trả về status thành công
-				resp.setStatus(HttpServletResponse.SC_OK);
-				resp.getWriter().write("Đăng nhập thành công!");
+			// Lấy tokenID từ header Authorization
+			String authorizationHeader = req.getHeader("Authorization");
+			String tokenId = null;
+					
+			if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+				tokenId = authorizationHeader.substring(7); // Bỏ qua phần "Bearer "
 			}
 
-		} catch (FirebaseAuthException e) { // TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			if (tokenId != null && !tokenId.isEmpty()) {
+				// Xác thực tokenID từ Firebase
+				FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(tokenId);
+				String uid = decodedToken.getUid();
 
+				if (uid != null) {
+					System.out.println("uid đã đăng nhập: " + uid);
+
+					// Tạo session khi người dùng đăng nhập thành công
+					HttpSession session = req.getSession();
+					session.setAttribute("uid", uid);
+
+					// Trả về trạng thái thành công
+					resp.setStatus(HttpServletResponse.SC_OK);
+					resp.getWriter().write("Đăng nhập thành công!");
+				}
+			} else {
+				// Xử lý khi không có hoặc tokenID không hợp lệ
+				resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+				resp.getWriter().write("Token không hợp lệ!");
+			}
+		} catch (FirebaseAuthException e) {
+			// Xử lý lỗi xác thực từ Firebase
+			resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			resp.getWriter().write("Lỗi xác thực từ Firebase: " + e.getMessage());
+		}
 	}
 
 }

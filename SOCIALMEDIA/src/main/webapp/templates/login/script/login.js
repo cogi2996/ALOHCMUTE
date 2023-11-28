@@ -22,7 +22,7 @@ const loginButton = document.querySelector(".login-button");
   }
 });*/
 
-loginButton.addEventListener("click", () => {
+/*loginButton.addEventListener("click", () => {
 	const email = emailInput.value;
 	const password = passwordInput.value;
 	signInWithEmailAndPassword(auth, email, password)
@@ -47,6 +47,47 @@ loginButton.addEventListener("click", () => {
 				window.location.href = "home";
 			} else {
 				// xử lí trường hợp khi đăng nhập thất bại
+			}
+		})
+		.catch((error) => {
+			// Xử lý lỗi khi gửi tokenId về server
+			console.error("Error sending token to server:", error);
+		});
+});
+*/
+
+loginButton.addEventListener("click", () => {
+	const email = emailInput.value;
+	const password = passwordInput.value;
+	signInWithEmailAndPassword(auth, email, password)
+		.then((userCredential) => {
+			return userCredential.user.getIdToken();
+		})
+		.then((tokenId) => {
+			// Gửi tokenId về server
+			console.log(tokenId);
+
+			// Thêm token vào header Authorization
+			const headers = {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${tokenId}`, // Thêm token vào header Authorization
+			};
+
+			// Gửi yêu cầu đến server với token trong header
+			return fetch("dangnhap", {
+				method: "POST",
+				headers: headers,
+				// Không cần gửi token qua phần thân của yêu cầu
+			});
+		})
+		.then((response) => {
+			if (response.ok) {
+				// Xác thực thành công, chuyển hướng đến trang home
+				window.location.href = "home"; // Thay đổi URL thành trang home của bạn
+			} else {
+				// Xác thực thất bại, yêu cầu đăng nhập lại
+				alert("Authentication failed. Please login again.");
+				// Hoặc bạn có thể thực hiện các hành động khác để yêu cầu đăng nhập lại
 			}
 		})
 		.catch((error) => {

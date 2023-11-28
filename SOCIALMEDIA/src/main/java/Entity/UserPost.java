@@ -21,7 +21,7 @@ public class UserPost {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userPostID;
-//	private int userID;
+	
 	private String userPostText;
 	private Date UserPostCreateTime;
 	private boolean UserPostStatus;
