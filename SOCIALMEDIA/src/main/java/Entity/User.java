@@ -26,7 +26,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
-	private int userID;
+	private String userID;
 	private String mobile;
 	@Temporal(value = TemporalType.DATE)
 	private Date createDate;
@@ -40,7 +40,7 @@ public class User implements Serializable {
 	private String position;
 	private String workPlace;
 	private String avatar;
-
+	private int role;
 	// Các group được tạo bởi user.
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "admin")
@@ -51,11 +51,13 @@ public class User implements Serializable {
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private List<Group> UserGroups;
 
-	// Tài khoản đã cấp cho user.
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "uid")
-	private Account account;
-
+	/*
+	 * // Tài khoản đã cấp cho user.
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "uid") private Account account;
+	 */
 	// Các bài viết ( cá nhân ) của user.
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "user")
@@ -88,8 +90,9 @@ public class User implements Serializable {
 				+ workPlace + ", avatar=" + avatar + "]";
 	}
 
-	public User(int userID, String mobile, Date createDate, Date lastLogin, String firstName, String midName,
-			String lastName, String address, String biography, String position, String workPlace, String avatar) {
+	public User(String userID, String mobile, Date createDate, Date lastLogin, String firstName, String midName,
+			String lastName, String address, String biography, String position, String workPlace, String avatar,
+			int role) {
 		super();
 		this.userID = userID;
 		this.mobile = mobile;
@@ -103,18 +106,19 @@ public class User implements Serializable {
 		this.position = position;
 		this.workPlace = workPlace;
 		this.avatar = avatar;
+		this.role = role;
 	}
-	
+
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 
@@ -222,13 +226,11 @@ public class User implements Serializable {
 		UserGroups = userGroups;
 	}
 
-	public Account getAccount() {
-		return account;
-	}
-
-	public void setAccount(Account account) {
-		this.account = account;
-	}
+	/*
+	 * public Account getAccount() { return account; }
+	 * 
+	 * public void setAccount(Account account) { this.account = account; }
+	 */
 
 	public List<UserPost> getUserPosts() {
 		return userPosts;
@@ -268,6 +270,14 @@ public class User implements Serializable {
 
 	public void setBoxChat(BoxChat boxChat) {
 		this.boxChat = boxChat;
+	}
+
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 }

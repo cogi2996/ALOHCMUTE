@@ -84,7 +84,7 @@ btn_closeCreatePost.addEventListener("click", function() {
 // xử lí phần gọi api nhận bài viết khi scroll đến cuối trang
 $(window).scroll(
 	function() {
-		if ($(window).scrollTop() + $(window).height() +1>= $(
+		if ($(window).scrollTop() + $(window).height() + 1 >= $(
 			document).height()) {
 			loadAjax();
 		}
@@ -142,8 +142,7 @@ const renderPost = function(post) {
 
 function loadAjax() {
 	var amount = document.getElementsByClassName("post").length;
-	console.log(`/SOCIALMEDIA/home/loadAjaxPost?exits=${amount}`)
-	fetch(`/SOCIALMEDIA/home/loadAjaxPost?exits=${amount}`, {
+	fetch(`/SOCIALMEDIA/posts?exits=${amount}`, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",

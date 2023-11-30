@@ -1,21 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8" />
 <link
-	href='<c:url value ="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"></c:url>'
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+	crossorigin="anonymous" />
 <script
-	src='<c:url value ="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></c:url>'
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href='<c:url value = "/templates/login/login.css"></c:url>' />
+<style>
+.divider:after, .divider:before {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: #eee;
+}
+
+.h-custom {
+	height: calc(100% - 73px);
+}
+
+@media ( max-width : 450px) {
+	.h-custom {
+		height: 100%;
+	}
+}
+</style>
 </head>
 <body>
 	<section class="vh-100">
@@ -106,7 +122,10 @@
 			<!-- Right -->
 		</div>
 	</section>
-	<script type="module" src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script>
-	<script type="module" src='<c:url value = "/templates/login/script/login.js"></c:url>'></script>
+	<script type="module"
+		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script>
+	<script type="module"
+		src='<c:url value = "/templates/login/script/login.js"></c:url>'></script>
 </body>
 </html>
+
