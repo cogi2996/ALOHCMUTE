@@ -45,7 +45,7 @@ public class Register extends HttpServlet {
 			postVerifyCode(req, resp);
 		}
 	}
-
+	
 	public void postRegister(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
