@@ -1,4 +1,4 @@
-package filter;
+/*package filter;
 
 import java.io.IOException;
 
@@ -40,5 +40,5 @@ public class AuthorizationFilter implements Filter {
 		}
 		chain.doFilter(request, response);
 	}
-
 }
+*/
