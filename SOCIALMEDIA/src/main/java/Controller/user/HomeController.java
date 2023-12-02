@@ -37,47 +37,43 @@ public class HomeController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
-		if (url.contains("loadAjaxPost")) {
-			postLoadAjax(req, resp);
-		} else if (url.contains("home")) {
+//		if (url.contains("loadAjaxPost")) {
+//			postLoadAjax(req, resp);
+//		} else 
+		if (url.contains("home")) {
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 
 		} else if (url.contains("follower")) {
 			findFollowersByUserId(req, resp);
 		}
-
-		else if (url.contains("TEST")) {
-			System.out.println("test success");
-		}
 	}
 
 	// tuan
-	public void postLoadAjax(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		resp.setContentType("application/json");
-		resp.setCharacterEncoding("UTF-8");
-		String amount = req.getParameter("exits");
-		int imount = Integer.parseInt(amount);
-		List<UserPost> listPost = userPostService.paginationPage(imount, 6);
-		List<UserPostModel> listPostModel = new ArrayList<UserPostModel>();
-		for (UserPost post : listPost) {
-			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
-					+ post.getUser().getFirstName();
-			String userid = post.getUser().getUserID();
-			int postid = post.getUserPostID();
-			String text = post.getUserPostText();
-			Date createTime = post.getUserPostCreateTime();
-			String img = post.getUserPostImg();
-			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
-			listPostModel.add(postModel);
-		}
-
-		Gson gson = new Gson();
-		String listPostJson = gson.toJson(listPostModel);
-		System.out.println("list post lay duoc ; " + listPostModel);
-		PrintWriter out = resp.getWriter();
-		out.println(listPostJson);
-		out.close();
-	}
+//	public void postLoadAjax(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+//		resp.setContentType("application/json");
+//		resp.setCharacterEncoding("UTF-8");
+//		String amount = req.getParameter("exits");
+//		int imount = Integer.parseInt(amount);
+//		List<UserPost> listPost = userPostService.paginationPage(imount, 6);
+//		List<UserPostModel> listPostModel = new ArrayList<UserPostModel>();
+//		for (UserPost post : listPost) {
+//			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
+//					+ post.getUser().getFirstName();
+//			String userid = post.getUser().getUserID();
+//			int postid = post.getUserPostID();
+//			String text = post.getUserPostText();
+//			Date createTime = post.getUserPostCreateTime();
+//			String img = post.getUserPostImg();
+//			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
+//			listPostModel.add(postModel);
+//		}
+//		Gson gson = new Gson();
+//		String listPostJson = gson.toJson(listPostModel);
+//		System.out.println("list post lay duoc ; " + listPostModel);
+//		PrintWriter out = resp.getWriter();
+//		out.println(listPostJson);
+//		out.close();
+//	}
 
 	// hieu
 	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp)

@@ -21,7 +21,7 @@ import Services.IUserPostService;
 import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
-@WebServlet(urlPatterns = {"/posts"})
+@WebServlet(urlPatterns = {"/api/v1/posts/loadAjaxPost","/api/v1/posts"})
 
 public class PostAPI extends HttpServlet{
 	IUserService userService = new UserServiceImpl();
@@ -29,7 +29,10 @@ public class PostAPI extends HttpServlet{
 	// CRUD
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		String url = req.getRequestURL().toString();
+		if (url.contains("loadAjaxPost")) {
+			postLoadAjax(req, resp);
+		}
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,6 +49,7 @@ public class PostAPI extends HttpServlet{
 		user.setUserID(newPost.getUserid());
 		userPost.setUser(user);
 		// còn thiếu dữ liệu hình ảnh 
+		userPost.setUserPostImg(newPost.getImg());
 		userPostService.insert(userPost);
 	}
 	// các method

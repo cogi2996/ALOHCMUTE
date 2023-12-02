@@ -19,40 +19,27 @@ public class FireBaseService {
 	private FirebaseAuth auth;
 
 	public FireBaseService() {
+		
 		try {
-			this.initFirebase();
-			this.initAuth();
+			FileInputStream serviceAccount = new FileInputStream(
+				    this.getClass().getClassLoader().getResource("strange-song-394808-firebase-adminsdk-i6wm1-237bb10752.json").getFile());
+
+			FirebaseOptions options = FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(serviceAccount))
+					.setDatabaseUrl("https://strange-song-394808-default-rtdb.firebaseio.com").build();
+
+			this.firebase = FirebaseApp.initializeApp(options);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public FirebaseApp getFirebase() {
-		return this.firebase;
-	}
-
 	public FirebaseAuth getAuth() {
-		return this.auth;
+		return FirebaseAuth.getInstance(this.firebase);
 	}
 
-	public void initAuth() {
-		this.auth = FirebaseAuth.getInstance(this.firebase);
-	}
 
-	public void initFirebase() throws IOException {
-		/*
-		 * FileInputStream serviceAccount = new FileInputStream(
-		 * "src/main/resources/strange-song-394808-firebase-adminsdk-i6wm1-237bb10752.json"
-		 * );
-		 */
-		FileInputStream serviceAccount = new FileInputStream(
-			    this.getClass().getClassLoader().getResource("strange-song-394808-firebase-adminsdk-i6wm1-237bb10752.json").getFile());
 
-		FirebaseOptions options = FirebaseOptions.builder().setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.setDatabaseUrl("https://strange-song-394808-default-rtdb.firebaseio.com").build();
 
-		this.firebase = FirebaseApp.initializeApp(options);
-	}
 
 	public UserRecord  createUserWithEmailAndPass(UserModel user) throws FirebaseAuthException {
 //		System.out.println(this.auth);

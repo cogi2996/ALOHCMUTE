@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
@@ -18,10 +19,20 @@ import firebase.FireBaseService;
 
 @WebServlet(urlPatterns = "/dangnhap")
 public class Login extends HttpServlet {
-
-	public FireBaseService firebase = new FireBaseService();
-	public FirebaseAuth auth = firebase.getAuth();
-
+	private FirebaseAuth auth;
+	private FireBaseService firebaseService;
+	@Override
+	public void init() throws ServletException {
+		if(getServletContext().getAttribute("firebaseService")==null) {
+			this.firebaseService  = new FireBaseService();
+			getServletContext().setAttribute("firebaseService", this.firebaseService);
+			this.auth = this.firebaseService.getAuth();
+		}
+		else {
+			this.firebaseService = (FireBaseService)getServletContext().getAttribute("firebaseService");
+			this.auth = firebaseService.getAuth();
+		}
+	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
