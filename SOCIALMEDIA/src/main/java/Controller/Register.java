@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserRecord;
 
 import Entity.User;
@@ -24,8 +25,19 @@ import firebase.FireBaseService;
 
 @WebServlet(urlPatterns = { "/dangki", "/xacthuctaikhoan" })
 public class Register extends HttpServlet {
-	public FireBaseService firebaseService = new FireBaseService();
+	private FireBaseService firebaseService;
 	public IUserService userService = new UserServiceImpl();
+	@Override
+	public void init() throws ServletException {
+		// TODO Auto-generated method stub
+		if(getServletContext().getAttribute("firebaseService")==null) {
+			this.firebaseService  = new FireBaseService();
+			getServletContext().setAttribute("firebaseService", this.firebaseService);
+		}
+		else {
+			this.firebaseService = (FireBaseService)getServletContext().getAttribute("firebaseService");
+		}
+	}
 	/*
 	 * public static void main(String[] args) throws FirebaseAuthException { //
 	 * System.out.println(fbService.createUserWithEmailAndPass(null));

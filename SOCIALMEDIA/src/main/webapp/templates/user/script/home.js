@@ -142,7 +142,7 @@ const renderPost = function(post) {
 
 function loadAjax() {
 	var amount = document.getElementsByClassName("post").length;
-	fetch(`/SOCIALMEDIA/posts?exits=${amount}`, {
+	fetch(`/SOCIALMEDIA/api/v1/posts/loadAjaxPost?exits=${amount}`, {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
@@ -156,6 +156,23 @@ function loadAjax() {
 			});
 		});
 };
+
+
+btn_submit.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const text = document.querySelector(".form-createPost #content").value;
+
+  fetch(`/SOCIALMEDIA/api/v1/posts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "aplication/json",
+    },
+    body: JSON.stringify({
+      text: text,
+      img: "https://firebasestorage.googleapis.com/v0/b/strange-song-394808.appspot.com/o/images%2F1701500008998?alt=media&token=ce82acb9-e273-48b1-82bc-8a522ffda847",
+    }),
+  });
+});
 
 
 
