@@ -22,13 +22,14 @@ import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 @WebServlet(urlPatterns = {"/posts"})
+
 public class PostAPI extends HttpServlet{
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
 	// CRUD
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.postLoadAjax(req, resp);
+
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

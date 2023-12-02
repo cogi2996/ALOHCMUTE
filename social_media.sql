@@ -1,19 +1,12 @@
 create database ALOHCMUTE;
 use ALOHCMUTE;
 
-create table `Account`(
-    uid int primary key,
-	gmail varchar(100) unique,
-    userName varchar(50) not null,
-    password varchar(100) not null
-);
-
 -- Tạo bảng User 
 create table `User`(
-	userID int primary key,
+	userID varchar(100) primary key,
 	mobile varchar(11),
     createDate datetime not null,
-    lastLogin datetime not null,
+    lastLogin datetime ,
     firstName nvarchar(50) not null,
     midName nvarchar(50),
     lastName nvarchar(50) not null,
@@ -21,11 +14,11 @@ create table `User`(
     biography nvarchar(3000),
     position nvarchar(100),
     workPlace nvarchar(200),
-    avatar text,
-    foreign key (userID) references `Account`(uid) 
+    avatar text, 
+    role int default 0
+  
 );
 
-select * from `Group`
 
 
 -- Tạo bảng Group
@@ -33,26 +26,26 @@ create table `Group`(
 	groupID int primary key auto_increment,
     groupName nvarchar(100) not null,
     createTime datetime not null,
-    createrID int,
+    createrID varchar(100),
     foreign key (createrID) references `User`(userID) on delete cascade
 );
 
 -- Tạo bảng Follow
 create table `Follow`(
-	sourceID int ,
-    targetID int,
+	sourceID varchar(100) ,
+    targetID varchar(100),
     followCreateTime datetime not null,
     followUpdateTime datetime not null,
     followStatus boolean not null default 1,
     primary key (sourceID, targetID),
     foreign key (sourceID) references `User`(userID) ,
-    foreign key (targetID) references `User`(userID)
+    foreign key (targetID) references `User`(userID)boxchatuser
 );
 
 -- Tạo bảng BoxChat
 create table `BoxChat`(
 	boxChatID int primary key auto_increment,
-    userID int,
+    userID varchar(100),
     foreign key (userID) references `User`(userID) 
 );
 
@@ -66,11 +59,11 @@ create table `Chat`(
 -- Tạo bảng UserPost
 create table `UserPost`(
 	userPostID int primary key auto_increment,
-    userID int,
+    userID varchar(100),
     userPostText nvarchar(5000) not null,
     UserPostCreateTime datetime not null,
     UserPostStatus boolean not null default 1,
-    userPostUpdateTime datetime not null,
+    userPostUpdateTime datetime,
     userPostImage nvarchar(100),
 	foreign key (userID) references `User`(userID) on delete cascade
 );
@@ -88,7 +81,7 @@ create table `GroupPost`(
 -- Tạo bảng GroupMember
 create table `GroupMember`(
 	groupID int,
-    userID int,
+    userID varchar(100),
     groupPostID int,
     permission int,
     primary key(groupID, userID, groupPostID),
