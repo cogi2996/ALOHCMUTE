@@ -27,19 +27,12 @@
 								<div>Tạo bài viết</div>
 								<div class="btn-close"></div>
 							</div>
-							<div class="card-body">
-								<form action="#">
+							<div class="card-body form-createPost">
+								<form action="/SOCIALMEDIA/api/v1/posts" method="POST">
 									<div class="form-group">
 										<label for="author">Đặng Công Tuấn</label>
 									</div>
-									<div class="form-group">
-										<label for="privacy">Quyền riêng tư</label> <select
-											class="form-control" id="privacy">
-											<option value="only_me">Chỉ mình tôi</option>
-											<option value="friends">Bạn bè</option>
-											<option value="public">Công khai</option>
-										</select>
-									</div>
+
 									<div class="form-group">
 										<label for="content">Nội dung</label>
 										<textarea class="form-control" id="content"
@@ -49,8 +42,9 @@
 										<label for="image">Ảnh</label> <input type="file"
 											class="form-control" id="image" />
 									</div>
-									<button type="submit" class="btn btn-primary"
-										style="margin-top: 20px">Đăng</button>
+									<button type="submit" class="btn btn-primary btn-submit"
+										style="margin-top: 20px">
+										Đăng</button>
 								</form>
 							</div>
 						</div>
@@ -335,8 +329,6 @@
 	<script
 		src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></c:url>'></script>
 	<script>
-		
-
 		/*  function loadAjax() {
 		        var amount = document.getElementsByClassName("post").length;
 		        console.log(amount);
@@ -353,7 +345,6 @@
 		          error: function (xhr) {},
 		        });
 		      } */
-		
 	</script>
 	<script src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
