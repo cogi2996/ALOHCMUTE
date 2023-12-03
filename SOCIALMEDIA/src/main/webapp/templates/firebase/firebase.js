@@ -1,10 +1,19 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  uploadBytesResumable,
+} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-storage.js";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -20,6 +29,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
+// khởi tạo storage firebase
+const storage = getStorage(app);
 
 export {
   app,
@@ -27,4 +38,9 @@ export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  storage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  uploadBytesResumable,
 };

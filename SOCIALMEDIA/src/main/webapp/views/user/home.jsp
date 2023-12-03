@@ -43,8 +43,7 @@
 											class="form-control" id="image" />
 									</div>
 									<button type="submit" class="btn btn-primary btn-submit"
-										style="margin-top: 20px">
-										Đăng</button>
+										style="margin-top: 20px">Đăng</button>
 								</form>
 							</div>
 						</div>
@@ -104,6 +103,146 @@
 						<i class="fa-solid fa-ellipsis-vertical"></i>
 					</button>
 				</div>
+				              <section class="gradient-custom">
+                <div class="card">
+                  <div
+                    class="mt-3 d-flex flex-row align-items-center p-3 form-color"
+                  >
+                    <img
+                      src="https://media.licdn.com/dms/image/C4D03AQFTEOiGeGdutQ/profile-displayphoto-shrink_100_100/0/1657024175293?e=1707350400&v=beta&t=8w5gteNGTFSB2Yua7kTDzX5a5Pd6CT5YTPHi-gZIbGQ"
+                      width="50"
+                      class="rounded-circle mr-2"
+                      style="margin-right: 10px"
+                    />
+                    <input
+                      type="text"
+                      class="form-control input_comment"
+                      placeholder="  Viết câu trả lời..."
+                    />
+                  </div>
+                </div>
+                <div class="container">
+                  <div class="row d-flex justify-content-center">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <div class="d-flex flex-start">
+                              <img
+                                class="rounded-circle shadow-1-strong me-3"
+                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                                alt="avatar"
+                                width="65"
+                                height="65"
+                              />
+                              <div class="flex-grow-1 flex-shrink-1">
+                                <div>
+                                  <div
+                                    class="d-flex justify-content-between align-items-center"
+                                  >
+                                    <p class="mb-1">
+                                      Maria Smantha
+                                      <span class="small">- 2 hours ago</span>
+                                    </p>
+                                    <a href="#"
+                                      ><i class="fas fa-reply fa-xs"></i
+                                      ><span class="small"> reply</span></a
+                                    >
+                                  </div>
+                                  <p class="small mb-0">
+                                    It is a long established fact that a reader
+                                    will be distracted by the readable content
+                                    of a page.
+                                  </p>
+                                </div>
+
+                                <div class="d-flex flex-start mt-4">
+                                  <a class="me-3" href="#">
+                                    <img
+                                      class="rounded-circle shadow-1-strong"
+                                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(11).webp"
+                                      alt="avatar"
+                                      width="65"
+                                      height="65"
+                                    />
+                                  </a>
+                                  <div class="flex-grow-1 flex-shrink-1">
+                                    <div>
+                                      <div
+                                        class="d-flex justify-content-between align-items-center"
+                                      >
+                                        <p class="mb-1">
+                                          Simona Disa
+                                          <span class="small"
+                                            >- 3 hours ago</span
+                                          >
+                                        </p>
+                                      </div>
+                                      <p class="small mb-0">
+                                        letters, as opposed to using 'Content
+                                        here, content here', making it look like
+                                        readable English.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="d-flex flex-start mt-4">
+                                  <a class="me-3" href="#">
+                                    <img
+                                      class="rounded-circle shadow-1-strong"
+                                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
+                                      alt="avatar"
+                                      width="65"
+                                      height="65"
+                                    />
+                                  </a>
+                                  <div class="flex-grow-1 flex-shrink-1">
+                                    <div>
+                                      <div
+                                        class="d-flex justify-content-between align-items-center"
+                                      >
+                                        <p class="mb-1">
+                                          John Smith
+                                          <span class="small"
+                                            >- 4 hours ago</span
+                                          >
+                                        </p>
+                                      </div>
+                                      <p class="small mb-0">
+                                        the majority have suffered alteration in
+                                        some form, by injected humour, or
+                                        randomised words.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="card">
+                                  <div
+                                    class="mt-3 d-flex flex-row align-items-center p-3 form-color"
+                                  >
+                                    <img
+                                      src="https://media.licdn.com/dms/image/C4D03AQFTEOiGeGdutQ/profile-displayphoto-shrink_100_100/0/1657024175293?e=1707350400&v=beta&t=8w5gteNGTFSB2Yua7kTDzX5a5Pd6CT5YTPHi-gZIbGQ"
+                                      width="50"
+                                      class="rounded-circle mr-2"
+                                      style="margin-right: 10px"
+                                    />
+                                    <input
+                                      type="text"
+                                      class="form-control input_comment"
+                                      placeholder="  Viết câu trả lời..."
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
 			</li>
 			<li class="wrapper post">
 				<div class="post__header">
@@ -346,7 +485,10 @@
 		        });
 		      } */
 	</script>
-	<script src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
+	<script type="module"
+		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script>
+	<script type="module"
+		src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
 </body>
 </html>

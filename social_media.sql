@@ -64,7 +64,7 @@ create table `UserPost`(
     UserPostCreateTime datetime not null,
     UserPostStatus boolean not null default 1,
     userPostUpdateTime datetime,
-    userPostImage nvarchar(100),
+    userPostImage nvarchar(1000),
 	foreign key (userID) references `User`(userID) on delete cascade
 );
 
