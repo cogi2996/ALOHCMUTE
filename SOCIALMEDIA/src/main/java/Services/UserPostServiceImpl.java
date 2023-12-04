@@ -9,6 +9,7 @@ import Dao.IUserPostDao;
 import Dao.UserPostDaoImpl;
 import Entity.UserPost;
 import JpaConfig.JPAConfig;
+import Model.UserPostModel;
 
 public class UserPostServiceImpl implements IUserPostService {
 	IUserPostDao userPostDao = new UserPostDaoImpl();
@@ -34,5 +35,16 @@ public class UserPostServiceImpl implements IUserPostService {
 			entityManager.close();
 		}
 	}
+	//hieu-begin
+		
+	@Override
+	public void update(UserPost userPost) {
+		userPostDao.update(userPost);
+	}
 
+	@Override
+	public void delete(int userPostID) {
+		userPostDao.delete(userPostID);
+	}
+	//hieu-end
 }
