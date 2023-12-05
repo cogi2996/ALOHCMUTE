@@ -5,6 +5,7 @@ import {
 	getDownloadURL,
 	onAuthStateChanged,
 	auth,
+	getAuth
 } from "/SOCIALMEDIA/templates/firebase/firebase.js";
 
 
@@ -48,17 +49,21 @@ const btn_closeCreatePost = document.querySelector(".card-header .btn-close");
 const btn_submit = document.querySelector(".form-createPost .btn-submit ");
 let currentUser = null;
 
-onAuthStateChanged(auth, (user) => {
+/*onAuthStateChanged(auth, (user) => {
 	if (user) {
+
 		currentUser = user;
 		const uid = user.uid;
+		console.log(currentUser)
 		console.log("uid current user: " + currentUser.uid);
+
 	} else {
 		// User is signed out
 		currentUser = null;
 		console.log("No one here");
 	}
-});
+});*/
+
 
 btn_inputCreatePost.addEventListener("click", function() {
 	const modalCreatePost = document.querySelector(".create-post__modal");
@@ -236,8 +241,6 @@ btn_submit.addEventListener("click", function(e) {
 	);
 	createPostModal.style.display = "none";
 });
-
-
 
 
 

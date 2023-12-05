@@ -14,7 +14,14 @@ import {
   uploadBytesResumable,
 } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-storage.js";
 
-
+import {
+  getDatabase,
+  set,
+  onValue,
+  push,
+  get,
+  child,
+} from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAjQ-EW74NHNWM18cww2D5A28ED3_AaKyo",
@@ -31,7 +38,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 // khởi tạo storage firebase
 const storage = getStorage(app);
-
+// khởi tạo realtime-database
+const db = getDatabase(app);
 export {
   app,
   auth,
@@ -43,4 +51,6 @@ export {
   uploadBytes,
   getDownloadURL,
   uploadBytesResumable,
+  db,
+  getAuth 
 };

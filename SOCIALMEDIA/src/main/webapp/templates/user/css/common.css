@@ -126,7 +126,7 @@ header {
 	z-index: 2;
 	margin-left: 80%;
 	width: 1000px;
-	display:none; 
+	display: none;
 }
 
 .card-header .btn-close {
@@ -337,6 +337,36 @@ body {
 	margin-top: 12px
 }
 
-.post__header, .content-text {
+.post__header,
+.content-text {
 	margin: 15px 0 0 15px;
+}
+
+
+/* mới thêm vô hôm nay */
+.post__comment__list {
+	max-height: 350px;
+	overflow-y: auto;
+	/* Thêm thanh cuộn khi nội dung vượt quá chiều cao */
+}
+
+
+.custom-scrollbar::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Thiết lập đường viền và màu nền cho thanh cuộn */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Thiết lập đường viền cho thanh cuộn khi được di chuột */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Thiết lập thanh cuộn mờ khi không di chuột */
+.custom-scrollbar::-webkit-scrollbar-track {
+	background: transparent;
 }
