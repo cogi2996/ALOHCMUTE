@@ -8,12 +8,16 @@ import Entity.User;
 public class UserServiceImpl implements IUserService{
 	IUserDAO userDAO = new UserDAOImpl();
 	@Override
-	public User findUser(int userID) {
+	public User findUser(String userID) {
 		return userDAO.findUser(userID);
 	}
 	@Override
 	public void insert(User user) {
 		userDAO.insert(user);
+	}
+	@Override
+	public void update(User user) {
+		userDAO.update(user);		
 	}
 
 }

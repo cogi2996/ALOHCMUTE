@@ -4,6 +4,7 @@ package Services;
 import Entity.User;
 
 public interface IUserService {
-	User findUser(int userID);
+	User findUser(String userID);
 	void insert(User user) ;
+	void update(User user);
 }
