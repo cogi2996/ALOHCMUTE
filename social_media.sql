@@ -39,21 +39,23 @@ create table `Follow`(
     followStatus boolean not null default 1,
     primary key (sourceID, targetID),
     foreign key (sourceID) references `User`(userID) ,
-    foreign key (targetID) references `User`(userID)boxchatuser
+    foreign key (targetID) references `User`(userID)
 );
 
 -- Tạo bảng BoxChat
-create table `BoxChat`(
-	boxChatID int primary key auto_increment,
-    userID varchar(100),
-    foreign key (userID) references `User`(userID) 
-);
+-- create table `BoxChat`(
+-- 	boxChatID int primary key auto_increment,
+--     userID varchar(100),
+--     foreign key (userID) references `User`(userID) 
+-- );
 
--- Tạo bảng Chat
+Tạo bảng Chat
 create table `Chat`(
-	chatID int primary key auto_increment,
-    boxChatID int,
-    foreign key (boxChatID) references `BoxChat`(boxChatID)
+	sourceID varchar(100) ,
+    targetID varchar(100),
+     primary key (sourceID, targetID),
+     foreign key (sourceID) references `User`(userID) ,
+    foreign key (targetID) references `User`(userID)
 ); 
 
 -- Tạo bảng UserPost

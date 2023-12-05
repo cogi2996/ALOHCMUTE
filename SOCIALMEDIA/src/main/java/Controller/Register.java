@@ -26,6 +26,7 @@ import firebase.FireBaseService;
 @WebServlet(urlPatterns = { "/dangki", "/xacthuctaikhoan" })
 public class Register extends HttpServlet {
 	private FireBaseService firebaseService;
+	private FirebaseAuth auth;
 	public IUserService userService = new UserServiceImpl();
 	@Override
 	public void init() throws ServletException {
@@ -33,9 +34,11 @@ public class Register extends HttpServlet {
 		if(getServletContext().getAttribute("firebaseService")==null) {
 			this.firebaseService  = new FireBaseService();
 			getServletContext().setAttribute("firebaseService", this.firebaseService);
+			this.auth = this.firebaseService.getAuth();
 		}
 		else {
 			this.firebaseService = (FireBaseService)getServletContext().getAttribute("firebaseService");
+			this.auth = firebaseService.getAuth();
 		}
 	}
 	/*

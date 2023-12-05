@@ -34,6 +34,7 @@ public class FireBaseService {
 	}
 
 	public FirebaseAuth getAuth() {
+		this.auth = FirebaseAuth.getInstance(this.firebase);
 		return FirebaseAuth.getInstance(this.firebase);
 	}
 

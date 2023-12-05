@@ -485,8 +485,8 @@
 		        });
 		      } */
 	</script>
-	<script type="module"
-		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script>
+	<%-- <script type="module"
+		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script> --%>
 	<script type="module"
 		src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
