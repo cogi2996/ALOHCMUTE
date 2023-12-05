@@ -68,20 +68,6 @@ public class userAPI extends HttpServlet {
 
 	}
 
-	/*
-	 * @Override protected void doPost(HttpServletRequest req, HttpServletResponse
-	 * resp) throws ServletException, IOException {
-	 * req.setCharacterEncoding("UTF-8"); resp.setContentType("application/json");//
-	 * phản hồi đc trả dưới dạng json resp.setCharacterEncoding("UTF-8"); Gson gson
-	 * = new Gson(); UserPostModel newPost =
-	 * gson.fromJson(req.getReader(),UserPostModel.class);
-	 * System.out.println("userpost da post: "+ newPost); UserPost userPost = new
-	 * UserPost(); userPost.setUserPostText(newPost.getText());
-	 * userPost.setUserPostCreateTime(newPost.getCreateTime()); User user = new
-	 * User(); user.setUserID(newPost.getUserid()); userPost.setUser(user); // còn
-	 * thiếu dữ liệu hình ảnh userPost.setUserPostImg(newPost.getImg());
-	 * userPostService.insert(userPost); }
-	 */
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
