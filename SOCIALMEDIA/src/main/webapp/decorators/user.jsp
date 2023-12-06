@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 	rel="stylesheet" />
 <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
 	rel="stylesheet" />
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 <link
@@ -28,16 +30,46 @@
 	href="<c:url value = "/templates/user/css/home.css"/>" />
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/reset.css"/>" />
+
+<%
+// Lấy URI của request
+String uri = request.getRequestURI();
+
+// Kiểm tra nếu URI chứa "home", thêm home.css vào head
+if (uri.contains("home")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/profile.css"/>" />
+<%
+} else if (uri.contains("profile")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/profile.css"/>" />
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	crossorigin="anonymous"></script>
+<!-- <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous" /> -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+<%
+}
+%>
+
+
 </head>
 <body>
 	<%@include file="/common/user/header.jsp"%>
-	<div class="container-fluid" style="margin-top: 56px">
-		<div class="row justify-content-between">
-			<%@include file="/common/user/left.jsp"%>
-			<decorator:body></decorator:body>
-			<div class="col-md-2">Mess</div>
-		</div>
-	</div>
+	<decorator:body></decorator:body>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 	<script src='<c:url value = "/templates/user/script/main.js"></c:url>'></script>
