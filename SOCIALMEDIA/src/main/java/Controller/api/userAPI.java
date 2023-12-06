@@ -3,7 +3,6 @@ package Controller.api;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,13 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import Entity.User;
-import Entity.UserPost;
 import Model.UserModel;
-import Model.UserPostModel;
 import Services.IUserService;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/api/v1/follower", "/api/v1/following","/api/v1" })
+@WebServlet(urlPatterns = { "/api/v1/follower", "/api/v1/following","/api/v1/user" })
 public class userAPI extends HttpServlet {
 	IUserService userService = new UserServiceImpl();
 
@@ -72,8 +69,8 @@ public class userAPI extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		String userID = req.getParameter("userID");
-		// String userID = "user1";
 		User user = userService.findUser(userID);
+		
 		List<User> listfollower = user.getFollowers();
 		List<UserModel> listfollowerModel = new ArrayList<UserModel>();
 		for (User userfollow : listfollower) {

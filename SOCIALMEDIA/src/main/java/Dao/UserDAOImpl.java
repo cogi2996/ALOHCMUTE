@@ -7,6 +7,7 @@ import javax.persistence.TypedQuery;
 
 import Entity.User;
 import JpaConfig.JPAConfig;
+import Services.UserServiceImpl;
 
 public class UserDAOImpl implements IUserDAO{
 	@Override
@@ -55,8 +56,8 @@ public class UserDAOImpl implements IUserDAO{
 		IUserDAO pro = new UserDAOImpl();
 		//List<MyGroup> list = pro.findGroupsByUserId(2);
 		//List<MyGroup> list = pro.findAll();
-		User list = pro.findUser("user3");
+		User user = new UserServiceImpl().findUser("user1");
 		//System.out.println(list.getFollowers());
-		System.out.println(list.getFollowingUsers());
+		System.out.println(user.getFollowingUsers());
 	}
 }
