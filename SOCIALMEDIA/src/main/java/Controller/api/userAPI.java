@@ -2,6 +2,8 @@ package Controller.api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import Entity.User;
+import Entity.UserPost;
+import Model.UserModel;
+import Model.UserPostModel;
 import Services.IUserService;
 import Services.UserServiceImpl;
 
@@ -34,19 +39,33 @@ public class userAPI extends HttpServlet {
 	private void listfollowing(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
-		resp.setContentType("application/json");// trả về json
-		// int userID = Integer.parseInt(req.getParameter("cateStt"));
-		String userID = "user1";
+		resp.setContentType("application/json");
+		String userID = req.getParameter("userID");
+		// String userID = "user1";
 		User user = userService.findUser(userID);
-		List<User> listfollwing = user.getFollowingUsers();
+		List<User> listfollowing = user.getFollowingUsers();
+		List<UserModel> listfollowingModel = new ArrayList<UserModel>();
+		for (User userfollowing : listfollowing) {
+
+			String mobile = userfollowing.getMobile();
+			String firstName = userfollowing.getFirstName();
+			String midName = userfollowing.getMidName();
+			String lastName = userfollowing.getLastName();
+			String address = userfollowing.getAddress();
+			String position = userfollowing.getPosition();
+			String workPlace = userfollowing.getWorkPlace();
+
+			UserModel userModel = new UserModel(mobile, firstName, midName, lastName, address, position,workPlace);
+			listfollowingModel.add(userModel);
+		}
+
 		Gson gson = new Gson();
-		String json = gson.toJson(listfollwing);
+		String json = gson.toJson(listfollowingModel);
 		PrintWriter pw = resp.getWriter();
 		pw.write(json);
 		pw.close();
 
 	}
-
 	// người dùng được người khác follow
 	private void listfollower(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
@@ -55,44 +74,56 @@ public class userAPI extends HttpServlet {
 		String userID = req.getParameter("userID");
 		// String userID = "user1";
 		User user = userService.findUser(userID);
-		System.out.println("vao day 1");
-		// List<User> listfollower = user.getFollowers();
-		System.out.println("vao day 2");
-		// System.out.println(listfollower);
+		List<User> listfollower = user.getFollowers();
+		List<UserModel> listfollowerModel = new ArrayList<UserModel>();
+		for (User userfollow : listfollower) {
+
+			String mobile = userfollow.getMobile();
+			String firstName = userfollow.getFirstName();
+			String midName = userfollow.getMidName();
+			String lastName = userfollow.getLastName();
+			String address = userfollow.getAddress();
+			String position = userfollow.getPosition();
+			String workPlace = userfollow.getWorkPlace();
+
+			UserModel userModel = new UserModel(mobile, firstName, midName, lastName, address, position,workPlace);
+			listfollowerModel.add(userModel);
+		}
+
 		Gson gson = new Gson();
-		// String json = gson.toJson(listfollower);
-		String json = gson.toJson(user);
+		String json = gson.toJson(listfollowerModel);
 		PrintWriter pw = resp.getWriter();
 		pw.write(json);
 		pw.close();
-
 	}
-
+	// sửa thông tin của 1 user
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		User updatedUser = gson.fromJson(req.getReader(), User.class);
-		User user = userService.findUser(updatedUser.getUserID());
-		user.setMobile(updatedUser.getMobile());
-		/*
-		user.setCreateDate(updatedUser.getCreateDate());
-		user.setFirstName(updatedUser.getFirstName());
-		user.setMidName(updatedUser.getMidName());
-		user.setLastName(updatedUser.getLastName());
-		user.setAddress(updatedUser.getAddress());
-		user.setBiography(updatedUser.getBiography());
-		user.setPosition(updatedUser.getPosition());
-		user.setWorkPlace(updatedUser.getWorkPlace());
-		user.setAvatar(updatedUser.getAvatar());*/
-
-		userService.update(user);
+		UserModel usermodel = gson.fromJson(req.getReader(),UserModel.class);
+		User updatedUser = new User();
+		
+		updatedUser = userService.findUser(usermodel.getUserID());
+		System.out.println(updatedUser);
+		updatedUser.setMobile(usermodel.getMobile());
+		updatedUser.setFirstName(usermodel.getFirstName());
+		updatedUser.setMidName(usermodel.getMidName());
+		updatedUser.setLastName(usermodel.getLastName());
+		updatedUser.setAddress(usermodel.getAddress());
+		updatedUser.setBiography(usermodel.getBiography());
+		updatedUser.setPosition(usermodel.getPosition());
+		updatedUser.setWorkPlace(usermodel.getWorkPlace());
+		updatedUser.setAvatar(usermodel.getAvatar());
+		updatedUser.setUserID(usermodel.getUserID());
+		
+		userService.update(updatedUser);
 		// Viết thông báo kết quả
 		PrintWriter out = resp.getWriter();
 		out.println("Đã sửa thông tin user thành công");
 		out.close();
 	}
-
+	
 }

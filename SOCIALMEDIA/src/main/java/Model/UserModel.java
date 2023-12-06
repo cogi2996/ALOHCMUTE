@@ -12,9 +12,9 @@ public class UserModel {
 	private String workPlace;
 	private String code;
 	private int status;
-
-	
-	
+	private String biography;
+	private String avatar;
+	private String userID;
 	
 	@Override
 	public String toString() {
@@ -24,7 +24,7 @@ public class UserModel {
 	}
 
 	public UserModel(String gmail, String password, String mobile, String firstName, String midName, String lastName,
-			String address, String position, String workPlace) {
+			String address, String position) {
 		super();
 		this.gmail = gmail;
 		this.password = password;
@@ -34,9 +34,47 @@ public class UserModel {
 		this.lastName = lastName;
 		this.address = address;
 		this.position = position;
-		this.workPlace = workPlace;
 	}
 
+	
+	public UserModel(String mobile, String firstName, String midName, String lastName, String address, String position,
+			String workPlace, String biography, String avatar, String userID) {
+		super();
+		this.mobile = mobile;
+		this.firstName = firstName;
+		this.midName = midName;
+		this.lastName = lastName;
+		this.address = address;
+		this.position = position;
+		this.workPlace = workPlace;
+		this.biography = biography;
+		this.avatar = avatar;
+		this.userID = userID;
+	}
+
+	public UserModel(String mobile, String firstName, String midName, String lastName, String address, String position, String workPlace, String biography, String avatar) {
+		this.mobile = mobile;
+		this.firstName = firstName;
+		this.midName = midName;
+		this.lastName = lastName;
+		this.address = address;
+		this.position = position;
+		this.workPlace = workPlace;
+		this.biography = biography;
+		this.avatar = avatar;
+	}
+
+	public UserModel(String mobile, String firstName, String midName, String lastName, String address, String position,
+			String workPlace) {
+		super();
+		this.mobile = mobile;
+		this.firstName = firstName;
+		this.midName = midName;
+		this.lastName = lastName;
+		this.address = address;
+		this.position = position;
+		this.workPlace = workPlace;
+	}
 	
 	
 	public int getStatus() {
@@ -132,4 +170,28 @@ public class UserModel {
 		this.workPlace = workPlace;
 	}
 
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	
 }

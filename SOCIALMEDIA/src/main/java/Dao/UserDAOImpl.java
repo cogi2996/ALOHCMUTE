@@ -55,7 +55,8 @@ public class UserDAOImpl implements IUserDAO{
 		IUserDAO pro = new UserDAOImpl();
 		//List<MyGroup> list = pro.findGroupsByUserId(2);
 		//List<MyGroup> list = pro.findAll();
-		User list = pro.findUser("user2");
-		System.out.println(list.getFollowers());
+		User list = pro.findUser("user3");
+		//System.out.println(list.getFollowers());
+		System.out.println(list.getFollowingUsers());
 	}
 }
