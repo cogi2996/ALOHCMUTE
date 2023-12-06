@@ -1,5 +1,5 @@
 package Controller.api;
 
-public class chatBoxAPI {
+public class UserAPI {
 
 }

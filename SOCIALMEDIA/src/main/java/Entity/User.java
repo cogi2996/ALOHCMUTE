@@ -58,11 +58,11 @@ public class User implements Serializable {
 	 * 
 	 * @JoinColumn(name = "uid") private Account account;
 	 */
-	
+
 	// Những người user đã chat
-		@ManyToMany
-		@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))
-		private List<User> chats;
+	@ManyToMany
+	@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))
+	private List<User> chats;
 	// Các bài viết ( cá nhân ) của user.
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "user")
@@ -269,20 +269,24 @@ public class User implements Serializable {
 		this.followers = followers;
 	}
 
-//	public BoxChat getBoxChat() {
-//		return boxChat;
-//	}
-//
-//	public void setBoxChat(BoxChat boxChat) {
-//		this.boxChat = boxChat;
-//	}
-
 	public int getRole() {
 		return role;
 	}
 
 	public void setRole(int role) {
 		this.role = role;
+	}
+
+	// Contructor của tạo user ChatAPI
+	public User(String userID, Date lastLogin, String firstName, String midName, String lastName, String position, String avatar) {
+		super();
+		this.userID = userID;
+		this.lastLogin = lastLogin;
+		this.firstName = firstName;
+		this.midName = midName;
+		this.lastName = lastName;
+		this.position = position;
+		this.avatar = avatar;
 	}
 
 }

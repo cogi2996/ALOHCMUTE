@@ -10,6 +10,7 @@
 		<class>Entity.User</class>
 		<class>Entity.UserPost</class>
 		<class>Entity.HiringPost</class>
+		<class>Entity.Chat</class>
 	
 	
 		
