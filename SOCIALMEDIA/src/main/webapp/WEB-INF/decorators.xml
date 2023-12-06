@@ -1,10 +1,9 @@
 <decorators defaultdir="/decorators">
 	<decorator name="user" page="user.jsp">
 		<pattern>/home*</pattern>
-	</decorator>
-	<decorator name="userProfile" page="profile.jsp">
 		<pattern>/profile*</pattern>
 	</decorator>
+
 
 	<excludes>
 		<pattern>/api*</pattern>

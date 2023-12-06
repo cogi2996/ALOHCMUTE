@@ -9,6 +9,7 @@
 		<class>Entity.GroupPost</class>
 		<class>Entity.User</class>
 		<class>Entity.UserPost</class>
+		<class>Entity.Follow</class>
 	
 	
 		
