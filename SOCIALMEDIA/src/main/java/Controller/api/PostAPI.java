@@ -44,7 +44,7 @@ public class PostAPI extends HttpServlet{
 		System.out.println("userpost da post: "+ newPost);
 		UserPost userPost = new UserPost();
 		userPost.setUserPostText(newPost.getText());
-		userPost.setUserPostCreateTime(newPost.getCreateTime());
+		userPost.setUserPostCreateTime(new Date());
 		User user = new User();
 		user.setUserID(newPost.getUserid());
 		userPost.setUser(user);
