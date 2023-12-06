@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Notification box</title>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap);
+
+        body {
+            font-family: "Roboto", sans-serif;
+            background: #EFF1F3;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .heading-line {
+            padding-bottom: 5px;
+        }
+
+        .heading-line:after {
+            content: "";
+            height: 4px;
+            width: 36%;
+            background-color: #29B6F6;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .notification-ui_dd-content {
+            margin-bottom: 30px;
+        }
+
+        .notification-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 7px;
+            background: #fff;
+            -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+            border-radius: 4px;
+        }
+        .notification-list:hover {
+            background: #ccc;
+            cursor: pointer;
+        }
+
+        .notification-list .notification-list_content {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+        }
+
+        .notification-list .notification-list_content .notification-list_img img {
+            height: 48px;
+            width: 48px;
+            border-radius: 50px;
+            margin-right: 20px;
+        }
+
+        .notification-list .notification-list_content .notification-list_detail p {
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .notification-list .notification-list_feature-img img {
+            height: 48px;
+            width: 48px;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        .notification-box {
+            height: 66vh;
+            overflow: auto;
+            scroll-behavior: hidden;
+            background-color: #ccc;
+        }
+        /* .notification-box::-webkit-scrollbar {
+            display: none;
+        } */
+    </style>
+</head>
+<body>
+    <div class="notification-box container rounded col-4 ">
+        <h2 class="heading-line sticky-top rounded-bottom px-4 bg-secondary text-light">Notifications</h2>
+        <div class="notification-ui_dd-content">
+            <div class="notification-list">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src="https://images.unsplash.com/photo-1592334873219-42ca023e48ce?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3w3NjA4Mjc3NHx8ZW58MHx8fHx8" alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <p><b>John Doe</b> reacted to your post</p>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,dolorem.</p>
+                        <p class="text-muted"><small>10 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="notification-list_feature-img">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/07/12/17/post-976115_960_720.png" alt="Feature image">
+                </div>
+            </div>
+            <div class="notification-list">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src="https://www.byrdie.com/thmb/kCqE3NHA0vO2CnD4hCF7traxQX8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-8878126241-81ea4aa0cb934fcb95c0fe220633a2e0.jpg" alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <p><b>Richard Miles</b> liked your post</p>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,
+                            dolorem.</p>
+                        <p class="text-muted"><small>10 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="notification-list_feature-img">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/07/12/17/post-976115_960_720.png" alt="Feature image">
+                </div>
+            </div>
+            <div class="notification-list">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <p><b>Brian Cumin</b> reacted to your post</p>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,
+                            dolorem.</p>
+                        <p class="text-muted"><small>10 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="notification-list_feature-img">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/07/12/17/post-976115_960_720.png" alt="Feature image">
+                </div>
+            </div>
+            <div class="notification-list">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <p><b>Lance Bogrol</b> reacted to your post</p>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,
+                            dolorem.</p>
+                        <p class="text-muted"><small>10 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="notification-list_feature-img">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/07/12/17/post-976115_960_720.png" alt="Feature image">
+                </div>
+            </div>
+            <div class="notification-list">
+                <div class="notification-list_content">
+                    <div class="notification-list_img">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="user">
+                    </div>
+                    <div class="notification-list_detail">
+                        <p><b>Parsley Montana</b> reacted to your post</p>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde,
+                            dolorem.</p>
+                        <p class="text-muted"><small>10 mins ago</small></p>
+                    </div>
+                </div>
+                <div class="notification-list_feature-img">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/07/12/17/post-976115_960_720.png" alt="Feature image">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
