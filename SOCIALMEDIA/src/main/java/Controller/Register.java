@@ -26,6 +26,7 @@ import firebase.FireBaseService;
 @WebServlet(urlPatterns = { "/dangki", "/xacthuctaikhoan" })
 public class Register extends HttpServlet {
 	private FireBaseService firebaseService;
+	private FirebaseAuth auth;
 	public IUserService userService = new UserServiceImpl();
 	@Override
 	public void init() throws ServletException {
@@ -33,9 +34,11 @@ public class Register extends HttpServlet {
 		if(getServletContext().getAttribute("firebaseService")==null) {
 			this.firebaseService  = new FireBaseService();
 			getServletContext().setAttribute("firebaseService", this.firebaseService);
+			this.auth = this.firebaseService.getAuth();
 		}
 		else {
 			this.firebaseService = (FireBaseService)getServletContext().getAttribute("firebaseService");
+			this.auth = firebaseService.getAuth();
 		}
 	}
 	/*
@@ -90,11 +93,13 @@ public class Register extends HttpServlet {
 			String code = req.getParameter("code");
 			if (code.equals(userModel.getCode())) {
 				System.out.println("XAC THUC THANH CONG");
-				// tạo tài khoản lên firebase
+				
 				try {
+					// tạo tài khoản lên firebase
 					UserRecord userRecord = firebaseService.createUserWithEmailAndPass(userModel);
-//					System.out.println("record user after created : " + userRecord.getUid());
+					// cập nhật profile tài khoản
 					String uid = userRecord.getUid();
+					firebaseService.updateInfoUser(userModel, uid);
 					// insert user vào database với uid đã cài đặt
 					User user= new User();
 					user.setUserID(uid);
