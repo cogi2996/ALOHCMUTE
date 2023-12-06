@@ -25,7 +25,7 @@ public class BoxChat {
 	private int userID;
 
 	// user sở hữu boxchat
-	@OneToOne(mappedBy = "boxChat")
+	@OneToOne(mappedBy = "userID")
 	private User user;
 
 	// các đoạn chat trong boxchat

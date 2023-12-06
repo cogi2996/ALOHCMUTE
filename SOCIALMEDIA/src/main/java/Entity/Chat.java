@@ -16,13 +16,12 @@ public class Chat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int chatID;
-//	private int boxChatID;
+	private int boxChatID;
 
 	// 1-nhiều giữa chat với chatbox
 	@ManyToOne
 	@JoinColumn(name = "boxChatID")
 	private BoxChat boxChat;
-
 
 	public Chat() {
 		super();
@@ -37,7 +36,6 @@ public class Chat {
 		this.chatID = chatID;
 	}
 
-
 	public BoxChat getBoxChat() {
 		return boxChat;
 	}
@@ -45,5 +43,4 @@ public class Chat {
 	public void setBoxChat(BoxChat boxChat) {
 		this.boxChat = boxChat;
 	}
-
 }
