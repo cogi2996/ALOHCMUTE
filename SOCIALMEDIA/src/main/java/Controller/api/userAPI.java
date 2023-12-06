@@ -1,6 +1,7 @@
 package Controller.api;
 
 import java.io.IOException;
+import java.util.Date;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,14 @@ import Entity.User;
 import Model.UserModel;
 import Services.IUserService;
 import Services.UserServiceImpl;
+import Entity.Follow;
+import Services.FollowServiceImpl;
+import Services.IFollowService;
 
-@WebServlet(urlPatterns = { "/api/v1/follower", "/api/v1/following","/api/v1/user" })
+@WebServlet(urlPatterns = { "/api/v1/userFollow","/api/v1/follower", "/api/v1/following","/api/v1/user" })
 public class userAPI extends HttpServlet {
 	IUserService userService = new UserServiceImpl();
+	IFollowService followService = new FollowServiceImpl();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +34,14 @@ public class userAPI extends HttpServlet {
 			listfollower(req, resp);
 		} else if (url.contains("following")) {
 			listfollowing(req, resp);
+		} else if(url.contains("userFollow")) {
+			String sourceID = req.getParameter("sourceID");
+			String targetID = req.getParameter("targetID");
+			System.out.println(sourceID);
+			Follow newFollow = new Follow(sourceID,targetID,new Date());
+			followService.insert(newFollow);
 		}
+		
 	}
 
 	// người dùng đang follow người khác

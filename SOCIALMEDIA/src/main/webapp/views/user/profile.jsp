@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
+
 <body>
 	<div class="container">
 		<div class="profile-page tx-13">
@@ -17,8 +19,8 @@
 								<div>
 									<img class="profile-pic"
 										src="https://bootdey.com/img/Content/avatar/avatar6.png"
-										alt="profile" /> <span class="profile-name">Đặng Công Tuấn
-										</span>
+										alt="profile" /> <span class="profile-name">Amiah
+										Burton</span>
 								</div>
 								<div class="d-none d-md-block">
 									<button class="btn btn-primary btn-icon-text btn-edit-profile">
@@ -59,9 +61,7 @@
                       <path
 											d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                       <circle cx="12" cy="7" r="4"></circle>
-                    </svg> <a class="pt-1px d-none d-md-block" href="#">Following
-										<span class="text-muted tx-12">3,765</span>
-								</a>
+                    </svg> <a class="pt-1px d-none d-md-block" href="#">About</a>
 								</li>
 								<li
 									class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
@@ -75,7 +75,7 @@
                       <circle cx="9" cy="7" r="4"></circle>
                       <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg> <a class="pt-1px d-none d-md-block" href="#">Follower
+                    </svg> <a class="pt-1px d-none d-md-block" href="#">Friends
 										<span class="text-muted tx-12">3,765</span>
 								</a>
 								</li>
@@ -116,9 +116,7 @@
 						<div class="card-body">
 							<div
 								class="d-flex align-items-center justify-content-between mb-2">
-								<h6 class="card-title mb-0">
-									About 
-								</h6>
+								<h6 class="card-title mb-0">About</h6>
 								<div class="dropdown">
 									<button class="btn p-0" type="button" id="dropdownMenuButton"
 										data-toggle="dropdown" aria-haspopup="true"
@@ -275,8 +273,7 @@
 																class="form-control" id="image" />
 														</div>
 														<button type="submit" class="btn btn-primary"
-															style="margin-top: 20px">
-															Đăng</button>
+															style="margin-top: 20px">Đăng</button>
 													</form>
 												</div>
 											</div>
@@ -724,4 +721,10 @@
 			</div>
 		</div>
 	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+	<script type="module"
+		src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 </body>

@@ -26,10 +26,6 @@ import Services.UserServiceImpl;
 @WebServlet(urlPatterns = { "/home", "/follower" })
 public class HomeController extends HttpServlet {
 
-	// test
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
