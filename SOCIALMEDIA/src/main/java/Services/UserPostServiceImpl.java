@@ -35,4 +35,9 @@ public class UserPostServiceImpl implements IUserPostService {
 		}
 	}
 
+	@Override
+	public UserPost likeUserPost(int userPostID) {
+		return userPostDao.likeUserPost(userPostID);
+	}
+	
 }

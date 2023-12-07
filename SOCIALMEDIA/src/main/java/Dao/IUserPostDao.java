@@ -6,4 +6,5 @@ import Entity.UserPost;
 
 public interface IUserPostDao {
 	List<UserPost> paginationPage(int index, int numberOfPage);
+	 UserPost likeUserPost(int userPostID);
 }
