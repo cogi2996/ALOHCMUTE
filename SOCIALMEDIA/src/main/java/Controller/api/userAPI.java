@@ -215,8 +215,5 @@ public class userAPI extends HttpServlet {
 
 	}
 	
-	// load ra danh sách 6 người 
-//	public void suggestFollow(string) {
-//		
-//	}
+
 }
