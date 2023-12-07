@@ -17,6 +17,8 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/font/themify-icons/themify-icons.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <style>
         .card-hire {
@@ -67,9 +69,17 @@
 
         }
 
-        .icon {
-            font-size: 20px;
+        .send{
+            font-size: 24px;
+            color: #353434;
             padding: 10px;
+            border-radius: 50%;
+        }
+        
+        .close{
+            font-size: 28px;
+            color: #353434;
+            padding: 8px;
             border-radius: 50%;
         }
 
@@ -97,8 +107,9 @@
                 </div>
             </div>
             <div class="col-md-2 icons">
-                <i class="send ti-location-arrow icon"> </i>
-                <i class="close ti-close icon"></i>
+                <ion-icon class="send icon" name="navigate-outline"></ion-icon>
+                
+                <ion-icon class="close icon" name="close-outline"></ion-icon>
             </div>
         </div>
     </div>
@@ -120,8 +131,9 @@
                 </div>
             </div>
             <div class="col-md-2 icons">
-                <i class="send ti-location-arrow icon"> </i>
-                <i class="close ti-close icon"></i>
+                <ion-icon class="send icon" name="navigate-outline"></ion-icon>
+                
+                <ion-icon class="close icon" name="close-outline"></ion-icon>
             </div>
         </div>
 
