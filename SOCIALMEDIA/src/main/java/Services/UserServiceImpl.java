@@ -9,8 +9,9 @@ import Entity.User;
 
 public class UserServiceImpl implements IUserService{
 	IUserDAO userDAO = new UserDAOImpl();
+	
 	@Override
-	public User findUser(String userID) {
+	public User findUser(int userID) {
 		return userDAO.findUser(userID);
 	}
 	@Override
@@ -26,5 +27,4 @@ public class UserServiceImpl implements IUserService{
 		// TODO Auto-generated method stub
 		return userDAO.searchUsersByKeyword(keyword);
 	}
-	
 }
