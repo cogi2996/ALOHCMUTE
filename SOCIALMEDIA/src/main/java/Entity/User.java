@@ -20,6 +20,9 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import Dao.IUserDAO;
+import Dao.UserDAOImpl;
+
 @Entity
 @Table(name = "User")
 @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
@@ -285,4 +288,11 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+	public static void main(String[] args) {
+		IUserDAO pro = new UserDAOImpl();
+		//List<MyGroup> list = pro.findGroupsByUserId(2);
+		//List<MyGroup> list = pro.findAll();
+		User list = pro.findUser("user1");
+		System.out.println(list);
+	}
 }

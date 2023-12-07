@@ -10,7 +10,7 @@ import Entity.User;
 public class UserServiceImpl implements IUserService{
 	IUserDAO userDAO = new UserDAOImpl();
 	@Override
-	public User findUser(int userID) {
+	public User findUser(String userID) {
 		return userDAO.findUser(userID);
 	}
 	@Override
@@ -18,12 +18,13 @@ public class UserServiceImpl implements IUserService{
 		userDAO.insert(user);
 	}
 	@Override
-	public List<User> SortUserByName(List<User> list) {
-		return userDAO.SortUserByName(list);
+	public void update(User user) {
+		userDAO.update(user);		
 	}
 	@Override
-	public List<User> SortUserByWorkplace(List<User> list) {
-		return userDAO.SortUserByWorkplace(list);
+	public List<User> searchUsersByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return userDAO.searchUsersByKeyword(keyword);
 	}
-
+	
 }

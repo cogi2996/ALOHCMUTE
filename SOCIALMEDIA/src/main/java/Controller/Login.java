@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 			if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
 				tokenId = authorizationHeader.substring(7); // Bỏ qua phần "Bearer "
 			}
-
+			
 			if (tokenId != null && !tokenId.isEmpty()) {
 				// Xác thực tokenID từ Firebase
 				FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(tokenId);
