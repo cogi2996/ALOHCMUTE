@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import Entity.User;
 import Services.IUserService;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update"})
+@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower"})
 public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -27,10 +28,24 @@ public class UserController extends HttpServlet{
 			delete(req, resp);
 		}
 		else if(url.contains("update")){
+			
+		}
+		else if(url.contains("follower")){
 			String id = req.getParameter("id");
-			User user = userService.findUser(id);
-			req.setAttribute("user", user);
-			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/update-user.jsp");
+			List<User> listfollower = userService.findUser(id).getFollowers();
+
+			req.setAttribute("listFollower", listfollower);
+
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listfollowers.jsp");
+			rd.forward(req, resp);
+		}
+		else if(url.contains("following")){
+			String id = req.getParameter("id");
+			List<User> listfollowing = userService.findUser(id).getFollowingUsers();
+
+			req.setAttribute("listFollowing", listfollowing);
+
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listfollowing.jsp");
 			rd.forward(req, resp);
 		}
 		try {
@@ -95,35 +110,6 @@ public class UserController extends HttpServlet{
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		req.setCharacterEncoding("UTF-8");
-		;
-		resp.setCharacterEncoding("UTF-8");
-		// nhan du lieu tu form
-		String mobile = req.getParameter("mobile");
-		String firstName = req.getParameter("firstName");
-		String midName = req.getParameter("midName");
-		String lastName = req.getParameter("lastName");
-		String address = req.getParameter("address");
-		String position = req.getParameter("position");
-		String workPlace = req.getParameter("workPlace");
-		String avatar = req.getParameter("avatar");
-		String id = req.getParameter("userID");
-
-		// khoi tao model va them du lieu cho model
-		User user = new User();
-		user.setMobile(mobile);
-		user.setFirstName(firstName);
-		user.setMidName(midName);
-		user.setLastName(lastName);
-		user.setAddress(address);
-		user.setPosition(position);
-		user.setWorkPlace(workPlace);
-		user.setAvatar(avatar);
-		user.setUserID(id);
-		// goi phuong thuc insert
-		userService.update(user);
-
-		// chuyen trang
-		resp.sendRedirect("listuser");
+		
 	}
 }

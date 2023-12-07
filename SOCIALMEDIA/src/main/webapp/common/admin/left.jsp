@@ -20,45 +20,22 @@
 					width="40"><span class="text-info">ALO</span>HCMUTE
 			</h3>
 		</a>
-		<!-- User menu (mobile) -->
-		<div class="navbar-user d-lg-none">
-			<!-- Dropdown -->
-			<div class="dropdown">
-				<!-- Toggle -->
-				<a href="#" id="sidebarAvatar" role="button"
-					data-bs-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">
-					<div class="avatar-parent-child">
-						<img alt="Image Placeholder"
-							src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-							class="avatar avatar- rounded-circle"> <span
-							class="avatar-child avatar-badge bg-success"></span>
-					</div>
-				</a>
-				<!-- Menu -->
-				<div class="dropdown-menu dropdown-menu-end"
-					aria-labelledby="sidebarAvatar">
-					<a href="#" class="dropdown-item">Profile</a> <a href="#"
-						class="dropdown-item">Settings</a> <a href="#"
-						class="dropdown-item">Billing</a>
-					<hr class="dropdown-divider">
-					<a href="#" class="dropdown-item">Logout</a>
-				</div>
-			</div>
-		</div>
 		<!-- Collapse -->
 		<div class="collapse navbar-collapse" id="sidebarCollapse">
 			<!-- Navigation -->
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="#"> <i
+				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/home"> <i
 						class="bi bi-house"></i> HOME
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="#"> <i
+				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/user/listuser"> <i
 						class="bi bi-people"></i> USERS
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"> <i
+				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/group/listgroup"> <i
 						class="bi bi-globe-americas"></i> GROUPS
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/post/listpost"> <i
+						class="bi bi-file-text"></i> POSTS
 				</a></li>
 			</ul>
 			<!-- Divider -->

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="card shadow border-0 mb-7">
@@ -17,12 +17,9 @@
 					<th scope="col">Position</th>
 					<th scope="col">WorkPlace</th>
 					<th scope="col">Join Date</th>
-					<th scope="col">Last Login</th>
-					<th scope="col">Friends</th>
-					<th scope="col">Action</th>
 				</tr>
 			</thead>
-			<c:forEach var="item" items="${listUser}">
+			<c:forEach var="item" items="${listFollower}">
 				<tbody>
 					<tr>
 						<td>${item.getUserID()}</td>
@@ -37,15 +34,6 @@
 						<td>${item.getPosition() }</td>
 						<td>${item.getWorkPlace() }</td>
 						<td>${item.getCreateDate()}</td>
-						<td>${item.getLastLogin()}</td>
-						<td class="text-end"><a href="following?id=${item.getUserID()}"
-							class="btn btn-sm btn-neutral">Following</a><a
-							href="follower?id=${item.getUserID()}"
-							class="btn btn-sm btn-neutral">Follower</a></td>
-						<td class="text-end"><a href="update?id=${item.getUserID()}"
-							class="btn btn-sm btn-neutral">Update</a><a
-							href="delete?id=${item.getUserID()}"
-							class="btn btn-sm btn-neutral">Delete</a></td>
 					</tr>
 				</tbody>
 			</c:forEach>
@@ -234,13 +222,13 @@
 		</table>
 	</div>
 	<div class="card-footer border-0 py-5">
-		<span class="text-muted text-sm">Showing 10 users</span>
-		<nav aria-label="Page navigation example">
-			<ul class="pagination">
-				<c:forEach begin="1" end="${endP}" var="i">
-					<li class="page-item"><a class="page-link" href="listuser?index=${i}">${i}</a></li>
-				</c:forEach>
-			</ul>
-		</nav>
+		<span class="text-muted text-sm">Showing 10 followers</span>
+<!-- 		<nav aria-label="Page navigation example"> -->
+<!-- 			<ul class="pagination"> -->
+<%-- 				<c:forEach begin="1" end="${endP}" var="i"> --%>
+<%-- 					<li class="page-item"><a class="page-link" href="listuser?index=${i}">${i}</a></li> --%>
+<%-- 				</c:forEach> --%>
+<!-- 			</ul> -->
+<!-- 		</nav> -->
 	</div>
 </div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import Dao.IUserPostDao;
 import Dao.UserPostDaoImpl;
@@ -45,6 +46,9 @@ public class UserPostServiceImpl implements IUserPostService {
 	@Override
 	public void delete(int userPostID) {
 		userPostDao.delete(userPostID);
+	}
+	public Long countAll() {
+		return userPostDao.countAll();
 	}
 	//hieu-end
 }

@@ -9,5 +9,7 @@ public interface IUserPostDao {
 	//hieu-begin
 	void update(UserPost userPost);
 	void delete(int userPostID);
+	Long countAll();//hieu them
 	//hieu-end
+	
 }

@@ -30,15 +30,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- Nav -->
-			<ul class="nav nav-tabs mt-4 overflow-x border-0">
-				<li class="nav-item "><a href="#" class="nav-link active">All
-						files</a></li>
-				<li class="nav-item"><a href="#" class="nav-link font-regular">Shared</a>
-				</li>
-				<li class="nav-item"><a href="#" class="nav-link font-regular">File
-						requests</a></li>
-			</ul>
 		</div>
 	</div>
 </header>

@@ -19,7 +19,7 @@ public class UserPostDaoImpl implements IUserPostDao {
 	public List<UserPost> paginationPage(int index, int numberOfPage) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<UserPost> query = entityManager.createNamedQuery("UserPost.findAll", UserPost.class);
-		query.setFirstResult(index);
+		query.setFirstResult(index*numberOfPage); //them *numberOfPage
 		query.setMaxResults(numberOfPage);
 		return query.getResultList();
 	}
@@ -61,5 +61,12 @@ public class UserPostDaoImpl implements IUserPostDao {
 			enma.close();
 		}
 	}
+	@Override
+	public Long countAll() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Long> count = enma.createQuery("select count(p) from UserPost p", Long.class);
+		return count.getSingleResult();
+	}
 	//hieu-end
+	
 }

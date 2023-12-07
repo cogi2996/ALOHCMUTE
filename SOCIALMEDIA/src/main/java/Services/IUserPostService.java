@@ -2,6 +2,7 @@ package Services;
 
 import java.util.List;
 
+
 import Entity.UserPost;
 
 public interface IUserPostService {
@@ -10,5 +11,6 @@ public interface IUserPostService {
 	// hieu-begin
 	void update(UserPost userPost);
 	void delete(int userPostID);
+	Long countAll();
 	// hieu-end
 }

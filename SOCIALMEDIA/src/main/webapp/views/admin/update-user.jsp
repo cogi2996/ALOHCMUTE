@@ -34,6 +34,16 @@
 					name="address" placeholder="Nhập địa chỉ ">
 			</div>
 			<div class="form-group">
+				<label for="address">Ngày tham gia </label> <input type="date"
+					class="form-control" id="address" value="${user.getCreateDate()}"
+					name="address" placeholder="Nhập ngày tham gia ">
+			</div>
+			<div class="form-group">
+				<label for="address">Đăng nhập lần cuối </label> <input type="date"
+					class="form-control" id="address" value="${user.getLastLogin()}"
+					name="address" placeholder="Nhập lần đăng nhập cuối ">
+			</div>
+			<div class="form-group">
 				<label for="position">Chức vụ </label> <input type="text"
 					class="form-control" id="position" value="${user.getPosition()}"
 					name="position" placeholder="Nhập chức vụ">
