@@ -26,5 +26,13 @@ public class UserServiceImpl implements IUserService{
 		// TODO Auto-generated method stub
 		return userDAO.searchUsersByKeyword(keyword);
 	}
+	@Override
+	public List<User> paginationPageSearchUsers(int index, int numberOfPage, String keyword) {
+		return userDAO.paginationPageSearchUsers(index, numberOfPage, keyword);
+	}
+	@Override
+	public Long countSearchUsers(String keyword) {
+		return userDAO.countSearchUsers(keyword);
+	}
 	
 }

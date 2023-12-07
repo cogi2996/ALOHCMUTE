@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,154 +26,45 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="candidates-list">
-									<td class="title">
-										<div class="thumb">
-											<img class="img-fluid"
-												src="https://bootdey.com/img/Content/avatar/avatar7.png"
-												alt="" />
-										</div>
-										<div class="candidate-list-details">
-											<div class="candidate-list-info">
-												<div class="candidate-list-title">
-													<h5 class="mb-0">
-														<a href="#">Brooke Kelly</a>
-													</h5>
-												</div>
-												<div class="candidate-list-option">
-													<ul class="list-unstyled">
-														<li><i class="fas fa-filter pr-1"></i>Information
-															Technology</li>
-														<li><i class="fas fa-map-marker-alt pr-1"></i>Rolling
-															Meadows, IL 60008</li>
-													</ul>
+								<c:forEach var="item" items="${listuser}">
+									<tr class="candidates-list">
+										<td class="title">
+											<div class="thumb">
+												<img class="img-fluid"
+													src="https://bootdey.com/img/Content/avatar/avatar7.png"
+													alt="" />
+											</div>
+											<div class="candidate-list-details">
+												<div class="candidate-list-info">
+													<div class="candidate-list-title">
+														<h5 class="mb-0">
+															<a href="#">${item.firstName}</a>
+														</h5>
+													</div>
+													<div class="candidate-list-option">
+														<ul class="list-unstyled">
+															<li><i class="fas fa-filter pr-1"></i>${item.position}</li>
+															<li><i class="fas fa-map-marker-alt pr-1"></i>${item.workPlace}</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-										</div>
-									</td>
-									<td class="candidate-list-favourite-time text-center"></td>
-									<td><a href="#" class="btn btn-primary" role="button"
-										data-bs-toggle="button">follow</a></td>
-								</tr>
-								<tr class="candidates-list">
-									<td class="title">
-										<div class="thumb">
-											<img class="img-fluid"
-												src="https://bootdey.com/img/Content/avatar/avatar1.png"
-												alt="" />
-										</div>
-										<div class="candidate-list-details">
-											<div class="candidate-list-info">
-												<div class="candidate-list-title">
-													<h5 class="mb-0">
-														<a href="#">Ronald Bradley</a>
-													</h5>
-												</div>
-												<div class="candidate-list-option">
-													<ul class="list-unstyled">
-														<li><i class="fas fa-filter pr-1"></i>Human Resources
-														</li>
-														<li><i class="fas fa-map-marker-alt pr-1"></i>Monroe
-															Township, NJ 08831</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="candidate-list-favourite-time text-center"></td>
-									<td><a href="#" class="btn btn-primary" role="button"
-										data-bs-toggle="button">Follow</a></td>
-								</tr>
-								<tr class="candidates-list">
-									<td class="title">
-										<div class="thumb">
-											<img class="img-fluid"
-												src="https://bootdey.com/img/Content/avatar/avatar2.png"
-												alt="" />
-										</div>
-										<div class="candidate-list-details">
-											<div class="candidate-list-info">
-												<div class="candidate-list-title">
-													<h5 class="mb-0">
-														<a href="#">Rafael Briggs</a>
-													</h5>
-												</div>
-												<div class="candidate-list-option">
-													<ul class="list-unstyled">
-														<li><i class="fas fa-filter pr-1"></i>Recruitment
-															Consultancy</li>
-														<li><i class="fas fa-map-marker-alt pr-1"></i>Haines
-															City, FL 33844</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="candidate-list-favourite-time text-center"></td>
-									<td><a href="#" class="btn btn-primary" role="button"
-										data-bs-toggle="button">Follow</a></td>
-								</tr>
-								<tr class="candidates-list">
-									<td class="title">
-										<div class="thumb">
-											<img class="img-fluid"
-												src="https://bootdey.com/img/Content/avatar/avatar3.png"
-												alt="" />
-										</div>
-										<div class="candidate-list-details">
-											<div class="candidate-list-info">
-												<div class="candidate-list-title">
-													<h5 class="mb-0">
-														<a href="#">Vickie Meyer</a>
-													</h5>
-												</div>
-												<div class="candidate-list-option">
-													<ul class="list-unstyled">
-														<li><i class="fas fa-filter pr-1"></i>Human Resources
-														</li>
-														<li><i class="fas fa-map-marker-alt pr-1"></i>Minneapolis,
-															MN 55406</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="candidate-list-favourite-time text-center"></td>
-									<td><a href="#" class="btn btn-primary" role="button"
-										data-bs-toggle="button">Follow</a></td>
-								</tr>
-								<tr class="candidates-list">
-									<td class="title">
-										<div class="thumb">
-											<img class="img-fluid"
-												src="https://bootdey.com/img/Content/avatar/avatar4.png"
-												alt="" />
-										</div>
-										<div class="candidate-list-details">
-											<div class="candidate-list-info">
-												<div class="candidate-list-title">
-													<h5 class="mb-0">
-														<a href="#">Nichole Haynes</a>
-													</h5>
-												</div>
-												<div class="candidate-list-option">
-													<ul class="list-unstyled">
-														<li><i class="fas fa-filter pr-1"></i>Information
-															Technology</li>
-														<li><i class="fas fa-map-marker-alt pr-1"></i>Botchergate,
-															Carlisle</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="candidate-list-favourite-time text-center"></td>
-									<td><a href="#" class="btn btn-primary" role="button"
-										data-bs-toggle="button">Follow</a></td>
-								</tr>
+										</td>
+										<td class="candidate-list-favourite-time text-center"></td>
+										<%-- This is JSP comment										
+										<td><a href="#" class="btn btn-primary" role="button"
+											data-bs-toggle="button">follow</a></td>--%>
+										<td><a
+											href='<c:url value="/api/v1/userFollow?sourceID=${userID}&targetID=${item.userID}"/>'
+											class="btn btn-primary" role="button" data-bs-toggle="button">follow</a></td>
+
+									</tr>
+								</c:forEach>
 							</tbody>
+
 						</table>
 						<div class="text-center mt-3 mt-sm-3">
+							<%--
 							<ul class="pagination justify-content-center mb-0">
 								<li class="page-item disabled"><span class="page-link">Prev</span>
 								</li>
@@ -187,7 +79,16 @@
 								</li>
 								<li class="page-item"><a class="page-link" href="#">Next</a>
 								</li>
-							</ul>
+							</ul>--%>
+							<span class="text-muted text-sm">Showing 10 users</span>
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<c:forEach begin="1" end="${endP}" var="i">
+										<li class="page-item"><a class="page-link"
+											href="listuser?index=${i}">${i}</a></li>
+									</c:forEach>
+								</ul>
+							</nav>
 						</div>
 					</div>
 				</div>
