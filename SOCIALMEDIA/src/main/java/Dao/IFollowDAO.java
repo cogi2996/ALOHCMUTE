@@ -1,7 +1,5 @@
 package Dao;
 
-import java.util.List;
-
 import Entity.Follow;
 
 

@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 
 import Entity.User;
 import JpaConfig.JPAConfig;
-import Services.UserServiceImpl;
 
 public class UserDAOImpl implements IUserDAO{
 	@Override
