@@ -33,7 +33,7 @@ public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -78,7 +78,7 @@ public class HomeController extends HttpServlet {
 	// hieu
 	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		int id = Integer.parseInt(req.getParameter("id"));
+		String id = req.getParameter("id");
 		User user = userService.findUser(id);
 		List<User> followers = user.getFollowers();
 		req.setAttribute("listfollower", followers);

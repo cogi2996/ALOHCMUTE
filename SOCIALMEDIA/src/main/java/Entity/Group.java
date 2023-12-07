@@ -29,12 +29,12 @@ public class Group implements Serializable {
 	private String groupName;
 	@Temporal(value = TemporalType.DATE)
 	private Date createTime;
-
 	// admin của group
 	@ManyToOne
 	@JoinColumn(name = "createrID", referencedColumnName="userID") // createID table group tham chieu toi column userId in table user
 	private User admin;
 
+	
 	// các thành viên trong group
 	@ManyToMany(mappedBy = "UserGroups")
 	private List<User> member;

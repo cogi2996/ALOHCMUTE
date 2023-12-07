@@ -3,6 +3,6 @@ package Dao;
 import Entity.User;
 
 public interface IUserDAO {
-	User findUser(int userID);
+	User findUser(String userID);
 	void insert(User user);
 }

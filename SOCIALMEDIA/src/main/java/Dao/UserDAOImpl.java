@@ -10,7 +10,7 @@ import JpaConfig.JPAConfig;
 
 public class UserDAOImpl implements IUserDAO{
 	@Override
-	public User findUser(int userID) {
+	public User findUser(String userID) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.userID = :userID", User.class);
         query.setParameter("userID", userID);
