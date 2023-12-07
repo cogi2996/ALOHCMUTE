@@ -1,6 +1,8 @@
 package Services;
 
 
+import java.util.List;
+
 import Dao.IUserDAO;
 import Dao.UserDAOImpl;
 import Entity.User;
@@ -19,5 +21,10 @@ public class UserServiceImpl implements IUserService{
 	public void update(User user) {
 		userDAO.update(user);		
 	}
-
+	@Override
+	public List<User> searchUsersByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return userDAO.searchUsersByKeyword(keyword);
+	}
+	
 }

@@ -1,6 +1,8 @@
 package Dao;
 
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
@@ -52,12 +54,26 @@ public class UserDAOImpl implements IUserDAO{
 		}
 		
 	}
+	@Override
+	public List<User> searchUsersByKeyword(String keyword) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+	    TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword", User.class);
+	    query.setParameter("keyword", "%" + keyword + "%");
+
+	    List<User> users = query.getResultList();
+	    entityManager.close();
+
+	    return users;
+	}
 	public static void main(String[] args) {
 		IUserDAO pro = new UserDAOImpl();
 		//List<MyGroup> list = pro.findGroupsByUserId(2);
 		//List<MyGroup> list = pro.findAll();
-		User user = new UserServiceImpl().findUser("user1");
+		//User user = new UserServiceImpl().findUser("user1");
+		List<User> user = pro.searchUsersByKeyword("John");
 		//System.out.println(list.getFollowers());
-		System.out.println(user.getFollowingUsers());
+		//System.out.println(user.getFollowingUsers());
+		System.out.println(user);
 	}
+
 }

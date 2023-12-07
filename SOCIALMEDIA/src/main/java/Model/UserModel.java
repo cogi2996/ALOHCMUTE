@@ -77,6 +77,13 @@ public class UserModel {
 	}
 	
 	
+	public UserModel(String firstName, String midName, String lastName) {
+		super();
+		this.firstName = firstName;
+		this.midName = midName;
+		this.lastName = lastName;
+	}
+
 	public int getStatus() {
 		return status;
 	}
