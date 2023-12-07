@@ -24,11 +24,10 @@ public class ProfileController extends HttpServlet{
 			req.getRequestDispatcher("/views/user/profile.jsp").forward(req, resp);
 		}
 		else if(url.contains("editProfile")){
-//			String uid = req.getParameter("userID");
-//			User user =  userService.findUser(uid);
-//			req.setAttribute("user", user );
+			String uid = req.getParameter("userID");
+			User user =  userService.findUser(uid);
+			req.setAttribute("user", user );
 			req.getRequestDispatcher("/views/user/editProfile.jsp").forward(req, resp);
-			
 		}
 		
 		
