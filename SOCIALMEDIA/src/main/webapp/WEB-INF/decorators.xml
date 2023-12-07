@@ -3,7 +3,11 @@
 		<pattern>/home*</pattern>
 		<pattern>/profile*</pattern>
 	</decorator>
+	<decorator name="admin" page="admin.jsp">
 
+		<pattern>/admin*</pattern>
+
+	</decorator>
 
 	<excludes>
 		<pattern>/api*</pattern>

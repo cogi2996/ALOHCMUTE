@@ -27,4 +27,21 @@ public class UserServiceImpl implements IUserService{
 		// TODO Auto-generated method stub
 		return userDAO.searchUsersByKeyword(keyword);
 	}
+	@Override
+	public void delete(String userID) {
+		userDAO.delete(userID);
+	}
+	//hieu them
+	@Override
+	public List<User> findAll() {
+		return userDAO.findAll();
+	}
+	@Override
+	public Long countAll() {
+		return userDAO.countAll();
+	}
+	@Override
+	public List<User> paginationPage(int index, int numberOfPage) {
+		return userDAO.paginationPage(index, numberOfPage);
+	}
 }
