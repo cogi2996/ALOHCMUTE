@@ -3,6 +3,7 @@
 		<pattern>/home*</pattern>
 		<pattern>/profile*</pattern>
 		<pattern>/editProfile*</pattern>
+		<pattern>/timkiem*</pattern>
 	</decorator>
 
 
