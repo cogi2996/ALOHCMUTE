@@ -49,7 +49,7 @@ const btn_closeCreatePost = document.querySelector(".card-header .btn-close");
 const btn_submit = document.querySelector(".form-createPost .btn-submit ");
 let currentUser = null;
 
-/*onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (user) => {
 	if (user) {
 
 		currentUser = user;
@@ -62,7 +62,7 @@ let currentUser = null;
 		currentUser = null;
 		console.log("No one here");
 	}
-});*/
+});
 
 
 btn_inputCreatePost.addEventListener("click", function() {
@@ -174,9 +174,9 @@ btn_submit.addEventListener("submit", function(e) {
 
 
 // hàm tải ảnh lên storage
-function uploadImage() {
+function uploadImage(file) {
 	return new Promise((resolve, reject) => {
-		const file = document.getElementById("image").files[0];
+
 		const metadata = {
 			contentType: file.type,
 		};
@@ -222,7 +222,7 @@ btn_submit.addEventListener("click", function(e) {
 	e.preventDefault();
 	const text = document.querySelector(".form-createPost #content").value;
 	const uid = currentUser.uid;
-	const img = uploadImage();
+	const img = uploadImage(document.getElementById("image").files[0]);
 	img.then((urlImg) => {
 		fetch(`/SOCIALMEDIA/api/v1/posts`, {
 			method: "POST",
