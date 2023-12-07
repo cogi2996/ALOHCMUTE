@@ -19,7 +19,7 @@
 		<properties>
 
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/alohcmute" />
+				value="jdbc:mysql://localhost:3306/ALOHCMUTE" />
 
 			<property name="javax.persistence.jdbc.user" value="root" />
 
