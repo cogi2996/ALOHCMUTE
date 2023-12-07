@@ -23,7 +23,8 @@ import Services.FollowServiceImpl;
 import Services.IFollowService;
 
 @WebServlet(urlPatterns = { "/api/v1/userFollow", "/api/v1/follower", "/api/v1/following", "/api/v1/searchUser","/api/v1/informationUser", "/api/v1/user" })
-public class userAPI extends HttpServlet {
+public class UserAPI extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IFollowService followService = new FollowServiceImpl();
 
