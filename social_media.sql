@@ -35,8 +35,7 @@ create table `Follow`(
 	sourceID varchar(100) ,
     targetID varchar(100),
     followCreateTime datetime not null,
-    followUpdateTime datetime not null,
-    followStatus boolean not null default 1,
+    followStatus boolean default 1,
     primary key (sourceID, targetID),
     foreign key (sourceID) references `User`(userID) ,
     foreign key (targetID) references `User`(userID)
@@ -49,7 +48,7 @@ create table `Follow`(
 --     foreign key (userID) references `User`(userID) 
 -- );
 
-Tạo bảng Chat
+-- --Tạo bảng Chat
 create table `Chat`(
 	sourceID varchar(100) ,
     targetID varchar(100),

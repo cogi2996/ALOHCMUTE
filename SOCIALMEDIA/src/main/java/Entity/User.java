@@ -20,6 +20,9 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import Dao.IUserDAO;
+import Dao.UserDAOImpl;
+
 @Entity
 @Table(name = "User")
 @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")

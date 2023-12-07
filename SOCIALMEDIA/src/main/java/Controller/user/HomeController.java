@@ -26,10 +26,6 @@ import Services.UserServiceImpl;
 @WebServlet(urlPatterns = { "/home", "/follower" })
 public class HomeController extends HttpServlet {
 
-	// test
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
@@ -78,13 +74,13 @@ public class HomeController extends HttpServlet {
 	// hieu
 	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		int id = Integer.parseInt(req.getParameter("id"));
+		/*int id = Integer.parseInt(req.getParameter("id"));
 		User user = userService.findUser(id);
 		List<User> followers = user.getFollowers();
 		req.setAttribute("listfollower", followers);
 
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/followers.jsp");
-		rd.forward(req, resp);
+		rd.forward(req, resp);*/
 
 	}
 }
