@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import Entity.User;
@@ -86,7 +87,11 @@ public class UserDAOImpl implements IUserDAO {
 			trans.begin();
 			User user = enma.find(User.class, userID);
 			if (user != null) {
-				enma.remove(user);
+				Query deleteFollowQuery = enma.createQuery("DELETE FROM Follow f WHERE f.sourceID = :userID OR f.targetID = :userID");
+		        deleteFollowQuery.setParameter("userID", userID);
+		        deleteFollowQuery.executeUpdate();
+
+		        enma.remove(user);
 			} else {
 				throw new Exception("Không tìm thấy");
 			}

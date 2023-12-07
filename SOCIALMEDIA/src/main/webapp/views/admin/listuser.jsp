@@ -18,7 +18,6 @@
 					<th scope="col">WorkPlace</th>
 					<th scope="col">Join Date</th>
 					<th scope="col">Last Login</th>
-					<th scope="col">Friends</th>
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
@@ -29,7 +28,7 @@
 						<td><img alt="..."
 							src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
 							class="avatar avatar-sm rounded-circle me-2"> <a
-							class="text-heading font-semibold" href="#">
+							class="text-heading font-semibold" href="profile?id=${item.getUserID()}">
 								${item.getLastName()} ${item.getMidName()}
 								${item.getFirstName()} </a></td>
 						<td>${item.getMobile() }</td>
@@ -38,10 +37,6 @@
 						<td>${item.getWorkPlace() }</td>
 						<td>${item.getCreateDate()}</td>
 						<td>${item.getLastLogin()}</td>
-						<td class="text-end"><a href="following?id=${item.getUserID()}"
-							class="btn btn-sm btn-neutral">Following</a><a
-							href="follower?id=${item.getUserID()}"
-							class="btn btn-sm btn-neutral">Follower</a></td>
 						<td class="text-end"><a href="update?id=${item.getUserID()}"
 							class="btn btn-sm btn-neutral">Update</a><a
 							href="delete?id=${item.getUserID()}"

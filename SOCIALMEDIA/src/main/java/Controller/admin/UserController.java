@@ -15,7 +15,7 @@ import Entity.User;
 import Services.IUserService;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower"})
+@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower", "/admin-manage/user/profile"})
 public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -29,6 +29,22 @@ public class UserController extends HttpServlet{
 		}
 		else if(url.contains("update")){
 			
+		}
+		else if(url.contains("profile"))
+		{
+			String id = req.getParameter("id");
+			User user = userService.findUser(id);
+			int countFollower = user.getFollowers().size();
+			int countFollowing = user.getFollowingUsers().size();
+			int countPost = user.getUserPosts().size();
+			
+			req.setAttribute("countFollower", countFollower);
+			req.setAttribute("countFollowing", countFollowing);
+			req.setAttribute("countPost", countPost);
+			req.setAttribute("user", user);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user-detail.jsp");
+			rd.forward(req, resp);
 		}
 		else if(url.contains("follower")){
 			String id = req.getParameter("id");

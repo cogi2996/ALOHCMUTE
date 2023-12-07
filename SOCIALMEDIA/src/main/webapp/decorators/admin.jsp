@@ -8,9 +8,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="<c:url value = "/templates/admin/css/style.css"/>" />
+	<link rel="stylesheet"
+	href="<c:url value = "/templates/admin/css/user-detail.css"/>" />
 <link
 	href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
 	rel="stylesheet">
+
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>

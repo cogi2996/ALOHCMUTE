@@ -15,7 +15,7 @@ import Entity.UserPost;
 import Services.IUserPostService;
 import Services.UserPostServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/post/listpost", "/admin-manage/post/delete", "/admin-manage/post/update"})
+@WebServlet(urlPatterns = {"/admin-manage/post/listpost", "/admin-manage/post/delete"})
 public class PostController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	IUserPostService postService = new UserPostServiceImpl();
@@ -25,9 +25,6 @@ public class PostController extends HttpServlet{
 		String url = req.getRequestURL().toString();
 		if (url.contains("delete")) {
 			delete(req, resp);
-		}
-		else if(url.contains("update")){
-			
 		}
 		try {
 			findAll(req, resp);
@@ -67,14 +64,17 @@ public class PostController extends HttpServlet{
 		rd.forward(req, resp);
 	}
 
-	private void delete(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
-	}
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
+		try {
+			postService.delete(id);
+			req.setAttribute("message", "Xóa thành công");
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("error", "Thất bại");
+		}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		RequestDispatcher rd = req.getRequestDispatcher("listpost");
+		rd.forward(req, resp);
 	}
 }
