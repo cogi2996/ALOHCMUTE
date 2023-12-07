@@ -7,7 +7,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import Entity.Chat;
-import Entity.HiringPost;
 import JpaConfig.JPAConfig;
 
 public class ChatDaoImpl implements IChatDao {

@@ -51,7 +51,7 @@ public class ChatAPI extends HttpServlet {
 		res.setCharacterEncoding("UTF-8");
 		res.setContentType("application/json");
 		// Trả về danh sách user đã chat
-		String sourceId = req.getParameter("userId");
+		String sourceId = req.getParameter("user-id");
 		List<User> listEntity = _chatService.findBySourceId(sourceId);
 		Gson gson = new Gson();
 		String json = gson.toJson(listEntity);
