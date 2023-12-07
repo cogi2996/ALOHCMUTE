@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
   <fixed facet="wst.jsdt.web"/>
@@ -6,3 +7,13 @@
   <installed facet="jst.web" version="4.0"/>
   <installed facet="java" version="17"/>
 </faceted-project>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <fixed facet="wst.jsdt.web"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+  <installed facet="jpt.jpa" version="2.2"/>
+  <installed facet="jst.web" version="4.0"/>
+  <installed facet="java" version="17"/>
+</faceted-project>
+>>>>>>> fc8c5b9367f1fc1397955a15b2c43d77c7079b62
