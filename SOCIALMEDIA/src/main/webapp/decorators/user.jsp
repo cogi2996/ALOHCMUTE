@@ -66,7 +66,7 @@ if (uri.contains("home")) {
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/editProfile.css"/>" />
 <%
-} else if (uri.contains("resultFind")) {
+} else if (uri.contains("timkiem")) {
 %>
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/resultFind.css"/>" />

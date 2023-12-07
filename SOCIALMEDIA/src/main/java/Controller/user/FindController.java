@@ -13,6 +13,6 @@ public class FindController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String keyword= req.getParameter("keyword");
 		///webapp/views/user/resultFind.jsp
-		
+		req.getRequestDispatcher("/views/user/resultFind.jsp").forward(req, resp);
 	}
 }
