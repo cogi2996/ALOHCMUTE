@@ -61,7 +61,12 @@ if (uri.contains("home")) {
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
 	crossorigin="anonymous"></script>
 <%
-}
+} else if (uri.contains("editProfile")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/editProfile.css"/>" />
+<%
+} 
 %>
 
 
