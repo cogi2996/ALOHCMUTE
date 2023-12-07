@@ -49,7 +49,7 @@ create table `Follow`(
 --     foreign key (userID) references `User`(userID) 
 -- );
 
-Tạo bảng Chat
+-- Tạo bảng Chat
 create table `Chat`(
 	sourceID varchar(100) ,
     targetID varchar(100),
