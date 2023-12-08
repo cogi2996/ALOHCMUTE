@@ -11,20 +11,38 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.gson.Gson;
+import com.mysql.cj.Session;
 
 import Entity.User;
 import Model.UserModel;
 import Services.IUserService;
 import Services.UserServiceImpl;
+import firebase.FireBaseService;
 import Entity.Follow;
 import Services.FollowServiceImpl;
 import Services.IFollowService;
 
 @WebServlet(urlPatterns = { "/api/v1/userFollow", "/api/v1/follower", "/api/v1/following", "/api/v1/searchUser","/api/v1/informationUser", "/api/v1/user" })
-public class UserAPI extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class userAPI extends HttpServlet {
+	private FirebaseAuth auth;
+	private FireBaseService firebaseService;
+	@Override
+	public void init() throws ServletException {
+		if(getServletContext().getAttribute("firebaseService")==null) {
+			this.firebaseService  = new FireBaseService();
+			getServletContext().setAttribute("firebaseService", this.firebaseService);
+			this.auth = this.firebaseService.getAuth();
+		}
+		else {
+			this.firebaseService = (FireBaseService)getServletContext().getAttribute("firebaseService");
+			this.auth = firebaseService.getAuth();
+		}
+	}
 	IUserService userService = new UserServiceImpl();
 	IFollowService followService = new FollowServiceImpl();
 
@@ -118,11 +136,14 @@ public class UserAPI extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
+		HttpSession session = req.getSession();
+		String uid = (String) session.getAttribute("uid");
 		Gson gson = new Gson();
 		UserModel usermodel = gson.fromJson(req.getReader(), UserModel.class);
+		
+		System.out.println(usermodel);
 		User updatedUser = new User();
-
-		updatedUser = userService.findUser(usermodel.getUserID());
+		updatedUser = userService.findUser(uid);
 		System.out.println(updatedUser);
 		updatedUser.setMobile(usermodel.getMobile());
 		updatedUser.setFirstName(usermodel.getFirstName());
@@ -133,9 +154,16 @@ public class UserAPI extends HttpServlet {
 		updatedUser.setPosition(usermodel.getPosition());
 		updatedUser.setWorkPlace(usermodel.getWorkPlace());
 		updatedUser.setAvatar(usermodel.getAvatar());
-		updatedUser.setUserID(usermodel.getUserID());
+		updatedUser.setUserID(uid);
 
 		userService.update(updatedUser);
+		// cập nhật thông tin account
+		try {
+			firebaseService.updateProfile(usermodel, uid);
+		} catch (FirebaseAuthException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// Viết thông báo kết quả
 		PrintWriter out = resp.getWriter();
 		out.println("Đã sửa thông tin user thành công");
@@ -186,4 +214,6 @@ public class UserAPI extends HttpServlet {
 		pw.close();
 
 	}
+	
+
 }

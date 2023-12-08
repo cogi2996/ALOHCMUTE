@@ -24,7 +24,7 @@
 			<property name="javax.persistence.jdbc.user" value="root" />
 
 			<property name="javax.persistence.jdbc.password"
-				value="1182003" />
+				value="29092003" />
 
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
@@ -43,3 +43,4 @@
 	</persistence-unit>
 
 </persistence>
+

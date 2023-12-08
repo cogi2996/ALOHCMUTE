@@ -35,4 +35,9 @@ public class UserPostServiceImpl implements IUserPostService {
 		}
 	}
 
+	@Override
+	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid) {
+		return userPostDao.paginationPostUser(index, numberOfPage, uid);
+	}
+
 }
