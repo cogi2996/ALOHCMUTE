@@ -13,5 +13,5 @@ public class GroupPostServiceImpl implements IGroupPostService {
 		// TODO Auto-generated method stub
 		return groupPostDao.searchgroupPostText(keyword);
 	}
-
+	
 }
