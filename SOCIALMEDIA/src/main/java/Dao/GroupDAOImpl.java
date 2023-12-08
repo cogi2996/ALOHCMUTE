@@ -21,6 +21,7 @@ public class GroupDAOImpl implements iGroupDAO{
 	}
 
 	public static void main(String[] args) {
+		/*
 		IUserDAO userDAO = new UserDAOImpl();
 		User user = userDAO.findUser("2");
 		System.out.println(user);
@@ -28,7 +29,17 @@ public class GroupDAOImpl implements iGroupDAO{
 		iGroupDAO pro = new GroupDAOImpl();
 		Group list = pro.findGroup(2);
 		//List<MyGroup> list = pro.findAll();
-		System.out.println(list);
+		System.out.println(list);*/
+		// List<MyGroup> list = pro.findGroupsByUserId(2);
+				// List<MyGroup> list = pro.findAll();
+				// User user = new UserServiceImpl().findUser("user1");
+				//List<User> user = pro.searchUsersByKeyword("John a doe");
+				// Long user = pro.countSearchUsers("John");
+				// System.out.println(list.getFollowers());
+				// System.out.println(user.getFollowingUsers());
+		iGroupDAO pro = new GroupDAOImpl();
+		List<Group> user = pro.paginationPageSearchGroups(0, 2, "Group");
+		System.out.println(user);				
 	}
 
 	@Override
@@ -98,19 +109,44 @@ public class GroupDAOImpl implements iGroupDAO{
 	}
 
 	@Override
-	public List<Group> findGroupbygroupName(String groupName) {
+	public List<Group> searchGroupbygroupName(String groupName) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<Group> query = entityManager.createQuery(
 				"SELECT g FROM Group g WHERE g.groupName LIKE :groupName ",
 				Group.class);
-		query.setParameter("keyword", "%" + groupName + "%");
-
+		query.setParameter("groupName", "%" + groupName + "%");
 		List<Group> groups = query.getResultList();
 		entityManager.close();
-
 		return groups;
 	}
 
-	
+	@Override
+	public List<Group> paginationPageSearchGroups(int index, int numberOfPage, String groupName) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		TypedQuery<Group> list = entityManager.createQuery(
+				"SELECT g FROM Group g WHERE g.groupName LIKE :groupName ",
+				Group.class);
+		    
+		list.setParameter("groupName", "%" + groupName + "%");
+		list.setFirstResult(index * numberOfPage);
+		list.setMaxResults(numberOfPage);
+		List<Group> groups = list.getResultList();
+		entityManager.close();
+		return groups;
+	}
+
+	@Override
+	public Long countSearchUsers(String groupName) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		TypedQuery<Long> query = entityManager.createQuery( "SELECT g FROM Group g WHERE g.groupName LIKE :groupName",
+	            Long.class);
+		query.setParameter("groupName", "%" + groupName + "%");
+
+		Long count = query.getSingleResult();
+		entityManager.close();
+
+		return count;
+	}
+
 	
 }
