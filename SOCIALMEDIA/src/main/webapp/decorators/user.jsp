@@ -80,13 +80,7 @@ if (uri.contains("home")) {
 </head>
 <body>
 	<%@include file="/common/user/header.jsp"%>
-	<div class="container-fluid" style="margin-top: 56px">
-		<div class="row justify-content-between">
-			<%@include file="/common/user/left.jsp"%>
-			<decorator:body></decorator:body>
-			<div class="col-md-2">Mess</div>
-		</div>
-	</div>
+	<decorator:body></decorator:body>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
