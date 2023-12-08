@@ -22,7 +22,7 @@ import Services.IUserPostService;
 import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
-@WebServlet(urlPatterns = {"/api/v1/posts/loadAjaxPost","/api/v1/posts"})
+@WebServlet(urlPatterns = {"/api/v1/posts/loadAjaxPost","/api/v1/posts","/api/v1/posts/loadMoreUserPost"})
 
 public class PostAPI extends HttpServlet{
 	IUserService userService = new UserServiceImpl();
@@ -33,6 +33,9 @@ public class PostAPI extends HttpServlet{
 		String url = req.getRequestURL().toString();
 		if (url.contains("loadAjaxPost")) {
 			postLoadAjax(req, resp);
+		}
+		else if(url.contains("loadMoreUserPost")) {
+			loadMoreUserPost(req,resp);
 		}
 	}
 	@Override
@@ -123,4 +126,40 @@ public class PostAPI extends HttpServlet{
 		out.close();
 	}
 	//hieu-end
+	
+	// tuan-begin
+	public void loadMoreUserPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		String amount = req.getParameter("exits");
+		System.out.println("[1]-bat dau load");
+		System.out.println(amount);
+		int imount = Integer.parseInt(amount);
+//		HttpSession session = req.getSession();
+//		String uid = (String) session.getAttribute("uid");
+		String uid = req.getParameter("uid");
+		System.out.println(uid);
+		System.out.println("[2]-end load");
+		List<UserPost> listPost = userPostService.paginationPostProfile(imount, 4,uid);
+		List<UserPostModel> listPostModel = new ArrayList<UserPostModel>();
+		for (UserPost post : listPost) {
+			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
+					+ post.getUser().getFirstName();
+			String userid = post.getUser().getUserID();
+			int postid = post.getUserPostID();
+			String text = post.getUserPostText();
+			Date createTime = post.getUserPostCreateTime();
+			String img = post.getUserPostImg();
+			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
+			listPostModel.add(postModel);
+		}
+		Gson gson = new Gson();
+		String listPostJson = gson.toJson(listPostModel);
+		System.out.println("list post lay duoc ; " + listPostModel);
+		PrintWriter out = resp.getWriter();
+		out.println(listPostJson);
+		out.close();
+	}
+	// tuan-end
+	
 }

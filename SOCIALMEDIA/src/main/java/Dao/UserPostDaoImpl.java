@@ -15,7 +15,7 @@ public class UserPostDaoImpl implements IUserPostDao {
 
 	public static void main(String[] args) {
 //		System.out.println(new UserPostDaoImpl().paginationPage(12, 6));
-		List<UserPost> list = new UserPostDaoImpl().paginationPostUser(0, 4, "mxFasgmO8bSvQtpiHqNUG9WrEai1");
+		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "6SsHvCz90kNaaUoZWDQUdsu84o02");
 		System.out.println(list.size());
 		for (UserPost p : list) {
 			System.out.println(p);
@@ -90,15 +90,16 @@ public class UserPostDaoImpl implements IUserPostDao {
 
 		return userFollowedPosts;
 	}
-//	String jpqlQuery = "SELECT DISTINCT up FROM User u " +
-//            "LEFT JOIN u.followingUsers fu " +
-//            "LEFT JOIN u.userPosts up " +
-//            "LEFT JOIN fu.userPosts followedPosts " +
-//            "WHERE u.userID = :userId OR fu.userID = :userId " +
-//            "ORDER BY COALESCE(up.UserPostCreateTime, followedPosts.UserPostCreateTime) DESC";
-//
-//List<UserPost> userFollowedPosts = entityManager.createQuery(jpqlQuery, UserPost.class)
-// .setParameter("userId", userId)
-// .getResultList();
+
+	@Override
+	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+//		String jpqlQuery = "SELECT up FROM User u " + "JOIN u.followingUsers fu " + "JOIN fu.userPosts up "
+//				+ "WHERE u.userID = :userId " + "ORDER BY up.UserPostCreateTime DESC";
+		List<UserPost> list = entityManager.createQuery("SELECT uP FROM UserPost uP WHERE uP.user.userID = :uid",UserPost.class)
+				.setParameter("uid", uid).setFirstResult(index).setMaxResults(numberOfPage) 
+				.getResultList();
+		return list;
+	}
 
 }

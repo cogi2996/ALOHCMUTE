@@ -56,4 +56,9 @@ public class UserPostServiceImpl implements IUserPostService {
 		return userPostDao.countAll();
 	}
 	//hieu-end
+
+	@Override
+	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid) {
+		return userPostDao.paginationPostProfile(index,numberOfPage,uid);
+	}
 }

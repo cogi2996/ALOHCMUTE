@@ -166,7 +166,7 @@ public class UserAPI extends HttpServlet {
 		}
 		// Viết thông báo kết quả
 		PrintWriter out = resp.getWriter();
-		out.println("Đã sửa thông tin user thành công");
+		out.println(gson.toJson(uid));
 		out.close();
 	}
 

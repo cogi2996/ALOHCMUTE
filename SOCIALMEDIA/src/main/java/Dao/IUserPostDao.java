@@ -8,6 +8,7 @@ import Entity.UserPost;
 public interface IUserPostDao {
 	List<UserPost> paginationPage(int index, int numberOfPage);
 	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid);
+	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid);
 	//hieu-begin
 	void update(UserPost userPost);
 	void delete(int userPostID);

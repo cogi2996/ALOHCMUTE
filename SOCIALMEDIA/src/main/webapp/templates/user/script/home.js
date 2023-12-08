@@ -8,7 +8,7 @@ import {
 	getAuth,
 } from "/SOCIALMEDIA/templates/firebase/firebase.js";
 
-const insertPost = function(post) {
+/*const insertPost = function(post) {
 	const html = `
       <div class="post " data-post_id = ${post.post_id}>
         <div class="user-info">
@@ -40,7 +40,7 @@ const insertPost = function(post) {
 	document
 		.querySelector(".post-container")
 		.insertAdjacentHTML("beforeend", html);
-};
+};*/
 
 const btn_inputCreatePost = document.querySelector(".create-post__input");
 const btn_closeCreatePost = document.querySelector(".card-header .btn-close");
@@ -225,22 +225,6 @@ function loadAjax() {
 			});
 		});
 }
-
-btn_submit.addEventListener("submit", function(e) {
-	e.preventDefault();
-	const text = document.querySelector(".form-createPost #content").value;
-
-	fetch(`/SOCIALMEDIA/api/v1/posts`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "aplication/json",
-		},
-		body: JSON.stringify({
-			text: text,
-			img: "https://firebasestorage.googleapis.com/v0/b/strange-song-394808.appspot.com/o/images%2F1701500008998?alt=media&token=ce82acb9-e273-48b1-82bc-8a522ffda847",
-		}),
-	});
-});
 
 // hàm tải ảnh lên storage
 function uploadImage(file) {

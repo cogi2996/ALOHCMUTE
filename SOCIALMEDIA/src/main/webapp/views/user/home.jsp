@@ -22,7 +22,8 @@
 						<a href="#"
 							class="list-group-item border-0 py-3 list-group-item-action active">
 							<i class="fa-solid fa-newspaper me-2"></i> <span>Feeds</span>
-						</a> <a href='<c:url value ="/profile?userID=${currentUser.userID}"></c:url>'
+						</a> <a
+							href='<c:url value ="/profile?userID=${currentUser.userID}"></c:url>'
 							class="list-group-item border-0 py-3 list-group-item-action">
 							<i class="fa-solid fa-user me-2"></i> <span>Profiles</span>
 						</a> <a href="#"
@@ -49,13 +50,14 @@
 								<div class="card">
 									<div class="card-header"
 										style="display: flex; justify-content: space-between; align-items: center;">
-										<div>Tạo bài viết </div>
+										<div>Tạo bài viết</div>
 										<div class="btn-close"></div>
 									</div>
 									<div class="card-body form-createPost">
 										<form action="/SOCIALMEDIA/api/v1/posts" method="POST">
 											<div class="form-group">
-												<label for="author">${currentUser.lastName} ${currentUser.midName} ${currentUser.firstName}</label>
+												<label for="author">${currentUser.lastName}
+													${currentUser.midName} ${currentUser.firstName}</label>
 											</div>
 
 											<div class="form-group">
@@ -89,15 +91,16 @@
 						<c:forEach var="user" items="${listSuggestFollow}">
 							<div
 								class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-								<div class="d-flex align-items-center hover-pointer" >
+								<div class="d-flex align-items-center hover-pointer">
 									<img class="img-xs rounded-circle" src="${user.avatar}" alt="" />
-									<div class="ml-2" style="margin-left:15px">
+									<div class="ml-2" style="margin-left: 15px">
 										<p class="font-weight-bold mb-0">${user.lastName}
 											${user.midName} ${user.firstName}</p>
 										<p class="tx-11 text-muted">${user.workPlace}</p>
 									</div>
 								</div>
-								<button class="btn btn-icon btn__follow " data-user-id="${user.userID}">
+								<button class="btn btn-icon btn__follow "
+									data-user-id="${user.userID}">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 										viewBox="0 0 24 24" fill="none" stroke="currentColor"
 										stroke-width="2" stroke-linecap="round"
