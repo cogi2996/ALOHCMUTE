@@ -229,7 +229,7 @@
 												<div class="card-body">
 													<form action="#">
 														<div class="form-group">
-															<label for="author">Đặng Công Tuấn</label>
+															<label for="author">${currentUser.lastName} ${currentUser.midName} ${currentUser.firstName}</label>
 														</div>
 														<div class="form-group">
 															<label for="privacy">Quyền riêng tư</label> <select

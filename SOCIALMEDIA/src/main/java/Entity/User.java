@@ -45,7 +45,6 @@ public class User implements Serializable {
 	private String avatar;
 	private int role;
 	// Các group được tạo bởi user.
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "admin")
 	private List<Group> createdGroup;
 
@@ -54,25 +53,17 @@ public class User implements Serializable {
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private List<Group> UserGroups;
 
-	/*
-	 * // Tài khoản đã cấp cho user.
-	 * 
-	 * @OneToOne(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinColumn(name = "uid") private Account account;
-	 */
+
 	
 	// Những người user đã chat
 		@ManyToMany
 		@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))
 		private List<User> chats;
 	// Các bài viết ( cá nhân ) của user.
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "user")
 	private List<UserPost> userPosts;
 
 	// Các bài viết ( group ) của user.
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "user")
 	private List<GroupPost> groupPosts;
 
@@ -85,10 +76,7 @@ public class User implements Serializable {
 	@ManyToMany(mappedBy = "followingUsers")
 	private List<User> followers;
 
-	// boxchat của user
-//	@OneToOne
-//	@JoinColumn(name = "boxChatID")
-//	private BoxChat boxChat;
+
 
 	@Override
 	public String toString() {
