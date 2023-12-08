@@ -4,7 +4,7 @@
 
 <div class="card shadow border-0 mb-7">
 	<div class="card-header">
-		<h5 class="mb-0">LIST USER</h5>
+		<h5 class="mb-0">LIST FOLLOWERS</h5>
 	</div>
 	<div class="table-responsive">
 		<table class="table table-hover table-nowrap">
@@ -25,10 +25,9 @@
 						<td>${item.getUserID()}</td>
 						<td><img alt="..."
 							src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
-							class="avatar avatar-sm rounded-circle me-2"> <a
-							class="text-heading font-semibold" href="#">
+							class="avatar avatar-sm rounded-circle me-2">
 								${item.getLastName()} ${item.getMidName()}
-								${item.getFirstName()} </a></td>
+								${item.getFirstName()}</td>
 						<td>${item.getMobile() }</td>
 						<td>${item.getAddress() }</td>
 						<td>${item.getPosition() }</td>
@@ -222,7 +221,7 @@
 		</table>
 	</div>
 	<div class="card-footer border-0 py-5">
-		<span class="text-muted text-sm">Showing 10 followers</span>
+		<span class="text-muted text-sm">${countFollower} followers</span>
 <!-- 		<nav aria-label="Page navigation example"> -->
 <!-- 			<ul class="pagination"> -->
 <%-- 				<c:forEach begin="1" end="${endP}" var="i"> --%>

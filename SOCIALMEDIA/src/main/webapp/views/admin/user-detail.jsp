@@ -3,7 +3,7 @@
 
 <div class="card m-b-30">
 	<div class="card-header bg-white">
-		<h5 class="card-title text-black mb-0">Social Profile</h5>
+		<h5 class="card-title text-black mb-0">USER DETAIL</h5>
 	</div>
 	<div class="card-body">
 		<div class="xp-social-profile">
@@ -58,7 +58,7 @@
 					<div class="col-4">
 						<div class="xp-social-profile-following pt-3">
 							<h5 class="text-black my-1">${countPost}</h5>
-							<p class="mb-0 text-muted"><a href="post?id=${user.getUserID()}">Posts</a></p>
+							<p class="mb-0 text-muted"><a href="posts?id=${user.getUserID()}">Posts</a></p>
 						</div>
 					</div>
 				</div>

@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 
 import Dao.IUserPostDao;
 import Dao.UserPostDaoImpl;
+import Entity.LikeUserPost;
 import Entity.UserPost;
 import JpaConfig.JPAConfig;
 import Model.UserPostModel;
@@ -54,6 +55,21 @@ public class UserPostServiceImpl implements IUserPostService {
 	@Override
 	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid) {
 		return userPostDao.paginationPostUser(index, numberOfPage, uid);
+	}
+
+	@Override
+	public LikeUserPost findLikeUserPost(int userPostID) {
+		return userPostDao.findLikeUserPost(userPostID);
+	}
+
+	@Override
+	public Long countLike(int userPostID) {
+		return userPostDao.countLike(userPostID);
+	}
+
+	@Override
+	public void insertUserLikePost(LikeUserPost likePost) {
+		insertUserLikePost(likePost);
 	}
 
 }

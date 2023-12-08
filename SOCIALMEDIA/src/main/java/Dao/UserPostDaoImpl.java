@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import Entity.LikeUserPost;
 import Entity.User;
 import Entity.UserPost;
 import JpaConfig.JPAConfig;
@@ -102,5 +103,37 @@ public class UserPostDaoImpl implements IUserPostDao {
 //List<UserPost> userFollowedPosts = entityManager.createQuery(jpqlQuery, UserPost.class)
 // .setParameter("userId", userId)
 // .getResultList();
+
+	@Override
+	public LikeUserPost findLikeUserPost(int userPostID) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		TypedQuery<LikeUserPost> query = entityManager.createQuery("SELECT u FROM LikeUserPost u WHERE u.userPostID = :userPostID", LikeUserPost.class);
+		query.setParameter("userPostID", userPostID);
+		System.out.println(userPostID);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public Long countLike(int userPostLike) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Long> count = enma.createQuery("select count(l) from LikeUserPost l WHERE l.userPostID = :userPostID", Long.class);
+		return count.getSingleResult();
+	}
+	@Override
+	public void insertUserLikePost(LikeUserPost likePost) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		try {
+			transaction.begin();
+			entityManager.persist(likePost);
+			transaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			transaction.rollback();
+		} finally {
+			entityManager.close();
+		}
+	}
+	//hieu end
 
 }

@@ -12,10 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import Entity.User;
+import Entity.UserPost;
 import Services.IUserService;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower", "/admin-manage/user/profile"})
+@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower", "/admin-manage/user/profile", "/admin-manage/user/posts"})
 public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -49,19 +50,28 @@ public class UserController extends HttpServlet{
 		else if(url.contains("follower")){
 			String id = req.getParameter("id");
 			List<User> listfollower = userService.findUser(id).getFollowers();
-
+			int countFollower = listfollower.size();
 			req.setAttribute("listFollower", listfollower);
-
+			req.setAttribute("countFollower", countFollower);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listfollowers.jsp");
 			rd.forward(req, resp);
 		}
 		else if(url.contains("following")){
 			String id = req.getParameter("id");
 			List<User> listfollowing = userService.findUser(id).getFollowingUsers();
-
+			int countFollowing = listfollowing.size();
 			req.setAttribute("listFollowing", listfollowing);
-
+			req.setAttribute("countFollowing", countFollowing);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listfollowing.jsp");
+			rd.forward(req, resp);
+		}
+		else if(url.contains("posts")){
+			String id = req.getParameter("id");
+			List<UserPost> listPost = userService.findUser(id).getUserPosts();
+			int countPost = listPost.size();
+			req.setAttribute("listPost", listPost);
+			req.setAttribute("countPost", countPost);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listpost.jsp");
 			rd.forward(req, resp);
 		}
 		try {

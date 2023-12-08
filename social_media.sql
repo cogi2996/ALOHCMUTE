@@ -91,5 +91,13 @@ create table `GroupMember`(
     foreign key (groupPostID) references `GroupPost`(groupPostID) on delete cascade
 );
 
+CREATE TABLE LikeUserPost (
+    userID varchar(100),
+    userPostID int,
+    likeTime datetime,
+    PRIMARY KEY (userID, userPostID),
+    FOREIGN KEY (userID) REFERENCES `User`(userID) ON DELETE CASCADE,
+    FOREIGN KEY (userPostID) REFERENCES `UserPost`(userPostID) ON DELETE CASCADE
+);
 
 

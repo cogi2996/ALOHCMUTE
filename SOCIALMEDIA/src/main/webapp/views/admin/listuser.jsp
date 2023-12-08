@@ -229,7 +229,7 @@
 		</table>
 	</div>
 	<div class="card-footer border-0 py-5">
-		<span class="text-muted text-sm">Showing 10 users</span>
+		<span class="text-muted text-sm">Showing 10 / ${countAll} users</span>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:forEach begin="1" end="${endP}" var="i">
