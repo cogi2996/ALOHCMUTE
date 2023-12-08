@@ -80,25 +80,6 @@ public class UserDAOImpl implements IUserDAO {
 		entityManager.close();
 		return users;
 	}
-
-	/*
-	 * @Override public List<User> paginationPage(int index, int numberOfPage) {
-	 * EntityManager enma = JPAConfig.getEntityManager(); TypedQuery<User> list =
-	 * enma.createQuery("select b from User b",User.class);
-	 * list.setFirstResult(index*numberOfPage); list.setMaxResults(numberOfPage);
-	 * return list.getResultList(); }
-	 */
-	/*
-	 * @Override public Long countSearchUsers(String keyword) { EntityManager
-	 * entityManager = JPAConfig.getEntityManager(); TypedQuery<Long> query =
-	 * entityManager.
-	 * createQuery("SELECT COUNT(u) FROM User u WHERE u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword"
-	 * , Long.class); query.setParameter("keyword", "%" + keyword + "%");
-	 * 
-	 * Long count = query.getSingleResult(); entityManager.close();
-	 * 
-	 * return count.intValue(); }
-	 */
 	@Override
 	public Long countSearchUsers(String keyword) {
 		EntityManager entityManager = JPAConfig.getEntityManager();

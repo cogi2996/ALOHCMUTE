@@ -30,6 +30,7 @@ public class HomeController extends HttpServlet {
 		if (url.contains("home")) {
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 		}
+		/*
 		if (url.contains("search")) {
 			String keyword = req.getParameter("keyword");
 			List<User> listuser = userService.searchUsersByKeyword(keyword);
@@ -46,7 +47,7 @@ public class HomeController extends HttpServlet {
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/editUser.jsp");
 			rd.forward(req, resp);
 			
-		}
+		}*/
 	}
 
 }
