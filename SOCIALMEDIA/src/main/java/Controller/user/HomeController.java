@@ -12,12 +12,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import Dao.IFollowDAO;
 import Entity.User;
 import Entity.UserPost;
 import Model.UserPostModel;
+import Services.FollowServiceImpl;
+import Services.IFollowService;
 import Services.IUserPostService;
 import Services.IUserService;
 import Services.UserPostServiceImpl;
@@ -25,11 +29,11 @@ import Services.UserServiceImpl;
 
 @WebServlet(urlPatterns = { "/home", "/follower" })
 public class HomeController extends HttpServlet {
-
+	
 	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
-	
+	IFollowService followService = new FollowServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -37,8 +41,14 @@ public class HomeController extends HttpServlet {
 //			postLoadAjax(req, resp);
 //		} else 
 		if (url.contains("home")) {
+			HttpSession session = req.getSession();
+			String uid = (String) session.getAttribute("uid");
+			User user = userService.findUser(uid);
+			List<User> listSuggestFollow = followService.suggestFollow(uid);
+			req.setAttribute("listSuggestFollow", listSuggestFollow);
+			req.setAttribute("currentUser", user);
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
-
+			
 		} else if (url.contains("follower")) {
 			findFollowersByUserId(req, resp);
 		}
@@ -74,13 +84,13 @@ public class HomeController extends HttpServlet {
 	// hieu
 	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		int id = Integer.parseInt(req.getParameter("id"));
+		/*int id = Integer.parseInt(req.getParameter("id"));
 		User user = userService.findUser(id);
 		List<User> followers = user.getFollowers();
 		req.setAttribute("listfollower", followers);
 
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/followers.jsp");
-		rd.forward(req, resp);
+		rd.forward(req, resp);*/
 
 	}
 }
