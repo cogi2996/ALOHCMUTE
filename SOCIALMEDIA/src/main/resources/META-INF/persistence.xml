@@ -9,7 +9,9 @@
 		<class>Entity.GroupPost</class>
 		<class>Entity.User</class>
 		<class>Entity.UserPost</class>
+		<class>Entity.HiringPost</class>
 		<class>Entity.Follow</class>
+		<class>Entity.Chat</class>
 	
 	
 		
@@ -17,7 +19,7 @@
 		<properties>
 
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/alohcmute" />
+				value="jdbc:mysql://localhost:3306/ALOHCMUTE" />
 
 			<property name="javax.persistence.jdbc.user" value="root" />
 

@@ -1,0 +1,65 @@
+     .card-hire {
+     	display: flex;
+     	margin: 10px;
+     	padding: 10px;
+     	max-width: 550px;
+     }
+
+     .card-hire:hover {
+     	cursor: pointer;
+     }
+
+     .js-hidden-card {
+     	display: none;
+     }
+
+     .g-0 {
+     	display: flex;
+     	align-items: center;
+     }
+
+     .card-title {
+     	color: #0a66c2;
+     	padding: 0 0 5px;
+     }
+
+     .card-text {
+     	font-size: 16px;
+     	text-align: left;
+     	margin: 5px 0;
+     }
+
+     .img-logo {
+     	position: relative;
+     	width: 100px;
+
+
+     }
+
+     .icons {
+     	display: flex;
+     	position: absolute;
+     	top: 10px;
+     	right: 10px;
+     	flex-direction: column;
+     	align-items: flex-end;
+
+     }
+
+     .send {
+     	font-size: 24px;
+     	color: #353434;
+     	padding: 10px;
+     	border-radius: 50%;
+     }
+
+     .close {
+     	font-size: 28px;
+     	color: #353434;
+     	padding: 8px;
+     	border-radius: 50%;
+     }
+
+     .icon:hover {
+     	background-color: #cccccc;
+     }

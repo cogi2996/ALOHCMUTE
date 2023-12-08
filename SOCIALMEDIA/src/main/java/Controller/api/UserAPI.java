@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.gson.Gson;
-import com.mysql.cj.Session;
 
 import Entity.User;
 import Model.UserModel;
@@ -54,7 +53,8 @@ public class UserAPI extends HttpServlet {
 		} else if (url.contains("following")) {
 			listfollowing(req, resp);
 		} else if (url.contains("userFollow")) {
-			String sourceID = req.getParameter("sourceID");
+			HttpSession session = req.getSession();
+			String sourceID = (String) session.getAttribute("uid");
 			String targetID = req.getParameter("targetID");
 			System.out.println(sourceID);
 			Follow newFollow = new Follow(sourceID, targetID, new Date());
@@ -215,5 +215,8 @@ public class UserAPI extends HttpServlet {
 
 	}
 	
-
+	// load ra danh sách 6 người 
+//	public void suggestFollow(string) {
+//		
+//	}
 }
