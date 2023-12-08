@@ -1,0 +1,210 @@
+@charset "UTF-8";
+
+.followers {
+	padding: 20px 0px 20px 0px;
+}
+
+/* Tools bar CSS*/
+.followers .group-header {
+	text-align: center;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.followers .ul-group-item {
+	list-style-type: none;
+	margin-left: 8%;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+.followers .li-group-container>li {
+	padding: 4px;
+}
+
+.followers .li-group-container>div {
+	margin-right: 40px;
+	background: rgb(235, 235, 235);
+	border: 1px solid #f4f4f4;
+	border-radius: 5px;
+	padding: 2px 5px;
+}
+
+.li-group-item,
+.li-group-item+div {
+	display: inline-block;
+}
+
+.li-group-item>a {
+	text-decoration: none;
+	color: #000;
+	font-size: 16px;
+}
+
+.li-group-item>a:hover {
+
+	border-bottom: 2px solid #f00;
+}
+
+/*End here*/
+
+
+.row {
+	flex-wrap: nowrap
+}
+
+.followers-box {
+	float: left;
+	width: 100%;
+	border-radius: 5px;
+	background-color: #fff;
+	margin-bottom: 20px;
+	border-top: 1px solid #a3a3a3;
+	border-left: 1px solid #a3a3a3;
+	border-right: 1px solid #a3a3a3;
+	border-bottom: 1px solid #a3a3a3;
+}
+
+.followers-box .followers-list {
+	float: left;
+	width: 100%;
+	padding: 17px 0 10px 0;
+}
+
+.followers-box .followers-body {
+	float: left;
+	width: 100%;
+	padding: 10px 20px 0px 20px;
+	margin-top: 10px;
+	border-bottom: 2px solid #f4f4f4;
+}
+
+.followers-box .followers-body:last-child {
+	border-bottom: none;
+}
+
+.followers-box .followers-body img {
+	width: 37px;
+	height: 37px;
+	float: left;
+	padding: 2px;
+	border: 2px solid #f4f4f4;
+}
+
+.followers-box .name-box {
+	float: left;
+	padding-left: 10px;
+	position: relative;
+	top: -12px;
+	padding-top: 0px !important;
+}
+
+.followers-box .name-box h4 {
+	font-family: 'Abhaya Libre', serif;
+	color: #88898a;
+	font-size: 14px;
+	font-weight: 700;
+	margin-bottom: 4px;
+}
+
+.followers-box .name-box span {
+	font-family: 'Abhaya Libre', serif;
+	font-size: 14px;
+	color: #aaa;
+}
+
+.followers-box .followers-body>span {
+	float: right;
+	margin-top: 4px;
+	position: relative;
+	top: 50%;
+}
+
+.name-box {
+	margin-right: 45%;
+}
+
+.followers-base ul {
+	font-size: 0px;
+	text-align: center;
+}
+
+.followers-base li {
+	list-style: none;
+	display: inline-block;
+}
+
+.followers-base li a {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.followers-box .followers-body>span a {
+	font-family: 'Abhaya Libre', serif;
+	font-size: 14px;
+}
+
+.followers-box .followers-body .list-group .list-group-item {
+	font-size: .8125em;
+	margin: 0;
+	padding: 5px 10px;
+	color: #607188;
+	background-color: transparent;
+	overflow: hidden;
+	border: 0;
+	border-radius: 0;
+}
+
+.followers-box .followers-body .list-group-item img {
+	margin-left: -13px;
+	border: 2px solid #fff;
+	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .1) 1px 1px rgba(0, 0, 0, .1);
+	-khtml-box-shadow: 0 5px 10px rgba(0, 0, 0, .1) 1px 1px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .1) 1px 1px rgba(0, 0, 0, .1);
+	-ms-box-shadow: 0 5px 10px rgba(0, 0, 0, .1) 1px 1px rgba(0, 0, 0, .1);
+	-o-box-shadow: 0 5px 10px rgba(0, 0, 0, .1) 1px 1px rgba(0, 0, 0, .1);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .1) 1px 1px rgba(0, 0, 0, .1);
+	max-width: 40px !important;
+}
+
+.followers-box .followers-body .list-group .list-group-item span {
+	font-family: 'Abhaya Libre', serif;
+	font-size: 14px;
+	margin-left: 5px;
+}
+
+.btn-add-gray {
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+	border: 2px dashed #8f9eb5;
+	color: #8f9eb5 !important;
+	margin-left: 5px !important;
+}
+
+@media (max-width: 768px) {
+	.followers-box .followers-body>span {
+		float: left !important;
+		margin-top: 0px !important;
+	}
+
+	.followers-box .followers-body>span .kafe-btn-mint-small {
+		width: 100% !important;
+	}
+}
+
+.img-circle {
+	border-radius: 50%;
+}
+
+.btn-add-gray {
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+	border: 2px dashed #8f9eb5;
+	color: #8f9eb5 !important;
+	margin-left: 5px !important;
+}

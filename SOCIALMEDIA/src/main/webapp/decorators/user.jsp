@@ -71,18 +71,22 @@ if (uri.contains("home")) {
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/resultFind.css"/>" />
 <%
-} 
+}
 %>
 
-
-	
-	<!-- list group css -->
+<!-- list group css -->
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/listgroup.css"/>" />
 </head>
 <body>
 	<%@include file="/common/user/header.jsp"%>
-	<decorator:body></decorator:body>
+	<div class="container-fluid" style="margin-top: 56px">
+		<div class="row justify-content-between">
+			<%@include file="/common/user/left.jsp"%>
+			<decorator:body></decorator:body>
+			<div class="col-md-2">Mess</div>
+		</div>
+	</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

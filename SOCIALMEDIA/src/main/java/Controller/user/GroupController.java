@@ -25,21 +25,18 @@ private static final long serialVersionUID = 1L;
 			SearchPostGroup(req, resp);
 		}
 		else if(url.contains("group")) {
-			req.getRequestDispatcher("/views/user/groups.jsp").forward(req, resp);
+			findAll(req, resp);
 		}
 	}
+	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<Group> listGroup = groupService.findAllGroup();
+		// đẩy dl ra view
+		req.setAttribute("listGroup", listGroup);
+		//System.out.println(listGroup);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/grouplist.jsp");
+		rd.forward(req, resp);
+	}
 	
-//	@Override
-//	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		String url = req.getRequestURL().toString();
-//		if(url.contains("group")) {
-//			int id = Integer.parseInt(req.getParameter("id"));
-//			List<Entity.Group> groups = groupService.findGroupUser(id);
-//			req.setAttribute("groups", groups);
-//			
-//			resp.sendRedirect(req.getContextPath() + "/group");
-//		}
-//	}
 	private void SearchPostGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String keyword = req.getParameter("keyword");
 		int groupID = Integer.parseInt(req.getParameter("groupID"));
