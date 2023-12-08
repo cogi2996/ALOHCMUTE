@@ -54,11 +54,10 @@ public class User implements Serializable {
 	private List<Group> UserGroups;
 
 
-	
 	// Những người user đã chat
-		@ManyToMany
-		@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))
-		private List<User> chats;
+	@ManyToMany
+	@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))
+	private List<User> chats;
 	// Các bài viết ( cá nhân ) của user.
 	@OneToMany(mappedBy = "user")
 	private List<UserPost> userPosts;
@@ -260,14 +259,6 @@ public class User implements Serializable {
 		this.followers = followers;
 	}
 
-//	public BoxChat getBoxChat() {
-//		return boxChat;
-//	}
-//
-//	public void setBoxChat(BoxChat boxChat) {
-//		this.boxChat = boxChat;
-//	}
-
 	public int getRole() {
 		return role;
 	}
@@ -276,11 +267,16 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
-	public static void main(String[] args) {
-		IUserDAO pro = new UserDAOImpl();
-		//List<MyGroup> list = pro.findGroupsByUserId(2);
-		//List<MyGroup> list = pro.findAll();
-		User list = pro.findUser("user1");
-		System.out.println(list);
+	// Contructor của tạo user ChatAPI
+	public User(String userID, Date lastLogin, String firstName, String midName, String lastName, String position, String avatar) {
+		super();
+		this.userID = userID;
+		this.lastLogin = lastLogin;
+		this.firstName = firstName;
+		this.midName = midName;
+		this.lastName = lastName;
+		this.position = position;
+		this.avatar = avatar;
 	}
+
 }
