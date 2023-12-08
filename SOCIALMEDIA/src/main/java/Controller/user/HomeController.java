@@ -23,7 +23,7 @@ public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -51,3 +51,6 @@ public class HomeController extends HttpServlet {
 	}
 
 }
+
+
+
