@@ -15,7 +15,7 @@ import Services.FollowServiceImpl;
 import Services.IFollowService;
 
 @WebServlet(urlPatterns = "/api/v1/userFollow")
-public class UserAPI extends HttpServlet{
+public class userAPI extends HttpServlet{
 	IFollowService followService = new FollowServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
