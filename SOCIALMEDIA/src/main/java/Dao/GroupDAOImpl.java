@@ -96,4 +96,21 @@ public class GroupDAOImpl implements iGroupDAO{
 			enma.close();
 		}
 	}
+
+	@Override
+	public List<Group> findGroupbygroupName(String groupName) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		TypedQuery<Group> query = entityManager.createQuery(
+				"SELECT g FROM Group g WHERE g.groupName LIKE :groupName ",
+				Group.class);
+		query.setParameter("keyword", "%" + groupName + "%");
+
+		List<Group> groups = query.getResultList();
+		entityManager.close();
+
+		return groups;
+	}
+
+	
+	
 }

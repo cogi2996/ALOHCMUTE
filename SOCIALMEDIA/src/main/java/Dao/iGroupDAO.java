@@ -10,4 +10,5 @@ public interface iGroupDAO {
 	void updateGroup(Group group);
 	void deleteGroup(int groupID);
 	Group findGroup(int groupID);
+	List<Group> findGroupbygroupName(String groupName);
 }
