@@ -54,7 +54,9 @@ public class userAPI extends HttpServlet {
 		} else if (url.contains("following")) {
 			listfollowing(req, resp);
 		} else if (url.contains("userFollow")) {
-			String sourceID = req.getParameter("sourceID");
+//			String sourceID = req.getParameter("sourceID");
+			HttpSession session = req.getSession();
+			String sourceID = (String)session.getAttribute("uid");
 			String targetID = req.getParameter("targetID");
 			System.out.println(sourceID);
 			Follow newFollow = new Follow(sourceID, targetID, new Date());

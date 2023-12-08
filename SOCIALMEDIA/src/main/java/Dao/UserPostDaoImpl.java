@@ -13,7 +13,7 @@ public class UserPostDaoImpl implements IUserPostDao {
 
 	public static void main(String[] args) {
 //		System.out.println(new UserPostDaoImpl().paginationPage(12, 6));
-		List<UserPost> list = new UserPostDaoImpl().paginationPostUser(1, 4, "mxFasgmO8bSvQtpiHqNUG9WrEai1");
+		List<UserPost> list = new UserPostDaoImpl().paginationPostUser(0, 4, "mxFasgmO8bSvQtpiHqNUG9WrEai1");
 		System.out.println(list.size());
 		for (UserPost p : list) {
 			System.out.println(p);
@@ -33,12 +33,10 @@ public class UserPostDaoImpl implements IUserPostDao {
 	@Override
 	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
+//		String jpqlQuery = "SELECT up FROM User u " + "JOIN u.followingUsers fu " + "JOIN fu.userPosts up "
+//				+ "WHERE u.userID = :userId " + "ORDER BY up.UserPostCreateTime DESC";
 		String jpqlQuery = "SELECT up FROM User u " + "JOIN u.followingUsers fu " + "JOIN fu.userPosts up "
-				+ "WHERE u.userID = :userId " + "ORDER BY up.UserPostCreateTime DESC";
-//		String jpqlQuery = "SELECT DISTINCT up FROM User u " + "LEFT JOIN u.followingUsers fu "
-//				+ "LEFT JOIN u.userPosts up " + "LEFT JOIN fu.userPosts followedPosts "
-//				+ "WHERE u.userID = :userId OR fu.userID = :userId "
-//				+ "ORDER BY COALESCE(up.UserPostCreateTime, followedPosts.UserPostCreateTime) DESC";
+				+ "WHERE u.userID = :userId " + "ORDER BY up.UserPostCreateTime";
 		List<UserPost> userFollowedPosts = entityManager.createQuery(jpqlQuery, UserPost.class)
 				.setParameter("userId", uid).setFirstResult(index).setMaxResults(numberOfPage) 
 				.getResultList();

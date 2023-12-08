@@ -53,6 +53,10 @@ public class PostAPI extends HttpServlet{
 		userPost.setUserPostImg(newPost.getImg());
 		userPostService.insert(userPost);
 	}
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	}
 	// các method
 	public void postLoadAjax(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("application/json");
