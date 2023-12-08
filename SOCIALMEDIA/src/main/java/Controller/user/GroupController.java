@@ -9,20 +9,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import Entity.Group;
+import Entity.User;
 import Services.GroupServiceImpl;
 import Services.iGroupService;
-
-@WebServlet(urlPatterns = {"/group"})
-public class Group extends HttpServlet{
-
-	private static final long serialVersionUID = 1L;
+@WebServlet(urlPatterns = {"/group/searchpost","/group"})
+public class GroupController extends HttpServlet{
+private static final long serialVersionUID = 1L;
 	
 	iGroupService groupService = new GroupServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
-		if(url.contains("group")) {
+		if(url.contains("searchpost")){
+			SearchPostGroup(req, resp);
+		}
+		else if(url.contains("group")) {
 			req.getRequestDispatcher("/views/user/groups.jsp").forward(req, resp);
 		}
 	}
@@ -38,4 +40,15 @@ public class Group extends HttpServlet{
 //			resp.sendRedirect(req.getContextPath() + "/group");
 //		}
 //	}
+	private void SearchPostGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String keyword = req.getParameter("keyword");
+		int groupID = Integer.parseInt(req.getParameter("groupID"));
+		Group group = groupService.findGroup(groupID);
+		List<User> usermember = group.getMember();
+		
+		req.setAttribute("usermember", usermember);
+		System.out.println(usermember);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/groupPostFind.jsp");
+		rd.forward(req, resp);
+	}
 }

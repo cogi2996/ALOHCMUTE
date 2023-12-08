@@ -16,6 +16,8 @@ import Services.UserServiceImpl;
 
 @WebServlet(urlPatterns = { "/timkiem" })
 public class FindController extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
 	IUserService userService = new UserServiceImpl();
 
 	@Override

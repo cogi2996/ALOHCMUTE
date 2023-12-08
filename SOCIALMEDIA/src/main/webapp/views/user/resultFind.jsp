@@ -38,7 +38,7 @@
 												<div class="candidate-list-info">
 													<div class="candidate-list-title">
 														<h5 class="mb-0">
-															<a href="#">${item.firstName}</a>
+															<a href="#">${item.firstName} ${item.midName} ${item.lastName}</a>
 														</h5>
 													</div>
 													<div class="candidate-list-option">
