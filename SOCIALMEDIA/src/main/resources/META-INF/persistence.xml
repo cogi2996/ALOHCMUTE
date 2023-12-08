@@ -22,7 +22,12 @@
 			<property name="javax.persistence.jdbc.user" value="root" />
 
 			<property name="javax.persistence.jdbc.password"
+<<<<<<< HEAD
 				value="04012003" />
+=======
+				value="29092003" />
+>>>>>>> branch 'main' of https://github.com/cogi2996/ALOHCMUTE.git
+
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />
 

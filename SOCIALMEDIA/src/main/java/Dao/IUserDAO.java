@@ -14,6 +14,4 @@ public interface IUserDAO {
 	List<User> searchUsersByKeyword(String keyword);
 	Long countAll();//hieu them
 	List<User> paginationPage(int index, int numberOfPage);//hieu them
-	List<User> SortUserByWorkplace(List<User> list);
-	List<User> SortUserByName(List<User> list); //hieu end
 }
