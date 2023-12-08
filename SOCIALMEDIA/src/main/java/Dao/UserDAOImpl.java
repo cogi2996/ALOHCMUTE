@@ -106,5 +106,4 @@ public class UserDAOImpl implements IUserDAO {
 		List<User> user = pro.paginationPageSearchUsers(2, 2, "a");
 		System.out.println(user);
 	}
-
 }
