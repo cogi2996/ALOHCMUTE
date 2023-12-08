@@ -21,9 +21,4 @@ public class GroupPostImpl implements IGroupPostDao {
 
 		return groupPost;
 	}
-	public static void main(String[] args) {
-		IGroupPostDao grPost = new GroupPostImpl();
-		List<GroupPost> gr = grPost.searchgroupPostText("ab");
-		System.out.println(gr);
-	}
 }
