@@ -60,9 +60,9 @@ public class GroupAPI extends HttpServlet {
 			Group newgroup = new Group();
 
 			newgroup.setGroupName(groupModel.getGroupName());
-	        newgroup.setCreateTime(new Date());
-	        User admin = userService.findUser(groupModel.getCreaterId()); // Find admin user
-	        newgroup.setAdmin(admin);
+			newgroup.setCreateTime(new Date());
+			User admin = userService.findUser(groupModel.getCreaterId()); // Find admin user
+			newgroup.setAdmin(admin);
 			groupService.insertGroup(newgroup);
 			System.out.println(newgroup);
 //	        resp.getWriter().write(gson.toJson(group));
@@ -93,7 +93,7 @@ public class GroupAPI extends HttpServlet {
 			updateGroup.setCreateTime(groupModel.getCreateTime());
 			User user = userService.findUser(groupModel.getCreaterId());
 			updateGroup.setAdmin(user);
-			
+
 			groupService.updateGroup(updateGroup);
 			System.out.println(updateGroup.toString());
 			// Send a response
@@ -105,24 +105,32 @@ public class GroupAPI extends HttpServlet {
 		}
 
 	}
-	
+
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 
 		try {
+
+			String userID = req.getParameter("userID");
+			User user = userService.findUser(userID);
 			// Read data from the request body
-			
+			System.out.println(user.toString());
 			Gson gson = new Gson();
 			GroupModel groupModel = gson.fromJson(req.getReader(), GroupModel.class);
 			System.out.println(groupModel.toString());
-			Group deleteGroup = new Group();
-			deleteGroup = groupService.findGroup(groupModel.getGroupID());
 			
-			groupService.deleteGroup(deleteGroup);
-			System.out.println(deleteGroup.toString());
-			// Send a response
+			String userid = user.getUserID().trim();
+			String groupcreaterid = groupModel.getCreaterId().trim();
+//			if (userid == groupcreaterid) {
+//				groupService.deleteGroup(groupModel.getGroupID());
+//				resp.setStatus(HttpServletResponse.SC_OK);
+//				resp.getWriter().write("Group delete successfully!");
+//			} else {
+//				resp.getWriter().write("Group delete fail!");
+//			}
+			groupService.deleteGroup(groupModel.getGroupID());
 			resp.setStatus(HttpServletResponse.SC_OK);
 			resp.getWriter().write("Group delete successfully!");
 		} catch (Exception e) {
