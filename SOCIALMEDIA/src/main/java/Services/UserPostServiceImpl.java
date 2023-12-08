@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import Dao.IUserPostDao;
 import Dao.UserPostDaoImpl;
 import Entity.UserPost;
 import JpaConfig.JPAConfig;
+import Model.UserPostModel;
 
 public class UserPostServiceImpl implements IUserPostService {
 	IUserPostDao userPostDao = new UserPostDaoImpl();
@@ -34,10 +36,24 @@ public class UserPostServiceImpl implements IUserPostService {
 			entityManager.close();
 		}
 	}
+	//hieu-begin
+		
+	@Override
+	public void update(UserPost userPost) {
+		userPostDao.update(userPost);
+	}
 
 	@Override
-	public UserPost likeUserPost(int userPostID) {
-		return userPostDao.likeUserPost(userPostID);
+	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid) {
+		return userPostDao.paginationPostUser(index, numberOfPage, uid);
 	}
-	
+
+	@Override
+	public void delete(int userPostID) {
+		userPostDao.delete(userPostID);
+	}
+	public Long countAll() {
+		return userPostDao.countAll();
+	}
+	//hieu-end
 }

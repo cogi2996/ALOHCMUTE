@@ -7,8 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.mysql.cj.Session;
 
 import Entity.User;
+import Model.UserModel;
 import Services.IUserService;
 import Services.UserServiceImpl;
 @WebServlet(urlPatterns = {"/profile","/editProfile"})
@@ -24,7 +28,8 @@ public class ProfileController extends HttpServlet{
 			req.getRequestDispatcher("/views/user/profile.jsp").forward(req, resp);
 		}
 		else if(url.contains("editProfile")){
-			String uid = req.getParameter("userID");
+			HttpSession session = req.getSession();
+			String uid = (String) session.getAttribute("uid");
 			User user =  userService.findUser(uid);
 			req.setAttribute("user", user );
 			req.getRequestDispatcher("/views/user/editProfile.jsp").forward(req, resp);

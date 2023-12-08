@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -52,13 +53,19 @@ public class PostAPI extends HttpServlet{
 		userPost.setUserPostImg(newPost.getImg());
 		userPostService.insert(userPost);
 	}
+
 	// các method
 	public void postLoadAjax(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		String amount = req.getParameter("exits");
+		System.out.println("[1]-bat dau load");
+		System.out.println(amount);
+		System.out.println("[2]-end load");
 		int imount = Integer.parseInt(amount);
-		List<UserPost> listPost = userPostService.paginationPage(imount, 6);
+		HttpSession session = req.getSession();
+		String uid = (String) session.getAttribute("uid");
+		List<UserPost> listPost = userPostService.paginationPostUser(imount, 4,uid);
 		List<UserPostModel> listPostModel = new ArrayList<UserPostModel>();
 		for (UserPost post : listPost) {
 			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
@@ -71,7 +78,6 @@ public class PostAPI extends HttpServlet{
 			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
 			listPostModel.add(postModel);
 		}
-
 		Gson gson = new Gson();
 		String listPostJson = gson.toJson(listPostModel);
 		System.out.println("list post lay duoc ; " + listPostModel);
@@ -79,4 +85,42 @@ public class PostAPI extends HttpServlet{
 		out.println(listPostJson);
 		out.close();
 	}
+	//hieu-begin
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		Gson gson = new Gson();
+		UserPostModel newPost = gson.fromJson(req.getReader(),UserPostModel.class);
+		System.out.println("userpost da PUT: "+ newPost);
+		UserPost userPost = new UserPost();
+		userPost.setUserPostID(newPost.getPostid());
+		userPost.setUserPostText(newPost.getText());
+		userPost.setUserPostCreateTime(newPost.getCreateTime());
+		userPost.setUserPostUpdateTime(newPost.getUpdateTime());
+		User user = new User();
+		user.setUserID(newPost.getUserid());
+		userPost.setUser(user);
+		// còn thiếu dữ liệu hình ảnh 
+		userPost.setUserPostImg(newPost.getImg());
+		userPostService.update(userPost);
+		//Viết thông báo kết quả
+		PrintWriter out = resp.getWriter();
+		out.println("Đã sửa thành công");
+		out.close();
+	}
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		Gson gson = new Gson(); 
+		UserPost userPostJSon = gson.fromJson(req.getReader(), UserPost.class);
+		userPostService.delete(userPostJSon.getUserPostID());
+		//Viết thông báo kết quả
+		PrintWriter out = resp.getWriter();
+		out.println("Đã xóa thành công");
+		out.close();
+	}
+	//hieu-end
 }

@@ -243,7 +243,7 @@ document.addEventListener("click", function(e) {
 		// nếu hidden thì hiển load bình luận
 		// nếu chưa hidden thì hidden
 	} else if (e.target.closest(".btn__show-more")) {
-		e.target.closest(".btn__show-more").classList.add("active");
+		e.target.closest(".btn__show-more").classList.toggle("active");
 		const commentElement = e.target
 			.closest(".btn__show-more")
 			.closest(".comment");

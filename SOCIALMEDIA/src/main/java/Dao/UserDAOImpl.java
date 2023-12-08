@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import Entity.HiringPost;
 import Entity.User;
 import JpaConfig.JPAConfig;
 
@@ -74,10 +75,10 @@ public class UserDAOImpl implements IUserDAO {
 	            User.class);
 	    query.setParameter("keyword", "%" + keyword.toLowerCase() + "%");
 
-	    List<User> users = query.getResultList();
-	    entityManager.close();
+		List<User> users = query.getResultList();
+		entityManager.close();
 
-	    return users;
+		return users;
 	}
 
 	// phân trang tìm kiếm user
@@ -120,4 +121,49 @@ public class UserDAOImpl implements IUserDAO {
 		List<User> user = pro.paginationPageSearchUsers(0, 2, "Joh");
 		System.out.println(user);
 	}
+	@Override
+	public void delete(String userID) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			User user = enma.find(User.class, userID);
+			if (user != null) {
+				enma.remove(user);
+			} else {
+				throw new Exception("Không tìm thấy");
+			}
+			trans.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			//throw e;
+		} finally {
+			enma.close();
+		}
+	}
+
+	@Override
+	public List<User> findAll() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<User> query = enma.createNamedQuery("User.findAll", User.class);
+		return query.getResultList();
+	}
+	//hieu them
+	@Override
+	public Long countAll() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Long> count = enma.createQuery("select count(u) from User u", Long.class);
+		return count.getSingleResult();
+	}
+
+	@Override
+	public List<User> paginationPage(int index, int numberOfPage) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<User> list  = enma.createQuery("select b from User b",User.class);
+		list.setFirstResult(index*numberOfPage);
+		list.setMaxResults(numberOfPage);
+		return list.getResultList();
+	}
+
 }

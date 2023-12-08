@@ -75,7 +75,7 @@
                       <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
 										<span class="text-muted tx-12">${user.getFollowers().size()}</span>
-                    </svg> <a class="pt-1px d-none d-md-block" href="#">Following
+                    </svg> <a class="pt-1px d-none d-md-block" href="#">Follower
 								</a>
 								</li>
 								<li
@@ -229,7 +229,7 @@
 												<div class="card-body">
 													<form action="#">
 														<div class="form-group">
-															<label for="author">Đặng Công Tuấn</label>
+															<label for="author">${currentUser.lastName} ${currentUser.midName} ${currentUser.firstName}</label>
 														</div>
 														<div class="form-group">
 															<label for="privacy">Quyền riêng tư</label> <select
