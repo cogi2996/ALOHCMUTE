@@ -27,7 +27,7 @@ import Services.IUserService;
 import Services.UserServiceImpl;
 import Services.iGroupService;
 
-@WebServlet(urlPatterns = { "/api-user-group", "/api-user-listgroupuser" })
+@WebServlet(urlPatterns = { "/api-user-group", "/api-user-listgroupuser", "/api-user-addusergroup" })
 public class GroupAPI extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -46,6 +46,9 @@ public class GroupAPI extends HttpServlet {
 		} else if (url.contains("api-user-listgroupuser")) {
 			getlistgroupuser(req, resp);
 		}
+		 else if (url.contains("api-user-addusergroup")) {
+			 addusergroup(req, resp);
+			}
 	}
 
 	@Override
@@ -193,5 +196,10 @@ public class GroupAPI extends HttpServlet {
 		out.flush();
 		out.close();
 	}
-
+	//begin tin
+	private void addusergroup(HttpServletRequest req, HttpServletResponse resp) {
+		// TODO Auto-generated method stub
+		
+	}
+	// end tin
 }

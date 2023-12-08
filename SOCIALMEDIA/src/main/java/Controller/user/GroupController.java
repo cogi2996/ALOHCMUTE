@@ -13,7 +13,7 @@ import Entity.Group;
 import Entity.User;
 import Services.GroupServiceImpl;
 import Services.iGroupService;
-@WebServlet(urlPatterns = {"/group/searchpost","/group"})
+@WebServlet(urlPatterns = {"/group/searchpost","/group/listuser","/group"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
@@ -23,6 +23,10 @@ private static final long serialVersionUID = 1L;
 		String url = req.getRequestURL().toString();
 		if(url.contains("searchpost")){
 			SearchPostGroup(req, resp);
+		}
+		// tin them
+		else if(url.contains("listuser")) {
+			ListUserInGroup(req, resp);
 		}
 		else if(url.contains("group")) {
 			req.getRequestDispatcher("/views/user/groups.jsp").forward(req, resp);
@@ -50,5 +54,42 @@ private static final long serialVersionUID = 1L;
 		System.out.println(usermember);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/groupPostFind.jsp");
 		rd.forward(req, resp);
+	}
+	private void ListUserInGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		/*
+		int groupID = Integer.parseInt(req.getParameter("groupID"));
+		Group group = groupService.findGroup(groupID);
+		List<User> usermember = group.getMember();
+		req.setAttribute("usermember", usermember);
+		System.out.println(usermember);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/listUserInGroup.jsp");
+		rd.forward(req, resp);*/
+		String userID = "user1";// cài cứng để tuấn làm follow
+		int groupID = Integer.parseInt(req.getParameter("keyword"));
+		String indexP = req.getParameter("index");
+
+		if (indexP == null) {
+			indexP = "1";
+		}
+		int index = Integer.parseInt(indexP);
+
+		Long countP = groupService.CountListUsersGroup(groupID);
+		// chia trang cho count
+		Long endPage = countP / 10;
+		if (countP % 10 != 0) {
+			endPage++;
+		}
+		List<User> listuser = groupService.paginationPageListUsersGroup(index - 1, 10,groupID);
+		// Xử lí bài toán
+		// đẩy dữ liệu ra view
+		req.setAttribute("listuser", listuser);
+		req.setAttribute("countAll", countP);
+		req.setAttribute("endP", endPage);
+		req.setAttribute("tag", index);
+		req.setAttribute("userID", userID);
+		req.setAttribute("keyword", groupID);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
+		rd.forward(req, resp);
+		
 	}
 }

@@ -11,7 +11,7 @@ import Entity.User;
 import JpaConfig.JPAConfig;
 
 public class GroupDAOImpl implements iGroupDAO{
-	
+	//iGroupDAO groupDao = new GroupDAOImpl();
 	@Override
 	public List<Group> findAllGroup() {
 		EntityManager enma = JPAConfig.getEntityManager();
@@ -38,8 +38,11 @@ public class GroupDAOImpl implements iGroupDAO{
 				// System.out.println(list.getFollowers());
 				// System.out.println(user.getFollowingUsers());
 		iGroupDAO pro = new GroupDAOImpl();
-		List<Group> user = pro.paginationPageSearchGroups(0, 2, "Group");
-		System.out.println(user);				
+		//List<Group> user = pro.paginationPageSearchGroups(0, 2, "Group");
+		List<User> user = pro.paginationPageListUsersGroup(0,5,5);
+		Long sl = pro.CountListUsersGroup(5);
+		System.out.println(user);
+		System.out.println(sl);
 	}
 
 	@Override
@@ -141,6 +144,37 @@ public class GroupDAOImpl implements iGroupDAO{
 		TypedQuery<Long> query = entityManager.createQuery( "SELECT g FROM Group g WHERE g.groupName LIKE :groupName",
 	            Long.class);
 		query.setParameter("groupName", "%" + groupName + "%");
+
+		Long count = query.getSingleResult();
+		entityManager.close();
+
+		return count;
+	}
+
+	@Override
+	public List<User> paginationPageListUsersGroup(int index, int numberOfPage, int groupID) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		//Group group = groupDao.findGroup(groupID);
+		//TypedQuery<User> list = group.getMember();
+		//TypedQuery<User> list = entityManager.createQuery(group.getMember());
+		//String jpql = "SELECT u FROM User u JOIN u.groupMembers gm WHERE gm.group.groupID = :groupID";
+		String jpql = "SELECT u FROM User u JOIN u.UserGroups g WHERE g.groupID = :groupID";
+		TypedQuery<User> list = entityManager.createQuery(jpql, User.class);
+		list.setParameter("groupID", groupID);
+		list.setFirstResult(index * numberOfPage);
+		list.setMaxResults(numberOfPage);
+		List<User> users = list.getResultList();
+		System.out.println(users);
+		entityManager.close();
+		return users;
+	}
+
+	@Override
+	public Long CountListUsersGroup(int groupID) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		String jpql = "SELECT COUNT(u) FROM User u JOIN u.UserGroups g WHERE g.groupID = :groupID";
+		TypedQuery<Long> query = entityManager.createQuery( jpql,Long.class);
+		query.setParameter("groupID",groupID);
 
 		Long count = query.getSingleResult();
 		entityManager.close();
