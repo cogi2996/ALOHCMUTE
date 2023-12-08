@@ -2,6 +2,7 @@ package Dao;
 
 import java.util.List;
 
+import Entity.User;
 import Entity.UserPost;
 
 public interface IUserPostDao {
@@ -12,4 +13,5 @@ public interface IUserPostDao {
 	Long countAll();//hieu them
 	//hieu-end
 	
+	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid);
 }

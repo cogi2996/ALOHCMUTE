@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
@@ -57,8 +58,13 @@ public class PostAPI extends HttpServlet{
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		String amount = req.getParameter("exits");
+		System.out.println("[1]-bat dau load");
+		System.out.println(amount);
+		System.out.println("[2]-end load");
 		int imount = Integer.parseInt(amount);
-		List<UserPost> listPost = userPostService.paginationPage(imount, 6);
+		HttpSession session = req.getSession();
+		String uid = (String) session.getAttribute("uid");
+		List<UserPost> listPost = userPostService.paginationPostUser(imount, 4,uid);
 		List<UserPostModel> listPostModel = new ArrayList<UserPostModel>();
 		for (UserPost post : listPost) {
 			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
@@ -71,7 +77,6 @@ public class PostAPI extends HttpServlet{
 			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
 			listPostModel.add(postModel);
 		}
-
 		Gson gson = new Gson();
 		String listPostJson = gson.toJson(listPostModel);
 		System.out.println("list post lay duoc ; " + listPostModel);

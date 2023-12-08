@@ -13,4 +13,5 @@ public interface IUserPostService {
 	void delete(int userPostID);
 	Long countAll();
 	// hieu-end
+	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid);
 }

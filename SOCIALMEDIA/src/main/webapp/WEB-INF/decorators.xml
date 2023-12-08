@@ -2,6 +2,8 @@
 	<decorator name="user" page="user.jsp">
 		<pattern>/home*</pattern>
 		<pattern>/profile*</pattern>
+		<pattern>/editProfile*</pattern>
+		<pattern>/timkiem*</pattern>
 	</decorator>
 	<decorator name="admin" page="admin.jsp">
 
