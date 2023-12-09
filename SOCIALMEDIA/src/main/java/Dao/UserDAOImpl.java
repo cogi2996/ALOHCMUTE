@@ -16,8 +16,8 @@ public class UserDAOImpl implements IUserDAO {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.userID = :userID", User.class);
 		query.setParameter("userID", userID);
-
 		return query.getSingleResult();
+		
 	}
 
 	@Override
