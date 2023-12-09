@@ -36,6 +36,11 @@ public class UserPost {
 
 	@ManyToMany(mappedBy = "likePosts")
 	private List<User> likeUsers;
+	
+	//group mà bài viết được đăng ( nếu có )
+	@ManyToOne
+	@JoinColumn(name = "groupID")
+	private Group group;
 
 	@Override
 	public String toString() {
