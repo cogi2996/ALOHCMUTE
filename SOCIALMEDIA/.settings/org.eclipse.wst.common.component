@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                                 
     
     
@@ -6,7 +7,11 @@
     
     
     
+=======
+        
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
     <wb-module deploy-name="SOCIALMEDIA-1.0">
+<<<<<<< HEAD
                                                                 
         
         
@@ -14,7 +19,11 @@
         
         
         
+=======
+                
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+<<<<<<< HEAD
                                                                 
         
         
@@ -22,7 +31,11 @@
         
         
         
+=======
+                
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
                                                                 
         
         
@@ -30,7 +43,11 @@
         
         
         
+=======
+                
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+<<<<<<< HEAD
                                                                 
         
         
@@ -38,7 +55,11 @@
         
         
         
+=======
+                
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
                                                         
         
         
@@ -54,7 +75,11 @@
         
         
         
+=======
+                
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
         <property name="context-root" value="SOCIALMEDIA"/>
+<<<<<<< HEAD
                                                                 
         
         
@@ -62,7 +87,11 @@
         
         
         
+=======
+                
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
         <property name="java-output-path" value="/SOCIALMEDIA/target/classes"/>
+<<<<<<< HEAD
                                                             
     
     
@@ -70,7 +99,11 @@
     
     
     
+=======
+            
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
     </wb-module>
+<<<<<<< HEAD
                             
 
 
@@ -78,4 +111,7 @@
 
 
 
+=======
+    
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
 </project-modules>
