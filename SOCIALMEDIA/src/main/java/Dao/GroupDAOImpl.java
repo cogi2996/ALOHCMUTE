@@ -39,8 +39,13 @@ public class GroupDAOImpl implements iGroupDAO{
 				// System.out.println(user.getFollowingUsers());
 		iGroupDAO pro = new GroupDAOImpl();
 		//List<Group> user = pro.paginationPageSearchGroups(0, 2, "Group");
-		List<User> user = pro.paginationPageListUsersGroup(0,5,5);
-		Long sl = pro.CountListUsersGroup(5);
+		//List<User> user = pro.paginationPageListUsersGroup(0,5,1);
+		//Long sl = pro.CountListUsersGroup(5);
+		//List<Group> user = pro.paginationPageSearchGroups(0,5,"Group");
+		//List<User> user = pro.paginationPageSearchUsersGroup(0,5,1,"a");
+		Long sl = pro.CountSearchUsersGroup(1,"a");
+		List<Group> user = pro.searchGroupbygroupName("a");
+		//Long sl = pro.countSearchUsers("Group");
 		System.out.println(user);
 		System.out.println(sl);
 	}
@@ -141,7 +146,7 @@ public class GroupDAOImpl implements iGroupDAO{
 	@Override
 	public Long countSearchUsers(String groupName) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
-		TypedQuery<Long> query = entityManager.createQuery( "SELECT g FROM Group g WHERE g.groupName LIKE :groupName",
+		TypedQuery<Long> query = entityManager.createQuery( "SELECT COUNT(g) FROM Group g WHERE g.groupName LIKE :groupName",
 	            Long.class);
 		query.setParameter("groupName", "%" + groupName + "%");
 
@@ -154,10 +159,6 @@ public class GroupDAOImpl implements iGroupDAO{
 	@Override
 	public List<User> paginationPageListUsersGroup(int index, int numberOfPage, int groupID) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
-		//Group group = groupDao.findGroup(groupID);
-		//TypedQuery<User> list = group.getMember();
-		//TypedQuery<User> list = entityManager.createQuery(group.getMember());
-		//String jpql = "SELECT u FROM User u JOIN u.groupMembers gm WHERE gm.group.groupID = :groupID";
 		String jpql = "SELECT u FROM User u JOIN u.UserGroups g WHERE g.groupID = :groupID";
 		TypedQuery<User> list = entityManager.createQuery(jpql, User.class);
 		list.setParameter("groupID", groupID);
@@ -182,5 +183,33 @@ public class GroupDAOImpl implements iGroupDAO{
 		return count;
 	}
 
+	@Override
+	public List<User> paginationPageSearchUsersGroup(int index, int numberOfPage, int groupID, String keyword) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		String jpql = "SELECT u FROM User u JOIN u.UserGroups g WHERE (g.groupID = :groupID) and ((LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword))";
+		TypedQuery<User> list = entityManager.createQuery(jpql, User.class);
+		list.setParameter("groupID", groupID);
+		list.setParameter("keyword", "%" + keyword + "%");
+		list.setFirstResult(index * numberOfPage);
+		list.setMaxResults(numberOfPage);
+		List<User> users = list.getResultList();
+		System.out.println(users);
+		entityManager.close();
+		return users;
+	}
+
+	@Override
+	public Long CountSearchUsersGroup(int groupID, String keyword) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		String jpql = "SELECT COUNT(u) FROM User u JOIN u.UserGroups g WHERE (g.groupID = :groupID) and ((LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword))";
+		TypedQuery<Long> query = entityManager.createQuery( jpql,Long.class);
+		query.setParameter("groupID",groupID);
+		query.setParameter("keyword", "%" + keyword + "%");
+		Long count = query.getSingleResult();
+		entityManager.close();
+
+		return count;
+	}
+	
 	
 }

@@ -30,16 +30,16 @@ public class GroupPost implements Serializable {
 	private Date groupPostCreateTime;
 	private boolean groupPostStatus;
 	private Date groupPostUpdateTime;
-
+/*
 	// Các bài viết của user đã đăng
 	@ManyToOne
 	@JoinColumn(name = "userID")
-	private User user;
-
+	private User user;*/
+	/*
 	// group hiện tại đang chứa post 
 	@ManyToOne
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "groupPostID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
-	private Group group;
+	private Group group;*/
 
 	@Override
 	public String toString() {
@@ -47,7 +47,7 @@ public class GroupPost implements Serializable {
 				+ groupPostCreateTime + ", groupPostStatus=" + groupPostStatus + ", groupPostUpdateTime="
 				+ groupPostUpdateTime + "]";
 	}
-
+/*
 	public GroupPost(int groupPostID, String groupPostText, Date groupPostCreateTime, boolean groupPostStatus,
 			Date groupPostUpdateTime, User user, Group group) {
 		super();
@@ -58,7 +58,7 @@ public class GroupPost implements Serializable {
 		this.groupPostUpdateTime = groupPostUpdateTime;
 		this.user = user;
 		this.group = group;
-	}
+	}*/
 
 	public GroupPost() {
 		super();
@@ -104,21 +104,21 @@ public class GroupPost implements Serializable {
 	public void setGroupPostUpdateTime(Date groupPostUpdateTime) {
 		this.groupPostUpdateTime = groupPostUpdateTime;
 	}
-
+/*
 	public User getUser() {
 		return user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
+	}*/
+	/*
 	public Group getGroup() {
 		return group;
 	}
 
 	public void setGroup(Group group) {
 		this.group = group;
-	}
+	}*/
 
 }

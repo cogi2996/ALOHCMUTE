@@ -80,7 +80,6 @@ public class UserDAOImpl implements IUserDAO {
 
 		return users;
 	}
-
 	// phân trang tìm kiếm user
 	@Override
 	public List<User> paginationPageSearchUsers(int index, int numberOfPage, String keyword) {

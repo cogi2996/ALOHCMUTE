@@ -39,14 +39,22 @@ public class GroupServiceImpl implements iGroupService{
 
 	@Override
 	public List<User> paginationPageListUsersGroup(int index, int numberOfPage, int groupID) {
-		// TODO Auto-generated method stub
 		return groupDAO.paginationPageListUsersGroup(index, numberOfPage, groupID);
 	}
 
 	@Override
 	public Long CountListUsersGroup(int groupID) {
-		// TODO Auto-generated method stub
 		return groupDAO.CountListUsersGroup(groupID);
+	}
+
+	@Override
+	public List<User> paginationPageSearchUsersGroup(int index, int numberOfPage, int groupID, String keyword) {
+		return groupDAO.paginationPageSearchUsersGroup(index, numberOfPage, groupID, keyword);
+	}
+
+	@Override
+	public Long CountSearchUsersGroup(int groupID, String keyword) {
+		return groupDAO.CountSearchUsersGroup(groupID, keyword);
 	}
 	
 }

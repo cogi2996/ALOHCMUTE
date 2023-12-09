@@ -61,10 +61,10 @@ public class User implements Serializable {
 	// Các bài viết ( cá nhân ) của user.
 	@OneToMany(mappedBy = "user")
 	private List<UserPost> userPosts;
-
+/*
 	// Các bài viết ( group ) của user.
 	@OneToMany(mappedBy = "user")
-	private List<GroupPost> groupPosts;
+	private List<GroupPost> groupPosts;*/
 
 	// Những người user đã gửi follow.
 	@ManyToMany
@@ -234,7 +234,7 @@ public class User implements Serializable {
 	public void setUserPosts(List<UserPost> userPosts) {
 		this.userPosts = userPosts;
 	}
-
+/*
 	public List<GroupPost> getGroupPosts() {
 		return groupPosts;
 	}
@@ -242,7 +242,7 @@ public class User implements Serializable {
 	public void setGroupPosts(List<GroupPost> groupPosts) {
 		this.groupPosts = groupPosts;
 	}
-
+*/
 	public List<User> getFollowingUsers() {
 		return followingUsers;
 	}
