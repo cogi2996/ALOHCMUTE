@@ -91,5 +91,27 @@ create table `GroupMember`(
     foreign key (groupPostID) references `GroupPost`(groupPostID) on delete cascade
 );
 
+CREATE TABLE IF NOT EXISTS `alohcmute`.`hiringpost` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `company` VARCHAR(255) NULL DEFAULT NULL,
+  `salary` INT NULL DEFAULT NULL,
+  `position` VARCHAR(255) NULL DEFAULT NULL,
+  `location` VARCHAR(255) NULL DEFAULT NULL,
+  `startDate` DATE NULL DEFAULT NULL,
+  `endDate` DATE NULL DEFAULT NULL,
+  `description` VARCHAR(5000) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
+  
+INSERT INTO `alohcmute`.`hiringpost` 
+(`company`, `salary`, `position`, `location`, `startDate`, `endDate`, `description`) 
+VALUES 
+('Công ty A ', '20000', 'Backend', 'Hồ Chí Minh', '2023-11-8', '2023-12-8', 'Không'),
+('Công ty B ', '20000', 'Backend', 'Hồ Chí Minh', '2023-11-8', '2023-12-8', 'Không'),
+('Công ty C ', '20000', 'Backend', 'Hồ Chí Minh', '2023-11-8', '2023-12-8', 'Không'),
+('Công ty D ', '20000', 'Backend', 'Hồ Chí Minh', '2023-11-8', '2023-12-8', 'Không'),
+('Công ty E ', '20000', 'Backend', 'Hồ Chí Minh', '2023-11-8', '2023-12-8', 'Không');
+
+
+
 
 

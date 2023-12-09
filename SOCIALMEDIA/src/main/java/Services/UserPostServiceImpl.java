@@ -1,5 +1,6 @@
 package Services;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -56,4 +57,19 @@ public class UserPostServiceImpl implements IUserPostService {
 		return userPostDao.countAll();
 	}
 	//hieu-end
+
+	@Override
+	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid) {
+		return userPostDao.paginationPostProfile(index,numberOfPage,uid);
+	}
+
+	@Override
+	public void insertLikePost(String userID, int userPostID, Date likeTime) {
+		userPostDao.insertLikePost(userID, userPostID, likeTime);
+	}
+
+	@Override
+	public UserPost findOne(int userPostID) {
+		return userPostDao.findOne(userPostID);
+	}
 }
