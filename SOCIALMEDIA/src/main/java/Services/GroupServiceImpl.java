@@ -56,5 +56,20 @@ public class GroupServiceImpl implements iGroupService{
 	public Long CountSearchUsersGroup(int groupID, String keyword) {
 		return groupDAO.CountSearchUsersGroup(groupID, keyword);
 	}
+
+	@Override
+	public List<Group> searchGroupbygroupName(String groupName) {
+		return groupDAO.searchGroupbygroupName(groupName);
+	}
+
+	@Override
+	public List<Group> paginationPageSearchGroups(int index, int numberOfPage, String groupName) {
+		return groupDAO.paginationPageSearchGroups(index, numberOfPage, groupName);
+	}
+
+	@Override
+	public Long countSearchUsers(String groupName) {
+		return groupDAO.countSearchUsers(groupName);
+	}
 	
 }

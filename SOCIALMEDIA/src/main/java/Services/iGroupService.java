@@ -16,5 +16,8 @@ public interface iGroupService {
 	Long CountListUsersGroup(int groupID);
 	List<User> paginationPageSearchUsersGroup(int index, int numberOfPage,int groupID, String keyword);
 	Long CountSearchUsersGroup(int groupID, String keyword);
+	List<Group> searchGroupbygroupName(String groupName);
+	List<Group> paginationPageSearchGroups(int index, int numberOfPage,String groupName);
+	Long countSearchUsers(String groupName);
 	// tin end
 }

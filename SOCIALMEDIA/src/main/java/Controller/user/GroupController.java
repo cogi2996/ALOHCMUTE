@@ -13,7 +13,7 @@ import Entity.Group;
 import Entity.User;
 import Services.GroupServiceImpl;
 import Services.iGroupService;
-@WebServlet(urlPatterns = {"/group/searchpost","/group/listuser","/group/searchusergroup","/group"})
+@WebServlet(urlPatterns = {"/group/searchpost","/group/listuser","/group/searchusergroup","/group/searchgroup","/group"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
@@ -30,6 +30,9 @@ private static final long serialVersionUID = 1L;
 		}
 		else if(url.contains("searchusergroup")) {
 			SearchUserInGroup(req, resp);
+		}
+		else if(url.contains("searchgroup")) {
+			SearchGroupbygroupName(req, resp);
 		}
 		else if(url.contains("group")) {
 			req.getRequestDispatcher("/views/user/groups.jsp").forward(req, resp);
@@ -111,5 +114,30 @@ private static final long serialVersionUID = 1L;
 		rd.forward(req, resp);
 		
 	}
-	
+	private void SearchGroupbygroupName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String groupName = req.getParameter("groupName");
+		String indexP = req.getParameter("index");
+
+		if (indexP == null) {
+			indexP = "1";
+		}
+		int index = Integer.parseInt(indexP);
+		Long countP = groupService.countSearchUsers(groupName);
+		// chia trang cho count
+		Long endPage = countP / 10;
+		if (countP % 10 != 0) {
+			endPage++;
+		}
+		List<Group> listgroup = groupService.paginationPageSearchGroups(index - 1, 10,groupName);
+		System.out.println(listgroup);
+		// Xử lí bài toán
+		// đẩy dữ liệu ra view
+		req.setAttribute("listgroup", listgroup);
+		req.setAttribute("countAll", countP);
+		req.setAttribute("endP", endPage);
+		req.setAttribute("tag", index);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/usersgroup.jsp");
+		rd.forward(req, resp);
+	}
 }

@@ -44,7 +44,7 @@ public class GroupDAOImpl implements iGroupDAO{
 		//List<Group> user = pro.paginationPageSearchGroups(0,5,"Group");
 		//List<User> user = pro.paginationPageSearchUsersGroup(0,5,1,"a");
 		Long sl = pro.CountSearchUsersGroup(1,"a");
-		List<Group> user = pro.searchGroupbygroupName("a");
+		List<Group> user = pro.searchGroupbygroupName("học");
 		//Long sl = pro.countSearchUsers("Group");
 		System.out.println(user);
 		System.out.println(sl);
