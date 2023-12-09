@@ -61,6 +61,10 @@ public class User implements Serializable {
 	// Các bài viết ( cá nhân ) của user.
 	@OneToMany(mappedBy = "user")
 	private List<UserPost> userPosts;
+	
+	// Các bài viết ( cá nhân ) của user.
+	@OneToMany(mappedBy = "group")
+	private List<UserPost> groupPost; 
 /*
 	// Các bài viết ( group ) của user.
 	@OneToMany(mappedBy = "user")

@@ -18,11 +18,11 @@ public class UserPostDaoImpl implements IUserPostDao {
 
 	public static void main(String[] args) {
 //		System.out.println(new UserPostDaoImpl().paginationPage(12, 6));
-//		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "6SsHvCz90kNaaUoZWDQUdsu84o02");
-//		System.out.println(list.size());
-//		for (UserPost p : list) {
-//			System.out.println(p);
-//		}
+		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "Tu0vC4JFm9TViVIpqSPgxEp3DP92");
+		System.out.println(list.size());
+		for (UserPost p : list) {
+			System.out.println(p);
+		}
 //		new UserPostDaoImpl().insertLikePost("4Mp0hZK1s7WcnTq462EInqBYCbC2", 43, new Date(0));
 //		System.out.println(new UserPostDaoImpl().findOne(43).getLikeUsers().size());
 
@@ -101,7 +101,7 @@ public class UserPostDaoImpl implements IUserPostDao {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 //		String jpqlQuery = "SELECT up FROM User u " + "JOIN u.followingUsers fu " + "JOIN fu.userPosts up "
 //				+ "WHERE u.userID = :userId " + "ORDER BY up.UserPostCreateTime DESC";
-		List<UserPost> list = entityManager.createQuery("SELECT uP FROM UserPost uP WHERE uP.user.userID = :uid",UserPost.class)
+		List<UserPost> list = entityManager.createQuery("SELECT uP FROM UserPost uP WHERE uP.user.userID = :uid and uP.group.groupID = null",UserPost.class)
 				.setParameter("uid", uid).setFirstResult(index).setMaxResults(numberOfPage) 
 				.getResultList();
 		return list;
