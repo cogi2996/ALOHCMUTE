@@ -24,7 +24,7 @@
 
 			<property name="javax.persistence.jdbc.password"
 
-				value="29092003" />
+				value="123456" />
 
 
 			<property name="javax.persistence.jdbc.driver"
