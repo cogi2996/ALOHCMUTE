@@ -81,3 +81,25 @@
 		</div>
 	</nav>
 </header>
+
+<div class="notify-modal">
+	<h2>
+		Notifications - <span>2</span>
+	</h2>
+	<div class="notify-item">
+		<img src="https://img.icons8.com/flat_round/64/000000/vote-badge.png"
+			alt="img" />
+		<div class="text">
+			<h4>Samso aliao</h4>
+			<p>Samso Nagaro Like your home work</p>
+		</div>
+	</div>
+	<div class="notify-item">
+		<img src="https://img.icons8.com/flat_round/64/000000/vote-badge.png"
+			alt="img" />
+		<div class="text">
+			<h4>John Silvester</h4>
+			<p>+20 vista badge earned</p>
+		</div>
+	</div>
+</div>
