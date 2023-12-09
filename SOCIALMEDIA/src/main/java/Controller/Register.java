@@ -93,7 +93,7 @@ public class Register extends HttpServlet {
 			String code = req.getParameter("code");
 			if (code.equals(userModel.getCode())) {
 				System.out.println("XAC THUC THANH CONG");
-				
+				session.setAttribute("uid", userModel.getUserID());
 				try {
 					// tạo tài khoản lên firebase
 					UserRecord userRecord = firebaseService.createUserWithEmailAndPass(userModel);
