@@ -2,7 +2,6 @@ package Services;
 
 import java.util.List;
 
-import Entity.LikeUserPost;
 import Entity.UserPost;
 
 public interface IUserPostService {
@@ -12,9 +11,12 @@ public interface IUserPostService {
 	void update(UserPost userPost);
 	void delete(int userPostID);
 	Long countAll();
-	LikeUserPost findLikeUserPost(int userPostID);
-	Long countLike(int userPostID);
-	void insertUserLikePost(LikeUserPost likePost);
+//	UserPost findLikeUserPost(int userPostID);
+//	Long countLike(int userPostID);
+//	void insertUserLikePost(LikeUserPost likePost);
+//	void deleteUserLike(String userID, int userPostID);
+	List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage,String keyword);
+	Long countSearchUserPost(String keyword);
 	// hieu-end
 	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid);
 }

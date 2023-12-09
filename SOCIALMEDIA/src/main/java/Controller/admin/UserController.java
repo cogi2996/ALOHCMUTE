@@ -16,7 +16,7 @@ import Entity.UserPost;
 import Services.IUserService;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower", "/admin-manage/user/profile", "/admin-manage/user/posts"})
+@WebServlet(urlPatterns = {"/admin-manage/user/listuser", "/admin-manage/user/delete", "/admin-manage/user/update", "/admin-manage/user/following" , "/admin-manage/user/follower", "/admin-manage/user/profile", "/admin-manage/user/posts", "/admin-manage/user/searchUser"})
 public class UserController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
@@ -72,6 +72,33 @@ public class UserController extends HttpServlet{
 			req.setAttribute("listPost", listPost);
 			req.setAttribute("countPost", countPost);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listpost.jsp");
+			rd.forward(req, resp);
+		}
+		else if(url.contains("searchUser"))
+		{
+			String keyword = req.getParameter("keyword");
+			String indexP = req.getParameter("index");
+
+			if (indexP == null) {
+				indexP = "1";
+			}
+			int index = Integer.parseInt(indexP);
+
+			Long countP = userService.countSearchUsers(keyword);
+			// chia trang cho count
+			Long endPage = countP / 10;
+			if (countP % 10 != 0) {
+				endPage++;
+			}
+			List<User> listUser = userService.paginationPageSearchUsers(index - 1, 10,keyword);
+			// Xử lí bài toán
+			// đẩy dữ liệu ra view
+			req.setAttribute("listUser", listUser);
+			req.setAttribute("countAll", countP);
+			req.setAttribute("endP", endPage);
+			req.setAttribute("tag", index);
+			req.setAttribute("keyword", keyword);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/findUser.jsp");
 			rd.forward(req, resp);
 		}
 		try {

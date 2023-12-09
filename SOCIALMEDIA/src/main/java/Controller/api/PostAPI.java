@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import com.google.api.client.util.DateTime;
 import com.google.gson.Gson;
 
-import Entity.LikeUserPost;
 import Entity.User;
 import Entity.UserPost;
 import Model.UserPostModel;
@@ -39,66 +38,79 @@ public class PostAPI extends HttpServlet{
 		if (url.contains("loadAjaxPost")) {
 			postLoadAjax(req, resp);
 		}
-		if(url.contains("listUserLike"))
-		{
-			int id = Integer.parseInt(req.getParameter("id"));
-			LikeUserPost likePost = userPostService.findLikeUserPost(id);
-			List<User> userLikePost = likePost.getUser();
-			Long countLike = userPostService.countLike(id); //dem user like post
-			
-			
-			req.setAttribute("userLikePost", userLikePost);
-			req.setAttribute("countLike", countLike);
-			
-			RequestDispatcher rd = req.getRequestDispatcher("/views/user/user-like.jsp");
-			rd.forward(req, resp);
-		}
+//		if(url.contains("listUserLike")) //lay danh sach user like post 
+//		{
+//			int id = Integer.parseInt(req.getParameter("id"));
+//			LikeUserPost likePost = userPostService.findLikeUserPost(id);
+//			List<User> userLikePost = likePost.getUser();
+//			Long countLike = userPostService.countLike(id); //dem user like post
+//			
+//			
+//			req.setAttribute("listUser", userLikePost);
+//			req.setAttribute("countLike", countLike);
+//			
+//			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuser.jsp");
+//			rd.forward(req, resp);
+//		}
+//		if(url.contains("unlike")) //user huy like
+//		{
+//			delete(req, resp);
+//		}
+//	}
+//	private void delete(HttpServletRequest req, HttpServletResponse resp) {
+//		int id = Integer.parseInt(req.getParameter("id"));
+//		HttpSession session = req.getSession(true);
+//		
+//        // Lấy userID từ thuộc tính của phiên.
+//        String userID = (String) session.getAttribute("userID");
+//        userPostService.deleteUserLike(userID, id);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setCharacterEncoding("UTF-8");
-//		resp.setContentType("application/json");
-//		resp.setCharacterEncoding("UTF-8");
-//		Gson gson = new Gson();
-//		UserPostModel newPost = gson.fromJson(req.getReader(),UserPostModel.class);
-//		System.out.println("userpost da post: "+ newPost);
-//		UserPost userPost = new UserPost();
-//		userPost.setUserPostText(newPost.getText());
-//		userPost.setUserPostCreateTime(new Date());
-//		User user = new User();
-//		user.setUserID(newPost.getUserid());
-//		userPost.setUser(user);
-//		// còn thiếu dữ liệu hình ảnh 
-//		userPost.setUserPostImg(newPost.getImg());
-//		userPostService.insert(userPost);
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		Gson gson = new Gson();
+		UserPostModel newPost = gson.fromJson(req.getReader(),UserPostModel.class);
+		System.out.println("userpost da post: "+ newPost);
+		UserPost userPost = new UserPost();
+		userPost.setUserPostText(newPost.getText());
+		userPost.setUserPostCreateTime(new Date());
+		User user = new User();
+		user.setUserID(newPost.getUserid());
+		userPost.setUser(user);
+		// còn thiếu dữ liệu hình ảnh 
+		userPost.setUserPostImg(newPost.getImg());
+		userPostService.insert(userPost);
 		
 		//hieu them
-		String url = req.getRequestURL().toString();
-		if (url.contains("like")) {
-			insertLikePost(req, resp);
-		}
+//		String url = req.getRequestURL().toString();
+//		if (url.contains("like")) //user like
+//		{
+//			insertLikePost(req, resp);
+//		}
 	}
-	private void insertLikePost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-		int id = Integer.parseInt(req.getParameter("id"));
-		LikeUserPost model = userPostService.findLikeUserPost(id);
-		try {
-			model.setUserPostID(id);
-			HttpSession session = req.getSession(true);
-	
-	        // Lấy userID từ thuộc tính của phiên.
-	        String userID = (String) session.getAttribute("userID");
-			User user = new User();
-			user.setUserID(userID);
-			long millis=System.currentTimeMillis();   
-			Date date= new java.sql.Date(millis);
-			model.setLikeTime(date);
-			
-			userPostService.insertUserLikePost(model);
-		} catch (Exception e) {
-			e.printStackTrace();
-			req.setAttribute("error", "Thất bại");
-		}
-	}
+//	private void insertLikePost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+//		int id = Integer.parseInt(req.getParameter("id"));
+//		LikeUserPost model = userPostService.findLikeUserPost(id);
+//		try {
+//			model.setUserPostID(id);
+//			HttpSession session = req.getSession(true);
+//	
+//	        // Lấy userID từ thuộc tính của phiên.
+//	        String userID = (String) session.getAttribute("userID");
+//			User user = new User();
+//			user.setUserID(userID);
+//			long millis=System.currentTimeMillis();   
+//			Date date= new java.sql.Date(millis);
+//			model.setLikeTime(date);
+//			
+//			userPostService.insertUserLikePost(model);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			req.setAttribute("error", "Thất bại");
+//		}
+//	}
 	// các method
 	public void postLoadAjax(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("application/json");

@@ -9,7 +9,6 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import Entity.LikeUserPost;
 import Entity.User;
 import JpaConfig.JPAConfig;
 
@@ -142,5 +141,33 @@ public class UserDAOImpl implements IUserDAO {
 		return list;
 	}
 	//hieu end
+	
+	// phân trang tìm kiếm user
+		@Override
+		public List<User> paginationPageSearchUsers(int index, int numberOfPage, String keyword) {
+			EntityManager entityManager = JPAConfig.getEntityManager();
+			 TypedQuery<User> list = entityManager.createQuery( "SELECT u FROM User u WHERE (LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword)",
+			            User.class);
+			    
+			list.setParameter("keyword", "%" + keyword + "%");
+			list.setFirstResult(index * numberOfPage);
+			list.setMaxResults(numberOfPage);
+			List<User> users = list.getResultList();
+			entityManager.close();
+			return users;
+		}
+		// đếm số lượng user đã search
+		@Override
+		public Long countSearchUsers(String keyword) {
+			EntityManager entityManager = JPAConfig.getEntityManager();
+			TypedQuery<Long> query = entityManager.createQuery( "SELECT COUNT(u) FROM User u WHERE (LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword)",
+		            Long.class);
+			query.setParameter("keyword", "%" + keyword + "%");
+
+			Long count = query.getSingleResult();
+			entityManager.close();
+
+			return count;
+		}
 
 }

@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Entity.User;
 import Entity.UserPost;
 import Services.IUserPostService;
 import Services.UserPostServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/post/listpost", "/admin-manage/post/delete"})
-public class PostController extends HttpServlet{
+@WebServlet(urlPatterns = {"/admin-manage/post/listuserpost", "/admin-manage/post/delete", "/admin-manage/post/listUserLike","/admin-manage/post/searchUserPost" })
+public class UserPostController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	IUserPostService postService = new UserPostServiceImpl();
 	
@@ -25,6 +26,33 @@ public class PostController extends HttpServlet{
 		String url = req.getRequestURL().toString();
 		if (url.contains("delete")) {
 			delete(req, resp);
+		}
+		else if(url.contains("searchUserPost"))
+		{
+			String keyword = req.getParameter("keyword");
+			String indexP = req.getParameter("index");
+
+			if (indexP == null) {
+				indexP = "1";
+			}
+			int index = Integer.parseInt(indexP);
+
+			Long countP = postService.countSearchUserPost(keyword);
+			// chia trang cho count
+			Long endPage = countP / 10;
+			if (countP % 10 != 0) {
+				endPage++;
+			}
+			List<UserPost> listPost = postService.paginationPageSearchUserPost(index - 1, 10,keyword);
+			// Xử lí bài toán
+			// đẩy dữ liệu ra view
+			req.setAttribute("listPost", listPost);
+			req.setAttribute("countAll", countP);
+			req.setAttribute("endP", endPage);
+			req.setAttribute("tag", index);
+			req.setAttribute("keyword", keyword);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/findUserPost.jsp");
+			rd.forward(req, resp);
 		}
 		try {
 			findAll(req, resp);
@@ -60,7 +88,7 @@ public class PostController extends HttpServlet{
 		req.setAttribute("endP", endPage);
 		req.setAttribute("tag", index);
 
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listpost.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuserpost.jsp");
 		rd.forward(req, resp);
 	}
 
@@ -74,7 +102,7 @@ public class PostController extends HttpServlet{
 			req.setAttribute("error", "Thất bại");
 		}
 
-		RequestDispatcher rd = req.getRequestDispatcher("listpost");
+		RequestDispatcher rd = req.getRequestDispatcher("listuserpost");
 		rd.forward(req, resp);
 	}
 }

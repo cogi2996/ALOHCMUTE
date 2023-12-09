@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="card shadow border-0 mb-7">
 	<div class="card-header">
-		<h5 class="mb-0">LIST USER</h5>
+		<h5 class="mb-0">RESULT FIND USER</h5>
 	</div>
 	<div class="row justify-content-center">
 		<div class="col-12 col-md-10 col-lg-8">
@@ -17,11 +17,11 @@
 					<div class="col">
 						<input
 							class="form-control form-control-lg form-control-borderless"
-							type="search" placeholder="Search username">
+							type="search" placeholder="${keyword}">
 					</div>
 					<!--end of col-->
 					<div class="col-auto">
-						<button class="btn btn-lg btn-success" href="searchUser?keyword=park&index=1">Search</button>
+						<button class="btn btn-lg btn-success">Search</button>
 					</div>
 					<!--end of col-->
 				</div>
@@ -50,9 +50,9 @@
 						<td><img alt="..."
 							src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
 							class="avatar avatar-sm rounded-circle me-2"> <a
-							class="text-heading font-semibold"
-							href="profile?id=${item.getUserID()}"> ${item.getLastName()}
-								${item.getMidName()} ${item.getFirstName()} </a></td>
+							class="text-heading font-semibold" href="profile?id=${item.getUserID()}">
+								${item.getLastName()} ${item.getMidName()}
+								${item.getFirstName()} </a></td>
 						<td>${item.getMobile() }</td>
 						<td>${item.getAddress() }</td>
 						<td>${item.getPosition() }</td>
@@ -255,12 +255,9 @@
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 				<c:forEach begin="1" end="${endP}" var="i">
-					<li class="page-item"><a class="page-link"
-						href="listuser?index=${i}">${i}</a></li>
+					<li class="page-item"><a class="page-link" href="searchUser?keyword=${keyword}&index=${i}">${i}</a></li>
 				</c:forEach>
 			</ul>
 		</nav>
 	</div>
 </div>
-
-
