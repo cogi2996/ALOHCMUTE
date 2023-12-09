@@ -71,15 +71,26 @@ if (uri.contains("home")) {
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/resultFind.css"/>" />
 <%
-} 
+} else if (uri.contains("allGroup")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/group.css"/>" />
+
+<%
+} else if (uri.contains("grouppost")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/groupinfo.css"/>" />
+
+<%
+}
 %>
 
 
-	
-	<!-- list group css -->
+<%-- 	<!-- list group css -->
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/listgroup.css"/>" />
-</head>
+</head> --%>
 <body>
 	<%@include file="/common/user/header.jsp"%>
 	<decorator:body></decorator:body>
@@ -99,6 +110,7 @@ if (uri.contains("home")) {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript" src ='<c:url value ="/templates/navigation/script/navigation.js"></c:url>'></script>
+	<script type="text/javascript"
+		src='<c:url value ="/templates/navigation/script/navigation.js"></c:url>'></script>
 </body>
 </html>

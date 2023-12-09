@@ -13,7 +13,7 @@ import Entity.Group;
 import Entity.User;
 import Services.GroupServiceImpl;
 import Services.iGroupService;
-@WebServlet(urlPatterns = {"/group/searchpost","/group/listuser","/group/searchusergroup","/group/searchgroup","/group"})
+@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/listuser","/grouppost/searchusergroup","/grouppost/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
@@ -34,8 +34,8 @@ private static final long serialVersionUID = 1L;
 		else if(url.contains("searchgroup")) {
 			SearchGroupbygroupName(req, resp);
 		}
-		else if(url.contains("group")) {
-			req.getRequestDispatcher("/views/user/groups.jsp").forward(req, resp);
+		else if(url.contains("listgroup")) {
+			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		}
 	}
 

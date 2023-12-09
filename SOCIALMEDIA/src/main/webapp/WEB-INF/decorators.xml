@@ -4,6 +4,8 @@
 		<pattern>/profile*</pattern>
 		<pattern>/editProfile*</pattern>
 		<pattern>/timkiem*</pattern>
+		<pattern>/group/allGroup*</pattern>
+		<pattern>/grouppost*</pattern>
 	</decorator>
 	<decorator name="admin" page="admin.jsp">
 
