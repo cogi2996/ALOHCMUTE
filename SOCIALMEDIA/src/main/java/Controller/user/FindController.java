@@ -16,7 +16,7 @@ import Services.IUserService;
 import Services.UserServiceImpl;
 import Services.iGroupService;
 
-@WebServlet(urlPatterns = { "/timkiem","/loadusergroup" })
+@WebServlet(urlPatterns = { "/timkiem/loadusergroup","/timkiem" })
 public class FindController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class FindController extends HttpServlet {
 		System.out.println(listuser);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
 		rd.forward(req, resp);*/
-		
+		/*
 		String userID = "user1";// cài cứng để tuấn làm follow
 		String keyword = req.getParameter("keyword");
 		String indexP = req.getParameter("index");
@@ -58,36 +58,10 @@ public class FindController extends HttpServlet {
 		req.setAttribute("userID", userID);
 		req.setAttribute("keyword", keyword);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
-		rd.forward(req, resp);
-		/*
+		rd.forward(req, resp);*/
+		
 		String url = req.getRequestURL().toString();
-		if (url.contains("timkiem")) {
-			String userID = "user1";// cài cứng để tuấn làm follow
-			String keyword = req.getParameter("keyword");
-			String indexP = req.getParameter("index");
-
-			if (indexP == null) {
-				indexP = "1";
-			}
-			int index = Integer.parseInt(indexP);
-			Long countP = userService.countSearchUsers(keyword);
-			// chia trang cho count
-			Long endPage = countP / 10;
-			if (countP % 10 != 0) {
-				endPage++;
-			}
-			List<User> listuser = userService.paginationPageSearchUsers(index - 1, 10,keyword);
-			// Xử lí bài toán
-			// đẩy dữ liệu ra view
-			req.setAttribute("listuser", listuser);
-			req.setAttribute("countAll", countP);
-			req.setAttribute("endP", endPage);
-			req.setAttribute("tag", index);
-			req.setAttribute("userID", userID);
-			req.setAttribute("keyword", keyword);
-			RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
-			rd.forward(req, resp);
-		} else if (url.contains("loadusergroup")) {
+		if (url.contains("loadusergroup")) {
 			String userID = "user1";// cài cứng để tuấn làm follow
 			int groupID = Integer.parseInt(req.getParameter("keyword"));
 			String indexP = req.getParameter("index");
@@ -113,6 +87,32 @@ public class FindController extends HttpServlet {
 			req.setAttribute("keyword", groupID);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
 			rd.forward(req, resp);
-		}*/
+		} else if (url.contains("timkiem")) {
+			String userID = "user1";// cài cứng để tuấn làm follow
+			String keyword = req.getParameter("keyword");
+			String indexP = req.getParameter("index");
+
+			if (indexP == null) {
+				indexP = "1";
+			}
+			int index = Integer.parseInt(indexP);
+			Long countP = userService.countSearchUsers(keyword);
+			// chia trang cho count
+			Long endPage = countP / 10;
+			if (countP % 10 != 0) {
+				endPage++;
+			}
+			List<User> listuser = userService.paginationPageSearchUsers(index - 1, 10,keyword);
+			// Xử lí bài toán
+			// đẩy dữ liệu ra view
+			req.setAttribute("listuser", listuser);
+			req.setAttribute("countAll", countP);
+			req.setAttribute("endP", endPage);
+			req.setAttribute("tag", index);
+			req.setAttribute("userID", userID);
+			req.setAttribute("keyword", keyword);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
+			rd.forward(req, resp);
+		} 
 	}
 }

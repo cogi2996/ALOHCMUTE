@@ -11,6 +11,7 @@
 		<class>Entity.UserPost</class>
 		<class>Entity.HiringPost</class>
 		<class>Entity.Chat</class>
+		<class>Entity.GroupMember</class>
 	
 	
 		
