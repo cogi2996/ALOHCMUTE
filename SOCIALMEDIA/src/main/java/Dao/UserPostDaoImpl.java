@@ -1,5 +1,9 @@
 package Dao;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,17 +13,19 @@ import javax.persistence.TypedQuery;
 import Entity.User;
 import Entity.UserPost;
 import JpaConfig.JPAConfig;
-import Model.UserPostModel;
 
 public class UserPostDaoImpl implements IUserPostDao {
 
 	public static void main(String[] args) {
 //		System.out.println(new UserPostDaoImpl().paginationPage(12, 6));
-		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "6SsHvCz90kNaaUoZWDQUdsu84o02");
-		System.out.println(list.size());
-		for (UserPost p : list) {
-			System.out.println(p);
-		}
+//		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "6SsHvCz90kNaaUoZWDQUdsu84o02");
+//		System.out.println(list.size());
+//		for (UserPost p : list) {
+//			System.out.println(p);
+//		}
+		new UserPostDaoImpl().insertLikePost("mxFasgmO8bSvQtpiHqNUG9WrEai1", 43, new Date(0));
+//		new UserPostDaoImpl().
+
 
 	}
 
@@ -100,6 +106,23 @@ public class UserPostDaoImpl implements IUserPostDao {
 				.setParameter("uid", uid).setFirstResult(index).setMaxResults(numberOfPage) 
 				.getResultList();
 		return list;
+	}
+	Connection conn = null;
+	PreparedStatement ps = null;
+	ResultSet rs = null;
+	@Override
+	public void insertLikePost(String userID, int userPostID, Date likeTime){
+		  String sql = "INSERT INTO LikeUserPost (userID, userPostID, likeTime) VALUES (?, ?, ?)";
+		  try {
+		      conn = new DBConnection().getConnection();
+		        ps = conn.prepareStatement(sql);
+		        ps.setString(1, userID);
+		        ps.setInt(2, userPostID);
+		        ps.setDate(3, likeTime);
+		        ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

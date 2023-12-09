@@ -53,7 +53,6 @@ public class User implements Serializable {
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private List<Group> UserGroups;
 
-
 	// Những người user đã chat
 	@ManyToMany
 	@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))
@@ -75,7 +74,10 @@ public class User implements Serializable {
 	@ManyToMany(mappedBy = "followingUsers")
 	private List<User> followers;
 
-
+	// Những bài viết mà user đã like
+	@ManyToMany
+	@JoinTable(name = "LikeUserPost", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "userPostID"))
+	private List<UserPost> likePosts;
 
 	@Override
 	public String toString() {
@@ -268,7 +270,8 @@ public class User implements Serializable {
 	}
 
 	// Contructor của tạo user ChatAPI
-	public User(String userID, Date lastLogin, String firstName, String midName, String lastName, String position, String avatar) {
+	public User(String userID, Date lastLogin, String firstName, String midName, String lastName, String position,
+			String avatar) {
 		super();
 		this.userID = userID;
 		this.lastLogin = lastLogin;
@@ -277,6 +280,14 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.position = position;
 		this.avatar = avatar;
+	}
+
+	public List<UserPost> getLikePosts() {
+		return likePosts;
+	}
+
+	public void setLikePosts(List<UserPost> likePosts) {
+		this.likePosts = likePosts;
 	}
 
 }

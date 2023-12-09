@@ -1,8 +1,8 @@
 package Dao;
 
+import java.sql.Date;
 import java.util.List;
 
-import Entity.User;
 import Entity.UserPost;
 
 public interface IUserPostDao {
@@ -14,5 +14,9 @@ public interface IUserPostDao {
 	void delete(int userPostID);
 	Long countAll();//hieu them
 	//hieu-end
+	// tuan - begin - like post
+	void insertLikePost(String userID,int userPostID,Date likeTime);
+	//tuan -end - like post
+	
 	
 }

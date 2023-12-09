@@ -162,4 +162,10 @@ public class PostAPI extends HttpServlet{
 	}
 	// tuan-end
 	
+	// tuan - begin - api like post
+	
+	
+	// tuan - end
+	
+	
 }
