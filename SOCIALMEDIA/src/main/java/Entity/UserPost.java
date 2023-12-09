@@ -3,6 +3,7 @@ package Entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,15 @@ public class UserPost {
 	@JoinColumn(name = "userID")
 	private User user;
 	
+//	@OneToMany(mappedBy = "userPost", cascade = CascadeType.ALL)
+//    private List<LikeUserPost> likedByUsers;
+//	
+//	public List<LikeUserPost> getLikedByUsers() {
+//		return likedByUsers;
+//	}
+//	public void setLikedByUsers(List<LikeUserPost> likedByUsers) {
+//		this.likedByUsers = likedByUsers;
+//	}
 	@Override
 	public String toString() {
 		return "UserPost [userPostID=" + userPostID + ", userPostText=" + userPostText + ", UserPostCreateTime="

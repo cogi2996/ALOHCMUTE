@@ -31,11 +31,14 @@
 				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/user/listuser"> <i
 						class="bi bi-people"></i> USERS
 				</a></li>
+				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/post/listuserpost"> <i
+						class="bi bi-file-text"></i> USER POSTS
+				</a></li>
 				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/group/listgroup"> <i
 						class="bi bi-globe-americas"></i> GROUPS
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/post/listpost"> <i
-						class="bi bi-file-text"></i> POSTS
+				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/post/listgrouppost"> <i
+						class="bi bi-file-text"></i> GROUP POSTS
 				</a></li>
 			</ul>
 			<!-- Divider -->

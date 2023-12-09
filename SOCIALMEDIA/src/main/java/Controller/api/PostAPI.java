@@ -2,10 +2,13 @@ package Controller.api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.api.client.util.DateTime;
 import com.google.gson.Gson;
 
 import Entity.User;
@@ -22,7 +26,7 @@ import Services.IUserPostService;
 import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
-@WebServlet(urlPatterns = {"/api/v1/posts/loadAjaxPost","/api/v1/posts"})
+@WebServlet(urlPatterns = {"/api/v1/posts/loadAjaxPost","/api/v1/posts", "/api/v1/listUserLike", "/api/v1/like"})
 
 public class PostAPI extends HttpServlet{
 	IUserService userService = new UserServiceImpl();
@@ -34,6 +38,32 @@ public class PostAPI extends HttpServlet{
 		if (url.contains("loadAjaxPost")) {
 			postLoadAjax(req, resp);
 		}
+//		if(url.contains("listUserLike")) //lay danh sach user like post 
+//		{
+//			int id = Integer.parseInt(req.getParameter("id"));
+//			LikeUserPost likePost = userPostService.findLikeUserPost(id);
+//			List<User> userLikePost = likePost.getUser();
+//			Long countLike = userPostService.countLike(id); //dem user like post
+//			
+//			
+//			req.setAttribute("listUser", userLikePost);
+//			req.setAttribute("countLike", countLike);
+//			
+//			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuser.jsp");
+//			rd.forward(req, resp);
+//		}
+//		if(url.contains("unlike")) //user huy like
+//		{
+//			delete(req, resp);
+//		}
+//	}
+//	private void delete(HttpServletRequest req, HttpServletResponse resp) {
+//		int id = Integer.parseInt(req.getParameter("id"));
+//		HttpSession session = req.getSession(true);
+//		
+//        // Lấy userID từ thuộc tính của phiên.
+//        String userID = (String) session.getAttribute("userID");
+//        userPostService.deleteUserLike(userID, id);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,8 +82,36 @@ public class PostAPI extends HttpServlet{
 		// còn thiếu dữ liệu hình ảnh 
 		userPost.setUserPostImg(newPost.getImg());
 		userPostService.insert(userPost);
+		
+		//hieu them
+//		String url = req.getRequestURL().toString();
+//		if (url.contains("like")) //user like
+//		{
+//			insertLikePost(req, resp);
+//		}
 	}
 
+//	private void insertLikePost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+//		int id = Integer.parseInt(req.getParameter("id"));
+//		LikeUserPost model = userPostService.findLikeUserPost(id);
+//		try {
+//			model.setUserPostID(id);
+//			HttpSession session = req.getSession(true);
+//	
+//	        // Lấy userID từ thuộc tính của phiên.
+//	        String userID = (String) session.getAttribute("userID");
+//			User user = new User();
+//			user.setUserID(userID);
+//			long millis=System.currentTimeMillis();   
+//			Date date= new java.sql.Date(millis);
+//			model.setLikeTime(date);
+//			
+//			userPostService.insertUserLikePost(model);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			req.setAttribute("error", "Thất bại");
+//		}
+//	}
 	// các method
 	public void postLoadAjax(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("application/json");
@@ -112,11 +170,11 @@ public class PostAPI extends HttpServlet{
 	}
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("application/json");
+		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
-		Gson gson = new Gson(); 
-		UserPost userPostJSon = gson.fromJson(req.getReader(), UserPost.class);
-		userPostService.delete(userPostJSon.getUserPostID());
+		int id = Integer.parseInt(req.getParameter("userPostID"));
+		System.out.println(id);
+		userPostService.delete(id);
 		//Viết thông báo kết quả
 		PrintWriter out = resp.getWriter();
 		out.println("Đã xóa thành công");

@@ -12,6 +12,11 @@ public interface IUserPostDao {
 	void update(UserPost userPost);
 	void delete(int userPostID);
 	Long countAll();//hieu them
+//	UserPost findLikeUserPost(int userPostID);
+//	Long countLike(int userPostID);
+//	void deleteUserLike(String userID, int userPostID);
 	//hieu-end
-	
+	List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage,String keyword);
+	Long countSearchUserPost(String keyword);
+	//void insertUserLikePost(LikeUserPost likePost);
 }

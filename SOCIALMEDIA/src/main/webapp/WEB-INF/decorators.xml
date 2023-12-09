@@ -8,7 +8,6 @@
 	<decorator name="admin" page="admin.jsp">
 
 		<pattern>/admin*</pattern>
-
 	</decorator>
 
 	<excludes>

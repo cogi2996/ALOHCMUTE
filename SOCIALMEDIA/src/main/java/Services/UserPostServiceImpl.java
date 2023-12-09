@@ -56,4 +56,34 @@ public class UserPostServiceImpl implements IUserPostService {
 		return userPostDao.countAll();
 	}
 	//hieu-end
+//	@Override
+//	public UserPost findLikeUserPost(int userPostID) {
+//		return userPostDao.findLikeUserPost(userPostID);
+//	}
+//
+//	@Override
+//	public Long countLike(int userPostID) {
+//		return userPostDao.countLike(userPostID);
+//	}
+
+//	@Override
+//	public void insertUserLikePost(LikeUserPost likePost) {
+//		userPostDao.insertUserLikePost(likePost);
+//	}
+//
+//	@Override
+//	public void deleteUserLike(String userID, int userPostID) {
+//		userPostDao.deleteUserLike(userID, userPostID);
+//	}
+
+	@Override
+	public List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage, String keyword) {
+		return userPostDao.paginationPageSearchUserPost(index, numberOfPage, keyword);
+	}
+
+	@Override
+	public Long countSearchUserPost(String keyword) {
+		return userPostDao.countSearchUserPost(keyword);
+	}
+
 }

@@ -11,12 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Entity.User;
 import Entity.UserPost;
 import Services.IUserPostService;
 import Services.UserPostServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin-manage/post/listpost", "/admin-manage/post/delete", "/admin-manage/post/update"})
-public class PostController extends HttpServlet{
+@WebServlet(urlPatterns = {"/admin-manage/post/listuserpost", "/admin-manage/post/delete", "/admin-manage/post/listUserLike","/admin-manage/post/searchUserPost" })
+public class UserPostController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	IUserPostService postService = new UserPostServiceImpl();
 	
@@ -26,8 +27,32 @@ public class PostController extends HttpServlet{
 		if (url.contains("delete")) {
 			delete(req, resp);
 		}
-		else if(url.contains("update")){
-			
+		else if(url.contains("searchUserPost"))
+		{
+			String keyword = req.getParameter("keyword");
+			String indexP = req.getParameter("index");
+
+			if (indexP == null) {
+				indexP = "1";
+			}
+			int index = Integer.parseInt(indexP);
+
+			Long countP = postService.countSearchUserPost(keyword);
+			// chia trang cho count
+			Long endPage = countP / 10;
+			if (countP % 10 != 0) {
+				endPage++;
+			}
+			List<UserPost> listPost = postService.paginationPageSearchUserPost(index - 1, 10,keyword);
+			// Xử lí bài toán
+			// đẩy dữ liệu ra view
+			req.setAttribute("listPost", listPost);
+			req.setAttribute("countAll", countP);
+			req.setAttribute("endP", endPage);
+			req.setAttribute("tag", index);
+			req.setAttribute("keyword", keyword);
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/findUserPost.jsp");
+			rd.forward(req, resp);
 		}
 		try {
 			findAll(req, resp);
@@ -63,18 +88,21 @@ public class PostController extends HttpServlet{
 		req.setAttribute("endP", endPage);
 		req.setAttribute("tag", index);
 
-		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listpost.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuserpost.jsp");
 		rd.forward(req, resp);
 	}
 
-	private void delete(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
-		
-	}
+	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
+		try {
+			postService.delete(id);
+			req.setAttribute("message", "Xóa thành công");
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("error", "Thất bại");
+		}
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		RequestDispatcher rd = req.getRequestDispatcher("listuserpost");
+		rd.forward(req, resp);
 	}
 }
