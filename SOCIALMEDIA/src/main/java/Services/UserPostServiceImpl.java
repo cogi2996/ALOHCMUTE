@@ -67,4 +67,9 @@ public class UserPostServiceImpl implements IUserPostService {
 	public void insertLikePost(String userID, int userPostID, Date likeTime) {
 		userPostDao.insertLikePost(userID, userPostID, likeTime);
 	}
+
+	@Override
+	public UserPost findOne(int userPostID) {
+		return userPostDao.findOne(userPostID);
+	}
 }

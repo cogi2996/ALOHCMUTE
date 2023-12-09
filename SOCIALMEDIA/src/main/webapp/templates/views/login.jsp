@@ -122,10 +122,10 @@
 			<!-- Right -->
 		</div>
 	</section>
-	<script type="module"
+	<%-- <script type="module"
 		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script>
 	<script type="module"
-		src='<c:url value = "/templates/login/script/login.js"></c:url>'></script>
+		src='<c:url value = "/templates/login/script/login.js"></c:url>'></script> --%>
 </body>
 </html>
 

@@ -54,7 +54,7 @@
 						class="fa-solid fa-house icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="followers?id=2" onclick="handleActive()"> <i
+					href="/SOCIALMEDIA/follower?id=" onclick="handleActive()"> <i
 						class="fa-solid fa-user-group icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
@@ -62,7 +62,7 @@
 						class="fa-solid fa-users me-2 icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="#" onclick="handleActive()"> <i
+					href="/SOCIALMEDIA/hiring" onclick="handleActive()"> <i
 						class="fa-solid fa-briefcase icon"></i>
 				</a></li>
 			</ul>
@@ -72,7 +72,7 @@
 			<div class="col-3 circle-icon">
 				<i class="fa-solid fa-comment icon"></i>
 			</div>
-			<div class="col-3 circle-icon">
+			<div class="col-3 circle-icon" onclick="handleNotifyModal()">
 				<i class="fa-solid fa-bell icon"></i>
 			</div>
 			<div class="col-3 circle-icon">
@@ -81,3 +81,36 @@
 		</div>
 	</nav>
 </header>
+
+<div class="notify-modal" style ="z-index:1">
+	<h2>
+		Notifications - <span>2</span>
+	</h2>
+	<div class="notify-item">
+		<img src="https://img.icons8.com/flat_round/64/000000/vote-badge.png"
+			alt="img" />
+		<div class="text">
+			<h4>Samso aliao</h4>
+			<p>Samso Nagaro Like your home work</p>
+		</div>
+	</div>
+	<div class="notify-item">
+		<img src="https://img.icons8.com/flat_round/64/000000/vote-badge.png"
+			alt="img" />
+		<div class="text">
+			<h4>John Silvester</h4>
+			<p>+20 vista badge earned</p>
+		</div>
+	</div>
+</div>
+
+<script>
+function handleNotifyModal() {
+    let notify = document.querySelector(".notify-modal");
+    if (notify.style.display === "none") {
+        notify.style.display = "block";
+    } else {
+        notify.style.display = "none";
+    }
+}
+</script>

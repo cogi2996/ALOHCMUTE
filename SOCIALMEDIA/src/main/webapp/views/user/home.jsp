@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
@@ -155,3 +156,6 @@
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
 </body>
 </html>
+=======
+v
+>>>>>>> branch 'hoang-api' of https://github.com/cogi2996/ALOHCMUTE.git

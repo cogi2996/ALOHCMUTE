@@ -53,6 +53,7 @@ public class User implements Serializable {
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private List<Group> UserGroups;
 
+
 	// Những người user đã chat
 	@ManyToMany
 	@JoinTable(name = "Chat", joinColumns = @JoinColumn(name = "sourceID"), inverseJoinColumns = @JoinColumn(name = "targetID"))

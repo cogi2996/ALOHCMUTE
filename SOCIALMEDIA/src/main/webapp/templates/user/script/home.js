@@ -120,7 +120,7 @@ const renderPost = function(post) {
               </div>
             </div>
             <div class="post__feedback">
-              <button type="button" class="feedback__btn active"
+              <button type="button" class="feedback__btn btn__feedback-like active"
                 onclick="handelToggleLike()">
                 <i class="fa-solid fa-thumbs-up icon"></i>
                 <p>100 Like</p>
@@ -187,7 +187,7 @@ const renderPost = function(post) {
 							</div>
 						</div>
 						<div class="post__feedback">
-							<button type="button" class="feedback__btn active"
+							<button type="button" class="feedback__btn btn__feedback-like active"
 								onclick="handelToggleLike()">
 								<i class="fa-solid fa-thumbs-up icon"></i>
 								<p>100 Like</p>

@@ -10,9 +10,11 @@ public interface IUserPostService {
 
 	void insert(UserPost userPost);
 
+
 	public List<UserPost> paginationPostUser(int index, int numberOfPage, String uid);
 
 	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid);
+
 
 	// hieu-begin
 	void update(UserPost userPost);
@@ -22,7 +24,10 @@ public interface IUserPostService {
 	Long countAll();
 
 	// hieu-end
+
 	// tuan - begin - like post
 	void insertLikePost(String userID, int userPostID, Date likeTime);
 	// tuan -end - like post
+	UserPost findOne(int userPostID);
+
 }

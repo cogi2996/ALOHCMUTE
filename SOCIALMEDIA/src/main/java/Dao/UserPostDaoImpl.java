@@ -23,9 +23,8 @@ public class UserPostDaoImpl implements IUserPostDao {
 //		for (UserPost p : list) {
 //			System.out.println(p);
 //		}
-		new UserPostDaoImpl().insertLikePost("mxFasgmO8bSvQtpiHqNUG9WrEai1", 43, new Date(0));
-//		new UserPostDaoImpl().
-
+//		new UserPostDaoImpl().insertLikePost("4Mp0hZK1s7WcnTq462EInqBYCbC2", 43, new Date(0));
+//		System.out.println(new UserPostDaoImpl().findOne(43).getLikeUsers().size());
 
 	}
 
@@ -124,5 +123,14 @@ public class UserPostDaoImpl implements IUserPostDao {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public UserPost findOne(int userPostID) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		TypedQuery<UserPost> query = entityManager.createNamedQuery("UserPost.findOne", UserPost.class);
+		query.setParameter("userPostID", userPostID);
+		return query.getSingleResult();
+	}
+
 
 }

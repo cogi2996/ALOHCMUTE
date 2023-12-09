@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "UserPost")
 @NamedQuery(name = "UserPost.findAll", query = "select uP from UserPost uP")
+@NamedQuery(name = "UserPost.findOne", query = "select uP from UserPost uP where uP.userPostID = :userPostID")
 public class UserPost {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
