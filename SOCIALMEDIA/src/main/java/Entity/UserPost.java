@@ -32,19 +32,19 @@ public class UserPost {
 	@ManyToOne
 	@JoinColumn(name = "userID")
 	private User user;
-	/*
+	
 	@Override
 	public String toString() {
 		return "UserPost [userPostID=" + userPostID + ", userPostText=" + userPostText + ", UserPostCreateTime="
 				+ UserPostCreateTime + ", UserPostStatus=" + UserPostStatus + ", userPostUpdateTime="
 				+ userPostUpdateTime + ", userPostImg=" + userPostImage + "]";
-	}*/
+	}
 	
 	public UserPost() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	/*
+	
 	public UserPost(int userPostID, String userPostText, Date userPostCreateTime, boolean userPostStatus,
 			Date userPostUpdateTime, String userPostImage, User user) {
 		super();
@@ -55,14 +55,14 @@ public class UserPost {
 		this.userPostUpdateTime = userPostUpdateTime;
 		this.userPostImage = userPostImage;
 		this.user = user;
-	}*/
-	
+	}
+	/*
 	@Override
 	public String toString() {
 		return "UserPost [userPostID=" + userPostID + ", userPostText=" + userPostText + ", UserPostCreateTime="
 				+ UserPostCreateTime + ", UserPostStatus=" + UserPostStatus + ", userPostUpdateTime="
 				+ userPostUpdateTime + ", userPostImage=" + userPostImage + ", likes=" + likes + "]";
-	}
+	}*/
 
 	public int getUserPostID() {
 		return userPostID;

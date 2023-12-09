@@ -38,11 +38,11 @@ public class Group implements Serializable {
 	// các thành viên trong group
 	@ManyToMany(mappedBy = "UserGroups")
 	private List<User> member;
-/*
+
 	// 1 - n với grouppost
 //	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "group")
-	private List<GroupPost> listPost;*/
+	private List<GroupPost> listPost;
 
 	@Override
 	public String toString() {
@@ -53,7 +53,7 @@ public class Group implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-/*
+
 	public Group(int groupID, String groupName, Date createTime, User admin, List<User> member,
 			List<GroupPost> listPost) {
 		super();
@@ -63,7 +63,7 @@ public class Group implements Serializable {
 		this.admin = admin;
 		this.member = member;
 		this.listPost = listPost;
-	}*/
+	}
 
 	public int getGroupID() {
 		return groupID;
@@ -104,7 +104,7 @@ public class Group implements Serializable {
 	public void setMember(List<User> member) {
 		this.member = member;
 	}
-/*
+
 	public List<GroupPost> getListPost() {
 		return listPost;
 	}
@@ -112,6 +112,6 @@ public class Group implements Serializable {
 	public void setListPost(List<GroupPost> listPost) {
 		this.listPost = listPost;
 	}
-*/
+
 	
 }
