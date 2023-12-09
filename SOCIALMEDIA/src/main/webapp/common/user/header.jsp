@@ -72,7 +72,7 @@
 			<div class="col-3 circle-icon">
 				<i class="fa-solid fa-comment icon"></i>
 			</div>
-			<div class="col-3 circle-icon">
+			<div class="col-3 circle-icon" onclick="handleNotifyModal()">
 				<i class="fa-solid fa-bell icon"></i>
 			</div>
 			<div class="col-3 circle-icon">
@@ -103,3 +103,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+function handleNotifyModal() {
+    let notify = document.querySelector(".notify-modal");
+    if (notify.style.display === "none") {
+        notify.style.display = "block";
+    } else {
+        notify.style.display = "none";
+    }
+}
+</script>

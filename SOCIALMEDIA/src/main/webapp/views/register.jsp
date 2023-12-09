@@ -55,7 +55,7 @@ body {
 				<label for="middleName" class="col-sm-3 control-label">Tên
 					lót</label>
 				<div class="col-sm-9">
-					<input type="text" id="lastName" placeholder="Tên lót"
+					<input type="text" id="middleName" placeholder="Tên lót"
 						class="form-control" autofocus />
 				</div>
 			</div>
