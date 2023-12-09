@@ -41,12 +41,12 @@ public class HomeController extends HttpServlet {
 //			postLoadAjax(req, resp);
 //		} else 
 		if (url.contains("home")) {
-			/*HttpSession session = req.getSession();
+			HttpSession session = req.getSession();
 			String uid = (String) session.getAttribute("uid");
 			User user = userService.findUser(uid);
 			List<User> listSuggestFollow = followService.suggestFollow(uid);
 			req.setAttribute("listSuggestFollow", listSuggestFollow);
-			req.setAttribute("currentUser", user);*/
+			req.setAttribute("currentUser", user);
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 			
 		} else if (url.contains("follower")) {
