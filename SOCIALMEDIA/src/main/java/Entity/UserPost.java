@@ -136,5 +136,15 @@ public class UserPost {
 	public void setLikeUsers(List<User> likeUsers) {
 		this.likeUsers = likeUsers;
 	}
+	//tin begin
 
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+	
+	// tin end
 }
