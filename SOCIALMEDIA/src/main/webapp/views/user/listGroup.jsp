@@ -81,7 +81,7 @@
 			</div>
 		</div>
 
-		<!-- Pagination -->
+		<!-- Pagination 
 
 		<div class="text-center mt-3 mt-sm-3 fixed-bottom ">
 			<ul class="pagination justify-content-center mb-0">
@@ -95,7 +95,7 @@
 				<li class="page-item"><a class="page-link" href="#">25</a></li>
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
-		</div>
+		</div>-->
 	</section>
 
 	<!-- Add new group form BEGIN-->

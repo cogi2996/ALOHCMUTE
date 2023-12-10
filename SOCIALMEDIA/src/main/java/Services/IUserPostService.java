@@ -28,5 +28,7 @@ public interface IUserPostService {
 	void insertLikePost(String userID, int userPostID, Date likeTime);
 	// tuan -end - like post
 	UserPost findOne(int userPostID);
-
+	// tin begin
+	List<UserPost> GroupPostBygroupID(int groupID);
+	// tin end
 }

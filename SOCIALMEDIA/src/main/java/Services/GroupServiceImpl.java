@@ -6,6 +6,7 @@ import Dao.GroupDAOImpl;
 import Dao.iGroupDAO;
 import Entity.Group;
 import Entity.User;
+import Entity.UserPost;
 
 public class GroupServiceImpl implements iGroupService{
 
@@ -81,5 +82,7 @@ public class GroupServiceImpl implements iGroupService{
 	public Long countAllGroup() {
 		return groupDAO.countAllGroup();
 	}
+
+	
 	
 }

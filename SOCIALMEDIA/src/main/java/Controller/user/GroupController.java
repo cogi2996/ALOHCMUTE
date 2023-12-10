@@ -15,9 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 import Dao.IUserDAO;
 import Entity.Group;
 import Entity.User;
+import Entity.UserPost;
 import Model.GroupModel;
 import Services.GroupServiceImpl;
+import Services.IUserPostService;
 import Services.IUserService;
+import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 import Services.iGroupService;
 
@@ -28,6 +31,7 @@ private static final long serialVersionUID = 1L;
 	iGroupService groupService = new GroupServiceImpl();
 	int danhdau=-1;
 	IUserService userService = new UserServiceImpl();
+	IUserPostService userPostService = new UserPostServiceImpl();// tín thêm
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -257,9 +261,12 @@ private static final long serialVersionUID = 1L;
 		Group group = new Group();
 		group = groupService.findGroup(groupID);
 		Long countUserGroup = groupService.CountListUsersGroup(groupID);
+		List<UserPost> listGroupPost = userPostService.GroupPostBygroupID(groupID);
 		req.setAttribute("groupID", groupID);
 		req.setAttribute("group", group);
 		req.setAttribute("countUserGroup", countUserGroup);
+		req.setAttribute("listGroupPost", listGroupPost);
+		System.out.println(listGroupPost);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/groupPost.jsp");
 		rd.forward(req, resp);
 		

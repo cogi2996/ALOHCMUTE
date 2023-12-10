@@ -72,4 +72,9 @@ public class UserPostServiceImpl implements IUserPostService {
 	public UserPost findOne(int userPostID) {
 		return userPostDao.findOne(userPostID);
 	}
+
+	@Override
+	public List<UserPost> GroupPostBygroupID(int groupID) {
+		return userPostDao.GroupPostBygroupID(groupID);
+	}
 }
