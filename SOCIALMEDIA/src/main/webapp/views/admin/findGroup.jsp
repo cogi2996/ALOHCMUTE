@@ -49,7 +49,9 @@
 						<td>${item.getCreateTime() }</td>
 						<td><a class="text-heading font-semibold"
 							href="members?id=${item.getGroupID()}">${item.getMember().size()}</a></td>
-						<td>${item.getAdmin().getUserID() }</td>
+						<td><img alt="..."
+								src="${item.getAdmin().getAvatar()}"
+								class="avatar avatar-sm rounded-circle me-2">${item.getAdmin().getUserID() }</td>
 						<td class="text-heading font-semibold">${item.getAdmin().getLastName()}
 								${item.getAdmin().getMidName()} ${item.getAdmin().getFirstName()}</td>
 						<td><a

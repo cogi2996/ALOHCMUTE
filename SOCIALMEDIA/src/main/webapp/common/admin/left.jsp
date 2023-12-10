@@ -38,22 +38,6 @@
 						class="bi bi-globe-americas"></i> GROUPS
 				</a></li>
 			</ul>
-			<!-- Divider -->
-			<hr class="navbar-divider my-5 opacity-20">
-			<!-- Navigation -->
-
-			<!-- Push content down -->
-			<div class="mt-auto"></div>
-			<!-- User (md) -->
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="#"> <i
-						class="bi bi-person-square"></i> Account
-				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"
-					onclick="return confirm('Are you sure you want to logout?')"> <i
-						class="bi bi-box-arrow-left"></i> Logout
-				</a></li>
-			</ul>
 		</div>
 	</div>
 </nav>

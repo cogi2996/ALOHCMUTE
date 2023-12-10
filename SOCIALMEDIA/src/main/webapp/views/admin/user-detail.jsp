@@ -16,7 +16,7 @@
 					</div>
 					<div class="col-6">
 						<div class="xp-social-profile-avatar text-center">
-							<img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+							<img src="${user.getAvatar() }"
 								alt="user-profile" class="rounded-circle img-fluid"> <span
 								class="xp-social-profile-live"></span>
 						</div>
