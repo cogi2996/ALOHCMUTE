@@ -88,4 +88,9 @@ public class UserPostServiceImpl implements IUserPostService {
 	public void unlikePost(int userPostID, String userID) {
 		this.userPostDao.unlikePost(userPostID, userID);
 	}
+
+	@Override
+	public boolean liked(int userPostID, String userID) {
+		return userPostDao.liked(userPostID, userID);
+	}
 }

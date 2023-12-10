@@ -113,6 +113,10 @@ if (uri.contains("home")) {
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/detail.css"/>" />
 <%
+} else if (uri.contains("nhungnguoitheodoi")) {
+%>
+<link rel="stylesheet" href="<c:url value = "/templates/user/css/follower.css"/>" />
+<%
 } 
 %>
 

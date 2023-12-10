@@ -11,6 +11,7 @@ public class UserPostModel {
 	private String img;
 	private Date updateTime; // hiếu thêm
 	private String userAvatar;
+	private int liked;
 
 	@Override
 	public String toString() {
@@ -97,4 +98,12 @@ public class UserPostModel {
 		this.img = img;
 	}
 
+	public int getLiked() {
+		return liked;
+	}
+
+	public void setLiked(int liked) {
+		this.liked = liked;
+	}
+	
 }

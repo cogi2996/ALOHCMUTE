@@ -86,6 +86,12 @@ public class PostAPI extends HttpServlet {
 			// thêm trường avatar user
 			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
 			postModel.setUserAvatar(post.getUser().getAvatar());
+			if(userPostService.liked(postid, uid)) {
+				postModel.setLiked(1);
+			}
+			else {
+				postModel.setLiked(0);
+			}
 			listPostModel.add(postModel);
 		}
 		Gson gson = new Gson();
@@ -183,6 +189,13 @@ public class PostAPI extends HttpServlet {
 			Date createTime = post.getUserPostCreateTime();
 			String img = post.getUserPostImg();
 			UserPostModel postModel = new UserPostModel(username, userid, postid, text, createTime, img);
+			postModel.setUserAvatar(post.getUser().getAvatar());
+			if(userPostService.liked(postid, uid)) {
+				postModel.setLiked(1);
+			}
+			else {
+				postModel.setLiked(0);
+			}
 			listPostModel.add(postModel);
 		}
 		Gson gson = new Gson();
@@ -190,7 +203,7 @@ public class PostAPI extends HttpServlet {
 		System.out.println("list post lay duoc ; " + listPostModel);
 		PrintWriter out = resp.getWriter();
 		out.println(listPostJson);
-		out.close();
+		out.close();		
 	}
 
 	public void createPost(HttpServletRequest req, HttpServletResponse resp)

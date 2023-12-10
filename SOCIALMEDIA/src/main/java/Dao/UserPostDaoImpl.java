@@ -26,7 +26,7 @@ public class UserPostDaoImpl implements IUserPostDao {
 //		}
 //		new UserPostDaoImpl().insertLikePost("4Mp0hZK1s7WcnTq462EInqBYCbC2", 43, new Date(0));
 //		System.out.println(new UserPostDaoImpl().findOne(43).getLikeUsers().size());
-		new UserPostDaoImpl().unlikePost(1,"KUyTipGNpdVhNj2iLWUuDhqTzmB2");
+		new UserPostDaoImpl().unlikePost(1, "KUyTipGNpdVhNj2iLWUuDhqTzmB2");
 	}
 
 	@Override
@@ -140,8 +140,6 @@ public class UserPostDaoImpl implements IUserPostDao {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 	@Override
 	public UserPost findOne(int userPostID) {
@@ -151,13 +149,12 @@ public class UserPostDaoImpl implements IUserPostDao {
 		return query.getSingleResult();
 	}
 
-
 	@Override
 	public List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage, String keyword) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
-		 TypedQuery<UserPost> list = entityManager.createQuery( "SELECT u FROM UserPost u WHERE u.userPostText LIKE :keyword",
-				 UserPost.class);
-		    
+		TypedQuery<UserPost> list = entityManager
+				.createQuery("SELECT u FROM UserPost u WHERE u.userPostText LIKE :keyword", UserPost.class);
+
 		list.setParameter("keyword", "%" + keyword + "%");
 		list.setFirstResult(index * numberOfPage);
 		list.setMaxResults(numberOfPage);
@@ -169,8 +166,8 @@ public class UserPostDaoImpl implements IUserPostDao {
 	@Override
 	public Long countSearchUserPost(String keyword) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
-		TypedQuery<Long> query = entityManager.createQuery( "SELECT COUNT(u) FROM UserPost u WHERE u.userPostText LIKE :keyword",
-	            Long.class);
+		TypedQuery<Long> query = entityManager
+				.createQuery("SELECT COUNT(u) FROM UserPost u WHERE u.userPostText LIKE :keyword", Long.class);
 		query.setParameter("keyword", "%" + keyword + "%");
 
 		Long count = query.getSingleResult();
@@ -191,7 +188,23 @@ public class UserPostDaoImpl implements IUserPostDao {
 			e.printStackTrace();
 		}
 	}
-	
 
+	@Override
+	public boolean liked(int userPostID, String userID) {
+		String sql = "select 1 from LikeUserPost where LikeUserPost.userPostID = ? and LikeUserPost.userID = ? ";
+		try {
+			conn = new DBConnection().getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, userPostID);
+			ps.setString(2, userID);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
