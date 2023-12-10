@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;// tín thêm
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class Group implements Serializable {
 
 	
 	// các thành viên trong group
-	@ManyToMany(mappedBy = "UserGroups")
+	@ManyToMany(mappedBy = "UserGroups", fetch = FetchType.EAGER)// tín sửa
 	private List<User> member;
 
 	// 1 - n với grouppost

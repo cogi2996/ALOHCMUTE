@@ -21,11 +21,11 @@
 					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All
 						Groups</a>
 					<div class="slide"></div></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href= "mygroup?userID=1" role="tab">My Groups</a>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab"					
+					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=${userID}" role="tab">My Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href="creategroup" data-bs-toggle="modal"
+					href=<c:url value = "creategroup"/> data-bs-toggle="modal"
 					data-bs-target="#creategroup" data-toggle="tab" role="tab">Create
 						a Group</a>
 					<div class="slide"></div></li>
@@ -35,6 +35,18 @@
 						<div style="max-width: 470px" class="input-group">
 							<input type="text" id="srch-term" name="srch-term"
 								placeholder="Search" class="form-control" />
+						</div>
+					</form>
+				</li>-->
+				<li>
+					<form class="navbar-form pull-right flex-row float-right"
+						style="display: flex; justify-content: flex-end">
+						<div style="max-width: 470px" class="input-group">
+							<input type="text" id="groupName" name="groupName"
+								placeholder="Search" class="form-control" />
+							<button type="submit"
+								formaction="/SOCIALMEDIA/group/allGroup/searchgroup?groupName=${groupName}"
+								formmethod="get">Tìm kiếm</button>
 						</div>
 					</form>
 				</li>
@@ -52,15 +64,19 @@
 									src="https://bootdey.com/img/Content/avatar/avatar1.png" alt />
 								<div class="name-box">
 									<!-- Group Name -->
-									<h7>${item.groupName}</h7>
+									<!--<h7>${item.groupName}</h7>-->
+									<a
+										href="/SOCIALMEDIA/grouppost/allgrouppost?groupID=${item.groupID}">
+										<h7>${item.groupName}</h7>
+									</a>
 									<!-- Group ID
                 <span>@vannessa</span> -->
 									<div class="group-base">
-										<!-- <ul class="list-group">
-                    <li class="list-group-item full-width"> -->
-										<div class="pull-left" style="margin-right: 0px">
-											<span>${item.numberOfFollower} follower </span>
-										</div>
+										<ul class="list-group">
+											<li class="list-group-item full-width">-->
+												<div class="pull-left" style="margin-right: 0px">
+													<span>Nhóm ${item.numberOfFollower} thành viên </span>
+												</div>
 									</div>
 								</div>
 								<span><a href class="btn btn-info btn-sm"> Follow</a></span>

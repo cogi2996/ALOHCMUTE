@@ -22,8 +22,9 @@
 							<!-- class="rounded-circle bg-primary" width="110"> -->
 							<div class="mt-3">
 								<h4>${group.groupName}</h4>
-								<p class="text-secondary mb-1">Nhóm ${countUserGroup} thành viên</p>
-								<p class="text-muted font-size-sm">Bay Area, San Francisco,CA</p>
+								<p class="text-secondary mb-1">Nhóm ${countUserGroup} thành
+									viên</p>
+								<!-- <p class="text-muted font-size-sm">${group.createTime}</p>-->
 								<button class="btn btn-primary">Follow</button>
 								<!-- <button class="btn btn-outline-primary">Message</button> -->
 							</div>
@@ -41,18 +42,30 @@
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
 							href="#about" role="tab">About</a>
 							<div class="slide"></div></li>
+
+						<%--
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
 							href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}" role="tab">Friends</a>
+							<div class="slide"></div></li>--%>
+						<li class="nav-item"><a class="nav-link"
+							href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}"
+							role="tab">Friends</a>
 							<div class="slide"></div></li>
+						<!-- tin begin-->
 						<li>
 							<form class="navbar-form pull-right flex-row float-right"
 								style="display: flex; justify-content: flex-end">
-								<div style="max-width: 470px;" class="input-group">
-									<input type="text" id="srch-term" name="srch-term"
-										placeholder="Search" class="form-control">
+								<div style="max-width: 470px" class="input-group">
+									<input type="text" id="keyword" name="keyword"
+										placeholder="Search" class="form-control" /> <input
+										type="hidden" id="groupID" name="groupID" value="${groupID}" />
+									<button type="submit"
+										formaction="/SOCIALMEDIA/timkiem/searchusergroup?groupID=${groupID}&keyword=${keyword}"
+										formmethod="get">Tìm kiếm</button>
 								</div>
 							</form>
 						</li>
+						<!-- tin end-->
 					</ul>
 
 				</div>

@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.beanutils.BeanUtils;
-
-import com.google.gson.Gson;
-
 import Dao.IUserDAO;
 import Entity.Group;
 import Entity.User;
@@ -24,6 +20,7 @@ import Services.GroupServiceImpl;
 import Services.IUserService;
 import Services.UserServiceImpl;
 import Services.iGroupService;
+
 @WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/timkiem/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup", "/group/allGroup/creategroup"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
@@ -37,9 +34,7 @@ private static final long serialVersionUID = 1L;
 		if(url.contains("searchpost")){
 			SearchPostGroup(req, resp);
 		}
-		else if(url.contains("group")) {
-			findAll(req, resp);
-		}
+		// tin them
 		else if(url.contains("listusergroup")) {
 			ListUserInGroup(req, resp);
 		}
@@ -54,11 +49,11 @@ private static final long serialVersionUID = 1L;
 		}
 //		DAT BEGIN HERE
 		else if(url.contains("listgroup")) {
+			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 			findAll(req, resp);
-			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
-		}else if (url.contains("mygroup")) {
-			findMyGroup(req, resp);
-			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+		}
+		else if(url.contains("mygroup")) {
+			MyGroupUser(req, resp);
 		}
 		else if (url.contains("creategroup")) {
 			//createGroup(req,resp);
@@ -70,6 +65,9 @@ private static final long serialVersionUID = 1L;
 		String url = req.getRequestURI().toString();
 		if(url.contains("creategroup")) {
 			createGroup(req,resp);
+		}
+		else if(url.contains("mygroup")) {
+			MyGroupUser(req, resp);
 		}
 	}
 	private void createGroup(HttpServletRequest req, HttpServletResponse resp) {
@@ -95,12 +93,24 @@ private static final long serialVersionUID = 1L;
 		}
 		
 	}
-	private void findMyGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String userID = req.getParameter("userID");
+	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//String userID = req.getParameter("userID");
+		String userID = "user5";
+		User usergroup = userService.findUser(userID);
 		System.out.println(userID);
-		User user = userService.findUser(userID);
-
-		List<Group> listusergroup = user.getUserGroups();
+		List<Group> listusergroup = usergroup.getUserGroups();
+	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//String userID = req.getParameter("userID");
+		String userID = "user5";
+		User usergroup = userService.findUser(userID);
+		System.out.println(userID);
+		List<Group> listusergroup = usergroup.getUserGroups();
+	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//String userID = req.getParameter("userID");
+		String userID = "user5";
+		User usergroup = userService.findUser(userID);
+		System.out.println(userID);
+		List<Group> listusergroup = usergroup.getUserGroups();
 		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
 
 		for (Group group : listusergroup) {
@@ -108,39 +118,26 @@ private static final long serialVersionUID = 1L;
 			int groupID = group.getGroupID();
 			String groupName = group.getGroupName();
 			Date createTime = group.getCreateTime();
-			User admin = group.getAdmin();
-			String createrId = admin.getUserID();
+			User user = group.getAdmin();
+			String createrId = user.getUserID();
+			
 			List<User> users = group.getMember();
 			int numberOfFollower = 0;
 			for (User u : users) {
 				numberOfFollower++;
-			}
-
+				}
+			
 			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
 			listgroupmodel.add(groupmodel);
 		}
-		listusergroup = user.getCreatedGroup();
-		for (Group group : listusergroup) {
-
-			int groupID = group.getGroupID();
-			String groupName = group.getGroupName();
-			Date createTime = group.getCreateTime();
-			User admin = group.getAdmin();
-			String createrId = admin.getUserID();
-			List<User> users = group.getMember();
-			int numberOfFollower = 0;
-			for (User u : users) {
-				numberOfFollower++;
-			}
-
-			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
-			listgroupmodel.add(groupmodel);
-		}
+		System.out.println(listusergroup);
 		req.setAttribute("listGroup", listgroupmodel);
-		System.out.println(listgroupmodel);
-		req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+		req.setAttribute("userID", userID);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/listGroup.jsp");
+		rd.forward(req, resp);
 		
 	}
+	
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Group> listGroup = groupService.findAllGroup();
 		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
@@ -192,11 +189,11 @@ private static final long serialVersionUID = 1L;
 		int index = Integer.parseInt(indexP);
 		Long countP = groupService.CountListUsersGroup(groupID);
 		// chia trang cho count
-		Long endPage = countP / 2;
-		if (countP % 2 != 0) {
+		Long endPage = countP / 10;
+		if (countP % 10 != 0) {
 			endPage++;
 		}
-		List<User> listuser = groupService.paginationPageListUsersGroup(index - 1, 2,groupID);
+		List<User> listuser = groupService.paginationPageListUsersGroup(index - 1, 10,groupID);
 		// Xử lí bài toán
 		// đẩy dữ liệu ra view
 		danhdau=0;
@@ -212,7 +209,7 @@ private static final long serialVersionUID = 1L;
 		
 	}
 	private void SearchUserInGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String userID = "user1";// cài cứng để tuấn làm follow
+		String userID = "user4";// cài cứng để tuấn làm follow
 		int groupID = Integer.parseInt(req.getParameter("groupID"));
 		String keyword = req.getParameter("keyword");
 		String indexP = req.getParameter("index");
@@ -223,11 +220,11 @@ private static final long serialVersionUID = 1L;
 		int index = Integer.parseInt(indexP);
 		Long countP = groupService.CountSearchUsersGroup(groupID,keyword);
 		// chia trang cho count
-		Long endPage = countP / 2;
-		if (countP % 2 != 0) {
+		Long endPage = countP / 10;
+		if (countP % 10 != 0) {
 			endPage++;
 		}
-		List<User> listuser = groupService.paginationPageSearchUsersGroup(index - 1, 2,groupID,keyword);
+		List<User> listuser = groupService.paginationPageSearchUsersGroup(index - 1, 10,groupID,keyword);
 		// Xử lí bài toán
 		// đẩy dữ liệu ra view
 		danhdau=1;
@@ -244,7 +241,7 @@ private static final long serialVersionUID = 1L;
 		
 	}
 	private void SearchGroupbygroupName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		/*
 		String groupName = req.getParameter("groupName");
 		String indexP = req.getParameter("index");
 
@@ -267,7 +264,24 @@ private static final long serialVersionUID = 1L;
 		req.setAttribute("endP", endPage);
 		req.setAttribute("tag", index);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/usersgroup.jsp");
-		rd.forward(req, resp);
+		rd.forward(req, resp);*/
+		String groupNamesearch = req.getParameter("groupName");
+		List<Group> listGroup = groupService.searchGroupbygroupName(groupNamesearch);
+		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
+
+		for (Group group : listGroup) {
+			int groupID = group.getGroupID();
+			String groupName = group.getGroupName();
+			Date createTime = group.getCreateTime();
+			User user = group.getAdmin();
+			String createrId = user.getUserID();
+			int numberOfFollower = group.getMember().size();
+			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
+			listgroupmodel.add(groupmodel);
+		}
+		// đẩy dl ra view
+		req.setAttribute("listGroup", listgroupmodel);
+		req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 	}
 	private void AllGroupPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int groupID = Integer.parseInt(req.getParameter("groupID"));

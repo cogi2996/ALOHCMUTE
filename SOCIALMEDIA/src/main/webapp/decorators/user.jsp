@@ -86,11 +86,9 @@ if (uri.contains("home")) {
 }
 %>
 
-<!-- list group css -->
-=======
 
 <%-- 	<!-- list group css -->
->>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
+
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/listgroup.css"/>" />
 </head> --%>
