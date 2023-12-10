@@ -85,20 +85,51 @@ $(window).scroll(function() {
 });
 // callback render các post
 const renderPost = function(post) {
+	// Chuỗi thời gian ban đầu
+	var inputDateString = post.createTime;
+
+	// Chuyển đổi chuỗi thành đối tượng Date
+	var dateObject = new Date(inputDateString);
+
+	// Tạo một đối tượng Date mới với thông tin từ dateObject
+	var formattedDate = dateObject.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+	// In ra kết quả
+	console.log(formattedDate);
+
 	const listPost = document.querySelector(".list-post");
+	console.log(post.createTime);
+
+	console.log(post.liked);
+	let activeLike = ``;
+	// nếu user đã like post
+	if (post.liked) {
+		activeLike = `active`;
+	}
+
 	if (post.img) {
 		const htmlHasPic = `
     <li class="wrapper post" data-post-id="${post.postid}">
-            <div class="post__header">
-                     <div class="main-author">
-                  <img
-                    class="main-author__avatar"
-                    alt="Subreddit Icon"
-                    role="presentation"
-                    src="${post.userAvatar}"
-                  />
-                  <p class="main-author__name">${post.username}</p>
-                </div>
+<div class="post__header">
+    <div class="main-author">
+        <img
+            class="main-author__avatar"
+            alt="Subreddit Icon"
+            role="presentation"
+            src="${post.userAvatar}"
+        />
+        <div class="d-flex flex-column">
+            <p class="main-author__name mb-1">
+                <a href="/SOCIALMEDIA/profile?userID=${post.userid}" >${post.username}</a>
+            </p>
+            <p class="main-author__date text-muted small">
+                ${formattedDate}
+            </p>
+        </div>
+    </div>
+</div>
+
+
 
                 <p class="sub-author__name"></p>
               </div>
@@ -120,7 +151,7 @@ const renderPost = function(post) {
               </div>
             </div>
             <div class="post__feedback">
-              <button type="button" class="feedback__btn btn__feedback-like active"
+              <button type="button" class="feedback__btn btn__feedback-like ${activeLike} "
                 onclick="handelToggleLike()">
                 <i class="fa-solid fa-thumbs-up icon"></i>
                 <p>100 Like</p>
@@ -176,17 +207,24 @@ const renderPost = function(post) {
 
 	const htmlWithoutPic = `
 		<li class="wrapper post" data-post-id="${post.postid}">
-						<div class="post__header">
-						    <div class="main-author">
-                  <img
-                    class="main-author__avatar"
-                    alt="Subreddit Icon"
-                    role="presentation"
-                    src="${post.userAvatar}"
-                  />
-                  <p class="main-author__name"><a href="/SOCIALMEDIA/profile?userID=${post.userid}">${post.username}</a></p>
-                </div>
-
+				<div class="post__header">
+    <div class="main-author">
+        <img
+            class="main-author__avatar"
+            alt="Subreddit Icon"
+            role="presentation"
+            src="${post.userAvatar}"
+        />
+        <div class="d-flex flex-column">
+            <p class="main-author__name mb-1">
+                <a href="/SOCIALMEDIA/profile?userID=${post.userid}" >${post.username}</a>
+            </p>
+            <p class="main-author__date text-muted small">
+                ${formattedDate}
+            </p>
+        </div>
+    </div>
+</div>
                 <p class="sub-author__name"></p>
 							
 						</div>
@@ -195,7 +233,7 @@ const renderPost = function(post) {
 							</div>
 						</div>
 						<div class="post__feedback">
-							<button type="button" class="feedback__btn btn__feedback-like active"
+							<button type="button" class="feedback__btn btn__feedback-like ${activeLike}"
 								onclick="handelToggleLike()">
 								<i class="fa-solid fa-thumbs-up icon"></i>
 								<p>100 Like</p>
