@@ -19,14 +19,14 @@ public class UserPostDaoImpl implements IUserPostDao {
 
 	public static void main(String[] args) {
 //		System.out.println(new UserPostDaoImpl().paginationPage(12, 6));
-		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "Tu0vC4JFm9TViVIpqSPgxEp3DP92");
-		System.out.println(list.size());
-		for (UserPost p : list) {
-			System.out.println(p);
-		}
+//		List<UserPost> list = new UserPostDaoImpl().paginationPostProfile(0, 6, "Tu0vC4JFm9TViVIpqSPgxEp3DP92");
+//		System.out.println(list.size());
+//		for (UserPost p : list) {
+//			System.out.println(p);
+//		}
 //		new UserPostDaoImpl().insertLikePost("4Mp0hZK1s7WcnTq462EInqBYCbC2", 43, new Date(0));
 //		System.out.println(new UserPostDaoImpl().findOne(43).getLikeUsers().size());
-
+		new UserPostDaoImpl().unlikePost(1,"KUyTipGNpdVhNj2iLWUuDhqTzmB2");
 	}
 
 	@Override
@@ -140,6 +140,8 @@ public class UserPostDaoImpl implements IUserPostDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	@Override
 	public UserPost findOne(int userPostID) {
@@ -173,9 +175,23 @@ public class UserPostDaoImpl implements IUserPostDao {
 
 		Long count = query.getSingleResult();
 		entityManager.close();
-
 		return count;
 	}
+
+	@Override
+	public void unlikePost(int userPostID, String userID) {
+		String sql = "Delete from LikeUserPost where LikeUserPost.userPostID = ? and LikeUserPost.userID = ? ";
+		try {
+			conn = new DBConnection().getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, userPostID);
+			ps.setString(2, userID);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 
 }

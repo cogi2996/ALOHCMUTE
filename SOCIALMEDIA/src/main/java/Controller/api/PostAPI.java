@@ -30,7 +30,7 @@ import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 
 @WebServlet(urlPatterns = { "/api/v1/posts/loadAjaxPost", "/api/v1/posts", "/api/v1/posts/loadMoreUserPost",
-		"/api/v1/likePost", "/api/v1/getLikePost"})
+		"/api/v1/likePost", "/api/v1/getLikePost","/api/v1/unlikePost"})
 
 public class PostAPI extends HttpServlet {
 	IUserService userService = new UserServiceImpl();
@@ -48,6 +48,8 @@ public class PostAPI extends HttpServlet {
 			likePost(req, resp);
 		}else if(url.contains("getLikePost")) {
 			getLikePost(req, resp);
+		}else if(url.contains("unlikePost")) {
+			unlikePost(req, resp);
 		}
 	}
 
@@ -217,7 +219,7 @@ public class PostAPI extends HttpServlet {
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		// lấy ra uid người like
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession(false);
 		String uid = (String) session.getAttribute("uid");
 		int postId = Integer.parseInt(req.getParameter("postId"));
 		System.out.println("da vao likepost");
@@ -251,6 +253,26 @@ public class PostAPI extends HttpServlet {
 		out.println(countLike);
 		out.close();
 	}
+	
+	public void unlikePost(HttpServletRequest req, HttpServletResponse resp)
+			throws JsonSyntaxException, JsonIOException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		// lấy ra uid người like
+		HttpSession session = req.getSession(false);
+		String uid = (String) session.getAttribute("uid");
+		int postId = Integer.parseInt(req.getParameter("postId"));
+		userPostService.unlikePost( postId,uid);
+		// trả về số like hiện tại
+		Gson gson = new Gson();
+		String countLike = gson.toJson(userPostService.findOne(postId).getLikeUsers().size());
+		PrintWriter out = resp.getWriter();
+		out.println(countLike);
+		out.close();
+	}
+	
 	// tuan - end
+	
 
 }

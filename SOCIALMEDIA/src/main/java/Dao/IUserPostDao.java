@@ -22,5 +22,7 @@ public interface IUserPostDao {
 	void insertLikePost(String userID,int userPostID,Date likeTime);
 	//tuan -end - like post
 	UserPost findOne(int userPostID);
+	
+	void unlikePost(int userPostID,String userID);
 
 }

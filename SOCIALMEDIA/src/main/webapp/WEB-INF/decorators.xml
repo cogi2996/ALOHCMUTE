@@ -15,6 +15,7 @@
 	<excludes>
 		<pattern>/api*</pattern>
 		<pattern>/login*</pattern>
+		<pattern>/forgotPassword*</pattern>
 	</excludes>
 </decorators>
 

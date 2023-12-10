@@ -108,7 +108,12 @@ if (uri.contains("home")) {
 	src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <%
-}
+} else if (uri.contains("hiring-post/detail")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/detail.css"/>" />
+<%
+} 
 %>
 
 <!-- list group css -->

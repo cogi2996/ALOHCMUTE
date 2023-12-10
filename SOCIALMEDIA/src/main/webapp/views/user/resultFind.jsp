@@ -38,7 +38,7 @@
 												<div class="candidate-list-info">
 													<div class="candidate-list-title">
 														<h5 class="mb-0">
-															<a href="#">${item.lastName} ${item.midName} ${item.firstName}</a>
+															<a href="/SOCIALMEDIA/profile?userID=${item.userID}">${item.lastName} ${item.midName} ${item.firstName}</a>
 														</h5>
 													</div>
 													<div class="candidate-list-option">
@@ -80,7 +80,7 @@
 								<li class="page-item"><a class="page-link" href="#">Next</a>
 								</li>
 							</ul>--%>
-							<span class="text-muted text-sm">Showing 10 users</span>
+							<span class="text-muted text-sm"></span>
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
 									<c:forEach begin="1" end="${endP}" var="i">
