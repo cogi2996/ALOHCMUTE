@@ -13,7 +13,7 @@ import Entity.Group;
 import Entity.User;
 import Services.GroupServiceImpl;
 import Services.iGroupService;
-@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/timkiem/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup"})
+@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/group/allGroup/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	

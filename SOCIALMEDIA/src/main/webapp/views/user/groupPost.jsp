@@ -22,8 +22,9 @@
 							<!-- class="rounded-circle bg-primary" width="110"> -->
 							<div class="mt-3">
 								<h4>${group.groupName}</h4>
-								<p class="text-secondary mb-1">Nhóm ${countUserGroup} thành viên</p>
-								<p class="text-muted font-size-sm">Bay Area, San Francisco,CA</p>
+								<p class="text-secondary mb-1">Nhóm ${countUserGroup} thành
+									viên</p>
+								<!-- <p class="text-muted font-size-sm">${group.createTime}</p>-->
 								<button class="btn btn-primary">Follow</button>
 								<!-- <button class="btn btn-outline-primary">Message</button> -->
 							</div>
@@ -41,8 +42,14 @@
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
 							href="#about" role="tab">About</a>
 							<div class="slide"></div></li>
+
+						<%--
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
 							href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}" role="tab">Friends</a>
+							<div class="slide"></div></li>--%>
+						<li class="nav-item"><a class="nav-link"
+							href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}"
+							role="tab">Friends</a>
 							<div class="slide"></div></li>
 						<li>
 							<form class="navbar-form pull-right flex-row float-right"

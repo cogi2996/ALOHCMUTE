@@ -210,6 +210,22 @@ public class GroupDAOImpl implements iGroupDAO{
 
 		return count;
 	}
+
+	@Override
+	public List<Group> paginationPageAllGroup(int index, int numberOfPage) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Group> list  = enma.createQuery("select g from Group g",Group.class);
+		list.setFirstResult(index*numberOfPage);
+		list.setMaxResults(numberOfPage);
+		return list.getResultList();
+	}
+
+	@Override
+	public Long countAllGroup() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Long> count = enma.createQuery("select count(g) from Group g", Long.class);
+		return count.getSingleResult();
+	}
 	
 	
 }

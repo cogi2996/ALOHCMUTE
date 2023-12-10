@@ -20,4 +20,8 @@ public interface iGroupService {
 	List<Group> paginationPageSearchGroups(int index, int numberOfPage,String groupName);
 	Long countSearchGroups(String groupName);
 	// tin end
+	// tin begin
+	List<Group> paginationPageAllGroup(int index, int numberOfPage);
+	Long countAllGroup();
+	// tin end
 }
