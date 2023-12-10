@@ -45,8 +45,6 @@ if (uri.contains("home")) {
 %>
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/profile.css"/>" />
-<link rel="stylesheet"
-	href="<c:url value = "/templates/user/css/resultFind.css"/>" />
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 	crossorigin="anonymous"></script>
@@ -84,19 +82,6 @@ if (uri.contains("home")) {
 	href="<c:url value = "/templates/user/css/detail.css"/>" />
 <%
 } else if (uri.contains("hiring-post")) {
-} else if (uri.contains("allGroup")) {
-%>
-<link rel="stylesheet"
-	href="<c:url value = "/templates/user/css/group.css"/>" />
-
-<%
-} else if (uri.contains("grouppost")) {
-%>
-<link rel="stylesheet"
-	href="<c:url value = "/templates/user/css/groupinfo.css"/>" />
-
-<%
-}
 %>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -122,13 +107,22 @@ if (uri.contains("home")) {
 <script nomodule
 	src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-
-<!-- list group css -->
-<%-- 	<!-- list group css -->
-
+<%
+} else if (uri.contains("hiring-post/detail")) {
+%>
 <link rel="stylesheet"
-	href="<c:url value = "/templates/user/css/listgroup.css"/>" />
-</head> --%>
+	href="<c:url value = "/templates/user/css/detail.css"/>" />
+<%
+} else if (uri.contains("nhungnguoitheodoi")) {
+%>
+<link rel="stylesheet" href="<c:url value = "/templates/user/css/follower.css"/>" />
+<%
+} 
+%>
+<!-- list group css -->
+<%-- <link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/listgroup.css"/>" /> --%>
+</head>
 <body>
 	<%@include file="/common/user/header.jsp"%>
 	<decorator:body></decorator:body>

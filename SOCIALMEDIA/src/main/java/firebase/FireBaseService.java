@@ -81,7 +81,14 @@ public class FireBaseService {
 			System.out.println("Successfully updated user: " + userRecord.getUid());
 			System.out.println("Successfully updated user: " + userRecord.getPhotoUrl());
 	}
-
+	
+	public String getUidByEmail(String email) throws FirebaseAuthException {
+		UserRecord userRecord = auth.getUserByEmail(email);
+		// See the UserRecord reference doc for the contents of userRecord.
+		System.out.println("Successfully fetched user data: " + userRecord.getEmail());
+		return userRecord.getUid();
+	}
+	
 	public static void main(String[] args) throws IOException, FirebaseAuthException {
 		// Khởi tạo FireBaseService
 

@@ -9,9 +9,12 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.google.firebase.auth.FirebaseAuthException;
+
 import Entity.HiringPost;
 import Entity.User;
 import JpaConfig.JPAConfig;
+import firebase.FireBaseService;
 
 public class UserDAOImpl implements IUserDAO {
 	@Override
@@ -183,4 +186,13 @@ public class UserDAOImpl implements IUserDAO {
 		return list;
 	}
 	//hieu end
+
+	@Override
+	public User findUserByEmail(String email) throws FirebaseAuthException {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<User> query  = enma.createQuery("select u from User u where u.userID = :userID",User.class);
+		String uid =  new FireBaseService().getUidByEmail(email);
+		query.setParameter("userID", uid);
+		return query.getSingleResult();
+	}
 }

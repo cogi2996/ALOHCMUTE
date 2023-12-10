@@ -6,8 +6,8 @@ function handleActive() {
 	element.classList.add("active");
 }
 
-function handelToggleLike() {
+/*function handelToggleLike() {
 	const likeElement = event.target;
 	likeElement.classList.toggle("active");
 }
- 
+ */

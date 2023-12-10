@@ -14,7 +14,7 @@ import {
 let currentUser;
 onAuthStateChanged(auth, (user) => {
   if (user) {
-	  currentUser = user;
+    currentUser = user;
     const uid = user.uid;
     console.log("uid current user1: " + currentUser.photoURL);
   } else {
@@ -266,9 +266,21 @@ document.addEventListener("click", function (e) {
     const btn_like = e.target.closest(".btn__feedback-like");
     const postId = e.target.closest(".btn__feedback-like").closest(".post")
       .dataset.postId;
+    let status = `likePost`;
+    if (btn_like.classList.contains("active")) {
+      status = `unlikePost`;
+    }
+    btn_like.classList.toggle("active");
+    console.log(`here`);
+
     console.log(btn_like);
-    console.log(postId);
-    fetch(`/SOCIALMEDIA/api/v1/likePost?postId=${postId}`, {
+
+    console.log(status);
+    console.log(`/SOCIALMEDIA/api/v1/${status}?postId=${postId}`);
+
+    // console.log(btn_like);
+    // console.log(postId);
+    fetch(`/SOCIALMEDIA/api/v1/${status}?postId=${postId}`, {
       method: "GET",
       headers: {
         "Content-Type": "aplication/json",
@@ -277,6 +289,7 @@ document.addEventListener("click", function (e) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        if(!data) data = ``
         btn_like.querySelector("p").textContent = `${data} like`;
       });
   } else if (e.target.closest(".dropdown-item-delete")) {
