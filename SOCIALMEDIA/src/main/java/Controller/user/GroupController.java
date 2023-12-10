@@ -15,17 +15,20 @@ import javax.servlet.http.HttpSession;
 
 import Dao.IUserDAO;
 import Entity.Group;
+import Entity.GroupMember;
 import Entity.User;
 import Entity.UserPost;
 import Model.GroupModel;
+import Services.GroupMemberServiceImpl;
 import Services.GroupServiceImpl;
+import Services.IGroupMemberService;
 import Services.IUserPostService;
 import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 import Services.iGroupService;
 
-@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/timkiem/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup", "/group/allGroup/creategroup"})
+@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/timkiem/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup", "/group/allGroup/creategroup", "/group/allGroup/addmembergroup"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
@@ -33,6 +36,7 @@ private static final long serialVersionUID = 1L;
 	int danhdau=-1;
 	IUserService userService = new UserServiceImpl();
 	IUserPostService userPostService = new UserPostServiceImpl();// tín thêm
+	IGroupMemberService groupMemberService = new GroupMemberServiceImpl();// tín thêm
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -59,7 +63,11 @@ private static final long serialVersionUID = 1L;
 		else if(url.contains("mygroup")) {
 			MyGroupUser(req, resp);
 		}
+		else if(url.contains("addmembergroup")) {
+			AddMemberGroup(req, resp);
+		}
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -82,6 +90,19 @@ private static final long serialVersionUID = 1L;
 			resp.sendRedirect(req.getContextPath() + "/group/allGroup/listgroup");
 
 		}
+	}
+	private void AddMemberGroup(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+		HttpSession session = req.getSession(false);
+		String userID = (String) session.getAttribute("uid");
+		int groupID = Integer.parseInt(req.getParameter("groupID"));
+		int permission =1;
+		GroupMember groupMember = new GroupMember();
+		groupMember.setGroupID(groupID);
+		groupMember.setUserID(userID);
+		groupMember.setPermission(permission);
+		groupMemberService.insert(groupMember);
+		resp.sendRedirect(req.getContextPath() + "/group/allGroup/mygroup?uid="+userID);
+		
 	}
 	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//String userID = req.getParameter("userID");
@@ -276,4 +297,5 @@ private static final long serialVersionUID = 1L;
 		rd.forward(req, resp);
 		
 	}
+	
 }

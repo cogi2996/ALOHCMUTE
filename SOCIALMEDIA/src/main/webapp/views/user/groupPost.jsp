@@ -90,7 +90,7 @@
 													class="d-flex align-items-center justify-content-between">
 													<div class="d-flex align-items-center">
 														<img class="img-xs rounded-circle"
-															src="https://bootdey.com/img/Content/avatar/avatar6.png"
+															src="${item.getUser().getAvatar()}"
 															alt>
 														<div class="ml-2">
 															<p>${item.getUser().getFirstName()}
@@ -106,9 +106,9 @@
 											</div>
 											<div class="card-body">
 												<p class="mb-3 tx-14">${item.userPostText}</p>
-												<img class="img-fluid"
+												<%--<img class="img-fluid"
 													src="https://bootdey.com/img/Content/avatar/avatar6.png"
-													alt>
+													alt>--%>
 											</div>
 											<div class="card-footer">
 												<div class="d-flex post-actions">
