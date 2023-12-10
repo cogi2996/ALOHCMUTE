@@ -16,7 +16,7 @@ import Services.IUserService;
 import Services.UserServiceImpl;
 import Services.iGroupService;
 
-@WebServlet(urlPatterns = { "/timkiem/searchusers" })
+@WebServlet(urlPatterns = { "/timkiem" })
 public class FindController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +26,7 @@ public class FindController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		String userID = "user1";// cài cứng để tuấn làm follow
 		String keyword = req.getParameter("keyword");
+		
 		String indexP = req.getParameter("index");
 
 		if (indexP == null) {
