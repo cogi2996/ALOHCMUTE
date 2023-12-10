@@ -77,7 +77,6 @@ public class Register extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("account", user);
 				System.out.println("SEND EMAIL SUCCESS");
-
 				resp.sendRedirect(req.getContextPath() + "/views/verifyCode.jsp");
 			}
 		} catch (IllegalAccessException | InvocationTargetException e) {
@@ -93,7 +92,7 @@ public class Register extends HttpServlet {
 			String code = req.getParameter("code");
 			if (code.equals(userModel.getCode())) {
 				System.out.println("XAC THUC THANH CONG");
-				
+				session.setAttribute("uid", userModel.getUserID());
 				try {
 					// tạo tài khoản lên firebase
 					UserRecord userRecord = firebaseService.createUserWithEmailAndPass(userModel);

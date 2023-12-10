@@ -52,7 +52,32 @@ public class Email {
 		return test;
 	}
 	// send Email to the user email
-	
+	public boolean emailSend(UserModel user) {
+		boolean test = false;
+		String toGmail = user.getGmail();
+		String fromGmail = "ta84578@gmail.com";
+		String password = "ojja smbu arvf upqo";
+		try {
+			Properties pr = configEmail(new Properties());
+			Session session = Session.getInstance(pr,new Authenticator() {
+				@Override
+				protected PasswordAuthentication getPasswordAuthentication () {
+					return new PasswordAuthentication (fromGmail,password);
+				}
+			});
+			Message mess = new MimeMessage(session);
+			mess.setHeader("Content-Type","text/plain; charset=UTF-8");
+			mess.setFrom(new InternetAddress(fromGmail));
+			mess.setRecipient(Message.RecipientType.TO, new InternetAddress(toGmail));
+			mess.setSubject("Reset password:");
+			mess.setText("Your password is: "+user.getPassword());
+			Transport.send(mess);
+			test = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return test;
+	}
 	
 	public Properties configEmail(Properties pr) {
 		pr.setProperty("mail.smtp.host", "smtp.gmail.com");

@@ -6,12 +6,12 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="alohcmute">
 		<class>Entity.Group</class>
-		<class>Entity.GroupPost</class>
 		<class>Entity.User</class>
+		<class>Entity.Follow</class>
 		<class>Entity.UserPost</class>
 		<class>Entity.HiringPost</class>
-		<class>Entity.Follow</class>
 		<class>Entity.Chat</class>
+		<class>Entity.GroupMember</class>
 	
 	
 		
@@ -23,8 +23,8 @@
 
 			<property name="javax.persistence.jdbc.user" value="root" />
 
-			<property name="javax.persistence.jdbc.password"
-				value="29092003" />
+			<property name="javax.persistence.jdbc.password" value="29092003" />
+
 
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.cj.jdbc.Driver" />

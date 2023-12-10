@@ -12,13 +12,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import Dao.IUserDAO;
 import Dao.UserDAOImpl;
@@ -53,6 +50,10 @@ public class User implements Serializable {
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private List<Group> UserGroups;
 
+	//hieu them
+	// Các post mà user đã like
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<LikeUserPost> likedPosts;
 
 	// Những người user đã chat
 	@ManyToMany
@@ -61,10 +62,14 @@ public class User implements Serializable {
 	// Các bài viết ( cá nhân ) của user.
 	@OneToMany(mappedBy = "user")
 	private List<UserPost> userPosts;
-
+	
+	// Các bài viết ( cá nhân ) của user.
+	@OneToMany(mappedBy = "group")
+	private List<UserPost> groupPost; 
+/*
 	// Các bài viết ( group ) của user.
 	@OneToMany(mappedBy = "user")
-	private List<GroupPost> groupPosts;
+	private List<GroupPost> groupPosts;*/
 
 	// Những người user đã gửi follow.
 	@ManyToMany
@@ -75,7 +80,10 @@ public class User implements Serializable {
 	@ManyToMany(mappedBy = "followingUsers")
 	private List<User> followers;
 
-
+	// Những bài viết mà user đã like
+	@ManyToMany
+	@JoinTable(name = "LikeUserPost", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "userPostID"))
+	private List<UserPost> likePosts;
 
 	@Override
 	public String toString() {
@@ -234,7 +242,7 @@ public class User implements Serializable {
 	public void setUserPosts(List<UserPost> userPosts) {
 		this.userPosts = userPosts;
 	}
-
+/*
 	public List<GroupPost> getGroupPosts() {
 		return groupPosts;
 	}
@@ -242,7 +250,7 @@ public class User implements Serializable {
 	public void setGroupPosts(List<GroupPost> groupPosts) {
 		this.groupPosts = groupPosts;
 	}
-
+*/
 	public List<User> getFollowingUsers() {
 		return followingUsers;
 	}
@@ -268,7 +276,8 @@ public class User implements Serializable {
 	}
 
 	// Contructor của tạo user ChatAPI
-	public User(String userID, Date lastLogin, String firstName, String midName, String lastName, String position, String avatar) {
+	public User(String userID, Date lastLogin, String firstName, String midName, String lastName, String position,
+			String avatar) {
 		super();
 		this.userID = userID;
 		this.lastLogin = lastLogin;
@@ -277,6 +286,14 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.position = position;
 		this.avatar = avatar;
+	}
+
+	public List<UserPost> getLikePosts() {
+		return likePosts;
+	}
+
+	public void setLikePosts(List<UserPost> likePosts) {
+		this.likePosts = likePosts;
 	}
 
 }

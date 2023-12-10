@@ -4,16 +4,19 @@
 		<pattern>/profile*</pattern>
 		<pattern>/editProfile*</pattern>
 		<pattern>/timkiem*</pattern>
+		<pattern>/hiring-post/detail*</pattern>
+		<pattern>/hiring-post/*</pattern>
+		<pattern>/nhungnguoitheodoi*</pattern>
 	</decorator>
 	<decorator name="admin" page="admin.jsp">
 
 		<pattern>/admin*</pattern>
-
 	</decorator>
 
 	<excludes>
 		<pattern>/api*</pattern>
 		<pattern>/login*</pattern>
+		<pattern>/forgotPassword*</pattern>
 	</excludes>
 </decorators>
 
