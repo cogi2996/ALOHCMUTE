@@ -16,6 +16,8 @@ public interface IUserPostDao {
 	void delete(int userPostID);
 	Long countAll();//hieu them
 	//hieu-end
+	List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage,String keyword);
+	Long countSearchUserPost(String keyword);
 	// tuan - begin - like post
 	void insertLikePost(String userID,int userPostID,Date likeTime);
 	//tuan -end - like post
@@ -23,5 +25,7 @@ public interface IUserPostDao {
 	// tin begin
 	List<UserPost> GroupPostBygroupID(int groupID);
 	// tin end
+	void unlikePost(int userPostID,String userID);
+	boolean liked (int userPostID,String userID);
 
 }

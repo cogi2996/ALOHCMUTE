@@ -3,6 +3,8 @@ package Dao;
 
 import java.util.List;
 
+import com.google.firebase.auth.FirebaseAuthException;
+
 import Entity.User;
 
 public interface IUserDAO {
@@ -16,4 +18,8 @@ public interface IUserDAO {
 	Long countSearchUsers(String keyword);
 	Long countAll();//hieu them
 	List<User> paginationPage(int index, int numberOfPage);//hieu them
+	List<User> SortUserByName(List<User> list);
+	List<User> SortUserByWorkplace(List<User> list);//hieu end
+	User findUserByEmail(String email) throws FirebaseAuthException;
+	
 }

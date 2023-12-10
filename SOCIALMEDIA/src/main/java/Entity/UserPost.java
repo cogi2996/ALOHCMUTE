@@ -147,4 +147,11 @@ public class UserPost {
 	}
 	
 	// tin end
+	public String getUserPostImage() {
+		return userPostImage;
+	}
+
+	public void setUserPostImage(String userPostImage) {
+		this.userPostImage = userPostImage;
+	}
 }

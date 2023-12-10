@@ -9,7 +9,7 @@ public class JPAConfig {
 	public static EntityManager getEntityManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("alohcmute");
 		return factory.createEntityManager();
-
+		
 	}
 
 	public static void main(String[] args) {

@@ -41,13 +41,12 @@ public class HomeController extends HttpServlet {
 //			postLoadAjax(req, resp);
 //		} else 
 		if (url.contains("home")) {
-			/*
 			HttpSession session = req.getSession();
 			String uid = (String) session.getAttribute("uid");
 			User user = userService.findUser(uid);
 			List<User> listSuggestFollow = followService.suggestFollow(uid);
 			req.setAttribute("listSuggestFollow", listSuggestFollow);
-			req.setAttribute("currentUser", user);*/
+			req.setAttribute("currentUser", user);
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 			
 		} else if (url.contains("follower")) {
@@ -94,4 +93,5 @@ public class HomeController extends HttpServlet {
 		rd.forward(req, resp);*/
 
 	}
+	//	KUyTipGNpdVhNj2iLWUuDhqTzmB2	0348083543	2023-12-09 00:00:00		Hạ	Nhật	Võ	Hà Nội	time to rise	Công nghệ thông tin	Khoa  công nghệ thông tin		0
 }

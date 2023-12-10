@@ -94,6 +94,16 @@ create table `GroupMember`(
 	foreign key (userID) references `User`(userID) 
 );
 
+<<<<<<< HEAD
+CREATE TABLE LikeUserPost (
+    userID varchar(100),
+    userPostID int,
+    likeTime datetime,
+    PRIMARY KEY (userID, userPostID),
+    FOREIGN KEY (userID) REFERENCES `User`(userID) ON DELETE CASCADE,
+    FOREIGN KEY (userPostID) REFERENCES `UserPost`(userPostID) ON DELETE CASCADE
+);
+=======
 CREATE TABLE IF NOT EXISTS `alohcmute`.`hiringpost` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `company` VARCHAR(255) NULL DEFAULT NULL,
@@ -137,5 +147,6 @@ VALUES ('Nhóm B', '2023-12-09 11:30:00', 'userID_2');
 INSERT INTO `Group` (groupName, createTime, createrID)
 VALUES ('Nhóm C', '2023-12-09 13:45:00', 'userID_3');
 
+>>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
 
 

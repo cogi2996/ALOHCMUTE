@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <header class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light row">
 		<div class="col-3 row nav-left">
@@ -50,7 +51,7 @@
 		<div class="col-6 nav-center">
 			<ul class="nav nav-underline justify-content-center">
 				<li class="nav-item col"><a class="nav-link active text-center"
-					aria-current="page" href="#" onclick="handleActive()"> <i
+					aria-current="page" href='<c:url value ="/home"></c:url>' onclick="handleActive()"> <i
 						class="fa-solid fa-house icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
@@ -68,17 +69,30 @@
 			</ul>
 			<div class="indicator"></div>
 		</div>
-		<div class="col-3 row nav-right">
-			<div class="col-3 circle-icon">
-				<i class="fa-solid fa-comment icon"></i>
-			</div>
-			<div class="col-3 circle-icon" onclick="handleNotifyModal()">
-				<i class="fa-solid fa-bell icon"></i>
-			</div>
-			<div class="col-3 circle-icon">
-				<i class="fa-solid fa-caret-down icon"></i>
-			</div>
-		</div>
+	  <div class="col-3 row nav-right" style="padding-right: 150px">
+          <div class="col-3 circle-icon">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href='<c:url value="/dangxuat"></c:url>'>Đăng xuất</a></li>
+                <li>
+                  <a class="dropdown-item d-none" href="#">Another action</a>
+                </li>
+                <li>
+                  <a class="dropdown-item d-none" href="#"
+                    >Something else here</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
 	</nav>
 </header>
 

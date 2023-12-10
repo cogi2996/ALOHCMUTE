@@ -77,7 +77,6 @@ public class Register extends HttpServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("account", user);
 				System.out.println("SEND EMAIL SUCCESS");
-
 				resp.sendRedirect(req.getContextPath() + "/views/verifyCode.jsp");
 			}
 		} catch (IllegalAccessException | InvocationTargetException e) {

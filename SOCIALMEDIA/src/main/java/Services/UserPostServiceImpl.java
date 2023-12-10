@@ -57,6 +57,16 @@ public class UserPostServiceImpl implements IUserPostService {
 		return userPostDao.countAll();
 	}
 	//hieu-end
+	
+	@Override
+	public List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage, String keyword) {
+		return userPostDao.paginationPageSearchUserPost(index, numberOfPage, keyword);
+	}
+
+	@Override
+	public Long countSearchUserPost(String keyword) {
+		return userPostDao.countSearchUserPost(keyword);
+	}
 
 	@Override
 	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid) {
@@ -76,5 +86,15 @@ public class UserPostServiceImpl implements IUserPostService {
 	@Override
 	public List<UserPost> GroupPostBygroupID(int groupID) {
 		return userPostDao.GroupPostBygroupID(groupID);
+	}
+
+	@Override
+	public void unlikePost(int userPostID, String userID) {
+		this.userPostDao.unlikePost(userPostID, userID);
+	}
+
+	@Override
+	public boolean liked(int userPostID, String userID) {
+		return userPostDao.liked(userPostID, userID);
 	}
 }

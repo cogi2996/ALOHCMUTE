@@ -26,4 +26,8 @@ public interface iGroupDAO {
 	Long countAllGroup();
 	// tin end
 	
+	//hieu-them
+	List<Group> paginationPage(int index, int numberOfPage);
+	Long countAll();
+	//hieu-end
 }

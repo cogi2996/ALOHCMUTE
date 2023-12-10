@@ -12,13 +12,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import Dao.IUserDAO;
 import Dao.UserDAOImpl;
@@ -53,6 +50,10 @@ public class User implements Serializable {
 	@JoinTable(name = "GroupMember", joinColumns = @JoinColumn(name = "userID"), inverseJoinColumns = @JoinColumn(name = "groupID"))
 	private List<Group> UserGroups;
 
+	//hieu them
+	// Các post mà user đã like
+//	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<LikeUserPost> likedPosts;
 
 	// Những người user đã chat
 	@ManyToMany

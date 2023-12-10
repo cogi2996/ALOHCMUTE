@@ -45,6 +45,14 @@ public class UserServiceImpl implements IUserService{
 		return userDAO.paginationPage(index, numberOfPage);
 	}
 	@Override
+	public List<User> SortUserByName(List<User> list) {
+		return userDAO.SortUserByName(list);
+	}
+	@Override
+	public List<User> SortUserByWorkplace(List<User> list) {
+		return userDAO.SortUserByWorkplace(list);
+	}
+	@Override
 	public List<User> paginationPageSearchUsers(int index, int numberOfPage, String keyword) {
 		return userDAO.paginationPageSearchUsers(index, numberOfPage, keyword);
 	}

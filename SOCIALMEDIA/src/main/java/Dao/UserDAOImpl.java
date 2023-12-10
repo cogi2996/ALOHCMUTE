@@ -1,14 +1,20 @@
 package Dao;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
+import com.google.firebase.auth.FirebaseAuthException;
 
 import Entity.HiringPost;
 import Entity.User;
 import JpaConfig.JPAConfig;
+import firebase.FireBaseService;
 
 public class UserDAOImpl implements IUserDAO {
 	@Override
@@ -16,7 +22,7 @@ public class UserDAOImpl implements IUserDAO {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u WHERE u.userID = :userID", User.class);
 		query.setParameter("userID", userID);
-
+		System.out.println(userID);
 		return query.getSingleResult();
 	}
 
@@ -128,7 +134,11 @@ public class UserDAOImpl implements IUserDAO {
 			trans.begin();
 			User user = enma.find(User.class, userID);
 			if (user != null) {
-				enma.remove(user);
+				Query deleteFollowQuery = enma.createQuery("DELETE FROM Follow f WHERE f.sourceID = :userID OR f.targetID = :userID");
+		        deleteFollowQuery.setParameter("userID", userID);
+		        deleteFollowQuery.executeUpdate();
+
+		        enma.remove(user);
 			} else {
 				throw new Exception("Không tìm thấy");
 			}
@@ -164,5 +174,25 @@ public class UserDAOImpl implements IUserDAO {
 		list.setMaxResults(numberOfPage);
 		return list.getResultList();
 	}
+	@Override
+	public List<User> SortUserByName(List<User> list) {
+		Collections.sort(list, Comparator.comparing(User::getFirstName));
+		return list;
+	}
 
+	@Override
+	public List<User> SortUserByWorkplace(List<User> list) {
+		Collections.sort(list, Comparator.comparing(User::getWorkPlace));
+		return list;
+	}
+	//hieu end
+
+	@Override
+	public User findUserByEmail(String email) throws FirebaseAuthException {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<User> query  = enma.createQuery("select u from User u where u.userID = :userID",User.class);
+		String uid =  new FireBaseService().getUidByEmail(email);
+		query.setParameter("userID", uid);
+		return query.getSingleResult();
+	}
 }
