@@ -23,6 +23,7 @@
 										${user.lastName} ${user.midName} ${user.firstName}</span>
 								</div>
 								<div class="d-none d-md-block">
+								<a href='<c:url value = "/editProfile"></c:url>' >
 									<button class="btn btn-primary btn-icon-text btn-edit-profile">
 										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 											viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -35,8 +36,8 @@
 												d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                       </svg>
 										
-										<a href='<c:url value = "/editProfile"></c:url>' ></a>
 									</button>
+										</a>
 								</div>
 							</div>
 						</div>
