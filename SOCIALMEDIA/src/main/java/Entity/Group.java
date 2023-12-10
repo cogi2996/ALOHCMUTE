@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;// tín thêm
 import javax.persistence.GeneratedValue;
@@ -113,6 +114,6 @@ public class Group implements Serializable {
 //	public void setListPost(List<GroupPost> listPost) {
 //		this.listPost = listPost;
 //	}
-
+	
 	
 }

@@ -22,7 +22,7 @@
 						Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"					
-					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=${userID}" role="tab">My Groups</a>
+					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=user4" role="tab">My Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href=<c:url value = "creategroup"/> data-bs-toggle="modal"
@@ -118,13 +118,14 @@
 				</div>
 				<div class="modal-body">
 					<div>
-						<form>
-							<!-- 2 column grid layout with text inputs for the Group ID and Creater ID -->
+					<!-- tin begin -->
+						<form action="creategroup" method="post">
+							<!-- 2 column grid layout with text inputs for the Group ID and Creater ID
 							<div class="row mb-4">
 								<div class="col">
 									<div data-mdb-input-init class="form-outline">
 										<label class="form-label" for="creategroup">Group ID</label> <input
-											type="text" id="creategroup" class="form-control" />
+											type="text" name="groupID" id="creategroup" class="form-control" />
 									</div>
 								</div>
 								<div class="col">
@@ -133,31 +134,32 @@
 										<input type="text" id="creategroup" class="form-control" />
 									</div>
 								</div>
-							</div>
+							</div>-->
 
 							<!-- Group Name input -->
 							<div data-mdb-input-init class="form-outline mb-4">
 								<label class="form-label" for="creategroup">Group Name</label> <input
-									type="email" id="creategroup" class="form-control" />
+									type="text" name="groupName" id="creategroup" class="form-control" />
 							</div>
 
-							<!-- Create Time input -->
+							<!-- Create Time input
 							<div data-mdb-input-init class="form-outline mb-4">
 								<label class="form-label" for="creategroup">Create Time</label>
 								<input type="password" id="creategroup" class="form-control" />
-							</div>
+							</div>-->
 
-							<!-- Submit button -->
+							<!-- Submit button 
 							<button data-mdb-ripple-init type="button"
-								class="btn btn-primary btn-block mb-4">Add new Group</button>
+								class="btn btn-primary btn-block mb-4">Add new Group</button>-->
+							<input type="submit" value="Add new Group" style="background-color: #0074cc; color: white;">
 						</form>
 					</div>
-
+						<!-- tin end -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<!--<button type="button" class="btn btn-primary">Save changes</button>-->
 				</div>
 			</div>
 		</div>

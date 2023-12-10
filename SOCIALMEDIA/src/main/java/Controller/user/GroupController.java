@@ -49,11 +49,31 @@ private static final long serialVersionUID = 1L;
 		}
 //		DAT BEGIN HERE
 		else if(url.contains("listgroup")) {
-			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 			findAll(req, resp);
 		}
 		else if(url.contains("mygroup")) {
 			MyGroupUser(req, resp);
+		}
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String url = req.getRequestURL().toString();
+		if(url.contains("creategroup")){
+			req.setCharacterEncoding("UTF-8");
+			resp.setCharacterEncoding("UTF-8");
+			//String userID = req.getParameter("userID");
+			String userID = "user1";
+	        String groupName = req.getParameter("groupName");
+	        Date createTime =  new Date();
+	        Group group = new Group();
+	        group.setGroupName(groupName);
+	        group.setCreateTime(createTime);
+
+	        group.setAdmin(userService.findUser(userID));
+	        groupService.insertGroup(group);
+			// chuyển view (trang)
+			resp.sendRedirect(req.getContextPath() + "/group/allGroup/listgroup");
+
 		}
 	}
 	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
