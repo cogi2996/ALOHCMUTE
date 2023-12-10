@@ -51,15 +51,21 @@
 							href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}"
 							role="tab">Friends</a>
 							<div class="slide"></div></li>
+						<!-- tin begin-->
 						<li>
 							<form class="navbar-form pull-right flex-row float-right"
 								style="display: flex; justify-content: flex-end">
-								<div style="max-width: 470px;" class="input-group">
-									<input type="text" id="srch-term" name="srch-term"
-										placeholder="Search" class="form-control">
+								<div style="max-width: 470px" class="input-group">
+									<input type="text" id="keyword" name="keyword"
+										placeholder="Search" class="form-control" /> <input
+										type="hidden" id="groupID" name="groupID" value="${groupID}" />
+									<button type="submit"
+										formaction="/SOCIALMEDIA/timkiem/searchusergroup?groupID=${groupID}&keyword=${keyword}"
+										formmethod="get">Tìm kiếm</button>
 								</div>
 							</form>
 						</li>
+						<!-- tin end-->
 					</ul>
 
 				</div>

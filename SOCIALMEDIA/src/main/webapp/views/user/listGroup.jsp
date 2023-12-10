@@ -21,21 +21,32 @@
 					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All
 						Groups</a>
 					<div class="slide"></div></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href='<c:url value = "mygroup?userID=${userID}"/>' role="tab">My
-						Groups</a>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab"					
+					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=${userID}" role="tab">My Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href=<c:url value = "creategroup"/> data-bs-toggle="modal"
 					data-bs-target="#creategroup" data-toggle="tab" role="tab">Create
 						a Group</a>
 					<div class="slide"></div></li>
-				<li>
+				<!--<li>
 					<form class="navbar-form pull-right flex-row float-right"
 						style="display: flex; justify-content: flex-end">
 						<div style="max-width: 470px" class="input-group">
 							<input type="text" id="srch-term" name="srch-term"
 								placeholder="Search" class="form-control" />
+						</div>
+					</form>
+				</li>-->
+				<li>
+					<form class="navbar-form pull-right flex-row float-right"
+						style="display: flex; justify-content: flex-end">
+						<div style="max-width: 470px" class="input-group">
+							<input type="text" id="groupName" name="groupName"
+								placeholder="Search" class="form-control" />
+							<button type="submit"
+								formaction="/SOCIALMEDIA/group/allGroup/searchgroup?groupName=${groupName}"
+								formmethod="get">Tìm kiếm</button>
 						</div>
 					</form>
 				</li>
