@@ -39,8 +39,17 @@ private static final long serialVersionUID = 1L;
 			AllGroupPost(req, resp);
 		}
 		else if(url.contains("listgroup")) {
-			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+			findAll(req, resp);
 		}
+	}
+	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		List<Group> listGroup = groupService.findAllGroup();
+		// đẩy dl ra view
+		req.setAttribute("listGroup", listGroup);
+		//System.out.println(listGroup);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/grouplist.jsp");
+		rd.forward(req, resp);
 	}
 
 	private void SearchPostGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
