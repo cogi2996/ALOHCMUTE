@@ -12,10 +12,7 @@
     	width: 100%;
     	background-color: #fff;
     	margin-bottom: 20px;
-    	border-left: 1px solid #e5e5e5;
-    	border-right: 1px solid #e5e5e5;
-    	border-bottom: 1px solid #e5e5e5;
-    	border: a3a3a3 solid;
+    	border: 1px solid #e5e5e5;
     	border-radius: 5px;
     }
 
@@ -28,7 +25,7 @@
     .group-box .group-body {
     	float: left;
     	width: 100%;
-    	padding: 10px 20px;
+    	padding: 20px;
     	/* margin-top: 10px; */
     	border-bottom: 2px solid #f4f4f4;
     }

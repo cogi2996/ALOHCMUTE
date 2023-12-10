@@ -14,30 +14,23 @@
 
 	<!-- List group -->
 	<section class="group" style="margin-top: 39px">
-		<div class="card social-tabs" style="width: 100%">
+		<div class="card social-tabs"
+			style="width: 100%; align-items: center; margin-bottom: 20px; border: 1px solid rgba(0,0,0,.125);">
 			<ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
-				style="margin-top: 4rem">
+				style="height: 40px; margin-top: 25px;">
 				<li class="nav-item"><a class="nav-link active"
-					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All
-						Groups</a>
+					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">
+						All Groups </a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"					
 					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=user4" role="tab">My Groups</a>
+				
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href=<c:url value = "creategroup"/> data-bs-toggle="modal"
 					data-bs-target="#creategroup" data-toggle="tab" role="tab">Create
 						a Group</a>
 					<div class="slide"></div></li>
-				<!--<li>
-					<form class="navbar-form pull-right flex-row float-right"
-						style="display: flex; justify-content: flex-end">
-						<div style="max-width: 470px" class="input-group">
-							<input type="text" id="srch-term" name="srch-term"
-								placeholder="Search" class="form-control" />
-						</div>
-					</form>
-				</li>-->
 				<li>
 					<form class="navbar-form pull-right flex-row float-right"
 						style="display: flex; justify-content: flex-end">
@@ -131,7 +124,8 @@
 								<div class="col">
 									<div data-mdb-input-init class="form-outline">
 										<label class="form-label" for="creategroup">Creater ID</label>
-										<input type="text" id="creategroup" class="form-control" />
+										<input readonly="readonly" type="text" id="creategroup"
+											class="form-control" name="CreaterID" />
 									</div>
 								</div>
 							</div>-->
