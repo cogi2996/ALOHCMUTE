@@ -144,7 +144,7 @@ public class GroupDAOImpl implements iGroupDAO{
 	}
 
 	@Override
-	public Long countSearchUsers(String groupName) {
+	public Long countSearchGroups(String groupName) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<Long> query = entityManager.createQuery( "SELECT COUNT(g) FROM Group g WHERE g.groupName LIKE :groupName",
 	            Long.class);

@@ -13,7 +13,7 @@ public interface iGroupDAO {
 	Group findGroup(int groupID);
 	List<Group> searchGroupbygroupName(String groupName);
 	List<Group> paginationPageSearchGroups(int index, int numberOfPage,String groupName);
-	Long countSearchUsers(String groupName);
+	Long countSearchGroups(String groupName);
 	// tin begin
 	List<User> paginationPageListUsersGroup(int index, int numberOfPage,int groupID);
 	Long CountListUsersGroup(int groupID);
