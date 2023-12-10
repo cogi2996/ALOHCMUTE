@@ -51,8 +51,9 @@ public class FireBaseService {
 		// lấy thông tin đã đăng kí
 		return userRecord;
 	}
-
+	
 	public void updateInfoUser(UserModel user,String uid) throws FirebaseAuthException {
+		
 		String e164PhoneNumber = "+84" + user.getMobile().substring(1);
 		UpdateRequest request = new UpdateRequest(uid)
 			    .setEmail(user.getGmail())
@@ -60,7 +61,19 @@ public class FireBaseService {
 			    .setEmailVerified(true)
 			    .setPassword(user.getPassword())
 			    .setDisplayName(user.getLastName()+' '+user.getMidName()+' '+user.getFirstName())
-			    .setPhotoUrl("https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/361329007_312693551181553_539974167945346689_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeHnLS1K7KiBCKN00W1acY-Rw3O1525OlrLDc7Xnbk6Wsq9BMGcv4eA9zcH2l2nbW7US3tiJQvNFrzOSMBUhsvID&_nc_ohc=PRaE8781SzsAX_s9jio&_nc_ht=scontent.fsgn2-11.fna&oh=00_AfAaUw0hklF94prUiv9woGFsLHIHoodTuB_JS5APn-FZFA&oe=657468C3g")
+			    .setPhotoUrl(user.getAvatar())
+			    ;
+
+			UserRecord userRecord = this.auth.updateUser(request);
+			System.out.println("Successfully updated user: " + userRecord.getUid());
+	}
+	public void updateProfile(UserModel user,String uid) throws FirebaseAuthException {
+		
+		String e164PhoneNumber = "+84" + user.getMobile().substring(1);
+		UpdateRequest request = new UpdateRequest(uid)
+			    .setPhoneNumber(e164PhoneNumber)
+			    .setDisplayName(user.getLastName()+' '+user.getMidName()+' '+user.getFirstName())
+			    .setPhotoUrl(user.getAvatar())
 			    ;
 
 			UserRecord userRecord = this.auth.updateUser(request);

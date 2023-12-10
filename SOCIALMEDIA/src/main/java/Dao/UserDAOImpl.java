@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import Entity.HiringPost;
 import Entity.User;
 import JpaConfig.JPAConfig;
 
@@ -52,7 +53,7 @@ public class UserDAOImpl implements IUserDAO {
 		}
 
 	}
-
+	/*
 	@Override
 	public List<User> searchUsersByKeyword(String keyword) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
@@ -65,14 +66,27 @@ public class UserDAOImpl implements IUserDAO {
 		entityManager.close();
 
 		return users;
-	}
+	}*/
+	
+	@Override
+	public List<User> searchUsersByKeyword(String keyword) {
+	    EntityManager entityManager = JPAConfig.getEntityManager();
+	    TypedQuery<User> query = entityManager.createQuery( "SELECT u FROM User u WHERE (LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword)",
+	            User.class);
+	    query.setParameter("keyword", "%" + keyword.toLowerCase() + "%");
 
+		List<User> users = query.getResultList();
+		entityManager.close();
+
+		return users;
+	}
+	// phân trang tìm kiếm user
 	@Override
 	public List<User> paginationPageSearchUsers(int index, int numberOfPage, String keyword) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
-		TypedQuery<User> list = entityManager.createQuery(
-				"SELECT u FROM User u WHERE u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword",
-				User.class);
+		 TypedQuery<User> list = entityManager.createQuery( "SELECT u FROM User u WHERE (LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword)",
+		            User.class);
+		    
 		list.setParameter("keyword", "%" + keyword + "%");
 		list.setFirstResult(index * numberOfPage);
 		list.setMaxResults(numberOfPage);
@@ -80,12 +94,12 @@ public class UserDAOImpl implements IUserDAO {
 		entityManager.close();
 		return users;
 	}
+	// đếm số lượng user đã search
 	@Override
 	public Long countSearchUsers(String keyword) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
-		TypedQuery<Long> query = entityManager.createQuery(
-				"SELECT COUNT(u) FROM User u WHERE u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword",
-				Long.class);
+		TypedQuery<Long> query = entityManager.createQuery( "SELECT COUNT(u) FROM User u WHERE (LOWER(CONCAT(u.firstName, ' ', u.midName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%')) OR u.firstName LIKE :keyword OR u.lastName LIKE :keyword OR u.midName LIKE :keyword)",
+	            Long.class);
 		query.setParameter("keyword", "%" + keyword + "%");
 
 		Long count = query.getSingleResult();
@@ -99,11 +113,56 @@ public class UserDAOImpl implements IUserDAO {
 		// List<MyGroup> list = pro.findGroupsByUserId(2);
 		// List<MyGroup> list = pro.findAll();
 		// User user = new UserServiceImpl().findUser("user1");
-		 //List<User> user = pro.searchUsersByKeyword("John");
+		//List<User> user = pro.searchUsersByKeyword("John a doe");
 		// Long user = pro.countSearchUsers("John");
 		// System.out.println(list.getFollowers());
 		// System.out.println(user.getFollowingUsers());
-		List<User> user = pro.paginationPageSearchUsers(2, 2, "a");
+		List<User> user = pro.paginationPageSearchUsers(0, 2, "Joh");
 		System.out.println(user);
 	}
+	@Override
+	public void delete(String userID) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			User user = enma.find(User.class, userID);
+			if (user != null) {
+				enma.remove(user);
+			} else {
+				throw new Exception("Không tìm thấy");
+			}
+			trans.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			//throw e;
+		} finally {
+			enma.close();
+		}
+	}
+
+	@Override
+	public List<User> findAll() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<User> query = enma.createNamedQuery("User.findAll", User.class);
+		return query.getResultList();
+	}
+	//hieu them
+	@Override
+	public Long countAll() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Long> count = enma.createQuery("select count(u) from User u", Long.class);
+		return count.getSingleResult();
+	}
+
+	@Override
+	public List<User> paginationPage(int index, int numberOfPage) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<User> list  = enma.createQuery("select b from User b",User.class);
+		list.setFirstResult(index*numberOfPage);
+		list.setMaxResults(numberOfPage);
+		return list.getResultList();
+	}
+
 }

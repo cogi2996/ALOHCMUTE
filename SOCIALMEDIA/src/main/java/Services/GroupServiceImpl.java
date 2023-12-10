@@ -5,6 +5,7 @@ import java.util.List;
 import Dao.GroupDAOImpl;
 import Dao.iGroupDAO;
 import Entity.Group;
+import Entity.User;
 
 public class GroupServiceImpl implements iGroupService{
 
@@ -36,4 +37,39 @@ public class GroupServiceImpl implements iGroupService{
 		
 	}
 
+	@Override
+	public List<User> paginationPageListUsersGroup(int index, int numberOfPage, int groupID) {
+		return groupDAO.paginationPageListUsersGroup(index, numberOfPage, groupID);
+	}
+
+	@Override
+	public Long CountListUsersGroup(int groupID) {
+		return groupDAO.CountListUsersGroup(groupID);
+	}
+
+	@Override
+	public List<User> paginationPageSearchUsersGroup(int index, int numberOfPage, int groupID, String keyword) {
+		return groupDAO.paginationPageSearchUsersGroup(index, numberOfPage, groupID, keyword);
+	}
+
+	@Override
+	public Long CountSearchUsersGroup(int groupID, String keyword) {
+		return groupDAO.CountSearchUsersGroup(groupID, keyword);
+	}
+
+	@Override
+	public List<Group> searchGroupbygroupName(String groupName) {
+		return groupDAO.searchGroupbygroupName(groupName);
+	}
+
+	@Override
+	public List<Group> paginationPageSearchGroups(int index, int numberOfPage, String groupName) {
+		return groupDAO.paginationPageSearchGroups(index, numberOfPage, groupName);
+	}
+
+	@Override
+	public Long countSearchGroups(String groupName) {
+		return groupDAO.countSearchGroups(groupName);
+	}
+	
 }

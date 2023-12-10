@@ -9,6 +9,7 @@ public class UserPostModel {
 	private String text;
 	private Date createTime;
 	private String img;
+	private Date updateTime; //hiếu thêm
 	
 	
 	@Override
@@ -28,6 +29,13 @@ public class UserPostModel {
 		this.text = text;
 		this.createTime = createTime;
 		this.img = img;
+	}
+	
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
 	}
 	public String getUsername() {
 		return username;
