@@ -13,6 +13,7 @@ public interface iGroupDAO {
 	Group findGroup(int groupID);
 	List<Group> searchGroupbygroupName(String groupName);
 	List<Group> paginationPageSearchGroups(int index, int numberOfPage,String groupName);
+	Long countSearchGroups(String groupName);
 	// tin begin
 	List<User> paginationPageListUsersGroup(int index, int numberOfPage,int groupID);
 	Long CountListUsersGroup(int groupID);
@@ -23,5 +24,10 @@ public interface iGroupDAO {
 	List<Group> paginationPage(int index, int numberOfPage);
 	Long countAll();
 	//hieu-end
-	Long countSearchGroups(String groupName); //hieu them
+	
+	// tin begin
+	List<Group> paginationPageAllGroup(int index, int numberOfPage);
+	Long countAllGroup();
+	// tin end
+	
 }

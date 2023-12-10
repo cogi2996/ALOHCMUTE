@@ -82,6 +82,19 @@ if (uri.contains("home")) {
 	href="<c:url value = "/templates/user/css/detail.css"/>" />
 <%
 } else if (uri.contains("hiring-post")) {
+} else if (uri.contains("allGroup")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/group.css"/>" />
+
+<%
+} else if (uri.contains("grouppost")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/groupinfo.css"/>" />
+
+<%
+}
 %>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -107,14 +120,12 @@ if (uri.contains("home")) {
 <script nomodule
 	src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-<%
-}
-%>
-
 <!-- list group css -->
+<%-- 	<!-- list group css -->
+
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/listgroup.css"/>" />
-</head>
+</head> --%>
 <body>
 	<%@include file="/common/user/header.jsp"%>
 	<decorator:body></decorator:body>

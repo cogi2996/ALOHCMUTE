@@ -81,5 +81,15 @@ public class GroupServiceImpl implements iGroupService{
 	public Long countAll() {
 		return groupDAO.countAll();
 	}
+	@Override
+	public List<Group> paginationPageAllGroup(int index, int numberOfPage) {
+		return groupDAO.paginationPageAllGroup(index, numberOfPage);
+	}
+
+	@Override
+	public Long countAllGroup() {
+		return groupDAO.countAllGroup();
+	}
+
 	
 }

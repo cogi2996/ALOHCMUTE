@@ -15,8 +15,8 @@ import Services.GroupServiceImpl;
 import Services.IUserService;
 import Services.UserServiceImpl;
 import Services.iGroupService;
-
-@WebServlet(urlPatterns = { "/timkiem/loadusergroup","/timkiem" })
+//"/timkiem/loadusergroup",
+@WebServlet(urlPatterns = { "/timkiem/searchusers" })
 public class FindController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class FindController extends HttpServlet {
 		System.out.println(listuser);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
 		rd.forward(req, resp);*/
-		/*
+		
 		String userID = "user1";// cài cứng để tuấn làm follow
 		String keyword = req.getParameter("keyword");
 		String indexP = req.getParameter("index");
@@ -58,8 +58,8 @@ public class FindController extends HttpServlet {
 		req.setAttribute("userID", userID);
 		req.setAttribute("keyword", keyword);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
-		rd.forward(req, resp);*/
-		
+		rd.forward(req, resp);
+		/*
 		String url = req.getRequestURL().toString();
 		if (url.contains("loadusergroup")) {
 			String userID = "user1";// cài cứng để tuấn làm follow
@@ -113,6 +113,6 @@ public class FindController extends HttpServlet {
 			req.setAttribute("keyword", keyword);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/user/resultFind.jsp");
 			rd.forward(req, resp);
-		} 
+		}*/ 
 	}
 }

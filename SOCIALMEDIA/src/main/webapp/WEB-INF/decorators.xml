@@ -6,6 +6,8 @@
 		<pattern>/timkiem*</pattern>
 		<pattern>/hiring-post/detail*</pattern>
 		<pattern>/hiring-post/*</pattern>
+		<pattern>/group/allGroup*</pattern>
+		<pattern>/grouppost*</pattern>
 	</decorator>
 	<decorator name="admin" page="admin.jsp">
 

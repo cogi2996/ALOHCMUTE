@@ -9,6 +9,7 @@ public class GroupModel {
 	private String groupName;
 	private Date createTime;
 	private String createrID;
+	private int numberOfFollower; 
 	
 	public GroupModel(int groupID, String groupName, Date createTime, String createrId) {
 		super();
@@ -16,6 +17,15 @@ public class GroupModel {
 		this.groupName = groupName;
 		this.createTime = createTime;
 		this.createrID = createrId;
+	}
+
+	public GroupModel(int groupID, String groupName, Date createTime, String createrID, int numberOfFollower) {
+		super();
+		this.groupID = groupID;
+		this.groupName = groupName;
+		this.createTime = createTime;
+		this.createrID = createrID;
+		this.numberOfFollower = numberOfFollower;
 	}
 
 	@Override
@@ -52,6 +62,14 @@ public class GroupModel {
 	}
 	public void setCreaterId(String createrId) {
 		this.createrID = createrId;
+	}
+
+	public int getNumberOfFollower() {
+		return numberOfFollower;
+	}
+
+	public void setNumberOfFollower(int numberOfFollower) {
+		this.numberOfFollower = numberOfFollower;
 	}
 	
 	
