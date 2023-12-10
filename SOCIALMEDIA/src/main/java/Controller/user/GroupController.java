@@ -123,7 +123,7 @@ private static final long serialVersionUID = 1L;
 			indexP = "1";
 		}
 		int index = Integer.parseInt(indexP);
-		Long countP = groupService.countSearchUsers(groupName);
+		Long countP = groupService.countSearchGroups(groupName);
 		// chia trang cho count
 		Long endPage = countP / 10;
 		if (countP % 10 != 0) {

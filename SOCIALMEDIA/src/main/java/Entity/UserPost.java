@@ -137,4 +137,20 @@ public class UserPost {
 		this.likeUsers = likeUsers;
 	}
 
+	public String getUserPostImage() {
+		return userPostImage;
+	}
+
+	public void setUserPostImage(String userPostImage) {
+		this.userPostImage = userPostImage;
+	}
+
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
 }

@@ -144,7 +144,7 @@ public class GroupDAOImpl implements iGroupDAO{
 	}
 
 	@Override
-	public Long countSearchUsers(String groupName) {
+	public Long countSearchGroups(String groupName) {
 		EntityManager entityManager = JPAConfig.getEntityManager();
 		TypedQuery<Long> query = entityManager.createQuery( "SELECT COUNT(g) FROM Group g WHERE g.groupName LIKE :groupName",
 	            Long.class);
@@ -211,5 +211,20 @@ public class GroupDAOImpl implements iGroupDAO{
 		return count;
 	}
 	
-	
+	//hieu-them
+	@Override
+	public List<Group> paginationPage(int index, int numberOfPage) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Group> list  = enma.createQuery("select b from Group b",Group.class);
+		list.setFirstResult(index*numberOfPage);
+		list.setMaxResults(numberOfPage);
+		return list.getResultList();
+	}
+	@Override
+	public Long countAll() {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<Long> count = enma.createQuery("select count(u) from Group u", Long.class);
+		return count.getSingleResult();
+	}
+	//hieu-end
 }

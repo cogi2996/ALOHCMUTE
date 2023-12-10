@@ -71,7 +71,7 @@ public class UserController extends HttpServlet{
 			int countPost = listPost.size();
 			req.setAttribute("listPost", listPost);
 			req.setAttribute("countPost", countPost);
-			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listpost.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/listuserpost.jsp");
 			rd.forward(req, resp);
 		}
 		else if(url.contains("searchUser"))

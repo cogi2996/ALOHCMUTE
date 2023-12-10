@@ -21,7 +21,8 @@
 					</div>
 					<!--end of col-->
 					<div class="col-auto">
-						<button class="btn btn-lg btn-success" href="searchUser?keyword=park&index=1">Search</button>
+						<button class="btn btn-lg btn-success"
+							href="searchUser?keyword=park&index=1">Search</button>
 					</div>
 					<!--end of col-->
 				</div>
@@ -262,5 +263,6 @@
 		</nav>
 	</div>
 </div>
+
 
 

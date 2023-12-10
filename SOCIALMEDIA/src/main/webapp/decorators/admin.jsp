@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ADMIN</title>
+<link rel="icon" href="https://w7.pngwing.com/pngs/429/434/png-transparent-computer-icons-icon-design-business-administration-admin-icon-hand-monochrome-silhouette-thumbnail.png" type="image/png">
 <link rel="stylesheet"
 	href="<c:url value = "/templates/admin/css/style.css"/>" />
 	<link rel="stylesheet"

@@ -11,23 +11,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Entity.Group;
 import Entity.User;
 import Entity.UserPost;
+import Services.GroupServiceImpl;
 import Services.IUserPostService;
+import Services.IUserService;
 import Services.UserPostServiceImpl;
+import Services.UserServiceImpl;
+import Services.iGroupService;
 
-@WebServlet(urlPatterns = {"/admin-manage/post/listuserpost", "/admin-manage/post/delete", "/admin-manage/post/listUserLike","/admin-manage/post/searchUserPost" })
+@WebServlet(urlPatterns = {"/admin-manage/post/listpost", "/admin-manage/post/delete","/admin-manage/post/searchPost", "/admin-manage/post/profile","/admin-manage/post/group" })
 public class UserPostController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	IUserPostService postService = new UserPostServiceImpl();
-	
+	IUserService userService = new UserServiceImpl();
+	iGroupService groupService = new GroupServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
 		if (url.contains("delete")) {
 			delete(req, resp);
 		}
-		else if(url.contains("searchUserPost"))
+		else if(url.contains("searchPost"))
 		{
 			String keyword = req.getParameter("keyword");
 			String indexP = req.getParameter("index");
@@ -52,6 +58,32 @@ public class UserPostController extends HttpServlet{
 			req.setAttribute("tag", index);
 			req.setAttribute("keyword", keyword);
 			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/findUserPost.jsp");
+			rd.forward(req, resp);
+		}
+		else if(url.contains("profile"))
+		{
+			String id = req.getParameter("id");
+			User user = userService.findUser(id);
+			int countFollower = user.getFollowers().size();
+			int countFollowing = user.getFollowingUsers().size();
+			int countPost = user.getUserPosts().size();
+			
+			req.setAttribute("countFollower", countFollower);
+			req.setAttribute("countFollowing", countFollowing);
+			req.setAttribute("countPost", countPost);
+			req.setAttribute("user", user);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/user-detail.jsp");
+			rd.forward(req, resp);
+		}
+		else if(url.contains("group"))
+		{
+			int id = Integer.parseInt(req.getParameter("id"));
+			Group group = groupService.findGroup(id);
+			
+			req.setAttribute("group", group);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/views/admin/group-detail.jsp");
 			rd.forward(req, resp);
 		}
 		try {
