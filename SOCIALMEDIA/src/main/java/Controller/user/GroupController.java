@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Dao.IUserDAO;
 import Entity.Group;
@@ -65,8 +66,8 @@ private static final long serialVersionUID = 1L;
 		if(url.contains("creategroup")){
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
-			String userID = req.getParameter("userID");
-//			String userID = "user1";
+			HttpSession session = req.getSession(false);
+			String userID = (String) session.getAttribute("uid");
 	        String groupName = req.getParameter("groupName");
 	        Date createTime =  new Date();
 	        Group group = new Group();
@@ -82,7 +83,9 @@ private static final long serialVersionUID = 1L;
 	}
 	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//String userID = req.getParameter("userID");
-		String userID = "user5";
+		//String userID = "user5";
+		HttpSession session = req.getSession(false);
+		String userID = (String) session.getAttribute("uid");
 		User usergroup = userService.findUser(userID);
 		System.out.println(userID);
 		List<Group> listusergroup = usergroup.getUserGroups();

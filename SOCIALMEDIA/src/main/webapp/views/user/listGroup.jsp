@@ -23,7 +23,7 @@
 						All Groups </a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"					
-					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=user4" role="tab">My Groups</a>
+					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=${uid}" role="tab">My Groups</a>
 				
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
