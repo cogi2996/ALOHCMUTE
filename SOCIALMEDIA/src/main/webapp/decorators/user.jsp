@@ -112,8 +112,8 @@ if (uri.contains("home")) {
 %>
 
 <!-- list group css -->
-<link rel="stylesheet"
-	href="<c:url value = "/templates/user/css/listgroup.css"/>" />
+<%-- <link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/listgroup.css"/>" /> --%>
 </head>
 <body>
 	<%@include file="/common/user/header.jsp"%>

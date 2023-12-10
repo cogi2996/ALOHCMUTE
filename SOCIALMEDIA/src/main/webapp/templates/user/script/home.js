@@ -1,11 +1,11 @@
 import {
-  storage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-  onAuthStateChanged,
-  auth,
-  getAuth,
+	storage,
+	ref,
+	uploadBytesResumable,
+	getDownloadURL,
+	onAuthStateChanged,
+	auth,
+	getAuth,
 } from "/SOCIALMEDIA/templates/firebase/firebase.js";
 
 /*const insertPost = function(post) {
@@ -48,59 +48,59 @@ const btn_submit = document.querySelector(".form-createPost .btn-submit ");
 let currentUser = null;
 
 onAuthStateChanged(auth, (user) => {
-  if (user) {
-    currentUser = user;
-    const uid = user.uid;
-    console.log(currentUser);
-    console.log("uid current user: " + currentUser.uid);
-  } else {
-    // User is signed out
-    currentUser = null;
-    console.log("No one here");
-  }
+	if (user) {
+		currentUser = user;
+		const uid = user.uid;
+		console.log(currentUser);
+		console.log("uid current user: " + currentUser.photoUrl);
+	} else {
+		// User is signed out
+		currentUser = null;
+		console.log("No one here");
+	}
 });
 
-btn_inputCreatePost.addEventListener("click", function () {
-  const modalCreatePost = document.querySelector(".create-post__modal");
-  const body = document.querySelector(".home-content");
-  modalCreatePost.style.display = "block";
+btn_inputCreatePost.addEventListener("click", function() {
+	const modalCreatePost = document.querySelector(".create-post__modal");
+	const body = document.querySelector(".home-content");
+	modalCreatePost.style.display = "block";
 });
 
-btn_closeCreatePost.addEventListener("click", function () {
-  const createPostModal = document.querySelector(
-    ".create-post .create-post__modal"
-  );
-  createPostModal.style.display = "none";
+btn_closeCreatePost.addEventListener("click", function() {
+	const createPostModal = document.querySelector(
+		".create-post .create-post__modal"
+	);
+	createPostModal.style.display = "none";
 });
 // xử lí phần gọi api nhận bài viết khi scroll đến cuối trang
 let stateRequest = null;
 
-$(window).scroll(function () {
-  if ($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) {
-    if (stateRequest != null) return;
-    console.log("Đã gửi request");
-    stateRequest = 1; // reqeust dang được xử lí
-    loadAjax();
-  }
+$(window).scroll(function() {
+	if ($(window).scrollTop() + $(window).height() + 1 >= $(document).height()) {
+		if (stateRequest != null) return;
+		console.log("Đã gửi request");
+		stateRequest = 1; // reqeust dang được xử lí
+		loadAjax();
+	}
 });
 // callback render các post
-const renderPost = function (post) {
-  const listPost = document.querySelector(".list-post");
-  if (post.img) {
-    const htmlHasPic = `
+const renderPost = function(post) {
+	const listPost = document.querySelector(".list-post");
+	if (post.img) {
+		const htmlHasPic = `
     <li class="wrapper post" data-post-id="${post.postid}">
             <div class="post__header">
-              <div class="main-author">
-                <img class="main-author__avatar" alt="Subreddit Icon"
-                  role="presentation"
-                  src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
-                <p class="main-author__name">KTX ĐHQG TP.HCM</p>
-              </div>
-              <div class="sub-author">
-                <img class="sub-author__avatar" alt="Subreddit Icon"
-                  role="presentation"
-                  src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
-                <p class="sub-author__name">${post.username}</p>
+                     <div class="main-author">
+                  <img
+                    class="main-author__avatar"
+                    alt="Subreddit Icon"
+                    role="presentation"
+                    src="${post.userAvatar}"
+                  />
+                  <p class="main-author__name">${post.username}</p>
+                </div>
+
+                <p class="sub-author__name"></p>
               </div>
             </div>
             <div class="post__content">
@@ -159,7 +159,7 @@ const renderPost = function (post) {
                 <div
                   class="mt-3 d-flex flex-row align-items-center p-3 form-color">
                   <img
-                    src="https://media.licdn.com/dms/image/C4D03AQFTEOiGeGdutQ/profile-displayphoto-shrink_100_100/0/1657024175293?e=1707350400&v=beta&t=8w5gteNGTFSB2Yua7kTDzX5a5Pd6CT5YTPHi-gZIbGQ"
+                    src=""
                     width="50" class="rounded-circle mr-2"
                     style="margin-right: 10px" /> <input type="text"
                     class="form-control input_comment"
@@ -170,25 +170,25 @@ const renderPost = function (post) {
           </li>
           
   `;
-    listPost.insertAdjacentHTML("beforeend", htmlHasPic);
-    return;
-  }
+		listPost.insertAdjacentHTML("beforeend", htmlHasPic);
+		return;
+	}
 
-  const htmlWithoutPic = `
+	const htmlWithoutPic = `
 		<li class="wrapper post" data-post-id="${post.postid}">
 						<div class="post__header">
-							<div class="main-author">
-								<img class="main-author__avatar" alt="Subreddit Icon"
-									role="presentation"
-									src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
-								<p class="main-author__name">KTX ĐHQG TP.HCM</p>
-							</div>
-							<div class="sub-author">
-								<img class="sub-author__avatar" alt="Subreddit Icon"
-									role="presentation"
-									src="https://styles.redditmedia.com/t5_356bu/styles/communityIcon_ski6pyqvm4t11.png" />
-								<p class="sub-author__name">${post.username}</p>
-							</div>
+						    <div class="main-author">
+                  <img
+                    class="main-author__avatar"
+                    alt="Subreddit Icon"
+                    role="presentation"
+                    src="${post.userAvatar}"
+                  />
+                  <p class="main-author__name"><a href="/SOCIALMEDIA/profile?userID=${post.userid}">${post.username}</a></p>
+                </div>
+
+                <p class="sub-author__name"></p>
+							
 						</div>
 						<div class="post__content">
 							<div class="content-text">${post.text}</div>
@@ -234,7 +234,7 @@ const renderPost = function (post) {
 								<div
 									class="mt-3 d-flex flex-row align-items-center p-3 form-color">
 									<img
-										src="https://media.licdn.com/dms/image/C4D03AQFTEOiGeGdutQ/profile-displayphoto-shrink_100_100/0/1657024175293?e=1707350400&v=beta&t=8w5gteNGTFSB2Yua7kTDzX5a5Pd6CT5YTPHi-gZIbGQ"
+										src=""
 										width="50" class="rounded-circle mr-2"
 										style="margin-right: 10px" /> <input type="text"
 										class="form-control input_comment"
@@ -244,147 +244,147 @@ const renderPost = function (post) {
 						</section>
 					</li>
 	`;
-  listPost.insertAdjacentHTML("beforeend", htmlWithoutPic);
+	listPost.insertAdjacentHTML("beforeend", htmlWithoutPic);
 };
 // khởi tạo các bài viết
 loadAjax();
 
 function loadAjax() {
-  var amount = document.getElementsByClassName("post").length;
-  fetch(`/SOCIALMEDIA/api/v1/posts/loadAjaxPost?exits=${amount}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("chuyển trạng thái về lại");
-      stateRequest = null;
-      data.forEach((post) => {
-        renderPost(post);
-        getLikePost();
-      });
-    });
+	var amount = document.getElementsByClassName("post").length;
+	fetch(`/SOCIALMEDIA/api/v1/posts/loadAjaxPost?exits=${amount}`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log("chuyển trạng thái về lại");
+			stateRequest = null;
+			data.forEach((post) => {
+				renderPost(post);
+				getLikePost();
+			});
+		});
 }
 
 // hàm tải ảnh lên storage
 function uploadImage(file) {
-  return new Promise((resolve, reject) => {
-    const metadata = {
-      contentType: file.type,
-    };
-    const fileName = Date.now();
-    console.log(fileName);
+	return new Promise((resolve, reject) => {
+		const metadata = {
+			contentType: file.type,
+		};
+		const fileName = Date.now();
+		console.log(fileName);
 
-    const storageRef = ref(storage, `images/${fileName}`);
-    const uploadTask = uploadBytesResumable(storageRef, file, metadata);
+		const storageRef = ref(storage, `images/${fileName}`);
+		const uploadTask = uploadBytesResumable(storageRef, file, metadata);
 
-    uploadTask.on(
-      "onStateChanged",
-      (snapshot) => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        switch (snapshot.state) {
-          case "paused":
-            console.log("Upload is paused");
-            break;
-          case "running":
-            console.log("Upload is running");
-            break;
-        }
-      },
-      (error) => {
-        reject(`Có lỗi ở upload ảnh lên firebase: ` + error);
-      },
-      () => {
-        // Upload completed successfully, now we can get the download URL
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log("File available at", downloadURL);
-          resolve(downloadURL);
-        });
-      }
-    );
-  });
+		uploadTask.on(
+			"onStateChanged",
+			(snapshot) => {
+				// Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+				const progress =
+					(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				console.log("Upload is " + progress + "% done");
+				switch (snapshot.state) {
+					case "paused":
+						console.log("Upload is paused");
+						break;
+					case "running":
+						console.log("Upload is running");
+						break;
+				}
+			},
+			(error) => {
+				reject(`Có lỗi ở upload ảnh lên firebase: ` + error);
+			},
+			() => {
+				// Upload completed successfully, now we can get the download URL
+				getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+					console.log("File available at", downloadURL);
+					resolve(downloadURL);
+				});
+			}
+		);
+	});
 }
 
-btn_submit.addEventListener("click", function (e) {
-  e.preventDefault();
-  const text = document.querySelector(".form-createPost #content").value;
-  const uid = currentUser.uid;
-  if (!document.getElementById("image").files[0]) {
-    fetch(`/SOCIALMEDIA/api/v1/posts`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "aplication/json",
-      },
-      body: JSON.stringify({
-        userid: uid,
-        text: text,
-      }),
-    });
-  } else {
-    const img = uploadImage(document.getElementById("image").files[0]);
-    img.then((urlImg) => {
-      fetch(`/SOCIALMEDIA/api/v1/posts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "aplication/json",
-        },
-        body: JSON.stringify({
-          userid: uid,
-          text: text,
-          img: urlImg,
-        }),
-      });
-    });
-  }
+btn_submit.addEventListener("click", function(e) {
+	e.preventDefault();
+	const text = document.querySelector(".form-createPost #content").value;
+	const uid = currentUser.uid;
+	if (!document.getElementById("image").files[0]) {
+		fetch(`/SOCIALMEDIA/api/v1/posts`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "aplication/json",
+			},
+			body: JSON.stringify({
+				userid: uid,
+				text: text,
+			}),
+		});
+	} else {
+		const img = uploadImage(document.getElementById("image").files[0]);
+		img.then((urlImg) => {
+			fetch(`/SOCIALMEDIA/api/v1/posts`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "aplication/json",
+				},
+				body: JSON.stringify({
+					userid: uid,
+					text: text,
+					img: urlImg,
+				}),
+			});
+		});
+	}
 
-  const createPostModal = document.querySelector(
-    ".create-post .create-post__modal"
-  );
-  createPostModal.style.display = "none";
+	const createPostModal = document.querySelector(
+		".create-post .create-post__modal"
+	);
+	createPostModal.style.display = "none";
 });
 
 // làm phần lắng nghe sự kiện follow
 document.querySelectorAll(".btn__follow").forEach((btn_follow) => {
-  btn_follow.addEventListener("click", (e) => {
-    const targetFollowId = btn_follow.dataset.userId;
+	btn_follow.addEventListener("click", (e) => {
+		const targetFollowId = btn_follow.dataset.userId;
 
-    fetch(`/SOCIALMEDIA/api/v1/userFollow?targetID=${targetFollowId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "aplication/json",
-      },
-    }).then(() => {
-      btn_follow.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
-    });
-  });
+		fetch(`/SOCIALMEDIA/api/v1/userFollow?targetID=${targetFollowId}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "aplication/json",
+			},
+		}).then(() => {
+			btn_follow.innerHTML = `<i class="fa-solid fa-user-plus"></i>`;
+		});
+	});
 });
 
 // get số like các bài viết hiện có
 function getLikePost() {
-  document.querySelectorAll(".post").forEach(function (post) {
-    const postId = post.dataset.postId;
-    fetch(`/SOCIALMEDIA/api/v1/getLikePost?postId=${postId}`, {
-      method: "GET",
-    })
-      .then((response) => {
-        if (!response.ok) return;
-        return response.json();
-      })
-      .then((like) => {
-        if (like) {
-          post
-            .querySelector(".btn__feedback-like")
-            .querySelector("p").textContent = `${like} like`;
-        } else {
-          post
-            .querySelector(".btn__feedback-like")
-            .querySelector("p").textContent = `like`;
-        }
-      });
-  });
+	document.querySelectorAll(".post").forEach(function(post) {
+		const postId = post.dataset.postId;
+		fetch(`/SOCIALMEDIA/api/v1/getLikePost?postId=${postId}`, {
+			method: "GET",
+		})
+			.then((response) => {
+				if (!response.ok) return;
+				return response.json();
+			})
+			.then((like) => {
+				if (like) {
+					post
+						.querySelector(".btn__feedback-like")
+						.querySelector("p").textContent = `${like} like`;
+				} else {
+					post
+						.querySelector(".btn__feedback-like")
+						.querySelector("p").textContent = `like`;
+				}
+			});
+	});
 }

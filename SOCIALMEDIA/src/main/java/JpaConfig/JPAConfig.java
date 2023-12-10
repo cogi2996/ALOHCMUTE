@@ -12,21 +12,21 @@ public class JPAConfig {
 		
 	}
 
-//	public static void main(String[] args) {
-//		EntityManager entityManager = JPAConfig.getEntityManager();
-//
-//		try {
-//			// Thử kết nối đến cơ sở dữ liệu
-//			entityManager.getTransaction().begin();
-//			System.out.println("ket noi thanh cong");
-//			entityManager.getTransaction().commit();
-//		} catch (Exception e) {
-//			System.err.println("Ket  noi that bai: " + e.getMessage());
-//			if (entityManager.getTransaction().isActive()) {
-//				entityManager.getTransaction().rollback();
-//			}
-//		} finally {
-//			entityManager.close();
-//		}
-//	}
+	public static void main(String[] args) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+
+		try {
+			// Thử kết nối đến cơ sở dữ liệu
+			entityManager.getTransaction().begin();
+			System.out.println("ket noi thanh cong");
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println("Ket  noi that bai: " + e.getMessage());
+			if (entityManager.getTransaction().isActive()) {
+				entityManager.getTransaction().rollback();
+			}
+		} finally {
+			entityManager.close();
+		}
+	}
 }
