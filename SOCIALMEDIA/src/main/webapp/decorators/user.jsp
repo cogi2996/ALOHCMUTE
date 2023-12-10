@@ -117,7 +117,19 @@ if (uri.contains("home")) {
 %>
 <link rel="stylesheet" href="<c:url value = "/templates/user/css/follower.css"/>" />
 <%
-} 
+} else if (uri.contains("allGroup")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/group.css"/>" />
+
+<%
+} else if (uri.contains("grouppost")) {
+%>
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/groupinfo.css"/>" />
+
+<%
+}
 %>
 <!-- list group css -->
 <%-- <link rel="stylesheet"

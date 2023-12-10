@@ -14,16 +14,17 @@
 
 	<!-- List group -->
 	<section class="group" style="margin-top: 39px">
-		<div class="card social-tabs" style="width: 100%">
+		<div class="card social-tabs"
+			style="width: 100%; align-items: center; margin-bottom: 20px; border: 1px solid rgba(0,0,0,.125);">
 			<ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
-				style="margin-top: 4rem">
+				style="height: 40px; margin-top: 25px;">
 				<li class="nav-item"><a class="nav-link active"
-					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All
-						Groups</a>
+					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">
+						All Groups </a>
 					<div class="slide"></div></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href='<c:url value = "mygroup?userID=${userID}"/>' role="tab">My
-						Groups</a>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab"					
+					href="/SOCIALMEDIA/group/allGroup/mygroup?userID=user4" role="tab">My Groups</a>
+				
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href=<c:url value = "creategroup"/> data-bs-toggle="modal"
@@ -34,8 +35,11 @@
 					<form class="navbar-form pull-right flex-row float-right"
 						style="display: flex; justify-content: flex-end">
 						<div style="max-width: 470px" class="input-group">
-							<input type="text" id="srch-term" name="srch-term"
+							<input type="text" id="groupName" name="groupName"
 								placeholder="Search" class="form-control" />
+							<button type="submit"
+								formaction="/SOCIALMEDIA/group/allGroup/searchgroup?groupName=${groupName}"
+								formmethod="get">Tìm kiếm</button>
 						</div>
 					</form>
 				</li>
@@ -77,7 +81,7 @@
 			</div>
 		</div>
 
-		<!-- Pagination -->
+		<!-- Pagination 
 
 		<div class="text-center mt-3 mt-sm-3 fixed-bottom ">
 			<ul class="pagination justify-content-center mb-0">
@@ -91,7 +95,7 @@
 				<li class="page-item"><a class="page-link" href="#">25</a></li>
 				<li class="page-item"><a class="page-link" href="#">Next</a></li>
 			</ul>
-		</div>
+		</div>-->
 	</section>
 
 	<!-- Add new group form BEGIN-->
@@ -107,46 +111,49 @@
 				</div>
 				<div class="modal-body">
 					<div>
-						<form>
-							<!-- 2 column grid layout with text inputs for the Group ID and Creater ID -->
+					<!-- tin begin -->
+						<form action="creategroup" method="post">
+							<!-- 2 column grid layout with text inputs for the Group ID and Creater ID
 							<div class="row mb-4">
 								<div class="col">
 									<div data-mdb-input-init class="form-outline">
 										<label class="form-label" for="creategroup">Group ID</label> <input
-											type="text" id="creategroup" class="form-control" />
+											type="text" name="groupID" id="creategroup" class="form-control" />
 									</div>
 								</div>
 								<div class="col">
 									<div data-mdb-input-init class="form-outline">
 										<label class="form-label" for="creategroup">Creater ID</label>
-										<input type="text" id="creategroup" class="form-control" />
+										<input readonly="readonly" type="text" id="creategroup"
+											class="form-control" name="CreaterID" />
 									</div>
 								</div>
-							</div>
+							</div>-->
 
 							<!-- Group Name input -->
 							<div data-mdb-input-init class="form-outline mb-4">
 								<label class="form-label" for="creategroup">Group Name</label> <input
-									type="email" id="creategroup" class="form-control" />
+									type="text" name="groupName" id="creategroup" class="form-control" />
 							</div>
 
-							<!-- Create Time input -->
+							<!-- Create Time input
 							<div data-mdb-input-init class="form-outline mb-4">
 								<label class="form-label" for="creategroup">Create Time</label>
 								<input type="password" id="creategroup" class="form-control" />
-							</div>
+							</div>-->
 
-							<!-- Submit button -->
+							<!-- Submit button 
 							<button data-mdb-ripple-init type="button"
-								class="btn btn-primary btn-block mb-4">Add new Group</button>
+								class="btn btn-primary btn-block mb-4">Add new Group</button>-->
+							<input type="submit" value="Add new Group" style="background-color: #0074cc; color: white;">
 						</form>
 					</div>
-
+						<!-- tin end -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<!--<button type="button" class="btn btn-primary">Save changes</button>-->
 				</div>
 			</div>
 		</div>

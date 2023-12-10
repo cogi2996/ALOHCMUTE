@@ -68,7 +68,6 @@ public class UserPostServiceImpl implements IUserPostService {
 		return userPostDao.countSearchUserPost(keyword);
 	}
 
-
 	@Override
 	public List<UserPost> paginationPostProfile(int index, int numberOfPage, String uid) {
 		return userPostDao.paginationPostProfile(index,numberOfPage,uid);
@@ -82,6 +81,11 @@ public class UserPostServiceImpl implements IUserPostService {
 	@Override
 	public UserPost findOne(int userPostID) {
 		return userPostDao.findOne(userPostID);
+	}
+
+	@Override
+	public List<UserPost> GroupPostBygroupID(int groupID) {
+		return userPostDao.GroupPostBygroupID(groupID);
 	}
 
 	@Override

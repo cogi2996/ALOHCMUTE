@@ -4,6 +4,7 @@ import java.util.List;
 
 import Entity.Group;
 import Entity.User;
+import Entity.UserPost;
 
 public interface iGroupService {
 	List<Group> findAllGroup();
@@ -24,6 +25,7 @@ public interface iGroupService {
 	List<Group> paginationPageAllGroup(int index, int numberOfPage);
 	Long countAllGroup();
 	// tin end
+	
 	//hieu-them
 	List<Group> paginationPage(int index, int numberOfPage);
 	Long countAll();

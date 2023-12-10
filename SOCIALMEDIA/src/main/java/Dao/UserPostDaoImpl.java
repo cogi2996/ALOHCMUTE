@@ -148,6 +148,15 @@ public class UserPostDaoImpl implements IUserPostDao {
 		query.setParameter("userPostID", userPostID);
 		return query.getSingleResult();
 	}
+	// tin begin
+	@Override
+	public List<UserPost> GroupPostBygroupID(int groupID) {
+		EntityManager entityManager = JPAConfig.getEntityManager();
+		TypedQuery<UserPost> query = entityManager.createQuery("SELECT up FROM UserPost up WHERE up.group.groupID = :groupID", UserPost.class);
+	    query.setParameter("groupID", groupID);
+	    return query.getResultList();
+	}
+	// tin end
 
 	@Override
 	public List<UserPost> paginationPageSearchUserPost(int index, int numberOfPage, String keyword) {
@@ -206,5 +215,4 @@ public class UserPostDaoImpl implements IUserPostDao {
 		}
 		return false;
 	}
-
 }

@@ -31,5 +31,7 @@ public interface IUserPostService {
 	UserPost findOne(int userPostID);
 	void unlikePost(int userPostID,String userID);
 	boolean liked (int userPostID,String userID);
-
+	// tin begin
+	List<UserPost> GroupPostBygroupID(int groupID);
+	// tin end
 }
