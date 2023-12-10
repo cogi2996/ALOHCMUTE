@@ -1,6 +1,8 @@
 package Controller.user;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,16 +11,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Dao.IUserDAO;
 import Entity.Group;
 import Entity.User;
+import Model.GroupModel;
 import Services.GroupServiceImpl;
+import Services.IUserService;
+import Services.UserServiceImpl;
 import Services.iGroupService;
-@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/group/allGroup/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup"})
+
+@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/timkiem/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup", "/group/allGroup/creategroup"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
 	iGroupService groupService = new GroupServiceImpl();
 	int danhdau=-1;
+	IUserService userService = new UserServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -38,18 +47,72 @@ private static final long serialVersionUID = 1L;
 		else if(url.contains("allgrouppost")) {
 			AllGroupPost(req, resp);
 		}
+//		DAT BEGIN HERE
 		else if(url.contains("listgroup")) {
 			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 			findAll(req, resp);
 		}
+		else if(url.contains("mygroup")) {
+			MyGroupUser(req, resp);
+		}
+	}
+	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//String userID = req.getParameter("userID");
+		String userID = "user1";
+		User usergroup = userService.findUser(userID);
+		System.out.println(userID);
+		List<Group> listusergroup = usergroup.getUserGroups();
+		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
+
+		for (Group group : listusergroup) {
+
+			int groupID = group.getGroupID();
+			String groupName = group.getGroupName();
+			Date createTime = group.getCreateTime();
+			User user = group.getAdmin();
+			String createrId = user.getUserID();
+			
+			List<User> users = group.getMember();
+			int numberOfFollower = 0;
+			for (User u : users) {
+				numberOfFollower++;
+				}
+			
+			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
+			listgroupmodel.add(groupmodel);
+		}
+		System.out.println(listusergroup);
+		req.setAttribute("listGroup", listgroupmodel);
+		req.setAttribute("userID", userID);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/listGroup.jsp");
+		rd.forward(req, resp);
+		
 	}
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Group> listGroup = groupService.findAllGroup();
+		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
+
+		for (Group group : listGroup) {
+
+			int groupID = group.getGroupID();
+			String groupName = group.getGroupName();
+			Date createTime = group.getCreateTime();
+			User user = group.getAdmin();
+			String createrId = user.getUserID();
+			
+			List<User> users = group.getMember();
+			int numberOfFollower = 0;
+			for (User u : users) {
+				numberOfFollower++;
+				}
+			
+			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
+			listgroupmodel.add(groupmodel);
+		}
 		// đẩy dl ra view
-		req.setAttribute("listGroup", listGroup);
-		//System.out.println(listGroup);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/user/grouplist.jsp");
-		rd.forward(req, resp);
+		req.setAttribute("listGroup", listgroupmodel);
+		System.out.println(listGroup);
+		req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 	}
 
 	private void SearchPostGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
