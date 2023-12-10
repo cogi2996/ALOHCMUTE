@@ -11,10 +11,12 @@ import {
   onValue,
   push,
 } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js";
+let currentUser;
 onAuthStateChanged(auth, (user) => {
   if (user) {
+	  currentUser = user;
     const uid = user.uid;
-    console.log("uid current user1: " + uid);
+    console.log("uid current user1: " + currentUser.photoURL);
   } else {
     // User is signed out
     currentUser = null;
@@ -88,7 +90,7 @@ const renderComment = function (
                   class="mt-3 d-flex flex-row align-items-center p-3 form-color"
                 >
                   <img
-                    src="https://media.licdn.com/dms/image/C4D03AQFTEOiGeGdutQ/profile-displayphoto-shrink_100_100/0/1657024175293?e=1707350400&v=beta&t=8w5gteNGTFSB2Yua7kTDzX5a5Pd6CT5YTPHi-gZIbGQ"
+                    src="${currentUser.photoURL}"
                     width="50"
                     class="rounded-circle mr-2"
                     style="margin-right: 10px"

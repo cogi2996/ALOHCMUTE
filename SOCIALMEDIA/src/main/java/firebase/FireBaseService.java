@@ -53,7 +53,7 @@ public class FireBaseService {
 	}
 	
 	public void updateInfoUser(UserModel user,String uid) throws FirebaseAuthException {
-		
+	
 		String e164PhoneNumber = "+84" + user.getMobile().substring(1);
 		UpdateRequest request = new UpdateRequest(uid)
 			    .setEmail(user.getGmail())
@@ -68,7 +68,8 @@ public class FireBaseService {
 			System.out.println("Successfully updated user: " + userRecord.getUid());
 	}
 	public void updateProfile(UserModel user,String uid) throws FirebaseAuthException {
-		
+		System.out.println("begin update");
+		System.out.println(user.getAvatar());
 		String e164PhoneNumber = "+84" + user.getMobile().substring(1);
 		UpdateRequest request = new UpdateRequest(uid)
 			    .setPhoneNumber(e164PhoneNumber)
@@ -78,6 +79,7 @@ public class FireBaseService {
 
 			UserRecord userRecord = this.auth.updateUser(request);
 			System.out.println("Successfully updated user: " + userRecord.getUid());
+			System.out.println("Successfully updated user: " + userRecord.getPhotoUrl());
 	}
 
 	public static void main(String[] args) throws IOException, FirebaseAuthException {
