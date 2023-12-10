@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +15,16 @@
 	<!-- List group -->
 	<section class="group" style="margin-top: 39px">
 		<div class="card social-tabs" style="width: 100%">
-			<ul class="nav nav-tabs md-tabs tab-timeline" role="tablist" style="margin-top:4rem">
+			<ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
+				style="margin-top: 4rem">
 				<li class="nav-item"><a class="nav-link active"
-					data-toggle="tab" href="#allgroup" role="tab">All Groups</a>
+					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href="#mygroup" role="tab">My Groups</a>
+					href='<c:url value = "mygroup?userID=1"/>' role="tab">My Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href="#creategroup" role="tab">Create a Group</a>
+					href=<c:url value = "creategroup"/> data-bs-toggle="modal" data-bs-target="#creategroup" data-toggle="tab" role="tab">Create a Group</a>
 					<div class="slide"></div></li>
 				<li>
 					<form class="navbar-form pull-right flex-row float-right"
@@ -40,30 +42,30 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8 col-lg-offset-2">
 					<!-- foreach begin -->
-					<div class="group-box full-width">
-						<div class="group-body">
-							<img class="img-responsive img-circle"
-								src="https://bootdey.com/img/Content/avatar/avatar1.png" alt />
-							<div class="name-box">
-								<!-- Group Name -->
-								<h7>Group Name</h7>
-								<!-- Group ID
+					<c:forEach var="item" items="${listGroup}">
+						<div class="group-box full-width">
+							<div class="group-body">
+								<img class="img-responsive img-circle"
+									src="https://bootdey.com/img/Content/avatar/avatar1.png" alt />
+								<div class="name-box">
+									<!-- Group Name -->
+									<h7>${item.groupName}</h7>
+									<!-- Group ID
                 <span>@vannessa</span> -->
-								<div class="group-base">
-									<!-- <ul class="list-group">
+									<div class="group-base">
+										<!-- <ul class="list-group">
                     <li class="list-group-item full-width"> -->
-									<div class="pull-left" style="margin-right: 0px">
-										<span> 14,000 follower </span>
+										<div class="pull-left" style="margin-right: 0px">
+											<span>${item.numberOfFollower} follower </span>
+										</div>
 									</div>
-									<!-- </li>
-                  </ul> -->
 								</div>
+								<span><a href class="btn btn-info btn-sm"> Follow</a></span>
 							</div>
-							<span><a href class="btn btn-info btn-sm"> Follow</a></span>
 						</div>
-					</div>
+					</c:forEach>
+					<!-- foreach end -->
 				</div>
-				<!-- foreach end -->
 			</div>
 		</div>
 
@@ -84,6 +86,64 @@
 		</div>
 	</section>
 
+	<!-- Add new group form BEGIN-->
+	<div class="modal" id="creategroup" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Create Group</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div>
+						<form>
+							<!-- 2 column grid layout with text inputs for the Group ID and Creater ID -->
+							<div class="row mb-4">
+								<div class="col">
+									<div data-mdb-input-init class="form-outline">
+										<label class="form-label" for="creategroup">Group ID</label> <input
+											type="text" id="creategroup" class="form-control" />
+									</div>
+								</div>
+								<div class="col">
+									<div data-mdb-input-init class="form-outline">
+										<label class="form-label" for="creategroup">Creater ID</label>
+										<input type="text" id="creategroup" class="form-control" />
+									</div>
+								</div>
+							</div>
+
+							<!-- Group Name input -->
+							<div data-mdb-input-init class="form-outline mb-4">
+								<label class="form-label" for="creategroup">Group Name</label> <input
+									type="email" id="creategroup" class="form-control" />
+							</div>
+
+							<!-- Create Time input -->
+							<div data-mdb-input-init class="form-outline mb-4">
+								<label class="form-label" for="creategroup">Create Time</label>
+								<input type="password" id="creategroup" class="form-control" />
+							</div>
+
+							<!-- Submit button -->
+							<button data-mdb-ripple-init type="button"
+								class="btn btn-primary btn-block mb-4">Add new Group</button>
+						</form>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Add new group form END-->
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
