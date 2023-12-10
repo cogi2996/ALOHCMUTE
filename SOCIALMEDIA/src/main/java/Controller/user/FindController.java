@@ -16,7 +16,7 @@ import Services.IUserService;
 import Services.UserServiceImpl;
 import Services.iGroupService;
 //"/timkiem/loadusergroup",
-@WebServlet(urlPatterns = { "/timkiem/searchusers" })
+@WebServlet(urlPatterns = { "/timkiem" })
 public class FindController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
