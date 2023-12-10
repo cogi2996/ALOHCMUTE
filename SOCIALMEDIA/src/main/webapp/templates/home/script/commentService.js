@@ -260,8 +260,7 @@ document.addEventListener("click", function (e) {
     commentElement
       .querySelector(".input_comment_container")
       .classList.toggle("d-none");
-  }
-  if (e.target.closest(".btn__feedback-like")) {
+  } else if (e.target.closest(".btn__feedback-like")) {
     const btn_like = e.target.closest(".btn__feedback-like");
     const postId = e.target.closest(".btn__feedback-like").closest(".post")
       .dataset.postId;
@@ -278,6 +277,15 @@ document.addEventListener("click", function (e) {
         console.log(data);
         btn_like.querySelector("p").textContent = `${data} like`;
       });
+  } else if (e.target.closest(".dropdown-item-delete")) {
+    const postId = e.target.closest(".dropdown-item-delete").closest(".post")
+      .dataset.postId;
+    fetch(`/SOCIALMEDIA/api/v1/posts?postId=${postId}`, {
+      method: "DELETE",
+    }).then((response) => {
+      if (!response.ok) return;
+      e.target.closest(".dropdown-item-delete").closest(".post").remove();
+    });
   }
 });
 

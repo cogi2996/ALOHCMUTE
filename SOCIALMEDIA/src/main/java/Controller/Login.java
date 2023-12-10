@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
 import com.google.gson.Gson;
 
+import Services.UserServiceImpl;
 import firebase.FireBaseService;
 
 @WebServlet(urlPatterns = "/dangnhap")
@@ -64,7 +65,7 @@ public class Login extends HttpServlet {
 					// Tạo session khi người dùng đăng nhập thành công
 					HttpSession session = req.getSession();
 					session.setAttribute("uid", uid);
-
+					session.setAttribute("role", new UserServiceImpl().findUser(uid).getRole());
 					// Trả về trạng thái thành công
 					resp.setStatus(HttpServletResponse.SC_OK);
 					resp.getWriter().write("Đăng nhập thành công!");

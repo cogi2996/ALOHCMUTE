@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
@@ -39,7 +38,7 @@
 			<div class="col-md-6 justify-content-center">
 				<div class="wrapper create-post">
 					<a class="create-post__avatar"> <img alt="User avatar"
-						src="https://styles.redditmedia.com/t5_6tgdza/styles/profileIcon_snoob64c08dd-9253-4a17-9006-378fff570d44-headshot.png?width=256&amp;height=256&amp;crop=256:256,smart&amp;s=975f806419bee0b32ca65c2dcc6e1a9ef4ad2108" />
+						src="${currentUser.avatar}" />
 					</a> <input class="create-post__input" placeholder="Create Post" /> <a
 						class="create-post__link"> <i class="fa-solid fa-image icon"></i>
 					</a> <a class="create-post__link"> <i class="fa-solid fa-link icon"></i>
@@ -156,6 +155,4 @@
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
 </body>
 </html>
-=======
-v
->>>>>>> branch 'hoang-api' of https://github.com/cogi2996/ALOHCMUTE.git
+

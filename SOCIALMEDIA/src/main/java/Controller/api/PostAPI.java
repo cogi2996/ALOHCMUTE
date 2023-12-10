@@ -30,7 +30,7 @@ import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 
 @WebServlet(urlPatterns = { "/api/v1/posts/loadAjaxPost", "/api/v1/posts", "/api/v1/posts/loadMoreUserPost",
-		"/api/v1/likePost" })
+		"/api/v1/likePost", "/api/v1/getLikePost"})
 
 public class PostAPI extends HttpServlet {
 	IUserService userService = new UserServiceImpl();
@@ -46,6 +46,8 @@ public class PostAPI extends HttpServlet {
 			loadMoreUserPost(req, resp);
 		} else if (url.contains("likePost")) {
 			likePost(req, resp);
+		}else if(url.contains("getLikePost")) {
+			getLikePost(req, resp);
 		}
 	}
 
@@ -118,15 +120,38 @@ public class PostAPI extends HttpServlet {
 
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-		int id = Integer.parseInt(req.getParameter("userPostID"));
-		System.out.println(id);
-		userPostService.delete(id);
-		//Viết thông báo kết quả
-		PrintWriter out = resp.getWriter();
-		out.println("Đã xóa thành công");
-		out.close();
+		
+		String url = req.getRequestURL().toString();
+		if (url.contains("posts")) {
+			resp.setContentType("application/json");
+			resp.setCharacterEncoding("UTF-8");
+			Gson gson = new Gson();
+			int postId = Integer.parseInt(req.getParameter("postId"));
+			UserPost userPost = userPostService.findOne(postId);
+//			UserPost userPostJSon = gson.fromJson(req.getReader(), UserPost.class);
+			// chỗ này update kiểm tra được xoá khi ( role = admin || id chủ = uid ( session
+			// ))
+			HttpSession session = req.getSession();
+			int role = 0;
+			if(session.getAttribute("role")!=null) {
+				
+				role = (int) session.getAttribute("role");
+			}
+			String uid = (String) session.getAttribute("uid");
+			if (role == 1 || uid.equals(userPost.getUser().getUserID())) {
+				userPostService.delete(userPost.getUserPostID());
+				// Viết thông báo kết quả
+				PrintWriter out = resp.getWriter();
+				resp.setStatus(HttpServletResponse.SC_OK);
+				out.println("Đã xóa thành công");
+				out.close();
+			}
+			else {
+				resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+				resp.getWriter().write("người dùng không có quyền xoá");
+			}
+		}
+
 	}
 	// hieu-end
 
@@ -204,8 +229,26 @@ public class PostAPI extends HttpServlet {
 		out.close();
 	}
 
-	// tuan - begin - api like post
-
+	// tuan - begin - api get like post
+	public void getLikePost(HttpServletRequest req, HttpServletResponse resp)
+			throws JsonSyntaxException, JsonIOException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		// lấy ra uid người like
+//		HttpSession session = req.getSession();
+//		String uid = (String) session.getAttribute("uid");
+		int postId = Integer.parseInt(req.getParameter("postId"));
+//		System.out.println("da vao likepost");
+//		int postId = gson.fromJson(req.getReader(), int.class);
+//		userPostService.insertLikePost(uid, postId, null);
+		// trả về số like hiện tại
+		Gson gson = new Gson();
+		String countLike = gson.toJson(userPostService.findOne(postId).getLikeUsers().size());
+		PrintWriter out = resp.getWriter();
+		out.println(countLike);
+		out.close();
+	}
 	// tuan - end
 
 }

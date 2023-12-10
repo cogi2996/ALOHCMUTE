@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <header class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light row">
 		<div class="col-3 row nav-left">
@@ -50,7 +51,7 @@
 		<div class="col-6 nav-center">
 			<ul class="nav nav-underline justify-content-center">
 				<li class="nav-item col"><a class="nav-link active text-center"
-					aria-current="page" href="#" onclick="handleActive()"> <i
+					aria-current="page" href='<c:url value ="/home"></c:url>' onclick="handleActive()"> <i
 						class="fa-solid fa-house icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
