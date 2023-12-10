@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
+import com.google.gson.Gson;
+
 import Dao.IUserDAO;
 import Entity.Group;
 import Entity.User;
@@ -51,15 +55,43 @@ private static final long serialVersionUID = 1L;
 //		DAT BEGIN HERE
 		else if(url.contains("listgroup")) {
 			findAll(req, resp);
+			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		}else if (url.contains("mygroup")) {
 			findMyGroup(req, resp);
+			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		}else if (url.contains("creategroup")) {
-			createGroup(req,resp);
+			//createGroup(req,resp);
 			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		}
 	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String url = req.getRequestURI().toString();
+		if(url.contains("creategroup")) {
+			createGroup(req,resp);
+		}
+	}
 	private void createGroup(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+		resp.setCharacterEncoding("UTF-8");
+		try {
+			String userID = req.getParameter("userID");
+			User user = userService.findUser(userID);
+			
+			Group newgroup = new Group();
+			String groupName = req.getParameter("GroupName");
+			
+			newgroup.setGroupName(groupName);
+			newgroup.setCreateTime(new Date());
+			newgroup.setAdmin(user);
+			//BeanUtils.populate(newgroup, req.getParameterMap());
+			System.out.println(newgroup);
+			
+			groupService.insertGroup(newgroup);
+			resp.sendRedirect("listgroup");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Fail");
+		}
 		
 	}
 	private void findMyGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -105,7 +137,6 @@ private static final long serialVersionUID = 1L;
 		req.setAttribute("listGroup", listgroupmodel);
 		System.out.println(listgroupmodel);
 		System.out.println(userID);
-		req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		
 	}
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -134,6 +165,7 @@ private static final long serialVersionUID = 1L;
 		System.out.println(listGroup);
 		req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 	}
+//	DAT END HERE
 
 	private void SearchPostGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String keyword = req.getParameter("keyword");

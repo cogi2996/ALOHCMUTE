@@ -18,13 +18,16 @@
 			<ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
 				style="margin-top: 4rem">
 				<li class="nav-item"><a class="nav-link active"
-					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All Groups</a>
+					data-toggle="tab" href=<c:url value = "listgroup"/> role="tab">All
+						Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href='<c:url value = "mygroup?userID=1"/>' role="tab">My Groups</a>
+					href= "mygroup?userID=1" role="tab">My Groups</a>
 					<div class="slide"></div></li>
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
-					href=<c:url value = "creategroup"/> data-bs-toggle="modal" data-bs-target="#creategroup" data-toggle="tab" role="tab">Create a Group</a>
+					href="creategroup" data-bs-toggle="modal"
+					data-bs-target="#creategroup" data-toggle="tab" role="tab">Create
+						a Group</a>
 					<div class="slide"></div></li>
 				<li>
 					<form class="navbar-form pull-right flex-row float-right"
@@ -99,19 +102,20 @@
 				</div>
 				<div class="modal-body">
 					<div>
-						<form>
+						<form action="creategroup" method="post">
 							<!-- 2 column grid layout with text inputs for the Group ID and Creater ID -->
 							<div class="row mb-4">
 								<div class="col">
 									<div data-mdb-input-init class="form-outline">
 										<label class="form-label" for="creategroup">Group ID</label> <input
-											type="text" id="creategroup" class="form-control" />
+											type="text" id="creategroup" class="form-control" readonly="readonly" name="GroupID"/>
 									</div>
 								</div>
 								<div class="col">
 									<div data-mdb-input-init class="form-outline">
 										<label class="form-label" for="creategroup">Creater ID</label>
-										<input type="text" id="creategroup" class="form-control" />
+										<input readonly="readonly" type="text" id="creategroup"
+											class="form-control" name="CreaterID"/>
 									</div>
 								</div>
 							</div>
@@ -119,18 +123,19 @@
 							<!-- Group Name input -->
 							<div data-mdb-input-init class="form-outline mb-4">
 								<label class="form-label" for="creategroup">Group Name</label> <input
-									type="email" id="creategroup" class="form-control" />
+									type="text" id="creategroup" class="form-control" naem="GroupName"/>
 							</div>
 
 							<!-- Create Time input -->
 							<div data-mdb-input-init class="form-outline mb-4">
 								<label class="form-label" for="creategroup">Create Time</label>
-								<input type="password" id="creategroup" class="form-control" />
+								<input type="date" id="creategroup" class="form-control" name="CreateTime"/>
 							</div>
 
 							<!-- Submit button -->
-							<button data-mdb-ripple-init type="button"
-								class="btn btn-primary btn-block mb-4">Add new Group</button>
+							<button data-mdb-ripple-init
+								class="btn btn-primary btn-block mb-4" type="submit"
+								value="Insert group">Add new Group</button>
 						</form>
 					</div>
 
@@ -138,7 +143,8 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal" type="submit"
+						value="New group">Save changes</button>
 				</div>
 			</div>
 		</div>
