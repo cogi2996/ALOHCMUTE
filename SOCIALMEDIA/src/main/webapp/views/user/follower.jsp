@@ -1,107 +1,99 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+		integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA="
+		crossorigin="anonymous" />
+	<div class="container mt-3 mb-4">
+		<div class="col-lg-9 mt-4 mt-lg-0">
+			<div class="row">
+				<div class="col-md-12">
+					<div
+						class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+						<table class="table manage-candidates-top mb-0">
+							<thead>
+								<tr>
+									<th>Danh sách người theo dõi</th>
+									<th class="text-center"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="item" items="${listfollower}">
+									<tr class="candidates-list">
+										<td class="title">
+											<div class="thumb">
+												<img class="img-fluid"
+													src="${item.avatar}"
+													alt="" />
+											</div>
+											<div class="candidate-list-details">
+												<div class="candidate-list-info">
+													<div class="candidate-list-title">
+														<h5 class="mb-0">
+															<a href="#">${item.lastName} ${item.midName} ${item.firstName}</a>
+														</h5>
+													</div>
+													<div class="candidate-list-option">
+														<ul class="list-unstyled">
+															<li><i class="fas fa-filter pr-1"></i>${item.position}</li>
+															<li><i class="fas fa-map-marker-alt pr-1"></i>${item.workPlace}</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</td>
+										<td class="candidate-list-favourite-time text-center"></td>
+										<%-- This is JSP comment										
+										<td><a href="#" class="btn btn-primary" role="button"
+											data-bs-toggle="button">follow</a></td>--%>
+										<td><a
+											href="deletefollower?id=${item.userID}"
+											class="btn btn-primary" role="button" data-bs-toggle="button">Delete follower</a></td>
 
-<div class="wrapper-follower">
-  <div>
-    <!-- api = listfollower{avatar, lastName, midName ,firstName} -->
-    <!-- Placeholder for follower item -->
-    <!-- <div class="list-follower">
-      <c:forEach items="${listfollower}" var="item" varStatus="STT">
-      <div class="follower-container">
-        <img class="follower__avatar" src="${item.avatar}"" alt="avatar" />
-        <div class="follower__info">
-       		<span class="follower__name">${item.lastName} ${item.midName} ${item.firstName}</span>
-       		<span class="follower__address">{item.address}</span>
-        </div>
-        <button type="button" class="btn btn-secondary">Thêm bạn bè</button>
-      </div>
-      </c:forEach>
-      </div> -->
-    <!-- Thay thể mã html bên dưới bằng code phía trên  + chỉnh đường dẫn file css là oke-->
-    <ul class="list-follower">
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-      <li class="follower-container">
-        <img class="follower__avatar" src="templates/user/image-test/avatar.jpg" alt="" />
-        <div class="follower__info">
-          <span class="follower__name">Thanh Thảo</span>
-          <span class="follower__address">Thành phố Hồ chí minh</span>
-        </div>
-        <button type="button" class="btn btn-secondary follower__btn">Thêm bạn bè</button>
-      </li>
-    </ul>
-  </div>
-  <link rel="stylesheet" href="templates/user/css/follower.css" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</div>
+									</tr>
+								</c:forEach>
+							</tbody>
+
+						</table>
+						<div class="text-center mt-3 mt-sm-3">
+							<%--
+							<ul class="pagination justify-content-center mb-0">
+								<li class="page-item disabled"><span class="page-link">Prev</span>
+								</li>
+								<li class="page-item active" aria-current="page"><span
+									class="page-link">1 </span> <span class="sr-only">(current)</span>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">...</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">25</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">Next</a>
+								</li>
+							</ul>--%>
+							<span class="text-muted text-sm">Showing 10 users</span>
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<c:forEach begin="1" end="${endP}" var="i">
+										<li class="page-item"><a class="page-link"
+											href="follower?index=${i}">${i}</a></li>
+									</c:forEach>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

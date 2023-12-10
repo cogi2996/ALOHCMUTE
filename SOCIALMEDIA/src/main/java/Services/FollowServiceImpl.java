@@ -17,5 +17,9 @@ public class FollowServiceImpl implements IFollowService {
 	public List<User> suggestFollow(String uid) {
 		return followDao.suggestFollow(uid);
 	}
+	@Override
+	public void delete(String sourceID, String targetID) {
+		followDao.delete(sourceID, targetID);
+	}
 
 }
