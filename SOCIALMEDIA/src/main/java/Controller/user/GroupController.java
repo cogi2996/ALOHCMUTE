@@ -99,18 +99,6 @@ private static final long serialVersionUID = 1L;
 		User usergroup = userService.findUser(userID);
 		System.out.println(userID);
 		List<Group> listusergroup = usergroup.getUserGroups();
-	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//String userID = req.getParameter("userID");
-		String userID = "user5";
-		User usergroup = userService.findUser(userID);
-		System.out.println(userID);
-		List<Group> listusergroup = usergroup.getUserGroups();
-	private void MyGroupUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//String userID = req.getParameter("userID");
-		String userID = "user5";
-		User usergroup = userService.findUser(userID);
-		System.out.println(userID);
-		List<Group> listusergroup = usergroup.getUserGroups();
 		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
 
 		for (Group group : listusergroup) {
