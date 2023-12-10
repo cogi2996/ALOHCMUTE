@@ -21,10 +21,9 @@
 							<!-- <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" -->
 							<!-- class="rounded-circle bg-primary" width="110"> -->
 							<div class="mt-3">
-								<h4>Group Name</h4>
-								<p class="text-secondary mb-1">Full Stack Developer</p>
-								<p class="text-muted font-size-sm">Bay Area, San Francisco,
-									CA</p>
+								<h4>${group.groupName}</h4>
+								<p class="text-secondary mb-1">Nhóm ${countUserGroup} thành viên</p>
+								<p class="text-muted font-size-sm">Bay Area, San Francisco,CA</p>
 								<button class="btn btn-primary">Follow</button>
 								<!-- <button class="btn btn-outline-primary">Message</button> -->
 							</div>
@@ -43,7 +42,7 @@
 							href="#about" role="tab">About</a>
 							<div class="slide"></div></li>
 						<li class="nav-item"><a class="nav-link" data-toggle="tab"
-							href="#friends" role="tab">Friends</a>
+							href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}" role="tab">Friends</a>
 							<div class="slide"></div></li>
 						<li>
 							<form class="navbar-form pull-right flex-row float-right"

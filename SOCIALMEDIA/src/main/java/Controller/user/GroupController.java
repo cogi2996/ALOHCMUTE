@@ -13,11 +13,12 @@ import Entity.Group;
 import Entity.User;
 import Services.GroupServiceImpl;
 import Services.iGroupService;
-@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/listuser","/grouppost/searchusergroup","/grouppost/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup"})
+@WebServlet(urlPatterns = {"/grouppost/searchpost","/grouppost/allgrouppost","/timkiem/listusergroup","/timkiem/searchusergroup","/group/allGroup/searchgroup","/group/allGroup/listgroup","/group/allGroup/mygroup"})
 public class GroupController extends HttpServlet{
 private static final long serialVersionUID = 1L;
 	
 	iGroupService groupService = new GroupServiceImpl();
+	int danhdau=-1;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -25,7 +26,7 @@ private static final long serialVersionUID = 1L;
 			SearchPostGroup(req, resp);
 		}
 		// tin them
-		else if(url.contains("listuser")) {
+		else if(url.contains("listusergroup")) {
 			ListUserInGroup(req, resp);
 		}
 		else if(url.contains("searchusergroup")) {
@@ -33,6 +34,9 @@ private static final long serialVersionUID = 1L;
 		}
 		else if(url.contains("searchgroup")) {
 			SearchGroupbygroupName(req, resp);
+		}
+		else if(url.contains("allgrouppost")) {
+			AllGroupPost(req, resp);
 		}
 		else if(url.contains("listgroup")) {
 			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
@@ -50,16 +54,10 @@ private static final long serialVersionUID = 1L;
 		rd.forward(req, resp);
 	}
 	private void ListUserInGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*
-		int groupID = Integer.parseInt(req.getParameter("groupID"));
-		Group group = groupService.findGroup(groupID);
-		List<User> usermember = group.getMember();
-		req.setAttribute("usermember", usermember);
-		System.out.println(usermember);
-		RequestDispatcher rd = req.getRequestDispatcher("/views/user/listUserInGroup.jsp");
-		rd.forward(req, resp);*/
+
 		String userID = "user1";// cài cứng để tuấn làm follow
 		int groupID = Integer.parseInt(req.getParameter("groupID"));
+		//int groupID =  11;	
 		String indexP = req.getParameter("index");
 
 		if (indexP == null) {
@@ -75,6 +73,8 @@ private static final long serialVersionUID = 1L;
 		List<User> listuser = groupService.paginationPageListUsersGroup(index - 1, 2,groupID);
 		// Xử lí bài toán
 		// đẩy dữ liệu ra view
+		danhdau=0;
+		req.setAttribute("danhdau", danhdau);
 		req.setAttribute("listuser", listuser);
 		req.setAttribute("countAll", countP);
 		req.setAttribute("endP", endPage);
@@ -104,12 +104,15 @@ private static final long serialVersionUID = 1L;
 		List<User> listuser = groupService.paginationPageSearchUsersGroup(index - 1, 2,groupID,keyword);
 		// Xử lí bài toán
 		// đẩy dữ liệu ra view
+		danhdau=1;
+		req.setAttribute("danhdau", danhdau);
 		req.setAttribute("listuser", listuser);
 		req.setAttribute("countAll", countP);
 		req.setAttribute("endP", endPage);
 		req.setAttribute("tag", index);
 		req.setAttribute("userID", userID);
 		req.setAttribute("groupID", groupID);
+		req.setAttribute("keyword", keyword);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/usersgroup.jsp");
 		rd.forward(req, resp);
 		
@@ -139,5 +142,17 @@ private static final long serialVersionUID = 1L;
 		req.setAttribute("tag", index);
 		RequestDispatcher rd = req.getRequestDispatcher("/views/user/usersgroup.jsp");
 		rd.forward(req, resp);
+	}
+	private void AllGroupPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int groupID = Integer.parseInt(req.getParameter("groupID"));
+		Group group = new Group();
+		group = groupService.findGroup(groupID);
+		Long countUserGroup = groupService.CountListUsersGroup(groupID);
+		req.setAttribute("groupID", groupID);
+		req.setAttribute("group", group);
+		req.setAttribute("countUserGroup", countUserGroup);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/groupPost.jsp");
+		rd.forward(req, resp);
+		
 	}
 }
