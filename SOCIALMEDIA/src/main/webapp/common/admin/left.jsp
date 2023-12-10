@@ -24,9 +24,6 @@
 		<div class="collapse navbar-collapse" id="sidebarCollapse">
 			<!-- Navigation -->
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/home"> <i
-						class="bi bi-house"></i> HOME
-				</a></li>
 
 				<li class="nav-item"><a class="nav-link" href="/SOCIALMEDIA/admin-manage/user/listuser"> <i
 						class="bi bi-people"></i> USERS
