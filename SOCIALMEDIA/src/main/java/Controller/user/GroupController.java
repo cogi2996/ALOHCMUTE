@@ -55,13 +55,14 @@ private static final long serialVersionUID = 1L;
 //		DAT BEGIN HERE
 		else if(url.contains("listgroup")) {
 			findAll(req, resp);
-			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		}else if (url.contains("mygroup")) {
 			findMyGroup(req, resp);
-			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
-		}else if (url.contains("creategroup")) {
+			//req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+		}
+		else if (url.contains("creategroup")) {
 			//createGroup(req,resp);
-			req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
+			req.getRequestDispatcher("/views/user/creategroup.jsp").forward(req, resp);
 		}
 	}
 	@Override
@@ -96,6 +97,7 @@ private static final long serialVersionUID = 1L;
 	}
 	private void findMyGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userID = req.getParameter("userID");
+		System.out.println(userID);
 		User user = userService.findUser(userID);
 
 		List<Group> listusergroup = user.getUserGroups();
@@ -136,7 +138,7 @@ private static final long serialVersionUID = 1L;
 		}
 		req.setAttribute("listGroup", listgroupmodel);
 		System.out.println(listgroupmodel);
-		System.out.println(userID);
+		req.getRequestDispatcher("/views/user/listGroup.jsp").forward(req, resp);
 		
 	}
 	private void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
