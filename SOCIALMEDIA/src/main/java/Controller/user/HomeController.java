@@ -27,7 +27,7 @@ import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/home", "/follower", "/deletefollower" })
+@WebServlet(urlPatterns = { "/home", "/timkiem/follower", "/deletefollower" })
 public class HomeController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
