@@ -71,8 +71,6 @@ if (uri.contains("home")) {
 <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/resultFind.css"/>" />
 <%
-<<<<<<< HEAD
-=======
 } else if (uri.contains("allGroup")) {
 %>
 <link rel="stylesheet"
@@ -85,11 +83,9 @@ if (uri.contains("home")) {
 	href="<c:url value = "/templates/user/css/groupinfo.css"/>" />
 
 <%
->>>>>>> branch 'tin-api' of https://github.com/cogi2996/ALOHCMUTE.git
 }
 %>
 
-<<<<<<< HEAD
 <!-- list group css -->
 =======
 
