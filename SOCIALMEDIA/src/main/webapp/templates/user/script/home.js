@@ -379,6 +379,8 @@ btn_submit.addEventListener("click", function (e) {
           text: text,
           img: urlImg,
         }),
+      }).then((response) => {
+        location.reload(true);
       });
     });
   }
