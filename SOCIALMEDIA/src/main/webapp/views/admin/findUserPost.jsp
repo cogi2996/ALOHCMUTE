@@ -45,7 +45,7 @@
 			<c:forEach var="item" items="${listPost}">
 				<tbody>
 					<tr>
-						<td><a href="listUserLike?id=${item.getUserPostID()}">${item.getUserPostID()}</a></td>
+						<td>${item.getUserPostID()}</td>
 						<td style="white-space: pre-line;">${item.getUserPostText() }</td>
 						<td>${item.getUserPostCreateTime() }</td>
 						<td>${item.getUserPostUpdateTime() }</td>

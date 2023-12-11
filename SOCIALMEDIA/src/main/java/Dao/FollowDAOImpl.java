@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import Entity.Follow;
@@ -51,8 +52,28 @@ public class FollowDAOImpl implements IFollowDAO {
 		TypedQuery<User> query = entityManager.createQuery(
 				"SELECT u FROM User u WHERE u.userID != :userID AND :userID NOT MEMBER OF u.followers",
 				User.class);
-		query.setParameter("userID", uid);
+		query.setParameter("userID", uid).setMaxResults(5);
 		return query.getResultList();
+	}
+
+	@Override
+	public void delete(String sourceID, String targetID) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		EntityTransaction trans = enma.getTransaction();
+		try {
+			trans.begin();
+			Query deleteFollowQuery = enma.createQuery("DELETE FROM Follow f WHERE f.sourceID = :sourceID AND f.targetID = :targetID");
+	        deleteFollowQuery.setParameter("sourceID", sourceID);
+	        deleteFollowQuery.setParameter("targetID", targetID);
+	        deleteFollowQuery.executeUpdate();
+			trans.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			trans.rollback();
+			//throw e;
+		} finally {
+			enma.close();
+		}
 	}
 
 }

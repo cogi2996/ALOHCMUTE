@@ -138,6 +138,16 @@ public class UserPost {
 	}
 	//tin begin
 
+	public String getUserPostImage() {
+		return userPostImage;
+	}
+
+	public void setUserPostImage(String userPostImage) {
+		this.userPostImage = userPostImage;
+	}
+
+	//tin begin
+
 	public Group getGroup() {
 		return group;
 	}
@@ -147,11 +157,4 @@ public class UserPost {
 	}
 	
 	// tin end
-	public String getUserPostImage() {
-		return userPostImage;
-	}
-
-	public void setUserPostImage(String userPostImage) {
-		this.userPostImage = userPostImage;
-	}
 }

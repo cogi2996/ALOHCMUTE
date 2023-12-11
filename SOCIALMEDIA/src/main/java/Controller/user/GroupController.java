@@ -74,8 +74,6 @@ private static final long serialVersionUID = 1L;
 		if(url.contains("creategroup")){
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
-			//String userID = req.getParameter("userID");
-			//String userID = "user1";
 			HttpSession session = req.getSession(false);
 			String userID = (String) session.getAttribute("uid");
 	        String groupName = req.getParameter("groupName");

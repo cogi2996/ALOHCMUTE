@@ -171,8 +171,6 @@ public class PostAPI extends HttpServlet {
 		System.out.println("[1]-bat dau load");
 		System.out.println(amount);
 		int imount = Integer.parseInt(amount);
-//		HttpSession session = req.getSession();
-//		String uid = (String) session.getAttribute("uid");
 		String uid = req.getParameter("uid");
 		System.out.println(uid);
 		System.out.println("[2]-end load");
@@ -233,7 +231,6 @@ public class PostAPI extends HttpServlet {
 		String uid = (String) session.getAttribute("uid");
 		int postId = Integer.parseInt(req.getParameter("postId"));
 		System.out.println("da vao likepost");
-//		int postId = gson.fromJson(req.getReader(), int.class);
 		userPostService.insertLikePost(uid, postId, null);
 		// trả về số like hiện tại
 		Gson gson = new Gson();
@@ -250,12 +247,7 @@ public class PostAPI extends HttpServlet {
 		resp.setContentType("application/json");
 		resp.setCharacterEncoding("UTF-8");
 		// lấy ra uid người like
-//		HttpSession session = req.getSession();
-//		String uid = (String) session.getAttribute("uid");
 		int postId = Integer.parseInt(req.getParameter("postId"));
-//		System.out.println("da vao likepost");
-//		int postId = gson.fromJson(req.getReader(), int.class);
-//		userPostService.insertLikePost(uid, postId, null);
 		// trả về số like hiện tại
 		Gson gson = new Gson();
 		String countLike = gson.toJson(userPostService.findOne(postId).getLikeUsers().size());

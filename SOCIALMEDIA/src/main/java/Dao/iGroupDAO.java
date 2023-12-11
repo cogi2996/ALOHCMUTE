@@ -20,14 +20,14 @@ public interface iGroupDAO {
 	List<User> paginationPageSearchUsersGroup(int index, int numberOfPage,int groupID, String keyword);
 	Long CountSearchUsersGroup(int groupID, String keyword);
 	// tin end
+	//hieu-them
+	List<Group> paginationPage(int index, int numberOfPage);
+	Long countAll();
+	//hieu-end
 	
 	// tin begin
 	List<Group> paginationPageAllGroup(int index, int numberOfPage);
 	Long countAllGroup();
 	// tin end
 	
-	//hieu-them
-	List<Group> paginationPage(int index, int numberOfPage);
-	Long countAll();
-	//hieu-end
 }

@@ -6,7 +6,6 @@ import Dao.GroupDAOImpl;
 import Dao.iGroupDAO;
 import Entity.Group;
 import Entity.User;
-import Entity.UserPost;
 
 public class GroupServiceImpl implements iGroupService{
 
@@ -74,15 +73,6 @@ public class GroupServiceImpl implements iGroupService{
 	}
 
 	@Override
-	public List<Group> paginationPageAllGroup(int index, int numberOfPage) {
-		return groupDAO.paginationPageAllGroup(index, numberOfPage);
-	}
-
-	@Override
-	public Long countAllGroup() {
-		return groupDAO.countAllGroup();
-	}
-	@Override
 	public List<Group> paginationPage(int index, int numberOfPage) {
 		return groupDAO.paginationPage(index, numberOfPage);
 	}
@@ -91,6 +81,15 @@ public class GroupServiceImpl implements iGroupService{
 	public Long countAll() {
 		return groupDAO.countAll();
 	}
-	
+	@Override
+	public List<Group> paginationPageAllGroup(int index, int numberOfPage) {
+		return groupDAO.paginationPageAllGroup(index, numberOfPage);
+	}
+
+	@Override
+	public Long countAllGroup() {
+		return groupDAO.countAllGroup();
+	}
+
 	
 }

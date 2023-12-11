@@ -58,7 +58,7 @@ public class Login extends HttpServlet {
 				// Xác thực tokenID từ Firebase
 				FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(tokenId);
 				String uid = decodedToken.getUid();
-
+				
 				if (uid != null) {
 					System.out.println("uid đã đăng nhập: " + uid);
 

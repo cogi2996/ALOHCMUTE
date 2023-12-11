@@ -131,8 +131,6 @@ if (uri.contains("home")) {
 <%
 }
 %>
-
-
 <!-- list group css -->
 <%-- <link rel="stylesheet"
 	href="<c:url value = "/templates/user/css/listgroup.css"/>" /> --%>
