@@ -223,11 +223,11 @@
 								<a class="create-post__avatar"> <img alt="User avatar"
 									src="${user.avatar}" />
 								</a> <input class="create-post__input" placeholder="Create Post" />
-								<a class="create-post__link"> <i
+								<!-- <a class="create-post__link"> <i
 									class="fa-solid fa-image icon"></i>
 								</a> <a class="create-post__link"> <i
 									class="fa-solid fa-link icon"></i>
-								</a>
+								</a> -->
 								<!-- modal create post -->
 								<div class="container create-post__modal">
 									<div class="row">
