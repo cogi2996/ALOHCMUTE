@@ -52,7 +52,7 @@ public class FollowDAOImpl implements IFollowDAO {
 		TypedQuery<User> query = entityManager.createQuery(
 				"SELECT u FROM User u WHERE u.userID != :userID AND :userID NOT MEMBER OF u.followers",
 				User.class);
-		query.setParameter("userID", uid);
+		query.setParameter("userID", uid).setMaxResults(5);
 		return query.getResultList();
 	}
 

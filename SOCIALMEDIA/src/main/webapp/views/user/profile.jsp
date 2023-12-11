@@ -358,8 +358,10 @@
 												<img class="img-xs rounded-circle" src="${user.avatar}"
 													alt="" />
 												<div class="ml-2" style="margin-left: 15px">
-													<p class="font-weight-bold mb-0">${user.lastName}
-														${user.midName} ${user.firstName}</p>
+												<a href="/SOCIALMEDIA/profile?userID=${user.userID}" >${user.lastName}
+											${user.midName} ${user.firstName}</a>
+													<%-- <p class="font-weight-bold mb-0">${user.lastName}
+														${user.midName} ${user.firstName}</p> --%>
 													<p class="tx-11 text-muted">${user.workPlace}</p>
 												</div>
 											</div>
