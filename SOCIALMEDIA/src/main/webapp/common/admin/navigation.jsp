@@ -59,7 +59,7 @@
 						class="fa-solid fa-user-group icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="#" onclick="handleActive()"> <i
+					href="/SOCIALMEDIA/group/allGroup/listgroup" onclick="handleActive()"> <i
 						class="fa-solid fa-users me-2 icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"

@@ -106,9 +106,9 @@
 											</div>
 											<div class="card-body">
 												<p class="mb-3 tx-14">${item.userPostText}</p>
-												<%--<img class="img-fluid"
-													src="https://bootdey.com/img/Content/avatar/avatar6.png"
-													alt>--%>
+												<img class="img-fluid"
+													src="${item.getUserPostImg()}"
+													alt>
 											</div>
 											<div class="card-footer">
 												<div class="d-flex post-actions">

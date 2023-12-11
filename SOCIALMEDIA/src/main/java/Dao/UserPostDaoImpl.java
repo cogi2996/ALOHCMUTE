@@ -26,7 +26,8 @@ public class UserPostDaoImpl implements IUserPostDao {
 //		}
 //		new UserPostDaoImpl().insertLikePost("4Mp0hZK1s7WcnTq462EInqBYCbC2", 43, new Date(0));
 //		System.out.println(new UserPostDaoImpl().findOne(43).getLikeUsers().size());
-		new UserPostDaoImpl().unlikePost(1, "KUyTipGNpdVhNj2iLWUuDhqTzmB2");
+		
+		System.out.println(new UserPostDaoImpl().findAllImg("KUyTipGNpdVhNj2iLWUuDhqTzmB2").size());
 	}
 
 	@Override
@@ -214,5 +215,14 @@ public class UserPostDaoImpl implements IUserPostDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public List<UserPost> findAllImg(String uid) {
+		EntityManager enma = JPAConfig.getEntityManager();
+		TypedQuery<UserPost> query = enma
+				.createQuery("SELECT u FROM UserPost u WHERE u.userPostImage IS NOT NULL and u.user.userID = :uid", UserPost.class);
+		query.setParameter("uid", uid);
+		return query.getResultList();
 	}
 }

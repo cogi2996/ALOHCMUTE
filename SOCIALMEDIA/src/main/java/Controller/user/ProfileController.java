@@ -13,15 +13,19 @@ import javax.servlet.http.HttpSession;
 import com.mysql.cj.Session;
 
 import Entity.User;
+import Entity.UserPost;
 import Model.UserModel;
 import Services.FollowServiceImpl;
 import Services.IFollowService;
+import Services.IUserPostService;
 import Services.IUserService;
+import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 @WebServlet(urlPatterns = {"/profile","/editProfile"})
 public class ProfileController extends HttpServlet{
 	IUserService userService = new UserServiceImpl();
 	IFollowService followService = new FollowServiceImpl();
+	IUserPostService userPostService = new UserPostServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String url = req.getRequestURL().toString();
@@ -32,7 +36,9 @@ public class ProfileController extends HttpServlet{
 			HttpSession session = req.getSession();
 			String currentUserId = (String) session.getAttribute("uid");
 			List<User> listSuggestFollow = followService.suggestFollow(currentUserId);
+			List<UserPost> listImgPost = userPostService.findAllImg(uid);
 			req.setAttribute("listSuggestFollow", listSuggestFollow);
+			req.setAttribute("listImgPost", listImgPost);
 			req.getRequestDispatcher("/views/user/profile.jsp").forward(req, resp);
 		}
 		else if(url.contains("editProfile")){

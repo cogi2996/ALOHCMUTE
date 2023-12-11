@@ -97,4 +97,9 @@ public class UserPostServiceImpl implements IUserPostService {
 	public boolean liked(int userPostID, String userID) {
 		return userPostDao.liked(userPostID, userID);
 	}
+
+	@Override
+	public List<UserPost> findAllImg(String uid) {
+		return userPostDao.findAllImg(uid);
+	}
 }

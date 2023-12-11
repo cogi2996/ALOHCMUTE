@@ -57,17 +57,17 @@
 									<div class="card-body form-createPost">
 										<form action="/SOCIALMEDIA/api/v1/posts" method="POST">
 											<div class="form-group">
-												<label for="author">${currentUser.lastName}
-													${currentUser.midName} ${currentUser.firstName}</label>
+											<%-- 	<label for="author">${currentUser.lastName}
+													${currentUser.midName} ${currentUser.firstName}</label> --%>
 											</div>
 
 											<div class="form-group">
 												<label for="content">Nội dung</label>
 												<textarea class="form-control" id="content"
-													placeholder="Tuấn ơi, bạn đang nghĩ gì thế?"></textarea>
+													placeholder="${currentUser.firstName} ơi, bạn đang nghĩ gì thế?"></textarea>
 											</div>
 											<div class="form-group">
-												<label for="image">Ảnh</label> <input type="file"
+												<label for="image">Các ảnh nỗi bật</label> <input type="file"
 													class="form-control" id="image" />
 											</div>
 											<button type="submit" class="btn btn-primary btn-submit"

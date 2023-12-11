@@ -27,5 +27,6 @@ public interface IUserPostDao {
 	// tin end
 	void unlikePost(int userPostID,String userID);
 	boolean liked (int userPostID,String userID);
+	List<UserPost> findAllImg(String uid);
 
 }

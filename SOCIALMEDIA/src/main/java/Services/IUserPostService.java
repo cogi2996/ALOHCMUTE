@@ -34,4 +34,5 @@ public interface IUserPostService {
 	// tin begin
 	List<UserPost> GroupPostBygroupID(int groupID);
 	// tin end
+	List<UserPost> findAllImg(String uid);
 }
