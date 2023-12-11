@@ -30,7 +30,7 @@ import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 
 @WebServlet(urlPatterns = { "/api/v1/posts/loadAjaxPost", "/api/v1/posts", "/api/v1/posts/loadMoreUserPost",
-		"/api/v1/likePost", "/api/v1/getLikePost", "/api/v1/unlikePost" })
+		"/api/v1/likePost", "/api/v1/getLikePost", "/api/v1/unlikePost","/api/v1/findOnePost" })
 
 public class PostAPI extends HttpServlet {
 	IUserService userService = new UserServiceImpl();
@@ -50,6 +50,8 @@ public class PostAPI extends HttpServlet {
 			likePost(req, resp);
 		} else if (url.contains("getLikePost")) {
 			getLikePost(req, resp);
+		}else if(url.contains("findOnePost")) {
+			findOnePost(req,resp);
 		}
 	}
 
@@ -277,5 +279,15 @@ public class PostAPI extends HttpServlet {
 	}
 
 	// tuan - end
+	public void findOnePost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("application/json");
+		resp.setCharacterEncoding("UTF-8");
+		int userPostID = Integer.parseInt(req.getParameter("userPostID")) ;
+		UserPost post = userPostService.findOne(userPostID);
+		PrintWriter out = resp.getWriter();
+		out.println(post);
+		out.close();
+	}
 
 }

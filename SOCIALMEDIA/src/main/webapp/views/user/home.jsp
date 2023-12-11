@@ -39,10 +39,11 @@
 				<div class="wrapper create-post">
 					<a class="create-post__avatar"> <img alt="User avatar"
 						src="${currentUser.avatar}" />
-					</a> <input class="create-post__input" placeholder="Create Post" /> <a
+					</a> <input class="create-post__input" placeholder="Create Post" />
+					<!--  <a
 						class="create-post__link"> <i class="fa-solid fa-image icon"></i>
 					</a> <a class="create-post__link"> <i class="fa-solid fa-link icon"></i>
-					</a>
+					</a> -->
 					<!-- modal create post -->
 					<div class="container create-post__modal">
 						<div class="row">
@@ -56,17 +57,17 @@
 									<div class="card-body form-createPost">
 										<form action="/SOCIALMEDIA/api/v1/posts" method="POST">
 											<div class="form-group">
-												<label for="author">${currentUser.lastName}
-													${currentUser.midName} ${currentUser.firstName}</label>
+											<%-- 	<label for="author">${currentUser.lastName}
+													${currentUser.midName} ${currentUser.firstName}</label> --%>
 											</div>
 
 											<div class="form-group">
 												<label for="content">Nội dung</label>
 												<textarea class="form-control" id="content"
-													placeholder="Tuấn ơi, bạn đang nghĩ gì thế?"></textarea>
+													placeholder="${currentUser.firstName} ơi, bạn đang nghĩ gì thế?"></textarea>
 											</div>
 											<div class="form-group">
-												<label for="image">Ảnh</label> <input type="file"
+												<label for="image">Các ảnh nỗi bật</label> <input type="file"
 													class="form-control" id="image" />
 											</div>
 											<button type="submit" class="btn btn-primary btn-submit"
@@ -94,8 +95,10 @@
 								<div class="d-flex align-items-center hover-pointer">
 									<img class="img-xs rounded-circle" src="${user.avatar}" alt="" />
 									<div class="ml-2" style="margin-left: 15px">
-										<p class="font-weight-bold mb-0">${user.lastName}
-											${user.midName} ${user.firstName}</p>
+									<a href="/SOCIALMEDIA/profile?userID=${user.userID}" >${user.lastName}
+											${user.midName} ${user.firstName}</a>
+										<%-- <p class="font-weight-bold mb-0">${user.lastName}
+											${user.midName} ${user.firstName}</p> --%>
 										<p class="tx-11 text-muted">${user.workPlace}</p>
 									</div>
 								</div>
@@ -146,13 +149,22 @@
 		        });
 		      } */
 	</script>
+	
 	<%-- <script type="module"
 		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script> --%>
+	
 	<script type="module"
 		src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<script type="module"
 		src='<c:url value = "/templates/home/script/commentService.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
+	   <script>
+        // JavaScript to prevent cursor blinking on click for input
+        const createPostInput = document.querySelector('.create-post__input');
+        createPostInput.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // Prevents the default focus behavior
+        });
+    </script>
 </body>
 </html>
 

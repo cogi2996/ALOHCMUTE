@@ -48,7 +48,7 @@
 					<tr>
 						<td>${item.getUserID()}</td>
 						<td><img alt="..."
-							src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+							src="${item.getAvatar() }"
 							class="avatar avatar-sm rounded-circle me-2"> <a
 							class="text-heading font-semibold" href="profile?id=${item.getUserID()}">
 								${item.getLastName()} ${item.getMidName()}

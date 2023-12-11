@@ -31,14 +31,16 @@
 										<td class="title">
 											<div class="thumb">
 												<img class="img-fluid"
-													src="https://bootdey.com/img/Content/avatar/avatar7.png"
+													src="${item.getAvatar()}"
+													
 													alt="" />
 											</div>
 											<div class="candidate-list-details">
 												<div class="candidate-list-info">
 													<div class="candidate-list-title">
 														<h5 class="mb-0">
-															<a href="#">${item.firstName} ${item.midName} ${item.lastName}</a>
+															<a href="#">${item.firstName} ${item.midName}
+																${item.lastName}</a>
 														</h5>
 													</div>
 													<div class="candidate-list-option">
@@ -84,8 +86,18 @@
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
 									<c:forEach begin="1" end="${endP}" var="i">
-										<li class="page-item"><a class="page-link"
-											href="group/listuser?groupID=${groupID}&index=${i}">${i}</a></li>
+										<%-- tin begin --%>
+										<c:choose>
+											<c:when test="${danhdau eq 0}">
+												<li class="page-item"><a class="page-link"
+													href="/SOCIALMEDIA/timkiem/listusergroup?groupID=${groupID}&index=${i}">${i}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="/SOCIALMEDIA/timkiem/searchusergroup?groupID=${groupID}&keyword=${keyword}&index=${i}">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+										<%-- tin end --%>
 									</c:forEach>
 								</ul>
 							</nav>

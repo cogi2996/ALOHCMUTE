@@ -45,10 +45,9 @@ public class GroupAPI extends HttpServlet {
 			getlistgroup(req, resp);
 		} else if (url.contains("api-user-listgroupuser")) {
 			getlistgroupuser(req, resp);
+		} else if (url.contains("api-user-addusergroup")) {
+			addusergroup(req, resp);
 		}
-		 else if (url.contains("api-user-addusergroup")) {
-			 addusergroup(req, resp);
-			}
 	}
 
 	@Override
@@ -123,7 +122,7 @@ public class GroupAPI extends HttpServlet {
 			Gson gson = new Gson();
 			GroupModel groupModel = gson.fromJson(req.getReader(), GroupModel.class);
 			System.out.println(groupModel.toString());
-			
+
 			String userid = user.getUserID().trim();
 			String groupcreaterid = groupModel.getCreaterId().trim();
 //			if (userid == groupcreaterid) {
@@ -147,7 +146,7 @@ public class GroupAPI extends HttpServlet {
 
 		String userID = req.getParameter("userID");
 		User user = userService.findUser(userID);
-
+		System.out.println(userID);
 		List<Group> listusergroup = user.getUserGroups();
 		List<GroupModel> listgroupmodel = new ArrayList<GroupModel>();
 
@@ -158,12 +157,32 @@ public class GroupAPI extends HttpServlet {
 			Date createTime = group.getCreateTime();
 			User admin = group.getAdmin();
 			String createrId = admin.getUserID();
-//			String userId = user.getUserID();
+			List<User> users = group.getMember();
+			int numberOfFollower = 0;
+			for (User u : users) {
+				numberOfFollower++;
+			}
 
-			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId);
+			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
 			listgroupmodel.add(groupmodel);
 		}
+		listusergroup = user.getCreatedGroup();
+		for (Group group : listusergroup) {
 
+			int groupID = group.getGroupID();
+			String groupName = group.getGroupName();
+			Date createTime = group.getCreateTime();
+			User admin = group.getAdmin();
+			String createrId = admin.getUserID();
+			List<User> users = group.getMember();
+			int numberOfFollower = 0;
+			for (User u : users) {
+				numberOfFollower++;
+			}
+
+			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
+			listgroupmodel.add(groupmodel);
+		}
 		Gson gson = new Gson();
 		String gString = gson.toJson(listgroupmodel);
 		PrintWriter out = resp.getWriter();
@@ -185,7 +204,13 @@ public class GroupAPI extends HttpServlet {
 			User user = group.getAdmin();
 			String createrId = user.getUserID();
 
-			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId);
+			List<User> users = group.getMember();
+			int numberOfFollower = 0;
+			for (User u : users) {
+				numberOfFollower++;
+			}
+
+			GroupModel groupmodel = new GroupModel(groupID, groupName, createTime, createrId, numberOfFollower);
 			listgroupmodel.add(groupmodel);
 		}
 
@@ -196,10 +221,11 @@ public class GroupAPI extends HttpServlet {
 		out.flush();
 		out.close();
 	}
-	//begin tin
+
+	// begin tin
 	private void addusergroup(HttpServletRequest req, HttpServletResponse resp) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	// end tin
 }

@@ -17,27 +17,29 @@
 							<div
 								class="cover-body d-flex justify-content-between align-items-center">
 								<div>
-									<img class="profile-pic"
-										src="${user.avatar}"
-										alt="profile" /> <span class="profile-name" data-user-id ="${user.userID}">
+								<%-- 	<img class="profile-pic" src="${user.avatar}" alt="profile" /> --%>
+									<img class="img-account-profile rounded-circle mb-2"
+							src="${user.avatar}" alt=""
+							style="width: 100px; height: 100px; object-fit: cover;">
+									<span class="profile-name" data-user-id="${user.userID}">
 										${user.lastName} ${user.midName} ${user.firstName}</span>
 								</div>
 								<div class="d-none d-md-block">
-								<a href='<c:url value = "/editProfile"></c:url>' >
-									<button class="btn btn-primary btn-icon-text btn-edit-profile">
-										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-											viewBox="0 0 24 24" fill="none" stroke="currentColor"
-											stroke-width="2" stroke-linecap="round"
-											stroke-linejoin="round"
-											class="feather feather-edit btn-icon-prepend">
+									<a href='<c:url value = "/editProfile"></c:url>'>
+										<button class="btn btn-primary btn-icon-text btn-edit-profile">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" viewBox="0 0 24 24" fill="none"
+												stroke="currentColor" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round"
+												class="feather feather-edit btn-icon-prepend">
                         <path
-												d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+													d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                         <path
-												d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+													d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                       </svg>
-										
-									</button>
-										</a>
+
+										</button>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -220,14 +222,16 @@
 					<div class="row">
 						<div class="col-md-12 grid-margin">
 							<div class="wrapper create-post">
-								<a class="create-post__avatar"> <img alt="User avatar"
+								<a class="create-post__avatar"> 
+								<img alt="User avatar"
 									src="${user.avatar}" />
+									
 								</a> <input class="create-post__input" placeholder="Create Post" />
-								<a class="create-post__link"> <i
+								<!-- <a class="create-post__link"> <i
 									class="fa-solid fa-image icon"></i>
 								</a> <a class="create-post__link"> <i
 									class="fa-solid fa-link icon"></i>
-								</a>
+								</a> -->
 								<!-- modal create post -->
 								<div class="container create-post__modal">
 									<div class="row">
@@ -279,69 +283,18 @@
 									<h6 class="card-title">Ảnh</h6>
 									<div class="latest-photos">
 										<div class="row">
-											<div class="col-md-4">
-												<figure>
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar1.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure>
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar2.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure>
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar3.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure>
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar4.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure>
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar5.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure>
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar6.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure class="mb-0">
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar7.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure class="mb-0">
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar8.png"
-														alt="" />
-												</figure>
-											</div>
-											<div class="col-md-4">
-												<figure class="mb-0">
-													<img class="img-fluid"
-														src="https://bootdey.com/img/Content/avatar/avatar9.png"
-														alt="" />
-												</figure>
-											</div>
+											<c:forEach var="item" items="${listImgPost}">
+												<div class="col-md-4">
+													<figure>
+														<img class="img-fluid"
+															src="${item.userPostImage}"
+															alt="" />
+													</figure>
+												</div>
+											</c:forEach>
+
+
+
 										</div>
 									</div>
 								</div>
@@ -358,8 +311,10 @@
 												<img class="img-xs rounded-circle" src="${user.avatar}"
 													alt="" />
 												<div class="ml-2" style="margin-left: 15px">
-													<p class="font-weight-bold mb-0">${user.lastName}
-														${user.midName} ${user.firstName}</p>
+													<a href="/SOCIALMEDIA/profile?userID=${user.userID}">${user.lastName}
+														${user.midName} ${user.firstName}</a>
+													<%-- <p class="font-weight-bold mb-0">${user.lastName}
+														${user.midName} ${user.firstName}</p> --%>
 													<p class="tx-11 text-muted">${user.workPlace}</p>
 												</div>
 											</div>

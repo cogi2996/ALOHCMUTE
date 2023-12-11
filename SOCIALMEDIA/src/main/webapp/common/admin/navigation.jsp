@@ -59,7 +59,7 @@
 						class="fa-solid fa-user-group icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
-					href="#" onclick="handleActive()"> <i
+					href="/SOCIALMEDIA/group/allGroup/listgroup" onclick="handleActive()"> <i
 						class="fa-solid fa-users me-2 icon"></i>
 				</a></li>
 				<li class="nav-item col"><a class="nav-link text-center"
@@ -80,6 +80,7 @@
                 aria-expanded="false"
               ></button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+               <li><a class="dropdown-item" href='<c:url value="/admin-manage/user/listuser"></c:url>'>Admin</a></li>
                 <li><a class="dropdown-item" href='<c:url value="/dangxuat"></c:url>'>Đăng xuất</a></li>
                 <li>
                   <a class="dropdown-item d-none" href="#">Another action</a>

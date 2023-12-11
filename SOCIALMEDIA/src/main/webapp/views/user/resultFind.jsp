@@ -85,7 +85,7 @@
 								<ul class="pagination">
 									<c:forEach begin="1" end="${endP}" var="i">
 										<li class="page-item"><a class="page-link"
-											href="timkiem?keyword=${keyword}&index=${i}">${i}</a></li>
+											href="/SOCIALMEDIA/timkiem/searchusers?keyword=${keyword}&index=${i}">${i}</a></li>
 									</c:forEach>
 								</ul>
 							</nav>

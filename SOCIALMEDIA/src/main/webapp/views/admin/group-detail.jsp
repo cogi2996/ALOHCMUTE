@@ -24,7 +24,9 @@
 					<td>${group.getGroupName() }</td>
 					<td>${group.getCreateTime() }</td>
 					<td>${group.getMember().size()}</td>
-					<td>${group.getAdmin().getUserID() }</td>
+					<td><img alt="..."
+								src="${group.getAdmin().getAvatar()}"
+								class="avatar avatar-sm rounded-circle me-2">${group.getAdmin().getUserID() }</td>
 					<td>${group.getAdmin().getLastName()}
 						${group.getAdmin().getMidName()} ${group.getAdmin().getFirstName()}</td>
 				</tr>

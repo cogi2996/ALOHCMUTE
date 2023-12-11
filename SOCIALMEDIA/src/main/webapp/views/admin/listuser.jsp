@@ -55,7 +55,7 @@
 						<tr>
 							<td>${item.getUserID()}</td>
 							<td><img alt="..."
-								src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+								src="${item.getAvatar()}"
 								class="avatar avatar-sm rounded-circle me-2"> <a
 								class="text-heading font-semibold"
 								href="profile?id=${item.getUserID()}"> ${item.getLastName()}
@@ -66,8 +66,7 @@
 							<td>${item.getWorkPlace() }</td>
 							<td>${item.getCreateDate()}</td>
 							<td>${item.getLastLogin()}</td>
-							<td class="text-end"><a href="update?id=${item.getUserID()}"
-								class="btn btn-sm btn-neutral">Update</a><a
+							<td class="text-end"><a
 								href="delete?id=${item.getUserID()}"
 								class="btn btn-sm btn-neutral">Delete</a></td>
 						</tr>
@@ -97,7 +96,10 @@
 			href = "/SOCIALMEDIA/admin-manage/user/searchUser?keyword="
 					+ encodeURIComponent(keyword) + "&index=1";
 		}
+		
 	</script>
+		<script type="module"
+		src='<c:url value = "/templates/navigation/script/navigationAdmin.js"></c:url>'></script>
 </body>
 </html>
 

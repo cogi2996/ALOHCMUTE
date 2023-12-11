@@ -27,7 +27,7 @@ import Services.IUserService;
 import Services.UserPostServiceImpl;
 import Services.UserServiceImpl;
 
-@WebServlet(urlPatterns = { "/home", "/follower" })
+@WebServlet(urlPatterns = { "/home", "/timkiem/follower", "/deletefollower" })
 public class HomeController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -45,12 +45,25 @@ public class HomeController extends HttpServlet {
 			String uid = (String) session.getAttribute("uid");
 			User user = userService.findUser(uid);
 			List<User> listSuggestFollow = followService.suggestFollow(uid);
+			
 			req.setAttribute("listSuggestFollow", listSuggestFollow);
 			req.setAttribute("currentUser", user);
+			
 			req.getRequestDispatcher("/views/user/home.jsp").forward(req, resp);
 			
 		} else if (url.contains("follower")) {
 			findFollowersByUserId(req, resp);
+		}
+		else if(url.contains("deletefollower"))
+		{
+			HttpSession session = req.getSession();
+			String uid = (String) session.getAttribute("uid");
+			String sourceID = req.getParameter("id");
+			System.out.println("Source" + sourceID);
+			System.out.println("Taget" + uid);
+			followService.delete(sourceID, uid);
+			RequestDispatcher rd = req.getRequestDispatcher("follower");
+			rd.forward(req, resp);
 		}
 	}
 
@@ -84,13 +97,14 @@ public class HomeController extends HttpServlet {
 	// hieu
 	private void findFollowersByUserId(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		/*int id = Integer.parseInt(req.getParameter("id"));
-		User user = userService.findUser(id);
+		HttpSession session = req.getSession();
+		String uid = (String) session.getAttribute("uid");
+		User user = userService.findUser(uid);
 		List<User> followers = user.getFollowers();
 		req.setAttribute("listfollower", followers);
 
-		RequestDispatcher rd = req.getRequestDispatcher("/views/user/followers.jsp");
-		rd.forward(req, resp);*/
+		RequestDispatcher rd = req.getRequestDispatcher("/views/user/follower.jsp");
+		rd.forward(req, resp);
 
 	}
 	//	KUyTipGNpdVhNj2iLWUuDhqTzmB2	0348083543	2023-12-09 00:00:00		Hạ	Nhật	Võ	Hà Nội	time to rise	Công nghệ thông tin	Khoa  công nghệ thông tin		0
