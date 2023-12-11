@@ -96,7 +96,10 @@
 			href = "/SOCIALMEDIA/admin-manage/user/searchUser?keyword="
 					+ encodeURIComponent(keyword) + "&index=1";
 		}
+		
 	</script>
+		<script type="module"
+		src='<c:url value = "/templates/navigation/script/navigationAdmin.js"></c:url>'></script>
 </body>
 </html>
 

@@ -115,7 +115,8 @@ if (uri.contains("home")) {
 <%
 } else if (uri.contains("nhungnguoitheodoi")) {
 %>
-<link rel="stylesheet" href="<c:url value = "/templates/user/css/follower.css"/>" />
+<link rel="stylesheet"
+	href="<c:url value = "/templates/user/css/follower.css"/>" />
 <%
 } else if (uri.contains("allGroup")) {
 %>
@@ -136,7 +137,19 @@ if (uri.contains("home")) {
 	href="<c:url value = "/templates/user/css/listgroup.css"/>" /> --%>
 </head>
 <body>
+	<%
+	if ((int)session.getAttribute("role") == 1) {
+	%>
+	<%@include file="/common/admin/navigation.jsp"%>
+	<%
+	} else {
+	%>
 	<%@include file="/common/user/header.jsp"%>
+
+	<%
+	}
+	%>
+<%-- 	<%@include file="/common/user/header.jsp"%> --%>
 	<decorator:body></decorator:body>
 
 	<script

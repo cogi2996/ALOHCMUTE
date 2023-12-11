@@ -72,7 +72,7 @@
 												</div>
 									</div>
 								</div>
-								<span><a href class="btn btn-info btn-sm"> Follow</a></span>
+								<span><a href="/SOCIALMEDIA/group/allGroup/addmembergroup?groupID=${item.groupID}"> Follow</a></span>
 							</div>
 						</div>
 					</c:forEach>

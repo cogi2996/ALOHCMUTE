@@ -56,6 +56,8 @@ public class AuthorizationFilter implements Filter {
                 || servletPath.contains("forgotPassword")
                 || servletPath.contains("identitytoolkit")
                 || servletPath.contains("/dangki")
+                || servletPath.contains("/xacthuctaikhoan")
+                || servletPath.contains("/verifyCode")
                 ||servletPath.contains("/forgotPass"); // Add more if needed
     }
 

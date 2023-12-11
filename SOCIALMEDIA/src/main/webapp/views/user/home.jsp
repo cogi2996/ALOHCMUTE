@@ -149,13 +149,22 @@
 		        });
 		      } */
 	</script>
+	
 	<%-- <script type="module"
 		src='<c:url value = "/templates/firebase/firebase.js"></c:url>'></script> --%>
+	
 	<script type="module"
 		src='<c:url value = "/templates/user/script/home.js"></c:url>'></script>
 	<script type="module"
 		src='<c:url value = "/templates/home/script/commentService.js"></c:url>'></script>
 	<!-- 	<script type="module" src="loadCommentHome.js"></script> -->
+	   <script>
+        // JavaScript to prevent cursor blinking on click for input
+        const createPostInput = document.querySelector('.create-post__input');
+        createPostInput.addEventListener('mousedown', (e) => {
+            e.preventDefault(); // Prevents the default focus behavior
+        });
+    </script>
 </body>
 </html>
 

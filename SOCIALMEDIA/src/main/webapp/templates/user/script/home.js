@@ -171,7 +171,7 @@ const renderPost = function(post) {
 							</button>
 							 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="#">Sao chép</a></li>
-                  <li><a class="dropdown-item" href="#">Sửa</a></li>
+                 
                   <li>
                     <a class="dropdown-item dropdown-item-delete" href="#">Xoá</a>
                   </li>
@@ -253,7 +253,7 @@ const renderPost = function(post) {
 							</button>
 							 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a class="dropdown-item" href="#">Sao chép</a></li>
-                  <li><a class="dropdown-item  " href="#">Sửa</a></li>
+              
                   <li>
                     <a class="dropdown-item dropdown-item-delete" href="#">Xoá</a>
                   </li>

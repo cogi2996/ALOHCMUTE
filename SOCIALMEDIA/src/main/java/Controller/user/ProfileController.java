@@ -43,7 +43,6 @@ public class ProfileController extends HttpServlet{
 			req.getRequestDispatcher("/views/user/editProfile.jsp").forward(req, resp);
 		}
 		
-		
 	}
 	
 }
