@@ -75,7 +75,7 @@ public class PostAPI extends HttpServlet {
 		int imount = Integer.parseInt(amount);
 		HttpSession session = req.getSession();
 		String uid = (String) session.getAttribute("uid");
-		List<UserPost> listPost = userPostService.paginationPostUser(imount, 6, uid);
+		List<UserPost> listPost = userPostService.paginationPostUser(imount, 4, uid);
 		List<UserPostModel> listPostModel = new ArrayList<UserPostModel>();
 		for (UserPost post : listPost) {
 			String username = post.getUser().getLastName() + ' ' + post.getUser().getMidName() + ' '
